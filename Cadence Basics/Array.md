@@ -10,17 +10,27 @@ How to write array in cadence?
 ```
 Defining array inside function
 
-pub var numbers: [UInt64] = []
+pub var numbers: [UInt64] = [] // Empty Array
 
 ```
 
 ```
 
-Defining array globally, then we have to initialize.
+Defining array inside resource, struct or globally, then you have to initialize it.
 
+// Empty Array
 pub var nftCount: [UInt64]
 
 init(){
     self.nftCount = []
+}
+
+
+
+// Array with value
+pub var nftCount: [UInt64]
+
+init(){
+    self.nftCount = [2,3,4,5,5]
 }
 ```
