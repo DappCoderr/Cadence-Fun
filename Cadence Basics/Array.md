@@ -34,3 +34,26 @@ init(){
     self.nftCount = [2,3,4,5,5]
 }
 ```
+
+Array Feild and Function
+
+```
+Array Feild -> Length
+
+let numbers: [UInt64] = [1,2,3,4,5,6]
+let length = numbers.length
+
+// length  = 6
+
+```
+
+```
+Array Functions -> concat, contains
+
+let one: [UInt64] = [1,2,3,4]
+let two: [UInt64] = [7,1,2]
+
+let numbers = one.concat(two)
+
+// numbers = [1,2,3,4,7,1,2]
+```
