@@ -25,5 +25,4 @@ access(all) contract Counter {
     access(all) fun getCount(): UInt64 {
         return self.count
     }
-
 }
