@@ -1,7 +1,7 @@
 // Hey, Welcome to Cadence! These are the cadence basis tutorial programs.
 
 
-// Simple contract in which you can get, increment & decrement the value of count.
+// Simple contract to build counter dapp, increment & decrement the value of count.
 access(all) contract Counter {
 
     access(all) let count: UInt64
