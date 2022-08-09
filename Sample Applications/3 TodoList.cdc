@@ -72,6 +72,23 @@ pub contract ToDoList {
             destroy task
         }
 
+        pub fun task(id: UInt64): Template {
+            var task <- self.ownerTask.remove(key: id)!
+            let temp = Template(id: id, task: task.task, completed: task.completed)
+
+            let oldTask <- self.ownerTask[id] <- task
+            destroy oldTask
+            return temp
+        }
+
+        pub fun getAllTask(): [Template] {
+            var array: [Template] = []
+            for key in self.ownerTask.keys{
+                array.append(self.task(id:key))
+            }
+            return array
+        }
+
         destroy(){
             destroy self.ownerTask
         }
