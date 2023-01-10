@@ -1,19 +1,19 @@
 // Hey, Welcome to Cadence! These are the cadence Sample Application tutorial programs.
 
 
-// Simple contract to build the todo-List dapp, Create, Delete, Edit Toggle the List.
+// Simple contract to build the todo-Pad dapp, Create, Delete, Edit Toggle the Pad.
 pub contract ToDoList {
 
-    // public variable who keeps count of total List created
-    pub var totatListCount: UInt64
+    // public variable who keeps count of total Pad created
+    pub var totatPadCount: UInt64
 
-    //Here Struct is used to return the task of respective List, with it's ID.
+    //Here Struct is used to return the task of respective Pad, with it's ID.
     // Can't use resource here, as resource is present at one location at a time
     pub struct Template {
 
         // public variable the template id
         pub let id: UInt64
-        // public variable holds the task of List
+        // public variable holds the task of Pad
         pub let task: String
         // public variable who keeps track of the boolean value
         pub let completed: Bool
@@ -41,10 +41,10 @@ pub contract ToDoList {
     }
 
 
-    //Defining List as a resource
-    //List holds all the Task for a single person.
-    //Anyone can create multiple list and add multiple task to it.
-    pub resource List {
+    //Defining Pad as a resource
+    //Pad holds all the Task for a single person.
+    //Anyone can create multiple pad and add multiple task to it.
+    pub resource Pad {
 
         //Defining the dictionary of type resource, which holds all the task
         pub var ownerTask: @{UInt64: Task}
@@ -53,7 +53,7 @@ pub contract ToDoList {
             self.ownerTask <- {}
         }
 
-        // Add Task Function to create the task into the list
+        // Add Task Function to create the task into the pad
         pub fun addTask(task: String) {
             var task <- create Task(task: task, isComplete: false)
             var oldTask <- self.ownerTask[task.uuid] <- task
@@ -94,21 +94,21 @@ pub contract ToDoList {
         }
     }
 
-    // public function to create List
-    pub fun createlist() {
-        self.totatListCount = self.totatListCount + 1
-        var list <- create List()
-        destroy list
+    // public function to create Pad
+    pub fun createPad() {
+        self.totatPadCount = self.totatPadCount + 1
+        var pad <- create Pad()
+        destroy pad
     }
 
-    // public function to delete List
-    pub fun deleteList(list: @List){
-        self.totatListCount = self.totatListCount > 0 ? self.totatListCount + 1 as UInt64 : 0
-        destroy list
+    // public function to delete Pad
+    pub fun deletePad(pad: @Pad){
+        self.totatPadCount = self.totatPadCount > 0 ? self.totatPadCount + 1 as UInt64 : 0
+        destroy pad
     }
 
     // contract initilization
     init(){
-        self.totatListCount = 0 as UInt64
+        self.totatPadCount = 0 as UInt64
     }
 }
