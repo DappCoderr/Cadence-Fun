@@ -5,6 +5,8 @@ pub contract Knight{
 
     // events
     pub event ContractInitialized()
+    pub event Withdraw(id: UInt64, from: Address)
+    pub event Deposit(id: UInt64, to: Address)
 
     // Contract Path
     pub let CollectionStoragePath: StoragePath
@@ -35,7 +37,33 @@ pub contract Knight{
     }
 
     pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, KnightCollectionPublic{
+        pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
+        init(){
+            self.ownedNFTs <- {}
+        }
+
+        destroy (){
+            destroy self.ownedNFTs
+        }
+
+         // withdraw removes an NFT from the collection and moves it to the caller
+        pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+            let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("missing NFT")
+            
+            emit Withdraw(id: token.id, from: self.owner?.address)
+            return <- token
+        }
+
+        // deposit takes a NFT and adds it to the collections dictionary
+        // and adds the ID to the id array
+        pub fun deposit(token: @NonFungibleToken.NFT) {
+            let id = token.id
+            let old <- self.ownedNFTs[id] <-token
+            destroy old
+
+            emit Deposit(id: id, to: self.owner?.address)
+        }
     }
 
     init(){
@@ -43,3 +71,4 @@ pub contract Knight{
         emit ContractInitialized()
     }
 }
+ 
