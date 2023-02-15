@@ -1,31 +1,31 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
-import MetadataView from "./MetadataView.cdc"
+// import MetadataView from "./MetadataView.cdc"
 
-pub contract Knight{
+pub contract Knight: NonFungibleToken{
 
     // events
     pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address)
-    pub event Deposit(id: UInt64, to: Address)
+    pub event Withdraw(id: UInt64, from: Address?)
+    pub event Deposit(id: UInt64, to: Address?)
 
     // Contract Path
     pub let CollectionStoragePath: StoragePath
     pub let CollectionPublicPath: PublicPath
     pub let MinterStoragePath: StoragePath
 
-    pub var knightTotalSupply: UInt64
+    pub var totalSupply: UInt64
 
 
     // NFT Resource
     pub resource NFT: NonFungibleToken.INFT{
-        pub id: UInt64
-        pub maxEnergy: UFix64
-        pub energy: UFix64
+        pub let id: UInt64
+        pub var maxEnergy: UFix64
+        pub var energy: UFix64
 
         init(id:UInt64){
             self.id = id
-            self.maxEnergy = 100
-            self.energy = self.maxEnergy
+            self.maxEnergy = 100.0
+            self.energy = 50.0
         }
 
         pub fun feedEnergyDrink(){}
@@ -34,7 +34,9 @@ pub contract Knight{
 
     pub resource interface KnightCollectionPublic{
         // pub fun checkKinght(id: UInt64)
-        pub fun getId(): [UInt64]
+        pub fun deposit(token: @NonFungibleToken.NFT)
+        pub fun getIDs(): [UInt64]
+        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
         pub fun borrowKinght(id: UInt64): &Knight.NFT?{
             post {
                 (result == nil) || (result?.id == id):
@@ -43,7 +45,7 @@ pub contract Knight{
         }
     }
 
-    pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, KnightCollectionPublic{
+    pub resource Collection: KnightCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic{
         pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
         init(){
@@ -65,8 +67,8 @@ pub contract Knight{
         // and adds the ID to the id array
         pub fun deposit(token: @NonFungibleToken.NFT) {
             let id = token.id
-            let old <- self.ownedNFTs[id] <-token
-            destroy old
+            let oldToken <- self.ownedNFTs[id] <-token
+            destroy oldToken
             emit Deposit(id: id, to: self.owner?.address)
         }
 
@@ -79,13 +81,49 @@ pub contract Knight{
             }
         }
 
-        pub fun getId(): [UInt64]{
+        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+            if self.ownedNFTs[id] != nil {
+                return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
+            }
+            panic("NFT not found in collection.")
+        }
+
+        pub fun getIDs(): [UInt64]{
             return self.ownedNFTs.keys
         }
     }
 
+    pub fun createEmptyCollection(): @Collection{
+        return <- create Collection()
+    }
+
+    pub fun checkCollection(_addr: Address): Bool{
+        return getAccount(_addr)
+        .getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)
+        .check()
+    }
+
+    pub resource Minter{
+        pub fun mintKnight():  @Knight.NFT{
+            Knight.totalSupply = Knight.totalSupply + 1 
+            let nftId = Knight.totalSupply
+            var newNFT <- create NFT(id:nftId)
+            return <- newNFT
+        }
+    }
+
+
     init(){
-        self.knightTotalSupply = 0
+        self.CollectionPublicPath = /public/KnightCollection
+        self.CollectionStoragePath = /storage/KnightCollection
+        self.MinterStoragePath = /storage/KnightMinter
+
+        self.totalSupply = 0
+
+        self.account.save(<- create Minter(), to: self.MinterStoragePath)
+        self.account.save(<- create Collection(), to: self.CollectionStoragePath)
+        self.account.link<&{KnightCollectionPublic}>(self.CollectionPublicPath, target: self.CollectionStoragePath)
+
         emit ContractInitialized()
     }
 }
