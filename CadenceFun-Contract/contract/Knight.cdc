@@ -33,7 +33,14 @@ pub contract Knight{
     }
 
     pub resource interface KnightCollectionPublic{
-
+        // pub fun checkKinght(id: UInt64)
+        pub fun getId(): [UInt64]
+        pub fun borrowKinght(id: UInt64): &Knight.NFT?{
+            post {
+                (result == nil) || (result?.id == id):
+                    "Cannot borrow Knight Asset reference: The Id of the returned reference is incorrect"
+            }
+        }
     }
 
     pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, KnightCollectionPublic{
@@ -50,7 +57,6 @@ pub contract Knight{
          // withdraw removes an NFT from the collection and moves it to the caller
         pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
             let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("missing NFT")
-            
             emit Withdraw(id: token.id, from: self.owner?.address)
             return <- token
         }
@@ -61,8 +67,20 @@ pub contract Knight{
             let id = token.id
             let old <- self.ownedNFTs[id] <-token
             destroy old
-
             emit Deposit(id: id, to: self.owner?.address)
+        }
+
+        pub fun borrowKinght(id:UInt64): &Knight.NFT? {
+            if self.ownedNFTs[id] != nil{
+                let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
+                return ref as! &Knight.NFT
+            } else{
+                return nil
+            }
+        }
+
+        pub fun getId(): [UInt64]{
+            return self.ownedNFTs.keys
         }
     }
 
