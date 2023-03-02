@@ -1,4 +1,5 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
+import FungibleToken from "./FungibleToken.cdc"
 // import MetadataView from "./MetadataView.cdc"
 
 pub contract Knight: NonFungibleToken{
@@ -7,6 +8,8 @@ pub contract Knight: NonFungibleToken{
     pub event ContractInitialized()
     pub event Withdraw(id: UInt64, from: Address?)
     pub event Deposit(id: UInt64, to: Address?)
+    pub event KnightFeed()
+    pub event KinigtMinted(id:UInt64)
 
     // Contract Path
     pub let CollectionStoragePath: StoragePath
@@ -19,17 +22,39 @@ pub contract Knight: NonFungibleToken{
     // NFT Resource
     pub resource NFT: NonFungibleToken.INFT{
         pub let id: UInt64
-        pub var maxEnergy: UFix64
+        // pub let dna: String
+        pub var alive: Bool
         pub var energy: UFix64
+        pub var maxEnergy: UFix64
 
         init(id:UInt64){
             self.id = id
+            // self.dna = dna
+            self.alive = true
+            self.energy = 20.0
             self.maxEnergy = 100.0
-            self.energy = 50.0
         }
 
-        pub fun feedEnergyDrink(){}
-        pub fun updateEnergy(){}
+        pub fun feedEnergyDrink(drink: @FungibleToken.Vault){
+            self.energy = self.energy + drink.balance
+
+            if self.energy >= self.maxEnergy {
+                self.energy = self.maxEnergy
+            }
+
+            destroy drink
+            emit KnightFeed()
+        }
+
+        pub fun updateEnergy(){
+            if self.energy <= 0.0 {
+                self.alive = false
+            }
+        }
+
+        pub fun checkKinghtIsAlive(): Bool{
+            return self.alive
+        }
     }
 
     pub resource interface KnightCollectionPublic{
@@ -108,10 +133,10 @@ pub contract Knight: NonFungibleToken{
             Knight.totalSupply = Knight.totalSupply + 1 
             let nftId = Knight.totalSupply
             var newNFT <- create NFT(id:nftId)
+            emit KinigtMinted(id:nftId)
             return <- newNFT
         }
     }
-
 
     init(){
         self.CollectionPublicPath = /public/KnightCollection
