@@ -18,7 +18,6 @@ pub contract Knight: NonFungibleToken{
 
     pub var totalSupply: UInt64
 
-
     // NFT Resource
     pub resource NFT: NonFungibleToken.INFT{
         pub let id: UInt64
@@ -26,6 +25,13 @@ pub contract Knight: NonFungibleToken{
         pub var alive: Bool
         pub var energy: UFix64
         pub var maxEnergy: UFix64
+        pub var winCount: UInt64
+        pub var losCount: UInt64
+
+        // Define the level of the knight
+        // pub var generation: UInt64
+        // birthTime defines when the knight was built
+        // pub var birthTime: UInt64
 
         init(id:UInt64){
             self.id = id
@@ -33,6 +39,8 @@ pub contract Knight: NonFungibleToken{
             self.alive = true
             self.energy = 20.0
             self.maxEnergy = 100.0
+            self.winCount = 0
+            self.losCount = 0
         }
 
         pub fun feedEnergyDrink(drink: @FungibleToken.Vault){
@@ -126,6 +134,12 @@ pub contract Knight: NonFungibleToken{
         return getAccount(_addr)
         .getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)
         .check()
+    }
+
+    pub fun attack(addr: Address, knightID:UInt64, targetID:UInt64){
+      let cap = getAccount(addr)
+      .getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)
+      .borrowKinght(id:knightID)
     }
 
     pub resource Minter{
