@@ -136,19 +136,13 @@ pub contract Knight: NonFungibleToken{
         .check()
     }
 
-    pub fun attack(addr: Address, knightID:UInt64, targetID:UInt64){
-      let cap = getAccount(addr)
-      .getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)
-      .borrowKinght(id:knightID)
-    }
-
     pub resource Minter{
-        pub fun mintKnight():  @Knight.NFT{
+        pub fun mintKnight(recipient:&{NonFungibleToken.CollectionPublic}){
             Knight.totalSupply = Knight.totalSupply + 1 
             let nftId = Knight.totalSupply
             var newNFT <- create NFT(id:nftId)
+            recipient.deposit(token: <- newNFT)
             emit KinigtMinted(id:nftId)
-            return <- newNFT
         }
     }
 
