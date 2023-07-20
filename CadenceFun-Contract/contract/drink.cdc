@@ -33,19 +33,6 @@ pub contract Drink: FungibleToken {
   ///
   pub event TokensMinted() 
 
-
-  init() {
-    self.VaultStoragePath = /storage/Drink
-    self.AdminStoragePath = /storage/Admin
-    self.BalancePublicPath = /public/Balance
-    self.ReceiverPublicPath = /public/Receiver
-
-    self.totalSupply = 0.0
-    
-    let minter <- create Minter()
-    self.account.save(<-minter, to: self.AdminStoragePath)
-  }
-
   pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance {
     
     /// The total balance of a vault
@@ -79,6 +66,18 @@ pub contract Drink: FungibleToken {
       Drink.totalSupply = Drink.totalSupply + amount
       return <- create Vault(balance: amount)
     }
+  }
+
+    init() {
+    self.VaultStoragePath = /storage/Drink
+    self.AdminStoragePath = /storage/Admin
+    self.BalancePublicPath = /public/Balance
+    self.ReceiverPublicPath = /public/Receiver
+
+    self.totalSupply = 0.0
+    
+    let minter <- create Minter()
+    self.account.save(<-minter, to: self.AdminStoragePath)
   }
 
 }
