@@ -3,7 +3,7 @@ import Knight from "../contract/Knight.cdc"
 
 // this transaction use Knight Minter to mint a new Knight NFT
 
-transaction(recipient: Address){
+transaction(recipient: Address, name:String){
     let minterRef: &Knight.Minter
     let recipientCollectionRef: &{NonFungibleToken.CollectionPublic}
 
@@ -21,7 +21,8 @@ transaction(recipient: Address){
 
     execute{
         // mint NFT and deposit in recipient collection
-        self.minterRef.mintKnight(recipient: self.recipientCollectionRef)
+        var nft <- self.minterRef.mintKnight(name:name)
+        self.recipientCollectionRef.deposit(token: <- nft)
     }
-
 }
+ 
