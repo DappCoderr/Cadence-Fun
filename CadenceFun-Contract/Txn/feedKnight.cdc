@@ -1,4 +1,4 @@
-import NonFungibleToken from "../contract/NonFungibleToken.cdc"
+import NonFungibleToken from "../contract/interface/NonFungibleToken.cdc"
 import Knight from "../contract/Knight.cdc"
 import Drink from "../contract/Drink.cdc"
 

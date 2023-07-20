@@ -1,4 +1,4 @@
-import NonFungibleToken from "./NonFungibleToken.cdc"
+import NonFungibleToken from "./interface/NonFungibleToken.cdc"
 
 pub contract Weapons {
 

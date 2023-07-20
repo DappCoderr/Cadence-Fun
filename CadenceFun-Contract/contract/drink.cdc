@@ -1,4 +1,4 @@
-import FungibleToken from "./FungibleToken.cdc"
+import FungibleToken from "./interface/FungibleToken.cdc"
 
 pub contract Drink: FungibleToken {
 

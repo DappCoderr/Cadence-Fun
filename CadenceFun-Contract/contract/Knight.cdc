@@ -1,5 +1,5 @@
-import NonFungibleToken from "./NonFungibleToken.cdc"
-import FungibleToken from "./FungibleToken.cdc"
+import NonFungibleToken from "./interface/NonFungibleToken.cdc"
+import FungibleToken from "./interface/FungibleToken.cdc"
 
 pub contract Knight: NonFungibleToken{
 
@@ -7,8 +7,7 @@ pub contract Knight: NonFungibleToken{
     pub event ContractInitialized()
     pub event Withdraw(id: UInt64, from: Address?)
     pub event Deposit(id: UInt64, to: Address?)
-    pub event KnightFeed()
-    pub event KinigtMinted(id:UInt64)
+    pub event KinigtMinted(id:UInt64, name:String)
 
     // Contract Path
     pub let CollectionStoragePath: StoragePath
@@ -46,7 +45,6 @@ pub contract Knight: NonFungibleToken{
             }
 
             destroy drink
-            emit KnightFeed()
         }
 
         pub fun updateEnergy(){
@@ -134,6 +132,7 @@ pub contract Knight: NonFungibleToken{
             Knight.totalSupply = Knight.totalSupply + 1 
             let nftId = Knight.totalSupply
             var newNFT <- create NFT(id:nftId, _name:name)
+            emit KinigtMinted(id:nftId, name:name)
             return <- newNFT
         }
     }
