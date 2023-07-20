@@ -1,4 +1,4 @@
-import NonFungibleToken from "../NonFungibleToken.cdc"
+import NonFungibleToken from "../contract/NonFungibleToken.cdc"
 import Knight from "../contract/Knight.cdc"
 
 // this transaction configures a account to hold Kinght.
