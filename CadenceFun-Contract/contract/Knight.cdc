@@ -1,6 +1,5 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
 import FungibleToken from "./FungibleToken.cdc"
-// import MetadataView from "./MetadataView.cdc"
 
 pub contract Knight: NonFungibleToken{
 
@@ -17,25 +16,21 @@ pub contract Knight: NonFungibleToken{
     pub let MinterStoragePath: StoragePath
 
     pub var totalSupply: UInt64
+    pub var totalWeapons: UInt64
 
     // NFT Resource
     pub resource NFT: NonFungibleToken.INFT{
         pub let id: UInt64
-        // pub let dna: String
+        pub var name: String
         pub var alive: Bool
         pub var energy: UFix64
         pub var maxEnergy: UFix64
         pub var winCount: UInt64
         pub var losCount: UInt64
 
-        // Define the level of the knight
-        // pub var generation: UInt64
-        // birthTime defines when the knight was built
-        // pub var birthTime: UInt64
-
-        init(id:UInt64){
+        init(id:UInt64, _name:String){
             self.id = id
-            // self.dna = dna
+            self.name = _name
             self.alive = true
             self.energy = 20.0
             self.maxEnergy = 100.0
@@ -63,6 +58,7 @@ pub contract Knight: NonFungibleToken{
         pub fun checkKinghtIsAlive(): Bool{
             return self.alive
         }
+    
     }
 
     pub resource interface KnightCollectionPublic{
@@ -89,15 +85,12 @@ pub contract Knight: NonFungibleToken{
             destroy self.ownedNFTs
         }
 
-         // withdraw removes an NFT from the collection and moves it to the caller
         pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
             let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("missing NFT")
             emit Withdraw(id: token.id, from: self.owner?.address)
             return <- token
         }
 
-        // deposit takes a NFT and adds it to the collections dictionary
-        // and adds the ID to the id array
         pub fun deposit(token: @NonFungibleToken.NFT) {
             let id = token.id
             let oldToken <- self.ownedNFTs[id] <-token
@@ -132,17 +125,16 @@ pub contract Knight: NonFungibleToken{
 
     pub fun checkCollection(_addr: Address): Bool{
         return getAccount(_addr)
-        .getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)
+        .capabilities.get<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)!
         .check()
     }
 
     pub resource Minter{
-        pub fun mintKnight(recipient:&{NonFungibleToken.CollectionPublic}){
+        pub fun mintKnight(name:String): @NFT{
             Knight.totalSupply = Knight.totalSupply + 1 
             let nftId = Knight.totalSupply
-            var newNFT <- create NFT(id:nftId)
-            recipient.deposit(token: <- newNFT)
-            emit KinigtMinted(id:nftId)
+            var newNFT <- create NFT(id:nftId, _name:name)
+            return <- newNFT
         }
     }
 
@@ -152,6 +144,7 @@ pub contract Knight: NonFungibleToken{
         self.MinterStoragePath = /storage/KnightMinter
 
         self.totalSupply = 0
+        self.totalWeapons = 0
 
         self.account.save(<- create Minter(), to: self.MinterStoragePath)
         self.account.save(<- create Collection(), to: self.CollectionStoragePath)
