@@ -1,12 +1,17 @@
-# Cadence-By-Example
- This repository is built for learners who want to learn and build a smart contract on a Flow chain, and it has basics to advance sample smart contracts written in cadence.
+### Cadence-By-Example
+Welcome to Cadence-By-Example! This repository is designed for learners who want to explore and develop smart contracts on Flow. It contains a collection of sample smart contracts written in Cadence, ranging from basic to advanced examples.
 
-## This is build to enhance the learning experience with cadence.
-Cadence by example has two main folders: 
-1. Cadence Basics: It will provide basic understanding of cadence language.
-2. Sample Addplication: It will give you basic understanding of how code is written in cadence and dapps build on flow. 
+## Purpose
+The main goal of this repository is to enhance the learning experience with Cadence. Whether you are new to the language or already have some experience, you'll find valuable resources here to further your understanding and proficiency.
 
-## Try all sample code on Flow Playground
-```
-https://play.onflow.org/
-```
+## Contents
+Cadence-By-Example is organized into two main folders:
+
+`cadence example`: Here, you'll find various examples that demonstrate how to write code in Cadence and build decentralized applications (dApps) on Flow.
+
+`cadence fun`: This section provides a solid foundation for understanding the Cadence language.
+
+## Get Started
+To dive into the examples and experiment with the Cadence code, you can use the Flow Playground`(https://play.flow.com/)`.
+
+Feel free to explore the code, make changes, and have fun learning about Cadence and its applications on Flow!
