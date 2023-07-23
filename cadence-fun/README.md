@@ -1,4 +1,4 @@
-### Cadence Fun Developers 👋
+### Cadence Fun Overview
 Welcome to Cadence Fun Developers! This platform is designed to help you learn to code Cadence smart contracts by building simple games on Flow blockchains. Whether you're a beginner or an experienced developer, Cadence Fun provides a comprehensive learning experience for all things technical about Flow blockchains, allowing you to create your own crypto games on the Flow network.
 
 
