@@ -12,6 +12,6 @@ Cadence-By-Example is organized into two main folders:
 `cadence fun`: This section provides a solid foundation for understanding the Cadence language.
 
 ## Get Started
-To dive into the examples and experiment with the Cadence code, you can use the Flow Playground`(https://play.flow.com/)`.
+To dive into the examples and experiment with the Cadence code, you can use the Flow Playground (https://play.flow.com/).
 
 Feel free to explore the code, make changes, and have fun learning about Cadence and its applications on Flow!
