@@ -1,4 +1,4 @@
-import FungibleToken from "./interface/FungibleToken.cdc"
+import FungibleToken from "./standards/FungibleToken.cdc"
 
 pub contract Drink: FungibleToken {
 
@@ -69,10 +69,10 @@ pub contract Drink: FungibleToken {
   }
 
     init() {
-    self.VaultStoragePath = /storage/Drink
-    self.AdminStoragePath = /storage/Admin
-    self.BalancePublicPath = /public/Balance
-    self.ReceiverPublicPath = /public/Receiver
+    self.VaultStoragePath = /storage/DrinkTokenVault
+    self.AdminStoragePath = /storage/DrinkTokenAdmin
+    self.BalancePublicPath = /public/DrinkTokenBalance
+    self.ReceiverPublicPath = /public/DrinkTokenReceiver
 
     self.totalSupply = 0.0
     

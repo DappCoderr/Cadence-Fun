@@ -1,6 +1,6 @@
-import NonFungibleToken from "../contract/interface/NonFungibleToken.cdc"
-import Knight from "../contract/Knight.cdc"
-import Weapons from "../contract/Weapons.cdc"
+import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
+import Knight from "../contracts/Knight.cdc"
+import Weapons from "../contracts/Weapons.cdc"
 
 transaction(recipient:Address, _n:String, _weapon:UInt8, _power:UInt64){
 

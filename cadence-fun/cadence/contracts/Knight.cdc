@@ -1,5 +1,5 @@
-import NonFungibleToken from "./interface/NonFungibleToken.cdc"
-import FungibleToken from "./interface/FungibleToken.cdc"
+import NonFungibleToken from "./standards/NonFungibleToken.cdc"
+import FungibleToken from "./standards/FungibleToken.cdc"
 
 pub contract Knight: NonFungibleToken{
 

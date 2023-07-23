@@ -1,5 +1,5 @@
-import NonFungibleToken from "../contract/interface/NonFungibleToken.cdc"
-import Knight from "../contract/Knight.cdc"
+import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
+import Knight from "../contracts/Knight.cdc"
 
 // this transaction use Knight Minter to mint a new Knight NFT
 

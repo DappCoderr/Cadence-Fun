@@ -1,6 +1,6 @@
-import NonFungibleToken from "../contract/interface/NonFungibleToken.cdc"
-import Knight from "../contract/Knight.cdc"
-import Drink from "../contract/Drink.cdc"
+import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
+import Knight from "../contracts/Knight.cdc"
+import Drink from "../contracts/Drink.cdc"
 
 transaction(id:UInt64, amount:UFix64){
 
