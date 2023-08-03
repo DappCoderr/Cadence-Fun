@@ -1,0 +1,9 @@
+.content{
+    /* border: solid black 2px; */
+    height: 85%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 100px 40px;
+}
