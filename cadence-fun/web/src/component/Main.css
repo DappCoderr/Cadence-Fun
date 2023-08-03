@@ -1,0 +1,8 @@
+.main{
+    background-color: aquamarine;
+    height: 100vh;
+    border: black solid 2px;
+    margin: 80px;
+    border-radius: 4px;
+    padding:30px;
+}
