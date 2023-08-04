@@ -1,10 +1,12 @@
 .header{
-    border: solid 2px black;
+    background-color: white;
+    /* border: solid 1px white; */
     border-radius: 4px;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     box-shadow: 5px 10px black;
+    color: black;
 }
 
 .header h1{
@@ -25,7 +27,7 @@
     cursor: pointer;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: black;
-    color: white;
+    color: #fffffe;
     padding:0px 20px;
     border-radius: 5px;
     border: none;
