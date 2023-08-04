@@ -1,15 +1,34 @@
 import React from 'react'
-import Main from './component/Main'
-import Footer from './component/Footer'
+import { createBrowserRouter, Outlet} from "react-router-dom"
+import Header from "./component/Header"
+import Content from './component/Content'
+import Footer from "./component/Footer"
+import Lesson from "./component/Lesson"
+import Error from "./component/Error"
+import "./App.css"
 
+const AppLayout = () => (
+  <div className='app'>
+  <Header/>
+  <Outlet/>
+  <Footer/>
+  </div>
+)
 
-const App = () => {
-  return (
-    <div className='App'>
-    <Main/>
-    <Footer/>
-    </div>
-  )
-}
-
-export default App
+export const AppRouter = createBrowserRouter([
+  {
+    path:"/",
+    element:<AppLayout/>,
+    errorElement:<Error/>,
+    children:[
+      {
+        path:"/",
+        element:<Content/>
+      },
+      {
+        path:"/lesson",
+        element:<Lesson/>
+      }
+    ]
+  },
+])
