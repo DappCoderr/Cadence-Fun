@@ -1,0 +1,16 @@
+.next{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.count-number{
+    font-weight: bolder;
+    padding-top: 5px;
+}
+
+.next button{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 0.3vh 1.2vh;
+}

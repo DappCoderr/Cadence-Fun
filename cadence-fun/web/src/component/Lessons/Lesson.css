@@ -1,0 +1,53 @@
+.lesson {
+    background-color: rgb(32, 11, 32);
+    border-radius: 8px;
+    color: white;
+    margin: 0px 10vh;
+}
+
+.lesson-container{
+    margin: 10px 30px;
+    padding: 0px 18px;
+    display: flex;
+    flex-direction: row;
+}
+
+.lesson-details{
+    padding: 0px 3%;
+}
+
+.lesson-test{
+    padding: 0px 3%;
+    background-color: rgb(51, 50, 50);
+    border-radius:  20px;
+}
+
+.lesson-test h2 {
+    text-align: center;
+    background-color: white;
+    color: black;
+    padding: 0px auto;
+}
+
+/* .lesson-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    margin: 0 auto;
+    color: white;
+} */
+
+.playground-image{
+    border: 2px white solid;
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+
+.playground-image img {
+    width: 100%;
+    height: 30vh;
+}
+
+.next-tab{
+    margin-top: 20px;
+}
