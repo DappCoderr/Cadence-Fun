@@ -1,66 +1,61 @@
 import NonFungibleToken from "./standards/NonFungibleToken.cdc"
-import FungibleToken from "./standards/FungibleToken.cdc"
 
 pub contract Knight: NonFungibleToken{
-
     // events
     pub event ContractInitialized()
     pub event Withdraw(id: UInt64, from: Address?)
     pub event Deposit(id: UInt64, to: Address?)
-    pub event KinigtMinted(id:UInt64, name:String)
+    pub event KinigtMinted(id:UInt64, name:String, type:String)
 
     // Contract Path
     pub let CollectionStoragePath: StoragePath
     pub let CollectionPublicPath: PublicPath
-    pub let MinterStoragePath: StoragePath
 
     pub var totalSupply: UInt64
-    pub var totalWeapons: UInt64
+
+    pub struct KnightDetails{
+        pub var name: String
+        pub var dateCreated: UFix64
+        pub var type: String
+
+        init(name: String, dateCreated:UFix64, type:String){
+            self.name = name
+            self.dateCreated = dateCreated
+            self.type = type
+        }
+    }
 
     // NFT Resource
     pub resource NFT: NonFungibleToken.INFT{
         pub let id: UInt64
-        pub var name: String
-        pub var alive: Bool
-        pub var energy: UFix64
-        pub var maxEnergy: UFix64
+        pub let details: Knight.KnightDetails
+        pub var xp: UInt64
         pub var winCount: UInt64
-        pub var losCount: UInt64
 
-        init(id:UInt64, _name:String){
-            self.id = id
-            self.name = _name
-            self.alive = true
-            self.energy = 20.0
-            self.maxEnergy = 100.0
+        init(_name:String, _type:String){
+            let currntTime:UFix64 = getCurrentBlock().timestamp
+            self.id = self.uuid
+            self.details = Knight.KnightDetails(
+                name: _name,
+                dateCreated: currntTime,
+                type: _type
+            )
+            self.xp = Knight.getRandomKNightXP()
             self.winCount = 0
-            self.losCount = 0
+
+            Knight.totalSupply = Knight.totalSupply + 1
         }
 
-        pub fun feedEnergyDrink(drink: @FungibleToken.Vault){
-            self.energy = self.energy + drink.balance
-
-            if self.energy >= self.maxEnergy {
-                self.energy = self.maxEnergy
-            }
-
-            destroy drink
+        pub fun winner(){
+            self.winCount = self.winCount + 1
         }
 
-        pub fun updateEnergy(){
-            if self.energy <= 0.0 {
-                self.alive = false
-            }
+        destroy(){
+            Knight.totalSupply = Knight.totalSupply - 1
         }
-
-        pub fun checkKinghtIsAlive(): Bool{
-            return self.alive
-        }
-    
     }
 
     pub resource interface KnightCollectionPublic{
-        // pub fun checkKinght(id: UInt64)
         pub fun deposit(token: @NonFungibleToken.NFT)
         pub fun getIDs(): [UInt64]
         pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
@@ -127,25 +122,42 @@ pub contract Knight: NonFungibleToken{
         .check()
     }
 
-    pub resource Minter{
-        pub fun mintKnight(name:String): @NFT{
-            Knight.totalSupply = Knight.totalSupply + 1 
-            let nftId = Knight.totalSupply
-            var newNFT <- create NFT(id:nftId, _name:name)
-            emit KinigtMinted(id:nftId, name:name)
+    pub fun mintKnight(name:String, type:String): @NFT{
+        let nftId = Knight.totalSupply
+        var newNFT <- create NFT(_name:name, _type:type)
+        emit KinigtMinted(id:nftId, name:name, type:type)
             return <- newNFT
+    }
+
+    pub fun getRandomKNightXP(): UInt64 {
+            let randomNumber: UInt64 = revertibleRandom()
+            return (randomNumber % 100) + 1
         }
+
+    pub fun battle(userA:Address, userAKnightId: UInt64, userB:Address, userBKnightId: UInt64){
+        let acctA = getAccount(userA)
+        let acctB = getAccount(userB)
+        let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath).borrow() ?? panic("Could not borrow")
+        var knightA_XP = userACapRef.borrowKinght(id: userAKnightId)?.xp ?? panic("Knight B XP not found")
+
+        let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath).borrow() ?? panic("Could not borrow")
+        var knightB_XP = userBCapRef.borrowKinght(id: userBKnightId)?.xp ?? panic("Knight B XP not found")
+
+        if(knightA_XP > knightB_XP){
+            let winnerKnight = userACapRef.borrowKinght(id: userAKnightId)
+            winnerKnight?.winner()
+        } else {
+            let winnerKnight = userBCapRef.borrowKinght(id: userBKnightId)
+            winnerKnight?.winner()
+        }  
     }
 
     init(){
         self.CollectionPublicPath = /public/KnightCollection
         self.CollectionStoragePath = /storage/KnightCollection
-        self.MinterStoragePath = /storage/KnightMinter
 
         self.totalSupply = 0
-        self.totalWeapons = 0
 
-        self.account.save(<- create Minter(), to: self.MinterStoragePath)
         self.account.save(<- create Collection(), to: self.CollectionStoragePath)
         self.account.link<&{KnightCollectionPublic}>(self.CollectionPublicPath, target: self.CollectionStoragePath)
 
