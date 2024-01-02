@@ -123,6 +123,10 @@ pub contract Knight: NonFungibleToken{
     }
 
     pub fun mintKnight(name:String, type:String): @NFT{
+        pre{
+            name.length > 0: "Name can not be empty",
+            type.length > 0: "Type can not be empty" 
+        }
         let nftId = Knight.totalSupply
         var newNFT <- create NFT(_name:name, _type:type)
         emit KinigtMinted(id:nftId, name:name, type:type)
