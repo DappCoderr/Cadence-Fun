@@ -1,4 +1,4 @@
-import Knight from "../contracts/Knight_update.cdc"
+import Knight from "../contracts/Knight.cdc"
 
 transaction(id:UInt64){
     let collectionRef: &Knight.Collection

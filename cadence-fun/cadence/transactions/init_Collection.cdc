@@ -1,5 +1,5 @@
 import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
-import Knight from "../contracts/Knight_update.cdc"
+import Knight from "../contracts/Knight.cdc"
 
 transaction(){
   prepare(signer:AuthAccount){
