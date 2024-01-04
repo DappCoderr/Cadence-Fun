@@ -1,18 +1,34 @@
-## Cadence-By-Example
+## Cadence Fun
 
-Welcome to Cadence-By-Example, a dedicated repository tailored for learners aiming to explore and develop smart contracts on the Flow blockchain. This repository offers a comprehensive collection of sample smart contracts written in the Cadence programming language, covering a spectrum from basic to advanced examples.
+Welcome to Cadence Fun Developers! This platform is tailored to facilitate your journey in learning Cadence smart contracts by creating simple games on the Flow blockchain. Whether you are a novice or an experienced developer, Cadence Fun offers a comprehensive learning experience for all technical aspects related to Flow blockchains to deepen your understanding and proficiency. Enabling you to develop your own crypto games on the Flow network.
 
-### Purpose
+### Project Structure 📦
 
-The central goal of this repository is to provide an enhanced learning experience with Cadence. Whether you are a newcomer to the language or an experienced developer, you'll discover valuable resources here to deepen your understanding and proficiency.
+Before delving into the code, let's take a moment to understand the structure of the Cadence Fun repository:
 
-### Project Structure
+- `/cadence`: This folder contains the primary contract for Cadence Fun.
+- `/web`: Here, you will find the frontend components of the project.
+- `flow.json`: This configuration file is essential for the project, akin to package.json in other frameworks.
 
-The repository is organized into a main folder `cadence fun`:
-`cadence fun`: This folder is further divided into two key sections - Core Smart Contract and Web.
+Within the cadence folder, you will discover:
 
-### Get Started
+- `/contracts`: All contracts pertinent to the project are housed here.
+- `/scripts`: This folder includes all the project scripts.
+- `/transactions`: Here, you can locate all the project transactions.
+- `/tests`: All Cadence tests are stored in this dedicated folder.
+
+Additionally, inside the contracts folder, you will find:
+
+- `/standards`: This directory encompasses all the core Flow contracts.
+
+### Get Started:
 
 To dive into the examples and experiment with Cadence code, leverage the Flow Playground available at https://play.flow.com/.
 
 Feel free to explore the codebase, make modifications, and enjoy the learning process as you delve into the intricacies of Cadence and its practical applications on the Flow blockchain!
+
+### Created By:
+
+Cadence Fun is a Developer Grant project initiated by DC, a Flow Dev Ambassador, and a Cadence Smart Contract Developer hailing from India. Our team is dedicated to assisting developers, like yourself, in navigating the realm of blockchain development on the Flow network.
+
+Let's embark on this coding adventure and infuse some excitement into Cadence! 🚀
