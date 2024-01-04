@@ -1,17 +1,18 @@
 ## Cadence-By-Example
-Welcome to Cadence-By-Example! This repository is designed for learners who want to explore and develop smart contracts on Flow. It contains a collection of sample smart contracts written in Cadence, ranging from basic to advanced examples.
+
+Welcome to Cadence-By-Example, a dedicated repository tailored for learners aiming to explore and develop smart contracts on the Flow blockchain. This repository offers a comprehensive collection of sample smart contracts written in the Cadence programming language, covering a spectrum from basic to advanced examples.
 
 ### Purpose
-The main goal of this repository is to enhance the learning experience with Cadence. Whether you are new to the language or already have some experience, you'll find valuable resources here to further your understanding and proficiency.
 
-### Contents
-Cadence-By-Example is organized into two main folders:
+The central goal of this repository is to provide an enhanced learning experience with Cadence. Whether you are a newcomer to the language or an experienced developer, you'll discover valuable resources here to deepen your understanding and proficiency.
 
-`cadence example`: Here, you'll find various examples that demonstrate how to write code in Cadence and build decentralized applications (dApps) on Flow.
+### Project Structure
 
-`cadence fun`: This section provides a solid foundation for understanding the Cadence language.
+The repository is organized into a main folder `cadence fun`:
+`cadence fun`: This folder is further divided into two key sections - Core Smart Contract and Web.
 
 ### Get Started
-To dive into the examples and experiment with the Cadence code, you can use the Flow Playground (https://play.flow.com/).
 
-Feel free to explore the code, make changes, and have fun learning about Cadence and its applications on Flow!
+To dive into the examples and experiment with Cadence code, leverage the Flow Playground available at https://play.flow.com/.
+
+Feel free to explore the codebase, make modifications, and enjoy the learning process as you delve into the intricacies of Cadence and its practical applications on the Flow blockchain!
