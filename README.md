@@ -10,14 +10,14 @@ Before delving into the code, let's take a moment to understand the structure of
 - `/web`: Here, you will find the frontend components of the project.
 - `flow.json`: This configuration file is essential for the project, akin to package.json in other frameworks.
 
-Within the `cadence` folder, you will discover:
+Within the cadence folder, you will discover:
 
 - `/contracts`: All contracts pertinent to the project are housed here.
 - `/scripts`: This folder includes all the project scripts.
 - `/transactions`: Here, you can locate all the project transactions.
 - `/tests`: All Cadence tests are stored in this dedicated folder.
 
-Additionally, inside the `contracts` folder, you will find:
+Additionally, inside the contracts folder, you will find:
 
 - `/standards`: This directory encompasses all the core Flow contracts.
 
