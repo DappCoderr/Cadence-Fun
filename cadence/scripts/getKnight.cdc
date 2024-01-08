@@ -3,7 +3,7 @@ import Knight from "../contracts/Knight.cdc"
 
 pub fun main(addr:Address, id:UInt64): ResultKnight{
     let account = getAuthAccount(addr)
-    let collRef = account.getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath).borrow<>() ?? panic("Could not borrow")
+    let collRef = account.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow<>() ?? panic("Could not borrow")
     let nft =  collRef.borrowKinght(id: id)
     return ResultKnight(id: id, name: nft?.details?.name, type: nft?.details?.type, date:nft?.details?.dateCreated, xp: nft?.xp, win: nft?.winCount)
 }
