@@ -8,8 +8,8 @@ pub contract Knight: NonFungibleToken{
     pub event KinigtMinted(id:UInt64, name:String, type:String)
 
     // Contract Path
-    pub let CollectionStoragePath: StoragePath
-    pub let CollectionPublicPath: PublicPath
+    pub let StoragePath: StoragePath
+    pub let PublicPath: PublicPath
 
     pub var totalSupply: UInt64
 
@@ -157,8 +157,9 @@ pub contract Knight: NonFungibleToken{
     }
 
     init(){
-        self.CollectionPublicPath = /public/KnightCollection
-        self.CollectionStoragePath = /storage/KnightCollection
+        let identifier = "KnightCollection".concat(self.account.address.toString())
+        self.PublicPath = PublicPath(identifier: identifier)!
+        self.StoragePath = StoragePath(identifier: identifier)!
 
         self.totalSupply = 0
 

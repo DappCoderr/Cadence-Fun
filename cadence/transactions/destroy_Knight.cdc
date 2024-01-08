@@ -3,7 +3,7 @@ import Knight from "../contracts/Knight.cdc"
 transaction(id:UInt64){
     let collectionRef: &Knight.Collection
     prepare(signer:AuthAccount){
-        self.collectionRef = signer.borrow<&Knight.Collection>(from: Knight.CollectionStoragePath) ?? panic("NFT is missing")
+        self.collectionRef = signer.borrow<&Knight.Collection>(from: Knight.StoragePath) ?? panic("NFT is missing")
     }
     execute{
         var nft <- self.collectionRef.withdraw(withdrawID: id)
