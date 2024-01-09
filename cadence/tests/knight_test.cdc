@@ -5,18 +5,6 @@ access(all) let admin = Test.getAccount(0x0000000000000005)
 access(all) let alice = Test.createAccount()
 // access(all) let bob = Test.createAccount()
 
-// access(all)
-// fun setup(){
-//     let contractCode = Test.readFile("../contracts/knight.cdc")
-//     let err = Test.deployContract(
-//         name: "Knight", 
-//         code: contractCode,
-//         account: account, 
-//         arguments: []
-//     )
-//     Test.expect(err, Test.beNil())
-// }
-
 access(all)
 fun setup() {
     var err = Test.deployContract(
@@ -47,10 +35,11 @@ fun testGetTotalSupply() {
 
 access(all)
 fun testSetupAccount() {
-    let txResult = Test.executeTransaction(
-        "../transactions/setup_account.cdc",
-        [],
-        admin
+    let txResult = Test.Transaction(
+        code: "../transactions/setup_account.cdc",
+        authorizers: [admin.address],
+        signers: [admin],
+        arguments: [],
     )
     Test.expect(txResult, Test.beSucceeded())
 
@@ -67,13 +56,12 @@ fun testSetupAccount() {
 access(all)
 fun testMintNFT() {
 
-    var txResult = Test.executeTransaction(
-        "../transactions/mint_knight.cdc",
-        [
-            "Knight Name",
-            "Knight Type"
-        ],
-        admin
+    var txResult = Test.Transaction(
+        code: "../transactions/mint_knight.cdc",
+        authorizers: [admin.address],
+        signers: [admin],
+        arguments: ["Knight Name",
+                    "Knight Type"],
     )
     Test.expect(txResult, Test.beSucceeded())
 
