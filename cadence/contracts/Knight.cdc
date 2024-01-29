@@ -118,13 +118,13 @@ pub contract Knight: NonFungibleToken{
 
     pub fun checkCollection(_addr: Address): Bool{
         return getAccount(_addr)
-        .capabilities.get<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath)!
+        .capabilities.get<&{Knight.KnightCollectionPublic}>(Knight.PublicPath)!
         .check()
     }
 
     pub fun mintKnight(name:String, type:String): @NFT{
         pre{
-            name.length > 0: "Name can not be empty",
+            name.length > 0: "Name can not be empty"
             type.length > 0: "Type can not be empty" 
         }
         let nftId = Knight.totalSupply
@@ -141,10 +141,10 @@ pub contract Knight: NonFungibleToken{
     pub fun battle(userA:Address, userAKnightId: UInt64, userB:Address, userBKnightId: UInt64){
         let acctA = getAccount(userA)
         let acctB = getAccount(userB)
-        let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath).borrow() ?? panic("Could not borrow")
+        let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
         var knightA_XP = userACapRef.borrowKinght(id: userAKnightId)?.xp ?? panic("Knight B XP not found")
 
-        let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.CollectionPublicPath).borrow() ?? panic("Could not borrow")
+        let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
         var knightB_XP = userBCapRef.borrowKinght(id: userBKnightId)?.xp ?? panic("Knight B XP not found")
 
         if(knightA_XP > knightB_XP){
@@ -163,8 +163,8 @@ pub contract Knight: NonFungibleToken{
 
         self.totalSupply = 0
 
-        self.account.save(<- create Collection(), to: self.CollectionStoragePath)
-        self.account.link<&{KnightCollectionPublic}>(self.CollectionPublicPath, target: self.CollectionStoragePath)
+        self.account.save(<- create Collection(), to: self.StoragePath)
+        self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
 
         emit ContractInitialized()
     }
