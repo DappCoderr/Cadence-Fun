@@ -16,7 +16,7 @@ Embark on your Cadence journey confidently, and let's collaboratively shape the 
 **
 Module 1: Overview
 Module 2: Making Knight
-Module 3: Learning Contract State & Crypto Collectibles
+Module 3: Contract State & Crypto Collectibles
 Module 4: Advanced Cadence Concepts with Knight Battle logic
 Module 5: Creating Transactions & Scripts
 **
