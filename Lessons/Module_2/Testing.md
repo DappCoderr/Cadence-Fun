@@ -8,13 +8,12 @@ First deploy the Contract and run the transaction.
 import KnightContract from 0x05
 
 transaction(id:UInt64, xp:UFix64, name:String, value:UInt8) {
-    prepare(signer: AuthAccount) {
-    }
+    prepare(signer: AuthAccount) {}
 
     execute {
-     let newKnight <- KnightContract.createKnight(id:id, xp:xp, name:name, value:value)
-     log(newKnight.details)
-     destroy newKnight
+        let newKnight <- KnightContract.createKnight(id:id, xp:xp, name:name, value:value)
+        log(newKnight.details)
+        destroy newKnight
     }
 }
 ```
