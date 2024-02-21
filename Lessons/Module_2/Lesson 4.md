@@ -14,8 +14,8 @@ pub contract HelloWorld {
 	pub let num: UInt64
 
 	init(){
-		self.greetings = "Hello World"
-    self.num = 64
+	   self.greetings = "Hello World"
+	   self.num = 64
 	}
 }
 ```
