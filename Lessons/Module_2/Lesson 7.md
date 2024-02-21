@@ -2,23 +2,24 @@
 
 ```jsx
 
-	// .....more code
+// .....more code
 
-	pub resource Country{
+  pub resource Country{
       pub var id: UInt64
-		  pub var name: String
-			// defining struct
+      pub var name: String
+
+      // defining struct
       pub var details: CountryDetails
 
-			init(id_:UInt64, name_:String, budget_:UFix64){
-         self.id = id_
-				 self.name = name_
-				 // Initialising struct
-         self.details = HelloWorld.CountryDetails(budget: budget_)
-			}
-	}
+      init(id_:UInt64, name_:String, budget_:UFix64){
+	self.id = id_
+	self.name = name_
+	// Initialising struct
+	self.details = HelloWorld.CountryDetails(budget: budget_)
+      }
+}
 
-	// .....more code
+// .....more code
 ```
 
 Explanation:
