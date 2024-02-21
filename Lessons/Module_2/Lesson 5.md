@@ -24,16 +24,19 @@ Every time you create a resource you have add initialiser to initialise defined 
 
 ```jsx
 
-	// Declare a resource named `Country`
-	pub resource Country{
-	    pub var name: String
-	    pub var capital: String
+// .....more code
 
-	    init(name_:String, cap:String){
-		self.name = name_
-		self.capital = cap
-	    }
-	}
+// Declare a resource named `Country`
+pub resource Country{
+    pub var name: String
+    pub var capital: String
+
+    init(name_:String, cap:String){
+	self.name = name_
+	self.capital = cap
+    }
+}
+// .....more code
 ```
 
 Explanation:
