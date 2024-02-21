@@ -11,10 +11,10 @@ Enum cases are declared using the `case` keyword, followed by the name of the 
 //....code
 
 pub enum Direction: UInt8{
-		pub case east
-	  pub case west
-	  pub case north
-	  pub case south
+    pub case east
+    pub case west
+    pub case north
+    pub case south
 }
 
 //....code
@@ -23,25 +23,25 @@ pub enum Direction: UInt8{
 Let’s add the enum in our `CountryDetails` struct
 
 ```jsx
-//....code
+//....more code
 
 pub struct CountryDetails{
     pub let countryBudget: UFix64
     pub var touristAreAllowed: Bool
 
-		// add enum in the struct
-		pub var direction: Direction?
+    // add enum in the struct
+    pub var direction: Direction?
 
     init(budget:UFix64, value:UInt8){
        self.countryBudget = budget
        self.touristAreAllowed = false
 
-			 // Initialising enum
-			 self.direction = HelloWorld.Direction(value: value)
+    // Initialising enum
+	self.direction = HelloWorld.Direction(value: value)
     }
 }
 
-//....code
+//....more code
 
 ```
 
