@@ -9,9 +9,9 @@ An elementary contract, named `HelloWorld`, starts off like this:
 ```jsx
 pub contract HelloWorld {
 
-	init(){
-
-	}
+    init(){
+	// initialise
+    }
 }
 ```
 
