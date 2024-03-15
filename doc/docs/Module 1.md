@@ -3,10 +3,6 @@ title: Module 1
 sidebar_position: 2
 ---
 
-:::info
-Can't find what you need? [Join our Discord](https://discord.gg/juicebox) or [contact onboarding](https://juicebox.money/contact).
-:::
-
 #### Welcome
 
 Welcome to Cadence Fun Developers! This platform is tailored to enhance your learning experience in Cadence smart contracts by guiding you through creating simple games on the [Flow blockchain](https://flow.com/). Whether you are a novice or an experienced developer, Cadence Fun offers a comprehensive learning journey, covering all technical aspects of Flow blockchains. This will deepen your understanding and proficiency, empowering you to create secure and efficient smart contracts.
