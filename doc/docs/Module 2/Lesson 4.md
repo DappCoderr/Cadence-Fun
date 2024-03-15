@@ -3,9 +3,9 @@ title: Lesson 4 - State Variables
 sidebar_position: 4
 ---
 
-Now that we've learned how to write a contract, let's dive into how Cadence deals with variables.
+Now that we know how to write a contract, let's understand how Cadence handles variables.
 
-In Cadence, variables are declared using **`var`**, and constants are declared using **`let`**. Let's look at an example:
+In Cadence, we use **`var`** for variables and **`let`** for constants. Here's an example:
 
 ```jsx
 access(all) contract HelloWorld {

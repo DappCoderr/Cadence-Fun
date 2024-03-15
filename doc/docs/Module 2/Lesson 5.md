@@ -20,9 +20,7 @@ access(all) contract HelloWorld {
 }
 ```
 
-You can define variable and function inside resourece.
-
-Every time you create a resource you have add initialiser to initialise defined variables values.
+You can define variables and functions inside a resource. Every time you create a resource, you need to add an initializer to set initial variable values.
 
 ```jsx
 
