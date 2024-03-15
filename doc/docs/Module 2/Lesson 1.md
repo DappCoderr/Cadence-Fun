@@ -7,15 +7,19 @@ sidebar_position: 1
 You can skip this part if you are familiar with Cadence and Flow Playground.
 :::
 
-Before delving into Module 2, we assume you have a basic understanding of blockchain, smart contracts, transactions, etc. If not, please refer to [this link] for a quick overview.
+Before delving into Module 2, we assume you have a basic understanding of blockchain, smart contracts, transactions, etc. If not, please read [this](https://developers.flow.com/build/basics/blocks) for a quick overview.
 
-In this module, we will use the Flow Playground to construct the Knight game. If you are new to Flow, watch this [video link] to grasp the fundamentals of the Flow Developer Playground.
+In this module, we will use the Flow Playground to construct the Knight game. If you are new to Flow, watch [this](https://youtu.be/pRz7EzrWchs?si=bodusfeIHzgHPrV6&t=158) to grasp the fundamentals of the Flow Playground.
 
 :::note
 The Flow Playground should be compatible with any standard web browser, but we recommend using Google Chrome since it has been tested and optimized exclusively for this browser.
 :::
 
 Before delving into Cadence basics and understanding how we write smart contracts in Cadence, take a 5-minute overview of what Cadence is.
+
+:::note
+If you already know, you can skip.
+:::
 
 ### What is Cadence?
 
