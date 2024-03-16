@@ -29,5 +29,5 @@ Great, we've created our first contract, even though it doesn't do anything yet.
 
 To initiate the creation of our Knight Soldier, let's make a contract names `Knight`.
 
-1. Open Flow Playground: https://play.flow.com/
+1. Open Flow [Playground](https://play.flow.com/)
 2. Craft an empty contract labeled `KnightContract`. Ensure the access modifier is set to `public`.

@@ -3,20 +3,15 @@ title: Lesson 5 - Resource
 sidebar_position: 5
 ---
 
-Resources play a crucial role in Cadence, representing valuable or unique assets on the Flow blockchain. They ensure secure ownership and control of assets, allowing them to exist uniquely and be managed safely. Let's understand how to work with resources:
+Resources play a crucial role in Cadence, representing valuable or unique assets on the Flow blockchain. They ensure secure ownership and control of assets, allowing them to exist uniquely and be managed safely. Let's understand how to create and work with resources:
 
 ```jsx
 access(all) contract HelloWorld {
 
-	// .....more code
-
-	// Declare a resource named `Country`
 	access(all) resource Country{
 
 	  init(){}
 	}
-
-	// .....more code
 }
 ```
 

@@ -9,14 +9,25 @@ For instance, if you're managing a library and need to track details about each 
 
 ```jsx
 
-// Define a struct named `Person`
-access(all) struct Person {
-    access(all) var name: String
-    access(all) var age: UInt8
+// Define a struct named `Book`
+access(all) struct Book {
 
-    init(_name: String, _age: UFix64){
-        self.name = _name
-        self.age = _age
+}
+
+```
+
+Inside a struct, you can define variables and functions. Every time you create a struct, you must include an initializer to set initial variable values. Let's take a look:
+
+```jsx
+
+// Define a struct named `Book`
+access(all) struct Book {
+    access(all) var title: String
+    access(all) var author: String
+
+    init(_title: String, _author: String){
+        self.title = _title
+        self.author = _author
     }
 }
 
