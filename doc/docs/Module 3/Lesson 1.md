@@ -3,6 +3,10 @@ title: Lesson 1 - Overview
 sidebar_position: 1
 ---
 
-In Module 2, we covered essential concepts like creating contracts, working with resources, structures, declaring functions, handling variables, implementing destructors, and using enums. Congratulations on mastering these fundamentals! You now have a solid grasp of Cadence basics.
+Welcome to Module 3! 🎉
 
-Module 3 will take you further by adding more features to our contract and introducing new concepts. Get ready to expand your knowledge and skills. Let's dive in and explore what Module 3 has to offer! so don’t wait let’s deep dive
+In Module 2, we covered essential topics like contract creation, resources, structures, function declaration, variables, destroy function, and enums. By now, you should have a solid understanding of Cadence basics.
+
+But guess what? We're not stopping there! Module 3 will build upon what you've learned and introduce new exciting features to our contract. Get ready to level up your Cadence skills and explore more functionalities.
+
+Are you excited to dive deeper? Let's embark on this journey together and uncover what Module 3 has in store for us! 💪✨
