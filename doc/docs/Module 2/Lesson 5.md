@@ -3,7 +3,7 @@ title: Lesson 5 - Resource
 sidebar_position: 5
 ---
 
-Resources are special type can only exist in `one` location at a time and must be used `exactly once`. A resource are declared using the `resource` keyword.
+Resources play a crucial role in Cadence, representing valuable or unique assets on the Flow blockchain. They ensure secure ownership and control of assets, allowing them to exist uniquely and be managed safely. Let's understand how to work with resources:
 
 ```jsx
 access(all) contract HelloWorld {
@@ -20,7 +20,7 @@ access(all) contract HelloWorld {
 }
 ```
 
-You can define variables and functions inside a resource. Every time you create a resource, you need to add an initializer to set initial variable values.
+Inside a resource, you can define variables and functions. Every time you create a resource, you must include an initializer to set initial variable values. Here's an example:
 
 ```jsx
 
@@ -38,8 +38,9 @@ access(all) resource Country{
 
 Explanation:
 
-- **`pub`** is an access modifier, allowing anyone to read the variable.
-- **use`resource`** keyword for create a resource Country
+- access(all): This access modifier allows anyone to read the variables.
+- resource: This keyword signifies the creation of a resource, in this case, Country.
+- init: This function initializes the resource, setting its initial state. Here, it takes parameters
 
 ### Put It to the Test
 

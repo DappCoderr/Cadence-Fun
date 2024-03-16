@@ -1,27 +1,35 @@
 ---
-title: Lesson 7 - Adding struct into Resource
+title: Lesson 7 - Using Structs in Resources
 sidebar_position: 7
 ---
 
-```jsx
+In this section, we will be using structs in resources which helps manage complex data structures more effectively. Imagine you have a struct called Book, which stores information about a book, including its title, author, and publication year.
 
+```jsx
+access(all) struct Book {
+    access(all) var title: String
+    access(all) var author: String
+    access(all) var year: UInt16
+}
+
+```
+
+Now, let's create a resource named Library to manage books. Instead of handling book details separately, we can use the Book struct within the Library resource.
+
+```jsx
 // .....more code
 
-access(all) resource Country{
+access(all) resource Library {
 
-	access(all) var id: UInt64
-	access(all) var name: String
+    access(all) var book: Book
 
-	// defining struct
-	access(all) var details: CountryDetails
+    access(all) fun borrowBook() {
+        // Implementation details for borrowing a book
+    }
 
-	init(id_:UInt64, name_:String, budget_:UFix64){
-		self.id = id_
-		self.name = name_
-
-		// Initialising struct
-		self.details = HelloWorld.CountryDetails(budget: budget_)
-	}
+    access(all) fun returnBook() {
+        // Implementation details for returning a book
+    }
 }
 
 // .....more code

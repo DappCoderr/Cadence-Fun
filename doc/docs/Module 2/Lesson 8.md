@@ -4,51 +4,46 @@ sidebar_position: 8
 ---
 
 Enumerations are sets of symbolic names bound to unique, constant values, which can be compared by identity. Means it provide you some pre define value which reduce bugs in your code.
-For example, if we consider an application for a fresh juice shop, it would be possible to restrict the glass size to `small`, `medium`, and `large`. This would make sure that it would not allow any user to order any size other than small, medium, or large. It will restrict the user to use these 3 values.
 
-Enums are declared using the `enum` keyword.
+For example, Imagine you're developing an application for a fresh juice shop. You want to limit the glass sizes to small, medium, and large to ensure orders are correctly processed. Enums can help enforce this restriction.
 
-Enum cases are declared using the `case` keyword, followed by the name of the enum case.
-
-```jsx
-//....code
-
-access(all) enum Direction: UInt8{
-
-	access(all) case east
-	access(all) case west
-	access(all) case north
-	access(all) case south
-}
-
-//....code
-```
-
-Let’s add the enum in our `CountryDetails` struct
+- Enums are declared using the `enum` keyword.
+- Enum cases are declared using the `case` keyword, followed by the name of the enum case.
 
 ```jsx
-//....code
-
-access(all) struct CountryDetails{
-
-	access(all) let countryBudget: UFix64
-	access(all) var touristAreAllowed: Bool
-
-	// add enum in the struct
-	access(all) var direction: Direction?
-
-	init(budget:UFix64, value:UInt8){
-		self.countryBudget = budget
-		self.touristAreAllowed = false
-
-		// Initialising enum
-		self.direction = HelloWorld.Direction(value: value)
-	}
+// Declare an enum named `Size` to represent glass sizes
+access(all) enum Size: UInt8 {
+    access(all) case small
+    access(all) case medium
+    access(all) case large
 }
 
-//....code
+```
+
+In this example, Size is an enum with three cases: small, medium, and large.
+
+#### Integration with Structs:
+
+You can integrate enums into structs to represent specific attributes or options. For instance, let's add the Size enum to a Glass struct:
+
+```jsx
+// Define a struct named `Glass` to represent a glass of juice
+access(all) struct Glass {
+    access(all) let size: Size
+    access(all) var isFilled: Bool
+
+    // Initialize the struct with size and fill status
+    init(size: Size, isFilled: Bool) {
+        self.size = size
+        self.isFilled = isFilled
+    }
+}
 
 ```
+
+Here, the Glass struct includes a size property of type Size (enum), representing the size of the glass.
+
+By utilizing enums within structs, you can maintain clarity and consistency in your code while reducing the likelihood of errors related to incorrect value assignments.
 
 ### Put It to the Test
 

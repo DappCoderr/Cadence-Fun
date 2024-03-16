@@ -3,31 +3,35 @@ title: Lesson 6 - Structs
 sidebar_position: 6
 ---
 
-Struct types are used to represent a record. Suppose you want to keep track of your books in a library. You might want to track the following attributes about each book − `Title` , `Author` , `Subject` , `Book ID` . A Structures are declared using the `struct` keyword.
-You can define variable and function inside resource. Every time you create a struct you have add initialiser to initialise defined variables values.
+A `struct`, which stands for structure, is like a container that holds different types of information under one label. Structs help organize related pieces of data together, making it easier to manage and work with complex information.
+
+For instance, if you're managing a library and need to track details about each book like Title, Author, Subject, and Book ID, you can use a struct to group these attributes together.
 
 ```jsx
-// .....more code
 
-access(all) struct CountryDetails{
-    access(all) let countryBudget: UFix64
-    access(all) var touristAreAllowed: Bool
+// Define a struct named `Person`
+access(all) struct Person {
+    access(all) var name: String
+    access(all) var age: UInt8
 
-    init(budget:UFix64){
-        self.countryBudget = budget
-        self.touristAreAllowed = false
+    init(_name: String, _age: UFix64){
+        self.name = _name
+        self.age = _age
     }
 }
-
-// .....more code
 
 ```
 
 Explanation:
 
-### Put It to the Test
+- In this example, we define a struct named Person.
+- It has two variables: name of type String and age of type UInt8.
+- We use the init function to initialize the Person struct with a name and age.
+- access(all) ensures that both variables are accessible from anywhere in the code.
 
-- Create a struct named `KnightDetails`
-- Our struct will have two variable named as `name`, `createdDate` of type `string` and `UFix64` respectively.
-- Initialise `name` and `createdDate`in init function.
-- To get current date use `getCurrentBlock().timestamp`
+#### Put It to the Test:
+
+- Create a struct named `KnightDetails`.
+- The struct should have two variables: `name` and `createdDate`, of type `String` and `UFix64` respectively.
+- Initialize name and createdDate in the init function.
+- To get the current date, use getCurrentBlock().timestamp.
