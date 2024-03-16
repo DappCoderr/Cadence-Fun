@@ -1,32 +1,26 @@
 ---
-title: Lesson 9 - update resource
+title: Lesson 9 - function declaration
 sidebar_position: 9
 ---
 
-I know you are getting error!!
-
-But don’t worry. You just have to add `value` parameter where struct is initialised.
+In Cadence, declaring a function involves specifying its name, parameters, return type (if any), and visibility.
+Let's break down the structure of a function declaration:
 
 ```jsx
-//....code
-
-// Declare a resource named `Country`
-access(all) resource Country{
-	access(all) var id: UInt64
-	access(all) var name: String
-	access(all) var details: CountryDetails
-
-	init(id_:UInt64, name_:String, budget_:UFix64, value:UInt8){
-		self.id = id_
-		self.name = name_
-		self.details = HelloWorld.CountryDetails(budget: budget_, value: value)
-	}
+// Define a function named setNewValue
+access(all) fun setNewValue(newVal: UInt64) {
+    // Function body
 }
-
-//....code
-
 ```
 
-### Put It to the Test
+In this example:
 
-- Check and update `self.details`
+- `access(all)`: This specifies the visibility of the function, allowing it to be accessed from anywhere.
+- `fun`: This keyword indicates that we're declaring a function.
+- `setNewValue`: This is the name of the function.
+- `(newVal: UInt64)`: These are the parameters the function takes. Here, `newVal` is of type `UInt64`.
+- `{}`: This is the function body, where you write the code that the function will execute.
+
+#### **Put It to the Test:**
+
+Now, let's create a public function named `createKnight`:

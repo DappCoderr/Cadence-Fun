@@ -21,7 +21,7 @@ access(all) contract HelloWorld {
 Great, we've created our first contract, even though it doesn't do anything yet. Let's break down the parts:
 
 - access(all): This keyword makes the contract public for anyone to read.
-- contract: This declares that what follows is a contract.
+- contract: This keyword indicates that we're declaring a Contract.
 - [contract name]: This is the name you give to your contract.
 - init(): This function is mandatory for every contract. It's executed only once when the contract is first deployed. We can use it to set up initial values.
 
