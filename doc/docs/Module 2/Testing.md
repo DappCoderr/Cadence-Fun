@@ -4,10 +4,10 @@ sidebar_position: 12
 ---
 
 :::note
-Here you don’t need to understand the syntax of transaction right now, we will take at look at the end of the course. You just need to open the playground and run the transaction to test the contract.
+You don't need to understand the syntax of transactions right now. We'll take a closer look at it at the end of the course. For now, simply open the playground and run the transaction to test the contract.
 :::
 
-First deploy the Contract and run the transaction.
+First, deploy the Contract and run the transaction.
 
 ```jsx
 import KnightContract from 0x05
@@ -22,3 +22,5 @@ transaction(id:UInt64, xp:UFix64, name:String, value:UInt8) {
     }
 }
 ```
+
+This transaction allows you to create and test a new Knight in the Knight game contract. Simply execute the transaction in the Flow Playground to see it in action!
