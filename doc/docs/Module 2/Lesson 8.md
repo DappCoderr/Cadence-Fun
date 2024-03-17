@@ -47,6 +47,7 @@ By utilizing enums within structs, you can maintain clarity and consistency in y
 
 ### Put It to the Test
 
-- Create a enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
-- Create public variable named `types` of type enum
-- Initialise value of `types`
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
+3. Create public variable named `types` of type enum
+4. Initialise value of `types`

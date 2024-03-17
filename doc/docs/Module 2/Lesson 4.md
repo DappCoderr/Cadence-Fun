@@ -33,4 +33,5 @@ In the `init` function, we set `self.greeting = "Hello, World!"` and `self.num =
 
 ### Put It to the Test
 
-Create two public variables, `totalSupply` and `nextKnightId`, both initialized to 0. Both variables should be of type `UInt64`.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create two public variables, `totalSupply` and `nextKnightId`, both initialized to 0. Both variables should be of type `UInt64`.

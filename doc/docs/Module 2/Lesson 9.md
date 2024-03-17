@@ -23,4 +23,5 @@ In this example:
 
 #### **Put It to the Test:**
 
-Now, let's create a public function named `createKnight`:
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a public function named `createKnight`.

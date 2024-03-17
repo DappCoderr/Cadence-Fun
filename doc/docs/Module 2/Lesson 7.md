@@ -3,44 +3,40 @@ title: Lesson 7 - Using Structs in Resources
 sidebar_position: 7
 ---
 
-In this section, we will be using structs in resources which helps manage complex data structures more effectively. Imagine you have a struct called Book, which stores information about a book, including its title, author, and publication year.
+In this lesson, we'll explore how to utilize structs within resources to manage complex data structures more effectively. Imagine you have a struct called `Book`, which stores information about a book, such as its title and author.
 
-```jsx
+```cadence
 access(all) struct Book {
     access(all) var title: String
     access(all) var author: String
-    access(all) var year: UInt16
-}
 
+    init(_title: String, _author: String){
+        self.title = _title
+        self.author = _author
+    }
+}
 ```
 
-Now, let's create a resource named Library to manage books. Instead of handling book details separately, we can use the Book struct within the Library resource.
+Now, let's create a resource named `Library` to manage books. Instead of handling book details separately, we'll use the `Book` struct within the `Library` resource.
 
-```jsx
-// .....more code
-
+```cadence
 access(all) resource Library {
 
     access(all) var book: Book
 
-    access(all) fun borrowBook() {
-        // Implementation details for borrowing a book
-    }
-
-    access(all) fun returnBook() {
-        // Implementation details for returning a book
+    init(title: String, author: String){
+        self.book = Book(_title: title, _author: author)
     }
 }
-
-// .....more code
 ```
 
-Explanation:
+**Explanation:**
 
-### Put It to the Test
+- We define a struct `Book` with properties for `title` and `author`.
+- The `Library` resource contains a property `book` of type `Book`.
+- In the `init` function of `Library`, we initialize the `book` property with the provided title and author.
 
-- Create a struct named `KnightDetails`
-- In struct create two variable named as `name`, `createdDate` of type `string` and `UFix64` respectively.
-- Initialise `name` value in init function.
-- Initialise `createdDate` with value `getCurrentBlock().timestamp`
-- Increment `nextKnightId` and `totalSupply` in init function
+**Put It to the Test:**
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Add `KnightDetails` to the `KnightNFT` resource.

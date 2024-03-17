@@ -42,7 +42,7 @@ Explanation:
 
 #### Put It to the Test:
 
-- Create a struct named `KnightDetails`.
-- The struct should have two variables: `name` and `createdDate`, of type `String` and `UFix64` respectively.
-- Initialize name and createdDate in the init function.
-- To get the current date, use getCurrentBlock().timestamp.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a struct named `KnightDetails`. And inside two variables: `name` and `createdDate`, of type `String` and `UFix64` respectively.
+3. Initialize name and createdDate in the init function.
+4. To get the current date, use getCurrentBlock().timestamp.

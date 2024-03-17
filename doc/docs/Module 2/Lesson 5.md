@@ -39,5 +39,5 @@ Explanation:
 
 ### Put It to the Test
 
-- Create a resource named `KnightNFT`
-- Create two public variable of name `id` and `xp` of type unsigned integer inside resource and initialise their value in the init function with value Zero.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a resource named `KnightNFT`. Inside, create two public variable of name `id` and `xp` of type unsigned integer inside resource and initialise their value in the init function with value Zero.
