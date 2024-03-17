@@ -3,9 +3,9 @@ title: Lesson 3 - Creating Storage
 sidebar_position: 3
 ---
 
-Now that you've learned how to create resources & dictionary. Let's use both the concept in our smart contract to store the Knight.
+Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.
 
-To do this, we'll create a dictionary in the contract that stores Knights resource as value and key as ID.
+To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
 
 ```jsx
 access(all) contract HelloWorld {

@@ -3,7 +3,7 @@ title: Lesson 4 - Using Storage
 sidebar_position: 4
 ---
 
-Now we will store the knight at the create storage in last lesson.
+Now, let's store Knights in our contract using the storage we created earlier.
 
 For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
 
@@ -20,7 +20,7 @@ access(all) contract HellWorld {
 ```
 
 - Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
-  This is protecting us from accidentally overwriting a Knight in the dictionary.
+- This is protecting us from accidentally overwriting a Knight in the dictionary.
 
 ### Put It to the Test
 

@@ -4,33 +4,30 @@ sidebar_position: 5
 ---
 
 If you have ethereum background, then you will be familiar with term `view` .
-View functions ensure that they will not mutate/change the state means they will used to read the state.
+That ensure they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+
+In flow, we also create similar functions, which have function declaration and a return type.
 
 ```jsx
 access(all) contract HellWorld {
-
-//.....more code
-	// reading the state variable
-	access(all) fun getGreeting():String{
-		return self.greetings
-	}
 
 	// reading countries id, returning array
 	access(all) fun getIDs(): [UInt64] {
 		return self.storedCountries.keys
 	}
 
-//...more code
 }
 
 ```
 
-Here we have three function, which will provide a better view to
+In this example:
 
-### Put It to the Test
+- `getIDs()`: This function returns an array of IDs of stored countries by accessing the keys of the `storedCountries` dictionary.
 
-Create two public function `getCountryDetails` and `getIDs`
+These functions provide a convenient way to peek into the contract's state without making any changes to it.
 
-`getIDs` will return array of Ids
+**Put It to the Test:**
+Create two public functions `getKnightDetails` and `getIDs`.
 
-`getCountryDetails` will return struct `CountryDetails`
+- `getIDs` should return an array of IDs.
+- `getKnightDetails` should return the details of countries using the `KnightDetails` struct.

@@ -27,4 +27,4 @@ Dictionaries in Cadence are versatile and useful for organizing data in various 
 
 #### **Put It to the Test::**
 
-- Create a empty dictionary named `storeKnight` to store the knight.
+- Create a empty dictionary named `storeKnight`.

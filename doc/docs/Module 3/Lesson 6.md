@@ -10,7 +10,6 @@ This makes for a perfect `id` system. Let’s give our `Knight` an `id` usin
 ```jsx
 access(all) contract HellWorld {
 
-//.....more code
 	access(all) resource Country{
 		access(all) var id: UInt64
 		access(all) var name: String
@@ -24,8 +23,6 @@ access(all) contract HellWorld {
 			self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
 		}
 	}
-
-//...more code
 }
 
 ```
