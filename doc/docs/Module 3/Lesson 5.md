@@ -1,28 +1,23 @@
 ---
-title: Lesson 5 - Unique Identifiers
+title: Lesson 5 - Reading from Storage / View Function
 sidebar_position: 5
 ---
 
-Every resource in Cadence also has a built-in unique identifier that is unique to that resource only, and **will never be repeated again.** Even if the resource is destroyed.
-
-This makes for a perfect `id` system. Let’s give our `Knight` an `id` using the built in `uuid` field to every resource:
+If you have ethereum background, then you will be familiar with term `view` .
+View functions ensure that they will not mutate/change the state means they will used to read the state.
 
 ```jsx
 access(all) contract HellWorld {
 
 //.....more code
-	access(all) resource Country{
-		access(all) var id: UInt64
-		access(all) var name: String
-		access(all) var capital: String
-		access(all) var details: CountryDetails
+	// reading the state variable
+	access(all) fun getGreeting():String{
+		return self.greetings
+	}
 
-		init(_name: String, _cap: String, _budget: UFix64, _value: UInt8){
-			self.id = self.uuid
-			self.name = _name
-			self.capital = _cap
-			self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
-		}
+	// reading countries id, returning array
+	access(all) fun getIDs(): [UInt64] {
+		return self.storedCountries.keys
 	}
 
 //...more code
@@ -30,6 +25,12 @@ access(all) contract HellWorld {
 
 ```
 
+Here we have three function, which will provide a better view to
+
 ### Put It to the Test
 
-Change `knigth` resource id with resource built-in unique identifier
+Create two public function `getCountryDetails` and `getIDs`
+
+`getIDs` will return array of Ids
+
+`getCountryDetails` will return struct `CountryDetails`
