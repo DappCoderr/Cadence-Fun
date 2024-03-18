@@ -25,7 +25,7 @@ In this example:
 
 Dictionaries in Cadence are versatile and useful for organizing data in various scenarios.
 
-#### **Put It to the Test::**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a empty dictionary named `storeKnight`.

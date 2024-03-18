@@ -36,7 +36,7 @@ access(all) resource Library {
 - The `Library` resource contains a property `book` of type `Book`.
 - In the `init` function of `Library`, we initialize the `book` property with the provided title and author.
 
-**Put It to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Add `KnightDetails` to the `KnightNFT` resource.

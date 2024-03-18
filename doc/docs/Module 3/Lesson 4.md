@@ -29,7 +29,7 @@ The `storedCountries` dictionary isn't a resource itself, but it stores resource
 
 Remember, when defining a resource type, the `@` symbol must be added.
 
-#### **Put It to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.

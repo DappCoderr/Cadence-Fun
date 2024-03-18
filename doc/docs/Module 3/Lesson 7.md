@@ -30,7 +30,7 @@ In this example:
 - `getGreetings()`: This function returns an String.
 - `view`: Indicate that they do not modify any external state or any account state.
 
-**Put It to the Test:**
+### Put It to the Test
 
 Let's read all the ID of the Knight in the contract storage. For that-
 

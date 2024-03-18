@@ -7,7 +7,7 @@ Let's dive into the Knight Game! Picture it like a multiplayer Pokémon battle, 
 
 In Module 3, you'll be crafting a smart contract for these knights. This contract allows you to do some really cool stuff, such as creating a brand-new knight just for yourself. Each knight comes with its own special (ID, XP, win count and details):
 
-- #### ID:- It's like a unique code for each knight.
+- #### ID: It's like a unique code for each knight.
 - #### Details: This holds the knight's name, creation date, and what type of knight it is.
 - #### XP: This shows how powerful your knight is.
 - #### Win Count: It keeps track of how many battles your knight has won.
