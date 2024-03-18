@@ -1,6 +1,6 @@
 ---
 title: Testing it Out!!
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 Before moving forward let’s test our contract by running transaction and script. Before that don’t forgot to deploy the contract.

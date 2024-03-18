@@ -1,32 +1,28 @@
 ---
-title: Lesson 6 - Unique Identifiers
+title: Lesson 6 - Saving Knight to Storage
 sidebar_position: 6
 ---
 
-Every resource in Cadence also has a built-in unique identifier that is unique to that resource only, and **will never be repeated again.** Even if the resource is destroyed.
+Now, let's store Knights in our contract using the storage we created earlier.
 
-This makes for a perfect `id` system. Let’s give our `Knight` an `id` using the built in `uuid` field to every resource:
+For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
 
 ```jsx
 access(all) contract HellWorld {
 
-	access(all) resource Country{
-		access(all) var id: UInt64
-		access(all) var name: String
-		access(all) var capital: String
-		access(all) var details: CountryDetails
+//.....above code
+  access(all) fun storeCountry(country: @Country) {
+      self.storedCountries[country.id] <-! country
+  }
 
-		init(_name: String, _cap: String, _budget: UFix64, _value: UInt8){
-			self.id = self.uuid
-			self.name = _name
-			self.capital = _cap
-			self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
-		}
-	}
+//...more code
 }
-
 ```
+
+- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
+- This is protecting us from accidentally overwriting a Knight in the dictionary.
 
 ### Put It to the Test
 
-Change `knigth` resource id with resource built-in unique identifier
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a public function `storeKnight` with one parameter as `knight` resource

@@ -1,33 +1,36 @@
 ---
-title: Lesson 5 - Reading from Storage / View Function
+title: "Lesson 5 - Creating Knight"
 sidebar_position: 5
 ---
 
-If you have ethereum background, then you will be familiar with term `view` .
-That ensure they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+In Module 2 function declaration lesson, we have created a first function called `createKnight`. In this lesson, we will use that function to create our first knight.
 
-In flow, we also create similar functions, which have function declaration and a return type.
+- To create a resource, we will use the `create` keyword and the `move` operator `<-`.
+- You use the `create` keyword to initialize a resource. Resources must be created before you can use them.
+- The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator `=` with resources, so when you initialize a resource, you will need to use the move operator `<-`.
 
 ```jsx
-access(all) contract HellWorld {
+access(all) contract HelloWorld {
 
-	// reading countries id, returning array
-	access(all) fun getIDs(): [UInt64] {
-		return self.storedCountries.keys
-	}
+    // Declare a resource that only includes one function.
+    access(all) resource HelloAsset {}
 
+    // We're going to use the built-in create function
+    // to create a new instance of the HelloAsset resource
+    access(all) fun createHelloAsset(): @HelloAsset {
+        return <-create HelloAsset()
+    }
+
+    init() {
+        // contract initializer function
+    }
 }
-
 ```
 
-In this example:
+- Inside the `storeCounty` function, we use the force-move operator `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
+- This is protecting us from accidentally overwriting a Knight in the dictionary.
 
-- `getIDs()`: This function returns an array of IDs of stored countries by accessing the keys of the `storedCountries` dictionary.
+### Put It to the Test
 
-These functions provide a convenient way to peek into the contract's state without making any changes to it.
-
-**Put It to the Test:**
-Create two public functions `getKnightDetails` and `getIDs`.
-
-- `getIDs` should return an array of IDs.
-- `getKnightDetails` should return the details of countries using the `KnightDetails` struct.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Use create keyword and move operator to form your first Knight.
