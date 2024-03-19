@@ -79,18 +79,13 @@ const config = {
           },
           {
             position: "left",
-            label: "Emerald Academy",
-            to: "https://academy.ecdao.org",
+            label: "Emerald Academy Course",
+            to: "https://academy.ecdao.org/en/catalog/courses/learn-cadence-beginner-1.0",
           },
           {
             position: "left",
-            label: "Dev Portal",
-            to: "https://developers.flow.com/",
-          },
-          {
-            position: "left",
-            label: "Cadence-Docs",
-            to: "https://cadence-lang.org/",
+            label: "Cadence 1.0-Docs",
+            to: "https://cadence-lang.org/docs/1.0/",
           },
         ],
       },

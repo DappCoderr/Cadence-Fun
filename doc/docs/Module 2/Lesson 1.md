@@ -3,28 +3,30 @@ title: Lesson 1 - Overview
 sidebar_position: 1
 ---
 
-:::note
-If you're already familiar with Cadence and Flow Playground, feel free to skip this section.
+Welcome! Before we jump into Cadence and the Flow Playground, let's make sure you are familiar with blockchain basics teams like block, smart contracts and transactions etc. If you're new to these, take a moment to brush up on [these](https://developers.flow.com/build/basics/blocks) fundamentals for a smoother ride.
+
+In this module, we're off on a fun adventure building the Knight game using the Flow Playground. If you're new to Flow, no worries! Watch a quick tutorial to get comfy with the [playground](<(https://youtu.be/pRz7EzrWchs?si=bodusfeIHzgHPrV6&t=158)>).
+
+:::tip
+For the best experience, we suggest using Google Chrome. It's been tested and polished for this playground.
 :::
 
-Before diving into Module 2, it's assumed you have a basic understanding of blockchain concepts, smart contracts, transactions, etc. If not, please take a moment to review [these](https://developers.flow.com/build/basics/blocks) fundamentals.
-
-In this module, we'll be using the Flow Playground to build the Knight game. If you're new to Flow, we recommend watching a [quick tutorial](https://youtu.be/pRz7EzrWchs?si=bodusfeIHzgHPrV6&t=158) to grasp the basics of the Flow Playground.
-
-:::note
-While the Flow Playground should work on any standard web browser, we recommend using Google Chrome for the best experience as it's been tested and optimized for this browser.
-:::
-
-Before we delve into Cadence basics and learn how to write smart contracts in Cadence, let's take a brief overview of what Cadence is.
+Before getting into development, let's understand what Cadence is all about.
 
 ### What is Cadence?
 
-Cadence is a new programming language for smart contracts on the Flow Blockchain. It introduces features that enhance smart contract programming, ensuring code safety, security, clarity, and approachability.
+Cadence is programming language for writing smart contracts on the Flow Blockchain. It brings a bunch of cool features to the table, making smart contract coding safe, secure, and easy to understand.
 
-Key features of Cadence include:
+### Why should you care about Cadence?
 
-1. Type safety and a robust static type system.
-2. Resource-oriented programming, which we'll explore in later lessons, is a method that combines linear types with object capabilities to establish a secure and clear model for digital ownership.
-3. Built-in pre-conditions and post-conditions for functions and transactions.
-4. Utilisation of capability-based security ensures that only the owner and those with a valid reference to the object have access control over the object.
-5. Cadence’s syntax is inspired by popular modern general-purpose programming languages like [Swift](https://developer.apple.com/swift/), [Kotlin](https://kotlinlang.org/), and [Rust](https://www.rust-lang.org/). Its use of resource types maps well to that of [Move](https://medium.com/coinmonks/overview-of-move-programming-language-a860ffd8f55d), the programming language being developed by the Diem team.
+1. **Type Safety and Strong Types**: Cadence keeps your code safe from bugs with its solid type system. No unexpected surprises here!
+
+2. **Resource-Oriented Programming**: We'll chat more about this later, but think of it as a way to manage digital stuff securely. Your digital assets are in good hands with Cadence.
+
+3. **Pre- and Post-Conditions**: Cadence comes with built-in checks for functions and transactions. It's like having a safety net for your code.
+
+4. **Capability-Based Security**: With Cadence, only the right folks can access your stuff. It's like having a VIP pass for your digital treasures.
+
+5. **Familiar Syntax**: Cadence speaks the language of popular programming pals like Swift, Kotlin, and Rust. So, if you're familiar with those, you'll feel right at home.
+
+In a nutshell, Cadence makes smart contract coding a breeze on the Flow Blockchain. Its friendly features and easy-to-understand style make it perfect for anyone looking to dive into blockchain development. Let's roll up our sleeves and explore Cadence in the upcoming lessons!
