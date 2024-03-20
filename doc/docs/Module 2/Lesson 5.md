@@ -33,11 +33,11 @@ access(all) resource Country{
 
 Explanation:
 
-- access(all): This access modifier allows anyone to read the variables.
-- resource: This keyword signifies the creation of a resource, in this case, Country.
-- init: This function initializes the resource, setting its initial state. Here, it takes parameters
+- `access(all)`: This access modifier allows anyone to read the variables.
+- `resource`: This keyword signifies the creation of a resource, in this case, Country.
+- `init`: This function initializes the resource, setting its initial state. Here, it takes parameters.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a resource named `KnightNFT`. Inside, create two public variable of name `id` and `xp` of type unsigned integer inside resource and initialise their value in the init function with value Zero.
+2. Create a resource named `KnightNFT`. Inside, create two public variables named `id` and `xp` of type unsigned integer inside the resource and initialize their value in the init function with the value zero.

@@ -3,12 +3,12 @@ title: Lesson 8 - enum
 sidebar_position: 8
 ---
 
-Enumerations are sets of symbolic names bound to unique, constant values, which can be compared by identity. Means it provide you some pre define value which reduce bugs in your code.
+Enumerations are sets of symbolic names bound to unique, constant values, which can be compared by identity. This means they provide you with some predefined values that reduce bugs in your code.
 
-For example, Imagine you're developing an application for a fresh juice shop. You want to limit the glass sizes to small, medium, and large to ensure orders are correctly processed. Enums can help enforce this restriction.
+For example, imagine you're developing an application for a fresh juice shop. You want to limit the glass sizes to small, medium, and large to ensure orders are correctly processed. Enums can help enforce this restriction.
 
-- Enums are declared using the `enum` keyword.
-- Enum cases are declared using the `case` keyword, followed by the name of the enum case.
+- Enums are declared using the enum keyword.
+- Enum cases are declared using the case keyword, followed by the name of the enum case.
 
 ```jsx
 // Declare an enum named `Size` to represent glass sizes
@@ -45,9 +45,9 @@ Here, the Glass struct includes a size property of type Size (enum), representin
 
 By utilizing enums within structs, you can maintain clarity and consistency in your code while reducing the likelihood of errors related to incorrect value assignments.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
+2. Create an enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
 3. Create public variable named `types` of type enum
 4. Initialise value of `types`

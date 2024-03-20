@@ -25,7 +25,7 @@ contract: This keyword indicates that we're declaring a Contract.
 [contract name]: This is the name you give to your contract.
 init(): This function is mandatory for every contract. It's executed only once when the contract is first deployed. We can use it to set up initial values.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. To initiate the creation of our Knight Soldier, let's make a contract named Knight.

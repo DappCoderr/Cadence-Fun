@@ -23,9 +23,9 @@ access(all) resource Country {
 }
 ```
 
-In this example:- `destroy()`: This is the destructor function for the `Country` resource.
+In this example, `destroy()`: This is the destructor function for the `Country` resource.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a `destroy` function in the `KnightNFT` resource. This function will decrement `nextKnightId` and `totalSupply` by 1.

@@ -21,7 +21,7 @@ In this example:
 - `(newVal: UInt64)`: These are the parameters the function takes. Here, `newVal` is of type `UInt64`.
 - `{}`: This is the function body, where you write the code that the function will execute.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public function named `createKnight`.

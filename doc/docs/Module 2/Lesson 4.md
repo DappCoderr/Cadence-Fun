@@ -5,7 +5,7 @@ sidebar_position: 4
 
 Now that we know how to write a contract, let's understand how Cadence handles variables.
 
-In Cadence, we use **`var`** for variables and **`let`** for constants. Here's an example:
+In Cadence, we use var for variables and const for constants. Here's an example:
 
 ```jsx
 access(all) contract HelloWorld {
@@ -28,10 +28,9 @@ Explanation:
 - `access(all)` is an access modifier, allowing anyone to read the variable.
 - `let` is for constants that cannot be changed.
 - `String` & `UInt64` are types, holding text and unsigned integers (e.g., "Hello World" and 64).
+- In the `init` function, we set `self.greeting` to "Hello, World!" and `self.num` to 64. This function runs when the contract is deployed, initializing values.
 
-In the `init` function, we set `self.greeting = "Hello, World!"` and `self.num = 64`. This function runs when the contract is deployed, initializing values.
-
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create two public variables, `totalSupply` and `nextKnightId`, both initialized to 0. Both variables should be of type `UInt64`.

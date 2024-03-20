@@ -40,7 +40,7 @@ Explanation:
 - We use the init function to initialize the Person struct with a name and age.
 - access(all) ensures that both variables are accessible from anywhere in the code.
 
-### Put It to the Test
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a struct named `KnightDetails`. And inside two variables: `name` and `createdDate`, of type `String` and `UFix64` respectively.
