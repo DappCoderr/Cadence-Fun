@@ -3,7 +3,7 @@ title: Testing it Out!!
 sidebar_position: 8
 ---
 
-Before moving forward let’s test our contract by running transaction and script. Before that don’t forgot to deploy the contract.
+Before moving forward let’s test our contract by running transaction and script. Before that don’t forget to deploy the contract.
 
 :::note
 Just Copy & past transaction and script and run. Don’t worry we will discuss this in future how to create and use transaction and script.

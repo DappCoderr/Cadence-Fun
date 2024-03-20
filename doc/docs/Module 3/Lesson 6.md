@@ -25,4 +25,4 @@ access(all) contract HellWorld {
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function `storeKnight` with one parameter as `knight` resource
+2. Create a public function named `storeKnight` with one parameter as `knight` resource

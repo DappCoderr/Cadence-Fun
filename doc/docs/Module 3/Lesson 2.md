@@ -58,7 +58,7 @@ a <-> b
 
 #### [Force Unwrap Operator (!)](https://cadence-lang.org/docs/1.0/language/operators#force-unwrap-operator-)
 
-This one is like opening a present. If there's something inside, great! If not, well, you might be panics and aborts the work.
+This one is like opening a present. If there's something inside, great! If not, well, you might be panic and abort the work.
 
 ```jsx
 let a: Int? = nil

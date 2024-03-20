@@ -3,10 +3,9 @@ title: Lesson 7 - Reading from Storage / View function
 sidebar_position: 7
 ---
 
-If you have ethereum background, then you will be familiar with term `view` .
-That ensure they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
 
-In flow, we also create similar functions, which have function declaration and a return type.
+In Flow, we also create similar functions, which have a function declaration and a return type.
 
 ```jsx
 access(all) contract HellWorld {
@@ -27,13 +26,13 @@ access(all) contract HellWorld {
 
 In this example:
 
-- `getGreetings()`: This function returns an String.
-- `view`: Indicate that they do not modify any external state or any account state.
+- `getGreetings()`: This function returns a String.
+- `view`: Indicates that it does not modify any external state or any account state
 
 ### Put It to the Test
 
 Let's read all the ID of the Knight in the contract storage. For that-
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public functions named `getIDs` marked it as `view`.
+2. Create a public functions named `getIDs` marked as `view`.
 3. `getIDs` should return an array of IDs.

@@ -3,11 +3,11 @@ title: "Lesson 5 - Creating Knight"
 sidebar_position: 5
 ---
 
-In Module 2 function declaration lesson, we have created a first function called `createKnight`. In this lesson, we will use that function to create our first knight.
+In Module 2 function declaration lesson, we have created a first function called createKnight. In this lesson, we will use that function to create our first knight.
 
-- To create a resource, we will use the `create` keyword and the `move` operator `<-`.
-- You use the `create` keyword to initialize a resource. Resources must be created before you can use them.
-- The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator `=` with resources, so when you initialize a resource, you will need to use the move operator `<-`.
+To create a resource, we will use the create keyword and the move operator `<-`. You use the create keyword to initialize a resource. Resources must be created before you can use them.
+
+The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator = with resources, so when you initialize a resource, you will need to use the move operator `<-`.
 
 ```jsx
 access(all) contract HelloWorld {

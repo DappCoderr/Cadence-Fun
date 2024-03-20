@@ -28,4 +28,4 @@ Dictionaries in Cadence are versatile and useful for organizing data in various 
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a empty dictionary named `storeKnight`.
+2. Create an empty dictionary named `storeKnight`.
