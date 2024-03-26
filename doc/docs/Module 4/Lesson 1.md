@@ -14,3 +14,7 @@ Think of NFTs as unique digital items, similar to rare trading cards or one-of-a
 Exciting, right?
 
 Let's dive into Module 4 and discover all the fun stuff waiting for us! 💪✨
+
+In this lesson, we're going to talk about using a special kind of token to represent Knights. These tokens are designed specifically, making each item complete one unique piece and not possible to break into smaller parts. You can only trade whole Knights, and each Knight has its own special ID number.
+
+You might wonder why we need these tokens when we already have resources. Well, standard provide some special set of rules like minting, storage etc, it's like interface which helps you to build NFT easily.
