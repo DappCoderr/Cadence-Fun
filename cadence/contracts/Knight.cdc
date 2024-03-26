@@ -136,7 +136,7 @@ pub contract Knight: NonFungibleToken{
     pub fun getRandomKNightXP(): UInt64 {
             let randomNumber: UInt64 = revertibleRandom()
             return (randomNumber % 100) + 1
-        }
+    }
 
     pub fun battle(userA:Address, userAKnightId: UInt64, userB:Address, userBKnightId: UInt64){
         let acctA = getAccount(userA)
