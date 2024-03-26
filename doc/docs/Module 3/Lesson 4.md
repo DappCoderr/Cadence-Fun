@@ -25,6 +25,8 @@ access(all) contract HelloWorld {
 }
 ```
 
+### **Explanation:**
+
 The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
 
 Remember, when defining a resource type, the `@` symbol must be added.

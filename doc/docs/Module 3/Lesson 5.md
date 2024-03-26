@@ -1,5 +1,5 @@
 ---
-title: "Lesson 5 - Creating Knight"
+title: Lesson 5 - Creating Knight
 sidebar_position: 5
 ---
 
@@ -26,6 +26,8 @@ access(all) contract HelloWorld {
     }
 }
 ```
+
+### **Explanation:**
 
 - Inside the `storeCounty` function, we use the force-move operator `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
 - This is protecting us from accidentally overwriting a Knight in the dictionary.

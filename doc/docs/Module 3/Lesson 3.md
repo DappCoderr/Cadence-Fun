@@ -17,7 +17,7 @@ countryDictionary = {
 };
 ```
 
-In this example:
+### **Explanation:**
 
 - `{UInt64: String}`: Defines a dictionary where keys are of type `UInt64` and values are of type `String`.
 - `countryDictionary`: Represents the name of the dictionary variable.

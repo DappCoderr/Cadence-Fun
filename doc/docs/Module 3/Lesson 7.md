@@ -24,7 +24,7 @@ access(all) contract HellWorld {
 
 ```
 
-In this example:
+### **Explanation:**
 
 - `getGreetings()`: This function returns a String.
 - `view`: Indicates that it does not modify any external state or any account state
