@@ -13,7 +13,7 @@ access(all) fun setNewValue(newVal: UInt64) {
 }
 ```
 
-In this example:
+### **Explanation:**
 
 - `access(all)`: This specifies the visibility of the function, allowing it to be accessed from anywhere.
 - `fun`: This keyword indicates that we're declaring a function.

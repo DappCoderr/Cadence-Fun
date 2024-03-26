@@ -23,6 +23,8 @@ access(all) resource Country {
 }
 ```
 
+### **Explanation:**
+
 In this example, `destroy()`: This is the destructor function for the `Country` resource.
 
 ### Put it to the Test

@@ -33,7 +33,7 @@ access(all) struct Book {
 
 ```
 
-Explanation:
+### **Explanation:**
 
 - In this example, we define a struct named Person.
 - It has two variables: name of type String and age of type UInt8.

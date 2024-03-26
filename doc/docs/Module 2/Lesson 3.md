@@ -18,6 +18,8 @@ access(all) contract HelloWorld {
 }
 ```
 
+### **Explanation:**
+
 Great, we've created our first contract, even though it doesn't do anything yet. Let's break down the parts:
 
 access(all): This keyword makes the contract public for anyone to read.

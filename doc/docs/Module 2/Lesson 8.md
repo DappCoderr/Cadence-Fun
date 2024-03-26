@@ -41,6 +41,8 @@ access(all) struct Glass {
 
 ```
 
+### **Explanation:**
+
 Here, the Glass struct includes a size property of type Size (enum), representing the size of the glass.
 
 By utilizing enums within structs, you can maintain clarity and consistency in your code while reducing the likelihood of errors related to incorrect value assignments.

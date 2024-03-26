@@ -31,7 +31,7 @@ access(all) resource Country{
 }
 ```
 
-Explanation:
+### **Explanation:**
 
 - `access(all)`: This access modifier allows anyone to read the variables.
 - `resource`: This keyword signifies the creation of a resource, in this case, Country.

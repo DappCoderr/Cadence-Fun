@@ -30,7 +30,7 @@ access(all) resource Library {
 }
 ```
 
-**Explanation:**
+### **Explanation:**
 
 - We define a struct `Book` with properties for `title` and `author`.
 - The `Library` resource contains a property `book` of type `Book`.
