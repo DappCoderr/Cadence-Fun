@@ -3,14 +3,13 @@ title: Lesson 2 - Import in Cadence
 sidebar_position: 2
 ---
 
-`import` keyword is like borrowing a tool from your neighbor's toolbox when you need it. It lets you bring in code from other files or contracts on the blockchain so you can use it in your own smart contracts. It's a bit like saying, "Hey, I need this piece of code to do something cool - can I borrow it?"
+Think of the `import` keyword as borrowing tools from a neighbor's toolbox. It allows you to bring code from other files or blockchain contracts into your own smart contracts, making development more efficient. It's a bit like saying, "Hey, I need this piece of code to do something cool."
 
 ### **Purpose and Usefulness:**
 
 Think of `import` as a shortcut for developers. It helps in three main ways:
 
 - You can reuse code others have already written. It's like borrowing a recipe instead of inventing one from scratch. Saves time and effort!
-- You can import and work with other smart contracts. It's like asking a friend to help you with their expertise. Makes building complex stuff easier!
 - Importing from trusted sources boosts security. It's like buying ingredients from a reliable store. Reduces risks and headaches!
 
 ### **Implementation:**
@@ -30,9 +29,10 @@ import Counter from 0x299F20A29311B9248F12
 
 ### **Explanation:**
 
-In this example, we're importing the `NonFungibleToken` contract from the address `0xft22if84jkj42mw0`. It's like borrowing a special tool for handling non-fungible tokens (unique digital items). By importing, we can use all the features of `NonFungibleToken` without starting from scratch.
+- In this example, we demonstrate two methods of importing the `Counter` smart contract: from a local file and from an external account.
+- By importing, we gain access to all the features of the imported contract without needing to start from scratch.
 
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Let's go back to our contract and try to import a `NonFungibleToken` from `0x299F20A29311B9248F12`
+2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.
