@@ -1,21 +1,35 @@
 ---
-title: Lesson 3 - Marking Knight as NFT
+title: Lesson 3 - Introduction to Flow-NFT Standard
 sidebar_position: 3
 ---
 
-In this lesson, we're going to mark a `Knight` as a non-fungible token (NFT). Imagine each `Knight` as a unique character in a game or a special digital collectible. We'll use the `NonFungibleToken` contract we imported earlier to help us manage these special tokens.
+In this lesson, we'll explore the Flow NFT Standard, a guideline defining events, functions, resources, and other elements necessary for NFT contracts. Implementing this standard ensures compatibility of your NFTs with various platforms and services within the Flow ecosystem.
 
 ### **Purpose and Usefulness:**
 
-Turning the `Knight` into an NFT makes it one-of-a-kind, just like real-life collectibles. This is useful because:
+1. **Unique Identity:** Transforming resources into NFTs grants them individuality, akin to real-life collectibles. Each NFT, such as a Knight, possesses its own distinct identity, similar to providing players in a game with unique avatars.
 
-- Each `Knight` will have its own special identity. It's like giving each player in a game their own unique avatar.
-- NFTs can be owned, bought, and sold. It's like owning a rare baseball card - you can trade it with others or keep it safe in your collection.
+2. **Ownership and Exchange:** NFTs can be owned, bought, and sold, resembling ownership of rare physical collectibles like baseball cards. This feature allows for trading among users or safekeeping within personal collections.
 
 ### **Implementation:**
 
-```cadence
-import NonFungibleToken from 0xft22if84jkj42mw0
+To integrate the Flow NFT Standard into your contract, follow these steps:
+
+```jsx
+import NonFungibleToken
+
+access(all) contract HelloWorld: NonFungibleToken {
+
+    // ...[rest of code]...
+
+}
+```
+
+**Updating NFT Resource:**
+The NFT resource must implement the NonFungibleToken.INFT interface:
+
+```jsx
+import NonFungibleToken
 
 access(all) contract HelloWorld: NonFungibleToken {
 
@@ -27,10 +41,10 @@ access(all) contract HelloWorld: NonFungibleToken {
 
 ### **Explanation:**
 
-Inside the `HelloWorld` contract, we've created a resource called `NFT`. Resources in Cadence are special types of objects that represent digital assets, like our `Knight`. By defining `NFT` as a resource, we're saying that each instance of `NFT` will be a unique token.
+Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
 
 ### **Put it to the Test:**
 
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create instances of `NFT` within the `Knight` contract.
-3. Add properties to the `NFT` resource to make each Knight unique.
+1. Feel free to experiment with the Flow [Playground](https://play.flow.com/)
+2. Create instances of NFTs within the Knight contract.
+3. Enhance the NFT resource by adding properties to ensure uniqueness for each Knight.
