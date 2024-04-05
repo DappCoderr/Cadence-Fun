@@ -1,43 +1,38 @@
 ---
-title: Lesson 4 - Introducing Collection
+title: Lesson 4 - Withdraw Function
 sidebar_position: 4
 ---
 
-In this lesson, we're introducing a concept called `Collection`. A collection is like a special container that holds multiple non-fungible tokens (NFTs) together. It allows us to organize and manage our NFTs more efficiently, just like organizing items in different folders on your computer.
+In this lesson, we're adding a `withdraw` function to our collection. This function allows users to remove a specific non-fungible token (NFT) from the collection and transfer it to themselves. It's like withdrawing money from a bank account - you're taking something out for yourself.
 
 ### **Purpose and Usefulness:**
 
-Collections help us organize and manage our NFTs in a structured way. This is useful because:
+The `withdraw` function serves two main purposes:
 
-- Grouping NFTs into collections makes it easier to keep track of them and perform actions on them collectively.
-- Collections can have special features or behaviors tailored to specific use cases. For example, a game might have collections for different types of in-game items, each with its own rules and interactions.
+- **Flexibility:** It gives users the ability to take ownership of specific NFTs stored in the collection. This is useful for transferring NFTs between users or performing other actions that require individual token ownership.
+- **Control:** By restricting access to the `withdraw` function, we can ensure that only authorized users can remove NFTs from the collection. This helps maintain security and prevent unauthorized access to valuable assets.
 
 ### **Implementation:**
 
 ```jsx
-import NonFungibleToken from 0xft22if84jkj42mw0
+pub resource Collection {
 
-access(all) contract HelloWorld: NonFungibleToken {
-
-    access(all) resource NFT {
-        // Some code...
-    }
-
-    access(all) resource Collection: NonFungibleToken.Collection {
-        // Some code...
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+        let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
+        return <- token
     }
 }
+
 ```
 
 ### **Explanation:**
 
-Inside the `HelloWorld` contract, we've introduced two resources: `NFT` and `Collection`. While we've defined `NFT` before, `Collection` is a new resource type provided by the `NonFungibleToken` contract. It represents a collection of NFTs and allows us to perform operations on them collectively.
+The `withdraw` function takes a `withdrawID` parameter, which represents the unique identifier of the NFT to be withdrawn from the collection. Inside the function, we use the `remove` method to remove the NFT associated with the provided ID from the `ownedNFTs` dictionary. If the removal is successful, the function returns the withdrawn NFT to the caller.
 
 ### **Put it to the Test:**
 
-1. Open Flow [Playground](https://play.flow.com/)
-2. Creating new resource named as `Collection`.
+In this section, learners can practice using the `withdraw` function by:
 
-- Adding NFTs to collections and removing them.
-- Performing actions on all NFTs within a collection, such as transferring ownership or updating properties.
-  These exercises help learners understand how collections work and how they can be used to manage NFTs effectively in their contracts.
+- Calling the function with different `withdrawID` values to remove NFTs from the collection.
+- Checking that the withdrawn NFTs are transferred to the caller successfully.
+- Testing scenarios where the provided `withdrawID` does not correspond to any NFT in the collection to understand error handling.

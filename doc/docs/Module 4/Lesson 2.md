@@ -1,38 +1,48 @@
 ---
-title: Lesson 2 - Import in Cadence
+title: Lesson 2 - Collection
 sidebar_position: 2
 ---
 
-Think of the `import` keyword as borrowing tools from a neighbor's toolbox. It allows you to bring code from other files or blockchain contracts into your own smart contracts, making development more efficient. It's a bit like saying, "Hey, I need this piece of code to do something cool."
+In this lesson, we're introducing a new concept called `Collections`.
 
-### **Purpose and Usefulness:**
+A collection acts as a special container that holds multiple non-fungible tokens (NFTs) together. It allows us to organize and manage our NFTs more efficiently, akin to organizing items in different folders on your computer.
 
-Think of `import` as a shortcut for developers. It helps in three main ways:
+Storing individual NFTs directly in an account's storage can cause issues, especially if you want to store multiple NFTs. Instead, it's required to create a collection that can hold multiple NFTs. This collection can then be stored in the account's storage.
 
-- You can reuse code others have already written. It's like borrowing a recipe instead of inventing one from scratch. Saves time and effort!
-- Importing from trusted sources boosts security. It's like buying ingredients from a reliable store. Reduces risks and headaches!
+### Purpose and Usefulness
 
-### **Implementation:**
+Collections help us organize and manage our NFTs in a structured way. This is useful because:
 
-Let's take a look how we can implement this -
+- Grouping NFTs into collections makes it easier to keep track of them and perform actions on them collectively.
+- Collections can have special features or behaviors tailored to specific use cases. For example, a game might have collections for different types of in-game items, each with its own rules and interactions.
+
+### Implementation
 
 ```jsx
-// Import the type `Counter` from a local file.
-//
-import Counter from "./examples/counter.cdc"
+import NonFungibleToken from 0xft22if84jkj42mw0
 
-// Import the type `Counter` from an external account.
-//
-import Counter from 0x299F20A29311B9248F12
+access(all) contract HelloWorld: NonFungibleToken {
 
+    access(all) resource Collection {
+    }
+}
 ```
 
-### **Explanation:**
+### Explanation
 
-- In this example, we demonstrate two methods of importing the `Counter` smart contract: from a local file and from an external account.
-- By importing, we gain access to all the features of the imported contract without needing to start from scratch.
+This code adds a new resource type called `Collection` within the HelloWorld contract. It acts as a container for non-fungible tokens (NFTs) and enables collective operations.
 
-### **Put it to the Test:**
+`ownedNFTs`: This variable stores the NFTs owned by the contract.
+
+`init()`: Initializes the ownedNFTs collection as empty when a Collection instance is created.
+
+`destroy()`: Cleans up the ownedNFTs collection when the Collection instance is destroyed.
+
+### Try it Out
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.
+2. Creating new resource named as `Collection`.
+
+- Adding NFTs to collections and removing them.
+- Performing actions on all NFTs within a collection, such as transferring ownership or updating properties.
+  These exercises help learners understand how collections work and how they can be used to manage NFTs effectively in their contracts.

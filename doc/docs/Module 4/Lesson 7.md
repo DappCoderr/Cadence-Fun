@@ -1,43 +1,38 @@
 ---
-title: Lesson 7 - Deposit Function
+title: Lesson 7 - GetId
 sidebar_position: 7
 ---
 
-In this lesson, we're introducing a `deposit` function to our collection. This function allows users to add a new non-fungible token (NFT) to the collection. It's like depositing money into a bank account - you're adding something valuable to your collection.
+In this lesson, we're adding a function to our collection to check the number of non-fungible tokens (NFTs) stored in it. This function provides users with information about the size of the collection, similar to counting the number of books in a library.
 
 ### **Purpose and Usefulness:**
 
-The `deposit` function serves to expand the collection by adding new NFTs. This is useful because:
+The `getLength` function serves to provide transparency regarding the size of the collection. This is useful because:
 
-1. **Expansion:** It allows users to contribute new assets to the collection, increasing its value and diversity over time.
+1. **Inventory Management:** Users can assess the extent of their collection and make informed decisions about managing their assets.
 
-2. **Flexibility:** Users can deposit NFTs from their own inventory or receive them from other users, enabling trading and collaboration within the ecosystem.
+2. **Efficiency:** Knowing the collection's length can help optimize operations and resource allocation when interacting with the collection.
 
 ### **Implementation:**
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+pub resource Collection {
 
-    access(all) fun deposit(token: @{NonFungibleToken.NFT}) {
-        let token <- token as! @ExampleNFT.NFT
-
-        // Add the new token to the dictionary and remove the old one
-        let oldToken <- self.ownedNFTs[token.id] <- token
-
-        destroy oldToken
+    pub fun getIDs(): [UInt64] {
+        return self.ownedNFTs.keys
     }
 }
 ```
 
 ### **Explanation:**
 
-The `deposit` function takes a `token` parameter, which is an instance of the `NonFungibleToken.NFT` resource. Inside the function, we cast the `token` to the specific type of NFT (`ExampleNFT.NFT` in this case) to ensure type safety. Then, we add the new token to the `ownedNFTs` dictionary, replacing any existing token with the same ID. Finally, we destroy the old token to prevent duplication and ensure efficient use of storage.
+The `getLength` function retrieves the number of keys (NFT IDs) stored in the `ownedNFTs` dictionary, which represents the number of NFTs in the collection. It returns an integer representing the length of the collection.
 
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `deposit` function by:
+In this section, learners can practice using the `getLength` function by:
 
-- Calling the function with different NFTs to deposit them into the collection.
-- Checking that the deposited NFTs are added to the collection successfully.
-- Testing scenarios where the deposited NFTs replace existing ones in the collection to understand storage management.
-  These exercises help learners understand how to interact with the `deposit` function and its impact on the collection's state.
+- Calling the function to retrieve the length of the collection.
+- Checking that the returned length corresponds to the actual number of NFTs stored in the collection.
+- Testing scenarios with different collections to understand variations in length based on the number of stored NFTs.
+  These exercises help learners understand how to use the `getLength` function to obtain information about the collection's size and make informed decisions based on that information.

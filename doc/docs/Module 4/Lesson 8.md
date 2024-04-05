@@ -1,38 +1,53 @@
 ---
-title: Lesson 8 - Borrow Function
+title: Lesson 8 - Interface
 sidebar_position: 8
 ---
 
-In this lesson, we're introducing a `borrowNFT` function to our collection. This function allows users to temporarily borrow a specific non-fungible token (NFT) from the collection without transferring ownership. It's like borrowing a book from a library - you can use it for a while, but you need to return it afterward.
+In this lesson, we're introducing an interface called `KnightCollectionPublic`. An interface defines a set of functions that a type must implement. This interface specifies the functions that a `Knight` collection must provide to interact with NFTs.
 
 ### **Purpose and Usefulness:**
 
-The `borrowNFT` function provides users with a way to access NFTs from the collection for temporary use or inspection. This is useful because:
+Interfaces define a contract that concrete types must adhere to. This is useful because:
 
-1. **Accessibility:** Users can borrow NFTs without permanently transferring ownership, allowing for temporary interactions or read-only access.
+1. **Standardization:** Interfaces provide a standardized way to interact with different types, ensuring consistency and compatibility across implementations.
 
-2. **Convenience:** It provides a convenient way to access specific NFTs stored in the collection without modifying the collection's state.
+2. **Abstraction:** Interfaces allow developers to work with types at a higher level of abstraction, focusing on what actions they can perform rather than their specific implementations.
 
 ### **Implementation:**
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+access(all) contract FooBar {
 
-    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+    // ...[previous code]...
+
+    pub resource interface CollectionPublic {
+        pub fun deposit(token: @NFT)
+        pub fun getIDs(): [UInt64]
     }
+
+    pub resource Collection: CollectionPublic {
+        // ...[Collection code]...
+    }
+
+    // ...[following code]...
 }
+
 ```
 
 ### **Explanation:**
 
-The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
+The `KnightCollectionPublic` interface defines four functions that a `Knight` collection must provide:
+
+- `deposit`: Adds an NFT to the collection.
+- `getIDs`: Retrieves the IDs of all NFTs in the collection.
+- `borrowNFT`: Allows borrowing an NFT from the collection.
+- `borrowKinght`: Allows borrowing a `Knight` NFT from the collection. The post-condition ensures that the returned reference has the correct ID.
 
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `borrowNFT` function by:
+In this section, learners can practice using the `KnightCollectionPublic` interface by:
 
-- Calling the function with different NFT IDs to borrow specific NFTs from the collection.
-- Checking that the borrowed NFTs are accessible and usable within their contracts.
-- Testing scenarios where the provided NFT ID does not exist in the collection to understand error handling.
-  These exercises help learners understand how to interact with the `borrowNFT` function and its impact on accessing NFTs from the collection.
+- Implementing a concrete type that adheres to the interface's requirements.
+- Ensuring that the implemented functions fulfill the interface's contract.
+- Testing the implemented type with various interactions to verify compliance with the interface.
+  These exercises help learners understand how interfaces define contracts and guide the implementation of types to meet those requirements.

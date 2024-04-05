@@ -1,39 +1,29 @@
 ---
-title: Lesson 9 - Check Collection Length
+title: Lesson 9 - New Empty Collection
 sidebar_position: 9
 ---
 
-In this lesson, we're adding a function to our collection to check the number of non-fungible tokens (NFTs) stored in it. This function provides users with information about the size of the collection, similar to counting the number of books in a library.
+In this lesson, we're adding a public function that allows users to create an empty collection. This function provides a convenient way to initialize a new collection without any existing non-fungible tokens (NFTs).
 
 ### **Purpose and Usefulness:**
 
-The `getLength` function serves to provide transparency regarding the size of the collection. This is useful because:
+The `createEmptyCollection` function serves to streamline the creation of new collections. This is useful because:
 
-1. **Inventory Management:** Users can assess the extent of their collection and make informed decisions about managing their assets.
+1. **Simplicity:** Users can create collections with a single function call, eliminating the need for manual initialization.
 
-2. **Efficiency:** Knowing the collection's length can help optimize operations and resource allocation when interacting with the collection.
+2. **Consistency:** The function ensures that all newly created collections start with an empty state, avoiding potential inconsistencies or errors.
 
 ### **Implementation:**
 
-```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+```cadence
 
-    /// Gets the amount of NFTs stored in the collection
-    access(all) view fun getLength(): Int {
-        return self.ownedNFTs.keys.length
-    }
+    access(all) fun createEmptyCollection(): @Collection {
+        return <- create Collection()
 }
 ```
 
 ### **Explanation:**
 
-The `getLength` function retrieves the number of keys (NFT IDs) stored in the `ownedNFTs` dictionary, which represents the number of NFTs in the collection. It returns an integer representing the length of the collection.
+The `createEmptyCollection` function creates a new `Collection` resource instance using the `create` keyword, which allocates memory for the resource on the blockchain. It returns a reference to the newly created collection, allowing users to start adding NFTs to it.
 
-### **Put it to the Test:**
-
-In this section, learners can practice using the `getLength` function by:
-
-- Calling the function to retrieve the length of the collection.
-- Checking that the returned length corresponds to the actual number of NFTs stored in the collection.
-- Testing scenarios with different collections to understand variations in length based on the number of stored NFTs.
-  These exercises help learners understand how to use the `getLength` function to obtain information about the collection's size and make informed decisions based on that information.
+### **Putting it to the Test:**

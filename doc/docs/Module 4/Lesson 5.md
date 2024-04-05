@@ -1,35 +1,44 @@
 ---
-title: Lesson 5 - Collection Storage
+title: Lesson 5 - Deposit Function
 sidebar_position: 5
 ---
 
-In this lesson, we're diving deeper into collections by adding storage capabilities. This means we're giving our collections the ability to remember and keep track of the non-fungible tokens (NFTs) they contain. It's like giving a backpack the ability to store items you collect on your journey.
+In this lesson, we're introducing a `deposit` function to our collection. This function allows users to add a new non-fungible token (NFT) to the collection. It's like depositing money into a bank account - you're adding something valuable to your collection.
 
 ### **Purpose and Usefulness:**
 
-Storage for collections is crucial because:
+The `deposit` function serves to expand the collection by adding new NFTs. This is useful because:
 
-- Collections need to remember which NFTs they contain, just like a backpack needs to remember the items inside it. Storage allows collections to keep track of their contents over time.
-- Storing NFTs within collections makes it easier to access and manage them. It's like having a well-organized backpack where you can quickly find what you need.
+1. **Expansion:** It allows users to contribute new assets to the collection, increasing its value and diversity over time.
+
+2. **Flexibility:** Users can deposit NFTs from their own inventory or receive them from other users, enabling trading and collaboration within the ecosystem.
 
 ### **Implementation:**
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+pub resource Collection {
 
-    access(contract) var ownedNFTs: @{UInt64: HelloWorld.NFT}
+    // ...[withdraw function code]...
 
-    init() {
-        self.ownedNFTs <- {}
+    pub fun deposit(token: @NFT) {
+        let tokenID = token.id
+        self.ownedNFTs[token.id] <-! token
     }
+
+    // ...[following code]...
 }
+
 ```
 
 ### **Explanation:**
 
-Inside the `Collection` resource, we've added a storage variable `ownedNFTs`. This variable is a dictionary that maps `UInt64` keys to instances of `HelloWorld.NFT`. Each key represents a unique identifier for an NFT, and its corresponding value is the NFT itself. In the `init` function, we initialize `ownedNFTs` to an empty dictionary when a new collection is created.
+The `deposit` function takes a `token` parameter, which is an instance of the `NonFungibleToken.NFT` resource. Inside the function, we cast the `token` to the specific type of NFT (`ExampleNFT.NFT` in this case) to ensure type safety. Then, we add the new token to the `ownedNFTs` dictionary, replacing any existing token with the same ID. Finally, we destroy the old token to prevent duplication and ensure efficient use of storage.
 
 ### **Put it to the Test:**
 
-1. Open Flow [Playground](https://play.flow.com/)
-2. Adding NFTs to the `ownedNFTs` dictionary.
+In this section, learners can practice using the `deposit` function by:
+
+- Calling the function with different NFTs to deposit them into the collection.
+- Checking that the deposited NFTs are added to the collection successfully.
+- Testing scenarios where the deposited NFTs replace existing ones in the collection to understand storage management.
+  These exercises help learners understand how to interact with the `deposit` function and its impact on the collection's state.

@@ -5,16 +5,10 @@ sidebar_position: 1
 
 Welcome to Module 4 of our series! 🎉
 
-So far, we've covered a lot and even built our own Knight.
+So far, we've learned a lot and even created our own Knight.
 
-Now, get ready for something really cool! In Module 4, we're going to talk about tokens. You might have heard about tokens if you've been in the blockchain space for a while — specifically, fungible tokens. But here's the twist – we're focusing on a special type called non-fungible tokens (NFTs).
-
-Think of NFTs as unique digital items, similar to rare trading cards or one-of-a-kind artworks.
+Now, get ready for something really interesting! In Module 4, we'll talk about flow accounts. Cadence, the language we're using, is a bit different from what you might be used to. Here, instead of storing your stuff in a shared place like a safe deposit box, you get your own personal storage space. It's like having your own room rather than sharing a dorm. This is unlike Ethereum, where your digital items are usually kept in a shared safe. But in Cadence, if you own something, it's kept in your own personal space. As we move forward, we'll learn how to put our Knight directly into our personal space instead of in a shared one.
 
 Exciting, right?
 
-Let's dive into Module 4 and discover all the fun stuff waiting for us! 💪✨
-
-In this lesson, we're going to talk about using a special kind of token to represent Knights. These tokens are designed specifically, making each item complete one unique piece and not possible to break into smaller parts. You can only trade whole Knights, and each Knight has its own special ID number.
-
-You might wonder why we need these tokens when we already have resources. Well, standard provide some special set of rules like minting, storage etc, it's like interface which helps you to build NFT easily.
+Let's jump into Module 4 and explore all the cool things waiting for us! 💪✨

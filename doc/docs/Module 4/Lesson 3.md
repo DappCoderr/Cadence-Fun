@@ -1,50 +1,38 @@
 ---
-title: Lesson 3 - Introduction to Flow-NFT Standard
+title: Lesson 3 - Resources Owning Resources
 sidebar_position: 3
 ---
 
-In this lesson, we'll explore the Flow NFT Standard, a guideline defining events, functions, resources, and other elements necessary for NFT contracts. Implementing this standard ensures compatibility of your NFTs with various platforms and services within the Flow ecosystem.
+In our adventure, we've learned about resources. Now, let's discover a cool feature: resources owning other resources! Imagine you're playing a video game where you collect monsters. Each monster is like a special box holding its details, like its name and level. But what if your monster needs to carry things like swords or potions? That's where resource ownership comes in!
 
-### **Purpose and Usefulness:**
+### Purpose and Usefulness
 
-1. **Unique Identity:** Transforming resources into NFTs grants them individuality, akin to real-life collectibles. Each NFT, such as a Knight, possesses its own distinct identity, similar to providing players in a game with unique avatars.
+- **Remembering Stuff:** Just like you need a backpack to remember the items you carry, collections need storage to remember what's inside them.
+- **Staying Organized:** Putting things like game items in collections makes them easy to find and manage, just like keeping your stuff organized in a backpack.
 
-2. **Ownership and Exchange:** NFTs can be owned, bought, and sold, resembling ownership of rare physical collectibles like baseball cards. This feature allows for trading among users or safekeeping within personal collections.
-
-### **Implementation:**
-
-To integrate the Flow NFT Standard into your contract, follow these steps:
+### Implementation
 
 ```jsx
-import NonFungibleToken
+// Example of a collection with storage
+access(all) resource Collection: NonFungibleToken.Collection {
 
-access(all) contract HelloWorld: NonFungibleToken {
+    access(all) var ownedNFTs: @{UInt64: NFT}
 
-    // ...[rest of code]...
+    init() {
+        self.ownedNFTs <- {}
+    }
 
-}
-```
-
-**Updating NFT Resource:**
-The NFT resource must implement the NonFungibleToken.INFT interface:
-
-```jsx
-import NonFungibleToken
-
-access(all) contract HelloWorld: NonFungibleToken {
-
-    access(all) resource NFT: NonFungibleToken.NFT {
-        init() {}
+    destroy () {
+        destroy self.ownedNFTs
     }
 }
 ```
 
-### **Explanation:**
+### Explanation
 
-Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
+In the `Collection` resource, `ownedNFTs` is like the backpack storing the NFTs (the game items). When a new collection is created, it starts empty.
 
-### **Put it to the Test:**
+### Try it Out
 
-1. Feel free to experiment with the Flow [Playground](https://play.flow.com/)
-2. Create instances of NFTs within the Knight contract.
-3. Enhance the NFT resource by adding properties to ensure uniqueness for each Knight.
+1. Go to the [Flow Playground](https://play.flow.com/).
+2. Add some NFTs to the `ownedNFTs` backpack in the collection and see how it works!

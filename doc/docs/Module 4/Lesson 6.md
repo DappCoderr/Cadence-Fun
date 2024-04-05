@@ -1,41 +1,38 @@
 ---
-title: Lesson 6 - Withdraw Function
+title: Lesson 6 - Borrow Function
 sidebar_position: 6
 ---
 
-In this lesson, we're adding a `withdraw` function to our collection. This function allows users to remove a specific non-fungible token (NFT) from the collection and transfer it to themselves. It's like withdrawing money from a bank account - you're taking something out for yourself.
+In this lesson, we're introducing a `borrowNFT` function to our collection. This function allows users to temporarily borrow a specific non-fungible token (NFT) from the collection without transferring ownership. It's like borrowing a book from a library - you can use it for a while, but you need to return it afterward.
 
 ### **Purpose and Usefulness:**
 
-The `withdraw` function serves two main purposes:
+The `borrowNFT` function provides users with a way to access NFTs from the collection for temporary use or inspection. This is useful because:
 
-- **Flexibility:** It gives users the ability to take ownership of specific NFTs stored in the collection. This is useful for transferring NFTs between users or performing other actions that require individual token ownership.
-- **Control:** By restricting access to the `withdraw` function, we can ensure that only authorized users can remove NFTs from the collection. This helps maintain security and prevent unauthorized access to valuable assets.
+1. **Accessibility:** Users can borrow NFTs without permanently transferring ownership, allowing for temporary interactions or read-only access.
+
+2. **Convenience:** It provides a convenient way to access specific NFTs stored in the collection without modifying the collection's state.
 
 ### **Implementation:**
 
 ```jsx
 access(all) resource Collection: NonFungibleToken.Collection {
 
-    /// withdraw removes an NFT from the collection and moves it to the caller
-    access(NonFungibleToken.Withdraw | NonFungibleToken.Owner) fun withdraw(withdrawID: UInt64): @{NonFungibleToken.NFT} {
-
-        let token <- self.ownedNFTs.remove(key: withdrawID)
-            ?? panic("Could not withdraw an NFT with the provided ID from the collection")
-
-        return <-token
+    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
     }
 }
 ```
 
 ### **Explanation:**
 
-The `withdraw` function takes a `withdrawID` parameter, which represents the unique identifier of the NFT to be withdrawn from the collection. Inside the function, we use the `remove` method to remove the NFT associated with the provided ID from the `ownedNFTs` dictionary. If the removal is successful, the function returns the withdrawn NFT to the caller.
+The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
 
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `withdraw` function by:
+In this section, learners can practice using the `borrowNFT` function by:
 
-- Calling the function with different `withdrawID` values to remove NFTs from the collection.
-- Checking that the withdrawn NFTs are transferred to the caller successfully.
-- Testing scenarios where the provided `withdrawID` does not correspond to any NFT in the collection to understand error handling.
+- Calling the function with different NFT IDs to borrow specific NFTs from the collection.
+- Checking that the borrowed NFTs are accessible and usable within their contracts.
+- Testing scenarios where the provided NFT ID does not exist in the collection to understand error handling.
+  These exercises help learners understand how to interact with the `borrowNFT` function and its impact on accessing NFTs from the collection.
