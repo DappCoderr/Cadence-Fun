@@ -1,31 +1,38 @@
 ---
-title: Lesson 2 - Creating Empty Collection
+title: Lesson 2 - Import in Cadence
 sidebar_position: 2
 ---
 
-In this lesson, we're adding a public function that allows users to create an empty collection. This function provides a convenient way to initialize a new collection without any existing non-fungible tokens (NFTs).
+Think of the `import` keyword as borrowing tools from a neighbor's toolbox. It allows you to bring code from other files or blockchain contracts into your own smart contracts, making development more efficient. It's a bit like saying, "Hey, I need this piece of code to do something cool."
 
 ### **Purpose and Usefulness:**
 
-The `createEmptyCollection` function serves to streamline the creation of new collections. This is useful because:
+Think of `import` as a shortcut for developers. It helps in three main ways:
 
-1. **Simplicity:** Users can create collections with a single function call, eliminating the need for manual initialization.
-
-2. **Consistency:** The function ensures that all newly created collections start with an empty state, avoiding potential inconsistencies or errors.
+- You can reuse code others have already written. It's like borrowing a recipe instead of inventing one from scratch. Saves time and effort!
+- Importing from trusted sources boosts security. It's like buying ingredients from a reliable store. Reduces risks and headaches!
 
 ### **Implementation:**
 
-```cadence
-access(all) resource Collection: NonFungibleToken.Collection {
+Let's take a look how we can implement this -
 
-    access(all) fun createEmptyCollection(): @Collection {
-        return <- create Collection()
-    }
-}
+```jsx
+// Import the type `Counter` from a local file.
+//
+import Counter from "./examples/counter.cdc"
+
+// Import the type `Counter` from an external account.
+//
+import Counter from 0x299F20A29311B9248F12
+
 ```
 
 ### **Explanation:**
 
-The `createEmptyCollection` function creates a new `Collection` resource instance using the `create` keyword, which allocates memory for the resource on the blockchain. It returns a reference to the newly created collection, allowing users to start adding NFTs to it.
+- In this example, we demonstrate two methods of importing the `Counter` smart contract: from a local file and from an external account.
+- By importing, we gain access to all the features of the imported contract without needing to start from scratch.
 
-### **Putting it to the Test:**
+### **Put it to the Test:**
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.

@@ -1,28 +1,38 @@
 ---
-title: Lesson 5 - Defining Path
+title: Lesson 5 - Borrow Function
 sidebar_position: 5
 ---
 
-In this lesson, we're defining storage and public paths for our collection. These paths specify where the collection will be stored in the account's storage and how it will be accessed publicly by other accounts.
+In this lesson, we're introducing a `borrowNFT` function to our collection. This function allows users to temporarily borrow a specific non-fungible token (NFT) from the collection without transferring ownership. It's like borrowing a book from a library - you can use it for a while, but you need to return it afterward.
 
 ### **Purpose and Usefulness:**
 
-Defining paths for storage and public access provides clarity and organization for managing resources on the blockchain. This is useful because:
+The `borrowNFT` function provides users with a way to access NFTs from the collection for temporary use or inspection. This is useful because:
 
-1. **Organization:** Paths help organize data within an account's storage, making it easier to locate and manage resources.
+1. **Accessibility:** Users can borrow NFTs without permanently transferring ownership, allowing for temporary interactions or read-only access.
 
-2. **Accessibility:** Public paths allow other accounts to access specific resources, facilitating interactions and collaborations within the blockchain ecosystem.
+2. **Convenience:** It provides a convenient way to access specific NFTs stored in the collection without modifying the collection's state.
 
 ### **Implementation:**
 
-```cadence
-pub let StoragePath: StoragePath
-pub let PublicPath: PublicPath
+```jsx
+access(all) resource Collection: NonFungibleToken.Collection {
+
+    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+    }
+}
 ```
 
 ### **Explanation:**
 
-- `StoragePath`: This variable defines the storage path where the collection will be saved within the account's storage. It specifies the location where the collection resource will reside persistently.
-- `PublicPath`: This variable defines the public path that other accounts can use to access the collection. It specifies the path through which the collection can be accessed and interacted with by external entities.
+The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
 
-### **Putting it to the Test:**
+### **Put it to the Test:**
+
+In this section, learners can practice using the `borrowNFT` function by:
+
+- Calling the function with different NFT IDs to borrow specific NFTs from the collection.
+- Checking that the borrowed NFTs are accessible and usable within their contracts.
+- Testing scenarios where the provided NFT ID does not exist in the collection to understand error handling.
+  These exercises help learners understand how to interact with the `borrowNFT` function and its impact on accessing NFTs from the collection.

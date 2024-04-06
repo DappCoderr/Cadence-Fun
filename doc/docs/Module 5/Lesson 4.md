@@ -1,28 +1,33 @@
 ---
-title: Lesson 4 - Account Storage
+title: Lesson 4 - Refactoring Collection
 sidebar_position: 4
 ---
 
-In this lesson, we're introducing account storage for our collection. We'll save the collection to the account's storage and link it to a public path. This allows the collection to be accessed and interacted with by other accounts on the blockchain.
+Till now we have we have learned about how to resources, create contract storage and saving NFT to the contract storage.
 
-### **Purpose and Usefulness:**
-
-Account storage enables persistent storage of data associated with an account. This is useful because:
-
-1. **Data Persistence:** Storing the collection in the account's storage ensures that it persists between transactions and can be accessed later.
-
-2. **Accessibility:** Linking the collection to a public path makes it accessible to other accounts, allowing them to interact with it.
+Before moving forward, we will understand flow accounts. In Cadence, users can store & own their data. This is very different from other languages like Solidity on Ethereum, where your NFT gets stored in the smart contract. In Cadence, if I own an NFT, it gets stored in my account. By moving forward we will store our Knight directly into our own account rather than storing in smart contract.
 
 ### **Implementation:**
 
-```cadence
-self.account.save(<- create Collection(), to: self.StoragePath)
-self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+Let's take a look how we can implement this -
+
+```jsx
+// Import the type `Counter` from a local file.
+//
+import Counter from "./examples/counter.cdc"
+
+// Import the type `Counter` from an external account.
+//
+import Counter from 0x299F20A29311B9248F12
+
 ```
 
 ### **Explanation:**
 
-- `self.account.save(<- create Collection(), to: self.StoragePath)`: This line creates a new instance of the `Collection` resource and saves it to the account's storage at the specified storage path (`self.StoragePath`).
-- `self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)`: This line links the `KnightCollectionPublic` interface to a public path (`self.PublicPath`), pointing to the storage path where the collection is stored (`self.StoragePath`). This allows other accounts to access and interact with the collection using the specified interface.
+- In this example, we demonstrate two methods of importing the `Counter` smart contract: from a local file and from an external account.
+- By importing, we gain access to all the features of the imported contract without needing to start from scratch.
 
-### **Putting it to the Test:**
+### **Put it to the Test:**
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.

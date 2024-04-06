@@ -17,7 +17,7 @@ access(all) contract KnightContract {
   access(all) var nextKnightId: UInt64
 
   // new code---------------------------------------------->
-  access(all) let storeKnight: @{UInt64: Knight}
+  access(all) let storeKnight: @{UInt64: KnightNFT}
 
   access(all) enum Types: UInt8 {
     access(all) case fire
@@ -64,8 +64,8 @@ access(all) contract KnightContract {
   }
 
   // new code---------------------------------------------->
-  access(all) fun storeKnights(knight: @Knight) {
-    self.storeKnight[knight.details.id] <-! knight
+  access(all) fun storeKnights(knight: @KnightNFT) {
+    self.storeKnight[knight.id] <-! knight
   }
 
   // new code---------------------------------------------->
@@ -74,7 +74,7 @@ access(all) contract KnightContract {
   }
 
   // new code---------------------------------------------->
-  access(all) fun getknightDetails(id: UInt64): knightDetails? {
+  access(all) fun getknightDetails(id: UInt64): KnightDetails? {
     return self.storeKnight[id]?.details
   }
 

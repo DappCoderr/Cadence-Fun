@@ -1,38 +1,50 @@
 ---
-title: Lesson 3 - Minting NFT
+title: Lesson 3 - Introduction to Flow-NFT Standard
 sidebar_position: 3
 ---
 
-In this lesson, we're adding a function to our `Collection` resource that allows users to mint (create) a new non-fungible token (NFT). This function enables users to generate unique NFTs with specified attributes, such as name and type.
+In this lesson, we'll explore the Flow NFT Standard, a guideline defining events, functions, resources, and other elements necessary for NFT contracts. Implementing this standard ensures compatibility of your NFTs with various platforms and services within the Flow ecosystem.
 
 ### **Purpose and Usefulness:**
 
-The `mintKnight` function serves as a mechanism for creating new NFTs with customized properties. This is useful because:
+1. **Unique Identity:** Transforming resources into NFTs grants them individuality, akin to real-life collectibles. Each NFT, such as a Knight, possesses its own distinct identity, similar to providing players in a game with unique avatars.
 
-1. **Customization:** Users can create NFTs with specific attributes, making them unique and tailored to their needs or preferences.
-
-2. **Flexibility:** The function allows for dynamic minting of NFTs based on user inputs, enabling diverse use cases such as gaming, digital art, and collectibles.
+2. **Ownership and Exchange:** NFTs can be owned, bought, and sold, resembling ownership of rare physical collectibles like baseball cards. This feature allows for trading among users or safekeeping within personal collections.
 
 ### **Implementation:**
 
-```cadence
-access(all) resource Collection: NonFungibleToken.Collection {
+To integrate the Flow NFT Standard into your contract, follow these steps:
 
-    pub fun mintKnight(name: String, type: String): @NFT {
-        pre {
-            name.length > 0: "Name cannot be empty"
-            type.length > 0: "Type cannot be empty"
-        }
-        let nftId = Knight.totalSupply
-        var newNFT <- create NFT(_name: name, _type: type)
-        emit KnightMinted(id: nftId, name: name, type: type)
-        return <-newNFT
+```jsx
+import NonFungibleToken
+
+access(all) contract HelloWorld: NonFungibleToken {
+
+    // ...[rest of code]...
+
+}
+```
+
+**Updating NFT Resource:**
+The NFT resource must implement the NonFungibleToken.INFT interface:
+
+```jsx
+import NonFungibleToken
+
+access(all) contract HelloWorld: NonFungibleToken {
+
+    access(all) resource NFT: NonFungibleToken.NFT {
+        init() {}
     }
 }
 ```
 
 ### **Explanation:**
 
-The `mintKnight` function takes two parameters, `name` and `type`, representing the name and type of the new Knight NFT to be minted. It checks the pre-conditions to ensure that both `name` and `type` are non-empty strings. Then, it generates a unique ID for the new NFT based on the total supply of Knights, creates a new NFT instance with the provided attributes, emits an event to signal the minting of the NFT, and returns the newly minted NFT.
+Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
 
-### **Putting it to the Test:**
+### **Put it to the Test:**
+
+1. Feel free to experiment with the Flow [Playground](https://play.flow.com/)
+2. Create instances of NFTs within the Knight contract.
+3. Enhance the NFT resource by adding properties to ensure uniqueness for each Knight.

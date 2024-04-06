@@ -14,3 +14,22 @@ Think of NFTs as unique digital items, similar to rare trading cards or one-of-a
 Exciting, right?
 
 Let's dive into Module 4 and discover all the fun stuff waiting for us! 💪✨
+
+collection
+withdraw
+deposit
+interface
+new empty collection
+save, load and link
+moving knight to flow account
+capability
+reference
+
+calculating xp
+Refactoring Knight Resource
+battle logic
+import
+Flow Tokens
+import
+Applying NFT-Token Standard
+Adding Event

@@ -1,30 +1,28 @@
 ---
-title: Lesson 7 - Using VRF
+title: Lesson 7 - Refactoring Account Storage Path
 sidebar_position: 7
 ---
 
-In this lesson, we're implementing a function to generate a random experience points (XP) value for a Knight NFT. We'll utilize a Verifiable Random Function (VRF) to generate a secure and unpredictable random number.
+In this lesson, we're defining storage and public paths for our collection. These paths specify where the collection will be stored in the account's storage and how it will be accessed publicly by other accounts.
 
 ### **Purpose and Usefulness:**
 
-Using a VRF for generating random numbers ensures fairness and security in applications where randomness is required. This is useful because:
+Defining paths for storage and public access provides clarity and organization for managing resources on the blockchain. This is useful because:
 
-1. **Fairness:** VRF ensures that no party can manipulate or predict the outcome of random number generation, ensuring fairness in applications like gaming and lotteries.
+1. **Organization:** Paths help organize data within an account's storage, making it easier to locate and manage resources.
 
-2. **Security:** VRF provides cryptographic security guarantees, making it resistant to manipulation or bias.
+2. **Accessibility:** Public paths allow other accounts to access specific resources, facilitating interactions and collaborations within the blockchain ecosystem.
 
 ### **Implementation:**
 
 ```cadence
-pub fun getRandomKnightXP(): UInt64 {
-    let randomNumber: UInt64 = revertibleRandom()
-    return (randomNumber % 100) + 1
-}
+pub let StoragePath: StoragePath
+pub let PublicPath: PublicPath
 ```
 
 ### **Explanation:**
 
-- `revertibleRandom()`: This function returns a random UInt64 value generated using a Verifiable Random Function (VRF). The generated random number is cryptographically secure and unpredictable.
-- `(randomNumber % 100) + 1`: This expression ensures that the generated random number falls within the range of 1 to 100, making it suitable for representing experience points (XP) for a Knight NFT.
+- `StoragePath`: This variable defines the storage path where the collection will be saved within the account's storage. It specifies the location where the collection resource will reside persistently.
+- `PublicPath`: This variable defines the public path that other accounts can use to access the collection. It specifies the path through which the collection can be accessed and interacted with by external entities.
 
 ### **Putting it to the Test:**

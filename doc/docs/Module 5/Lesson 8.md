@@ -1,28 +1,36 @@
 ---
-title: Lesson 9 - Update NFT Resource
-sidebar_position: 9
+title: Lesson 8 - Generate Random XP
+sidebar_position: 8
 ---
 
-In this lesson, we're adding functionality to update the non-fungible token (NFT) resource. Specifically, we're introducing a function called `winner` that increments the win count of the NFT. This allows tracking of certain attributes or behaviors associated with individual NFTs.
+In this lesson, we're implementing a function to generate a random experience points (XP) value for a Knight. We'll utilize a Verifiable Random Function (VRF) by flow to generate a secure and unpredictable random number.
 
 ### **Purpose and Usefulness:**
 
-The `winner` function serves to update the state of an NFT, specifically increasing its win count. This is useful because:
+Using a VRF for generating random numbers ensures fairness and security in applications where randomness is required. This is useful because:
 
-1. **Tracking:** It allows keeping track of certain events or actions related to the NFT, such as wins in a game or achievements in a digital ecosystem.
+1. **Fairness:** VRF ensures that no party can manipulate or predict the outcome of random number generation, ensuring fairness in applications like gaming and lotteries.
 
-2. **Dynamic Behavior:** The ability to update NFT attributes enables dynamic behavior and interactivity, enhancing the utility and value of NFTs in various applications.
+2. **Security:** VRF provides cryptographic security guarantees, making it resistant to manipulation or bias.
 
 ### **Implementation:**
 
-```cadence
-pub fun winner() {
-    self.winCount = self.winCount + 1
+```jsx
+access(all) contract Dice {
+
+    access(all) fun roll(): UInt64 {
+        let rand: UInt64 = revertibleRandom()
+        return (rand%6)+1
+    }
+
+    init() {
+    }
 }
 ```
 
 ### **Explanation:**
 
-The `winner` function increments the `winCount` attribute of the NFT by 1. This attribute presumably tracks the number of wins associated with the NFT. By calling this function, the win count of the NFT is updated, reflecting its latest status or achievement.
+- `revertibleRandom()`: This function returns a random UInt64 value generated using a Verifiable Random Function (VRF). The generated random number is cryptographically secure and unpredictable.
+- `(randomNumber % 100) + 1`: This expression ensures that the generated random number falls within the range of 1 to 100, making it suitable for representing experience points (XP) for a Knight NFT.
 
 ### **Putting it to the Test:**
