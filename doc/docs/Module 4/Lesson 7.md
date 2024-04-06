@@ -1,38 +1,53 @@
 ---
-title: Lesson 7 - GetId
+title: Lesson 7 - Interface
 sidebar_position: 7
 ---
 
-In this lesson, we're adding a function to our collection to check the number of non-fungible tokens (NFTs) stored in it. This function provides users with information about the size of the collection, similar to counting the number of books in a library.
+In this lesson, we're introducing an interface called `KnightCollectionPublic`. An interface defines a set of functions that a type must implement. This interface specifies the functions that a `Knight` collection must provide to interact with NFTs.
 
 ### **Purpose and Usefulness:**
 
-The `getLength` function serves to provide transparency regarding the size of the collection. This is useful because:
+Interfaces define a contract that concrete types must adhere to. This is useful because:
 
-1. **Inventory Management:** Users can assess the extent of their collection and make informed decisions about managing their assets.
+1. **Standardization:** Interfaces provide a standardized way to interact with different types, ensuring consistency and compatibility across implementations.
 
-2. **Efficiency:** Knowing the collection's length can help optimize operations and resource allocation when interacting with the collection.
+2. **Abstraction:** Interfaces allow developers to work with types at a higher level of abstraction, focusing on what actions they can perform rather than their specific implementations.
 
 ### **Implementation:**
 
 ```jsx
-pub resource Collection {
+access(all) contract FooBar {
 
-    pub fun getIDs(): [UInt64] {
-        return self.ownedNFTs.keys
+    // ...[previous code]...
+
+    pub resource interface CollectionPublic {
+        pub fun deposit(token: @NFT)
+        pub fun getIDs(): [UInt64]
     }
+
+    pub resource Collection: CollectionPublic {
+        // ...[Collection code]...
+    }
+
+    // ...[following code]...
 }
+
 ```
 
 ### **Explanation:**
 
-The `getLength` function retrieves the number of keys (NFT IDs) stored in the `ownedNFTs` dictionary, which represents the number of NFTs in the collection. It returns an integer representing the length of the collection.
+The `KnightCollectionPublic` interface defines four functions that a `Knight` collection must provide:
+
+- `deposit`: Adds an NFT to the collection.
+- `getIDs`: Retrieves the IDs of all NFTs in the collection.
+- `borrowNFT`: Allows borrowing an NFT from the collection.
+- `borrowKinght`: Allows borrowing a `Knight` NFT from the collection. The post-condition ensures that the returned reference has the correct ID.
 
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `getLength` function by:
+In this section, learners can practice using the `KnightCollectionPublic` interface by:
 
-- Calling the function to retrieve the length of the collection.
-- Checking that the returned length corresponds to the actual number of NFTs stored in the collection.
-- Testing scenarios with different collections to understand variations in length based on the number of stored NFTs.
-  These exercises help learners understand how to use the `getLength` function to obtain information about the collection's size and make informed decisions based on that information.
+- Implementing a concrete type that adheres to the interface's requirements.
+- Ensuring that the implemented functions fulfill the interface's contract.
+- Testing the implemented type with various interactions to verify compliance with the interface.
+  These exercises help learners understand how interfaces define contracts and guide the implementation of types to meet those requirements.

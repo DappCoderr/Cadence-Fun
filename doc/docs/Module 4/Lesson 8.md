@@ -1,53 +1,29 @@
 ---
-title: Lesson 8 - Interface
+title: Lesson 8 - New Empty Collection
 sidebar_position: 8
 ---
 
-In this lesson, we're introducing an interface called `KnightCollectionPublic`. An interface defines a set of functions that a type must implement. This interface specifies the functions that a `Knight` collection must provide to interact with NFTs.
+In this lesson, we're adding a public function that allows users to create an empty collection. This function provides a convenient way to initialize a new collection without any existing non-fungible tokens (NFTs).
 
 ### **Purpose and Usefulness:**
 
-Interfaces define a contract that concrete types must adhere to. This is useful because:
+The `createEmptyCollection` function serves to streamline the creation of new collections. This is useful because:
 
-1. **Standardization:** Interfaces provide a standardized way to interact with different types, ensuring consistency and compatibility across implementations.
+1. **Simplicity:** Users can create collections with a single function call, eliminating the need for manual initialization.
 
-2. **Abstraction:** Interfaces allow developers to work with types at a higher level of abstraction, focusing on what actions they can perform rather than their specific implementations.
+2. **Consistency:** The function ensures that all newly created collections start with an empty state, avoiding potential inconsistencies or errors.
 
 ### **Implementation:**
 
-```jsx
-access(all) contract FooBar {
+```cadence
 
-    // ...[previous code]...
-
-    pub resource interface CollectionPublic {
-        pub fun deposit(token: @NFT)
-        pub fun getIDs(): [UInt64]
-    }
-
-    pub resource Collection: CollectionPublic {
-        // ...[Collection code]...
-    }
-
-    // ...[following code]...
+    access(all) fun createEmptyCollection(): @Collection {
+        return <- create Collection()
 }
-
 ```
 
 ### **Explanation:**
 
-The `KnightCollectionPublic` interface defines four functions that a `Knight` collection must provide:
+The `createEmptyCollection` function creates a new `Collection` resource instance using the `create` keyword, which allocates memory for the resource on the blockchain. It returns a reference to the newly created collection, allowing users to start adding NFTs to it.
 
-- `deposit`: Adds an NFT to the collection.
-- `getIDs`: Retrieves the IDs of all NFTs in the collection.
-- `borrowNFT`: Allows borrowing an NFT from the collection.
-- `borrowKinght`: Allows borrowing a `Knight` NFT from the collection. The post-condition ensures that the returned reference has the correct ID.
-
-### **Put it to the Test:**
-
-In this section, learners can practice using the `KnightCollectionPublic` interface by:
-
-- Implementing a concrete type that adheres to the interface's requirements.
-- Ensuring that the implemented functions fulfill the interface's contract.
-- Testing the implemented type with various interactions to verify compliance with the interface.
-  These exercises help learners understand how interfaces define contracts and guide the implementation of types to meet those requirements.
+### **Putting it to the Test:**

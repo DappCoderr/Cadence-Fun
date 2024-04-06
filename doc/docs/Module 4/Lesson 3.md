@@ -14,7 +14,7 @@ In our adventure, we've learned about resources. Now, let's discover a cool feat
 
 ```jsx
 // Example of a collection with storage
-access(all) resource Collection: NonFungibleToken.Collection {
+access(all) resource Collection {
 
     access(all) var ownedNFTs: @{UInt64: NFT}
 
@@ -30,7 +30,7 @@ access(all) resource Collection: NonFungibleToken.Collection {
 
 ### Explanation
 
-In the `Collection` resource, `ownedNFTs` is like the backpack storing the NFTs (the game items). When a new collection is created, it starts empty.
+In the `Collection` resource, `ownedNFTs` is like the backpack storing the NFTs (the game items). When a new collection is created, it starts empty. And whenever you use nested resource, you have to add `destroy()`.
 
 ### Try it Out
 

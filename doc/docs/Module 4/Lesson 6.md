@@ -1,38 +1,38 @@
 ---
-title: Lesson 6 - Borrow Function
+title: Lesson 6 - GetId
 sidebar_position: 6
 ---
 
-In this lesson, we're introducing a `borrowNFT` function to our collection. This function allows users to temporarily borrow a specific non-fungible token (NFT) from the collection without transferring ownership. It's like borrowing a book from a library - you can use it for a while, but you need to return it afterward.
+In this lesson, we're adding a function to our collection to check the number of non-fungible tokens (NFTs) stored in it. This function provides users with information about the size of the collection, similar to counting the number of books in a library.
 
 ### **Purpose and Usefulness:**
 
-The `borrowNFT` function provides users with a way to access NFTs from the collection for temporary use or inspection. This is useful because:
+The `getLength` function serves to provide transparency regarding the size of the collection. This is useful because:
 
-1. **Accessibility:** Users can borrow NFTs without permanently transferring ownership, allowing for temporary interactions or read-only access.
+1. **Inventory Management:** Users can assess the extent of their collection and make informed decisions about managing their assets.
 
-2. **Convenience:** It provides a convenient way to access specific NFTs stored in the collection without modifying the collection's state.
+2. **Efficiency:** Knowing the collection's length can help optimize operations and resource allocation when interacting with the collection.
 
 ### **Implementation:**
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+pub resource Collection {
 
-    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+    pub fun getIDs(): [UInt64] {
+        return self.ownedNFTs.keys
     }
 }
 ```
 
 ### **Explanation:**
 
-The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
+The `getLength` function retrieves the number of keys (NFT IDs) stored in the `ownedNFTs` dictionary, which represents the number of NFTs in the collection. It returns an integer representing the length of the collection.
 
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `borrowNFT` function by:
+In this section, learners can practice using the `getLength` function by:
 
-- Calling the function with different NFT IDs to borrow specific NFTs from the collection.
-- Checking that the borrowed NFTs are accessible and usable within their contracts.
-- Testing scenarios where the provided NFT ID does not exist in the collection to understand error handling.
-  These exercises help learners understand how to interact with the `borrowNFT` function and its impact on accessing NFTs from the collection.
+- Calling the function to retrieve the length of the collection.
+- Checking that the returned length corresponds to the actual number of NFTs stored in the collection.
+- Testing scenarios with different collections to understand variations in length based on the number of stored NFTs.
+  These exercises help learners understand how to use the `getLength` function to obtain information about the collection's size and make informed decisions based on that information.
