@@ -1,12 +1,30 @@
 ---
-title: Lesson 1 - Overview
+title: Lesson 1 - Account Storage - Dive into Your Own Vault!
 sidebar_position: 1
 ---
 
-Welcome to Module 4 of our series! 🎉
+Hey there adventurer! Welcome back to Module 4!
 
-We've learned a lot so far and even made our own Knight. Now, get ready for something cool! In Module 4, we'll talk about flow accounts. In Cadence, it's a bit different than what you might expect. Instead of storing your things in a shared place like a safe deposit box, you get your own space. It's like having your own room instead of sharing a dorm. Unlike Ethereum, where items are stored together, in Cadence, if you own something, it's in your personal space. As we go on, we'll learn how to put our Knight directly into our own space instead of sharing one.
+Remember that awesome Knight we created? Buckle up, because now you get a special place to store it, like a personal vault in the Flow world! ️
 
-Exciting, right?
+Forget the crowded bank! Unlike some other places (like Ethereum), where everything goes into one big storage locker, Flow lets you have your own secure space. This means your Knight (and other cool stuff you create) gets its own private home.
 
-Let's jump into Module 4 and see all the cool stuff waiting for us! 💪✨
+### Understanding Account Storage
+
+Imagine your Flow account as a two-story building:
+
+- Contract Code (Upstairs): This is where all the programs (called contracts) you create live. Think of them as the instructions for how to use your Knight.
+- Account Storage (Downstairs): This is your personal storage unit, accessible through a special path: /storage/. Here, you can keep all sorts of treasures, like your Knight! This is where things get interesting.
+
+### Levels of Access: Organizing Your Vault!
+
+Your vault has different sections, just like a fancy storage facility:
+
+- /storage/: This is the most private area. Only YOU have the key to access everything stored here. This is your personal stash for the most valuable items.
+- /public/: Think of this as a storefront window. Anyone can see what's on display here. It's a great place to put information that others might need, but you don't mind everyone knowing about. Maybe a cool battle cry for your Knight? ⚔️
+- /private/: This section is like a members-only club. Only you and those you give permission can access what's stored here. Imagine a training manual for your Knight, only for your trusted allies!
+  The Adventure Continues!
+
+As we explore further, you'll learn how to move your Knight from a shared storage space to your very own vault. Isn't that exciting?
+
+Get ready for Module 4, where tons of cool stuff awaits! Let's make the Flow world your own! ✨

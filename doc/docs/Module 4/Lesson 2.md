@@ -3,46 +3,29 @@ title: Lesson 2 - Collection
 sidebar_position: 2
 ---
 
-In this lesson, we're introducing a new concept called `Collections`.
+Imagine your digital collectibles scattered across a messy room – that's what having NFTs without collections can feel like. This lesson is your guide to organizing them into a shiny, personalized vault!
 
-A collection acts as a special container that holds multiple non-fungible tokens (NFTs) together. It allows us to organize and manage our NFTs more efficiently, akin to organizing items in different folders on your computer.
+### **What's a Collection?**
 
-Storing individual NFTs directly in an account's storage can cause issues, especially if you want to store multiple NFTs. Instead, it's required to create a collection that can hold multiple NFTs. This collection can then be stored in the account's storage.
+Think of a collection as a box that holds all your unique digital treasures (NFTs) together. Just like folders on your computer that help you group and manage your movies or music files efficiently.
 
-### Purpose and Usefulness
-
-Collections help us organize and manage our NFTs in a structured way. This is useful because:
-
-- Grouping NFTs into collections makes it easier to keep track of them and perform actions on them collectively.
-- Collections can have special features or behaviors tailored to specific use cases. For example, a game might have collections for different types of in-game items, each with its own rules and interactions.
-
-### Implementation
+Now let's understand how we can create a collection.
 
 ```jsx
-import NonFungibleToken from 0xft22if84jkj42mw0
-
+// contract code
 access(all) contract HelloWorld: NonFungibleToken {
 
-    access(all) resource Collection {
-    }
+  // This is like a special room inside your contract,
+  // but only for NFTs!
+  access(all) resource Collection {
+  }
 }
 ```
 
-### Explanation
+### **Explanation:**
 
-This code adds a new resource type called `Collection` within the HelloWorld contract. It acts as a container for non-fungible tokens (NFTs) and enables collective operations.
+We're creating a new element called `Collection` of type resource. This will acts as a container that can hold multiple NFTs.
 
-`ownedNFTs`: This variable stores the NFTs owned by the contract.
+### **Put it to the Test:**
 
-`init()`: Initializes the ownedNFTs collection as empty when a Collection instance is created.
-
-`destroy()`: Cleans up the ownedNFTs collection when the Collection instance is destroyed.
-
-### Try it Out
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Creating new resource named as `Collection`.
-
-- Adding NFTs to collections and removing them.
-- Performing actions on all NFTs within a collection, such as transferring ownership or updating properties.
-  These exercises help learners understand how collections work and how they can be used to manage NFTs effectively in their contracts.
+Head over to Flow Playground and try creating your own collection! It's a great way to get hands-on with organizing your digital treasures.

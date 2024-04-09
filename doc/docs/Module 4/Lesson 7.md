@@ -1,53 +1,32 @@
 ---
-title: Lesson 7 - Interface
+title: Lesson 7 - The Power of Interfaces
 sidebar_position: 7
 ---
 
-In this lesson, we're introducing an interface called `KnightCollectionPublic`. An interface defines a set of functions that a type must implement. This interface specifies the functions that a `Knight` collection must provide to interact with NFTs.
+So far, you've learned some amazing tools to manage your NFT collection. Now we will take a look of something new element interface. Think interface as a blueprint that defines a set of functions that a specific type of resource (like a collection) must implement. This blueprint acts like a contract, ensuring all resources based on that interface will have the same essential tools available. It's similar to a blueprint for building different types of houses – they might have different layouts, but they all need basic features like doors and windows.
 
-### **Purpose and Usefulness:**
-
-Interfaces define a contract that concrete types must adhere to. This is useful because:
-
-1. **Standardization:** Interfaces provide a standardized way to interact with different types, ensuring consistency and compatibility across implementations.
-
-2. **Abstraction:** Interfaces allow developers to work with types at a higher level of abstraction, focusing on what actions they can perform rather than their specific implementations.
-
-### **Implementation:**
+Here's a simplified look at how interfaces are declared and used in Cadence code:
 
 ```jsx
-access(all) contract FooBar {
+// Interface definition (blueprint)
+access(all) interface CollectionPublic {
+  pub fun deposit(token: @NFT)  // Add an NFT
+  pub fun getIDs(): [UInt64]    // Get all NFT IDs
+}
 
-    // ...[previous code]...
-
-    pub resource interface CollectionPublic {
-        pub fun deposit(token: @NFT)
-        pub fun getIDs(): [UInt64]
-    }
-
-    pub resource Collection: CollectionPublic {
-        // ...[Collection code]...
-    }
-
-    // ...[following code]...
+// Specific resource (KnightCollection) using the interface
+pub resource KnightCollection: CollectionPublic {
+  // ...[KnightCollection code implementing deposit and getIDs functions]...
 }
 
 ```
 
 ### **Explanation:**
 
-The `KnightCollectionPublic` interface defines four functions that a `Knight` collection must provide:
-
-- `deposit`: Adds an NFT to the collection.
-- `getIDs`: Retrieves the IDs of all NFTs in the collection.
-- `borrowNFT`: Allows borrowing an NFT from the collection.
-- `borrowKinght`: Allows borrowing a `Knight` NFT from the collection. The post-condition ensures that the returned reference has the correct ID.
+- We define an interface called CollectionPublic. This is the blueprint that specifies the functionalities a collection must have.
+- The CollectionPublic interface has two functions:
+  1. deposit: This function allows users to add an NFT to the collection.
+  2. getIDs: This function helps users retrieve a list of IDs for all the NFTs stored in the collection.
+- Later in the code, we see a specific resource called KnightCollection. This collection implements the CollectionPublic interface. This means the KnightCollection resource must have its own versions of the deposit and getIDs functions defined in its code.
 
 ### **Put it to the Test:**
-
-In this section, learners can practice using the `KnightCollectionPublic` interface by:
-
-- Implementing a concrete type that adheres to the interface's requirements.
-- Ensuring that the implemented functions fulfill the interface's contract.
-- Testing the implemented type with various interactions to verify compliance with the interface.
-  These exercises help learners understand how interfaces define contracts and guide the implementation of types to meet those requirements.

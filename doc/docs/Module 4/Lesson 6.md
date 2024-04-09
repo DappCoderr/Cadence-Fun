@@ -1,38 +1,31 @@
 ---
-title: Lesson 6 - GetId
+title: Lesson 6 - Counting Your Treasures!
 sidebar_position: 6
 ---
 
-In this lesson, we're adding a function to our collection to check the number of non-fungible tokens (NFTs) stored in it. This function provides users with information about the size of the collection, similar to counting the number of books in a library.
+Previously we have learn about collection, withdraw function and deposit function. Right? And you know your NFT collection as a giant treasure chest, imagine it's overflowing with unique digital goodies. Just like a library full of books, it can be difficult to keep track of how many items you have without counting them. Right?
 
-### **Purpose and Usefulness:**
-
-The `getLength` function serves to provide transparency regarding the size of the collection. This is useful because:
-
-1. **Inventory Management:** Users can assess the extent of their collection and make informed decisions about managing their assets.
-
-2. **Efficiency:** Knowing the collection's length can help optimize operations and resource allocation when interacting with the collection.
+So we have one more interesting function which is like a magical counter for your collection. It dives inside and counts the number of unique NFTs you've stored
 
 ### **Implementation:**
 
+Let's take a look and understand how to create getId function.
+
 ```jsx
+// Our trusty treasure chest (collection) with a special counting tool (getId function)
 pub resource Collection {
 
-    pub fun getIDs(): [UInt64] {
-        return self.ownedNFTs.keys
-    }
+  // This function acts like a magic counter for your treasures (NFTs)!
+  pub fun getIDs(): [UInt64] {
+    // Look inside your collection's storage (dictionary) and count the keys (NFT IDs)
+    return self.ownedNFTs.keys
+  }
 }
 ```
 
 ### **Explanation:**
 
-The `getLength` function retrieves the number of keys (NFT IDs) stored in the `ownedNFTs` dictionary, which represents the number of NFTs in the collection. It returns an integer representing the length of the collection.
+The getId function doesn't actually return the number of NFTs, but something just as useful – a list of all the IDs (unique codes) of the NFTs stored in your collection.
+Remember your collection's storage (represented by ownedNFTs) is like a box with labeled shelves (IDs) for each NFT. The getId function simply counts all the labels (IDs) and gives you a list.
 
 ### **Put it to the Test:**
-
-In this section, learners can practice using the `getLength` function by:
-
-- Calling the function to retrieve the length of the collection.
-- Checking that the returned length corresponds to the actual number of NFTs stored in the collection.
-- Testing scenarios with different collections to understand variations in length based on the number of stored NFTs.
-  These exercises help learners understand how to use the `getLength` function to obtain information about the collection's size and make informed decisions based on that information.

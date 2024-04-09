@@ -1,33 +1,40 @@
 ---
-title: Lesson 4 - Withdraw Function
+title: Lesson 4 - Take Back - Withdraw Function
 sidebar_position: 4
 ---
 
-In this lesson, we're adding a `withdraw` function to our collection. This function allows users to remove a specific non-fungible token (NFT) from the collection and transfer it to themselves. It's like withdrawing money from a bank account - you're taking something out for yourself.
+Imagine your amazing NFT collection as a giant vault filled with unique digital items. But what if you want to take a special piece out for a closer look, trade it with a friend, or sell it? That's where the withdraw function comes in!
 
-### **Purpose and Usefulness:**
-
-The `withdraw` function serves two main purposes:
-
-- **Flexibility:** It gives users the ability to take ownership of specific NFTs stored in the collection. This is useful for transferring NFTs between users or performing other actions that require individual token ownership.
-- **Control:** By restricting access to the `withdraw` function, we can ensure that only authorized users can remove NFTs from the collection. This helps maintain security and prevent unauthorized access to valuable assets.
+It provide you Flexibility and Security like only authorized users (like you, the owner of the vault) can access it. This keeps your precious NFTs safe from unauthorized withdrawals.
 
 ### **Implementation:**
 
+Let's take a look and understand how to create withdraw function
+
 ```jsx
+// resource declaration
 pub resource Collection {
 
-    pub fun withdraw(withdrawID: UInt64): @NFT {
-        let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
-        return <- token
-    }
-}
+  // function declaration
+  pub fun withdraw(withdrawID: UInt64): @NFT {
+    // Let's find the NFT you want to take (based on its ID)
+    let token <- self.ownedNFTs.remove(key: withdrawID)
 
+    // Uh oh, the NFT wasn't found! Let the user know.
+    ?? panic("Token not in collection")
+
+    // If all goes well, return the NFT you grabbed!
+    return <- token
+  }
+}
 ```
 
 ### **Explanation:**
 
-The `withdraw` function takes a `withdrawID` parameter, which represents the unique identifier of the NFT to be withdrawn from the collection. Inside the function, we use the `remove` method to remove the NFT associated with the provided ID from the `ownedNFTs` dictionary. If the removal is successful, the function returns the withdrawn NFT to the caller.
+The withdraw function takes a special code (withdrawID) that identifies the exact NFT you want to take out.
+Inside the function, we use a magical tool called remove to grab the NFT with the matching ID from your collection (stored in ownedNFTs).
+If the NFT is found, it's yours! The function happily returns it to you.
+But what if the NFT isn't there? The function throws a little tantrum (indicated by ?? panic) with an error message, letting you know something went wrong.
 
 ### **Put it to the Test:**
 

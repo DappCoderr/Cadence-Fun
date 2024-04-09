@@ -1,44 +1,39 @@
 ---
-title: Lesson 5 - Deposit Function
+title: Lesson 5 - Fill Your Vault
 sidebar_position: 5
 ---
 
-In this lesson, we're introducing a `deposit` function to our collection. This function allows users to add a new non-fungible token (NFT) to the collection. It's like depositing money into a bank account - you're adding something valuable to your collection.
+Remember your awesome collection, like a giant vault filled with unique treasures? In our last lesson we have learned the withdraw function that lets you take things out, but what if you want to add something new? That's where the deposit function comes in!
 
-### **Purpose and Usefulness:**
+Think of the deposit function like a special entrance to your vault. It allows anyone to put in a new NFT (like a shiny new sword or a rare monster) to your collection. It's similar to depositing money in a bank – you're adding something valuable to your growing stash.
 
-The `deposit` function serves to expand the collection by adding new NFTs. This is useful because:
-
-1. **Expansion:** It allows users to contribute new assets to the collection, increasing its value and diversity over time.
-
-2. **Flexibility:** Users can deposit NFTs from their own inventory or receive them from other users, enabling trading and collaboration within the ecosystem.
-
-### **Implementation:**
+Let's revisit the vault door (the code) and see how the deposit function works!
 
 ```jsx
+// Our trusty vault (collection) with a special entrance (deposit function)
 pub resource Collection {
 
-    // ...[withdraw function code]...
+  // ...[withdraw function code from previous lesson]...
 
-    pub fun deposit(token: @NFT) {
-        let tokenID = token.id
-        self.ownedNFTs[token.id] <-! token
-    }
+  // This function is like the entrance for new treasures (NFTs)
+  pub fun deposit(token: @NFT) {
 
-    // ...[following code]...
+    // Let's get the ID of the NFT you want to deposit
+    let tokenID = token.id
+
+    // Add the new NFT to your collection's storage (dictionary)
+    self.ownedNFTs[tokenID] <-! token
+  }
+
+  // ...[following code]...
 }
-
 ```
 
 ### **Explanation:**
 
-The `deposit` function takes a `token` parameter, which is an instance of the `NonFungibleToken.NFT` resource. Inside the function, we cast the `token` to the specific type of NFT (`ExampleNFT.NFT` in this case) to ensure type safety. Then, we add the new token to the `ownedNFTs` dictionary, replacing any existing token with the same ID. Finally, we destroy the old token to prevent duplication and ensure efficient use of storage.
+The deposit function takes an NFT (token) as an argument. This is the treasure you want to add to your collection.
+Inside the function, we grab a special code (tokenID) that identifies the specific NFT.
+Then, we use this ID to place the NFT inside your collection's storage (represented by the ownedNFTs dictionary). It's like adding a new item to a shelf with a specific label (ID).
+Here's a cool detail: If there already happens to be an NFT with the same ID in your collection, the new one replaces the old one. This keeps things organized and avoids duplicates.
 
 ### **Put it to the Test:**
-
-In this section, learners can practice using the `deposit` function by:
-
-- Calling the function with different NFTs to deposit them into the collection.
-- Checking that the deposited NFTs are added to the collection successfully.
-- Testing scenarios where the deposited NFTs replace existing ones in the collection to understand storage management.
-  These exercises help learners understand how to interact with the `deposit` function and its impact on the collection's state.
