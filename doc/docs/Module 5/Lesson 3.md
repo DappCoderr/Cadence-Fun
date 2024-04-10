@@ -1,15 +1,15 @@
 ---
-title: Lesson 3 - Introduction to Flow-NFT Standard
+title: Lesson 3 - The Secret Sauce - NFT Standard
 sidebar_position: 3
 ---
 
-In this lesson, we'll explore the Flow NFT Standard, a guideline defining events, functions, resources, and other elements necessary for NFT contracts. Implementing this standard ensures compatibility of your NFTs with various platforms and services within the Flow ecosystem.
+This lesson dives into the Flow NFT Standard, a set of rules that acts like a blueprint for building digital treasures.
 
-### **Purpose and Usefulness:**
+But why do we need standards? Why not just create NFTs without them?
 
-1. **Unique Identity:** Transforming resources into NFTs grants them individuality, akin to real-life collectibles. Each NFT, such as a Knight, possesses its own distinct identity, similar to providing players in a game with unique avatars.
+Think of them like Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. This makes them work smoothly across different games and apps in the Flow world.
 
-2. **Ownership and Exchange:** NFTs can be owned, bought, and sold, resembling ownership of rare physical collectibles like baseball cards. This feature allows for trading among users or safekeeping within personal collections.
+The power of standards brings everyone to understands how NFTs work, allowing them to be used in various places. Also NFTs built with the same standard can be easily bought, sold, and transferred between different games or marketplaces.
 
 ### **Implementation:**
 
