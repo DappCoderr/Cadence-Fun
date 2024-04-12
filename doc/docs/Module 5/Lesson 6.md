@@ -1,5 +1,5 @@
 ---
-title: Lesson 6 - Capability
+title: Lesson 6 - The Contract NFT Collection
 sidebar_position: 6
 ---
 
@@ -15,8 +15,8 @@ Capabilities act like personalized security keys, ensuring only the chosen few c
 **Coding Like a Security Expert!**
 
 ```cadence
-self.account.save(<- create Collection(), to: self.StoragePath)
-self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+self.account.save(<- create Collection(), to: /storage/NFTCollection)
+self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /storage/NFTCollection)
 ```
 
 ### **Explanation:**
