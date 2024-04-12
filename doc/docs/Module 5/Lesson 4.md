@@ -1,24 +1,57 @@
 ---
-title: Lesson 4 - Refactoring Collection
+title: Lesson 4 - Level Up Your NFT Collection
 sidebar_position: 4
 ---
 
-Till now we have we have learned about how to resources, create contract storage and saving NFT to the contract storage.
+Building custom NFT collections is exciting, but managing them efficiently can be a challenge. Imagine having built-in superpowers for your collection, allowing users to interact with your NFTs seamlessly. That's the magic of standard interfaces in Flow!
 
-Before moving forward, we will understand flow accounts. In Cadence, users can store & own their data. This is very different from other languages like Solidity on Ethereum, where your NFT gets stored in the smart contract. In Cadence, if I own an NFT, it gets stored in my account. By moving forward we will store our Knight directly into our own account rather than storing in smart contract.
+This lesson we unlocks the potential of `NonFungibleToken.Provider`, `NonFungibleToken.Receiver`, and `NonFungibleToken.CollectionPublic`
+interfaces. These are like pre-programmed superpowers for your collection, giving it the ability to:
 
-### **Implementation:**
+- **Lend out NFTs:** Want users to view an NFT's coolness without permanently removing it? The borrowNFT function grants a read-only peek, like lending out a prized trading card to a friend.
+- **Accept new NFTs:** Imagine your collection being a welcoming museum! With NonFungibleToken.Receiver, your collection can gracefully accept new NFTs from other accounts.
+- **Speak the standard language:** The NonFungibleToken.CollectionPublic interface makes your collection a part of the Flow NFT community, ensuring smooth interaction with other NFT-savvy applications.
+
+**Let's Code Like a Pro!**
+
+Here's a glimpse of the code that activates these superpowers:
 
 Let's take a look how we can implement this -
 
 ```jsx
-// Import the type `Counter` from a local file.
-//
-import Counter from "./examples/counter.cdc"
+pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+    // ...[rest of code]...
+}
+```
 
-// Import the type `Counter` from an external account.
-//
-import Counter from 0x299F20A29311B9248F12
+To ensure users can access a read-only reference to an NFT in the collection without actually removing it, introduce the borrowNFT function.
+
+```jsx
+pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+
+    // ...[rest of your awesome code]...
+
+    pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+        // Code to lend out an NFT for viewing
+    }
+
+    // ...[other collection functions]...
+}
+
+```
+
+Lastly, update the ownedNFTs, deposit, and withdraw variables/methods to use the NonFungibleToken.NFT type:
+
+```jsx
+pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+
+pub fun deposit(token: @NonFungibleToken.NFT) {
+    //...[deposit code]...
+}
+
+pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+    //...[withdraw code]...
+}
 
 ```
 
