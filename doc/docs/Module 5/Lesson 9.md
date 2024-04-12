@@ -1,46 +1,28 @@
 ---
-title: Lesson 9 - Battle logic
+title: Lesson 9 - Level Up Your Knights- Tracking Victories
 sidebar_position: 9
 ---
 
-In this lesson, we're implementing a battle logic function that simulates a battle between two knights belonging to different users. The function determines the winner based on the knights' experience points (XP) and triggers a victory action for the winning knight.
+In this lesson, we're adding functionality to update the non-fungible token (NFT) resource. Specifically, we're introducing a function called `winner` that increments the win count of the NFT. This allows tracking of certain attributes or behaviors associated with individual NFTs.
 
 ### **Purpose and Usefulness:**
 
-The `battle` function allows users to engage in battles between their knights, adding a gameplay element to the application. This is useful because:
+The `winner` function serves to update the state of an NFT, specifically increasing its win count. This is useful because:
 
-1. **Engagement:** Users can participate in interactive activities within the application, enhancing user engagement and retention.
+1. **Tracking:** It allows keeping track of certain events or actions related to the NFT, such as wins in a game or achievements in a digital ecosystem.
 
-2. **Competition:** Battles create a competitive environment where users can strive to improve their knights and compete against others.
+2. **Dynamic Behavior:** The ability to update NFT attributes enables dynamic behavior and interactivity, enhancing the utility and value of NFTs in various applications.
 
 ### **Implementation:**
 
 ```cadence
-pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
-    let acctA = getAccount(userA)
-    let acctB = getAccount(userB)
-
-    let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
-    let knightA_XP = userACapRef.borrowKnight(id: userAKnightId)?.xp ?? panic("Knight A XP not found")
-
-    let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
-    let knightB_XP = userBCapRef.borrowKnight(id: userBKnightId)?.xp ?? panic("Knight B XP not found")
-
-    if (knightA_XP > knightB_XP) {
-        let winnerKnight = userACapRef.borrowKnight(id: userAKnightId)
-        winnerKnight?.winner()
-    } else {
-        let winnerKnight = userBCapRef.borrowKnight(id: userBKnightId)
-        winnerKnight?.winner()
-    }
+pub fun winner() {
+    self.winCount = self.winCount + 1
 }
 ```
 
 ### **Explanation:**
 
-- The function takes the addresses of the two users (`userA` and `userB`) and the IDs of their respective knights (`userAKnightId` and `userBKnightId`).
-- It retrieves the capabilities of the users' knight collections and borrows references to the knights specified by the provided IDs.
-- The function compares the XP of the two knights and determines the winner based on their XP values.
-- If knight A has more XP than knight B, knight A is declared the winner and the `winner` function is called for knight A. Otherwise, knight B is declared the winner and the `winner` function is called for knight B.
+The `winner` function increments the `winCount` attribute of the NFT by 1. This attribute presumably tracks the number of wins associated with the NFT. By calling this function, the win count of the NFT is updated, reflecting its latest status or achievement.
 
 ### **Putting it to the Test:**
