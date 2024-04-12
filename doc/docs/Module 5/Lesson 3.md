@@ -44,7 +44,3 @@ access(all) contract HelloWorld: NonFungibleToken {
 Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
 
 ### **Put it to the Test:**
-
-1. Feel free to experiment with the Flow [Playground](https://play.flow.com/)
-2. Create instances of NFTs within the Knight contract.
-3. Enhance the NFT resource by adding properties to ensure uniqueness for each Knight.
