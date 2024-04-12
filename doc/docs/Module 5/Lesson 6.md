@@ -3,17 +3,16 @@ title: Lesson 6 - Capability
 sidebar_position: 6
 ---
 
-In this lesson, we're utilizing capabilities to manage access to our collection. Capabilities provide secure, fine-grained control over who can access and interact with resources stored in an account's storage.
+Conquerors need control over their treasures, and so do you with your Flow NFT collection! Capabilities are your secret weapon for ultimate security. Imagine granting access to your NFT vault with the precision of a laser, allowing only authorized users to peek inside. That's the power of capabilities!
 
-### **Purpose and Usefulness:**
+### Why Use Capabilities? It's All About Security and Control!
 
-Capabilities ensure that only authorized parties can access and interact with resources stored in an account's storage. This is useful because:
+Capabilities act like personalized security keys, ensuring only the chosen few can access your precious NFTs:
 
-1. **Security:** Capabilities prevent unauthorized access to sensitive data and resources, enhancing the security of the system.
+- **Fort Knox Security:** Capabilities prevent unauthorized access to your collection, keeping your NFTs safe from prying eyes.
+- **Granular Control:** You decide who gets to see your NFTs! Grant access with the precision of a jeweler, ensuring only those you trust can interact with your collection.
 
-2. **Control:** By controlling access to resources via capabilities, developers can enforce access policies and ensure compliance with security requirements.
-
-### **Implementation:**
+**Coding Like a Security Expert!**
 
 ```cadence
 self.account.save(<- create Collection(), to: self.StoragePath)
@@ -22,7 +21,8 @@ self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.Stora
 
 ### **Explanation:**
 
-- `self.account.save(<- create Collection(), to: self.StoragePath)`: This line creates a new instance of the `Collection` resource and saves it to the account's storage at the specified storage path (`self.StoragePath`).
-- `self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)`: This line creates a capability that grants access to the `KnightCollectionPublic` interface and links it to a public path (`self.PublicPath`). The capability points to the storage path where the collection is stored (`self.StoragePath`).
+- This line creates a brand new NFT collection and stores it securely within your account's vault (represented by self.StoragePath).
+- Imagine this vault has multiple locks. This line creates a special key (the capability) that unlocks access to a specific interface (KnightCollectionPublic) within the vault.
+- This key is then placed at a designated public access point (self.PublicPath), allowing authorized users who possess the matching key to access the collection through that specific interface.
 
 ### **Putting it to the Test:**
