@@ -1,5 +1,5 @@
 ---
-title: Lesson 7 - Refactoring Account Storage Path
+title: Lesson 7 - Organize Your Path
 sidebar_position: 7
 ---
 
