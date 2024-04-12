@@ -3,15 +3,18 @@ title: Lesson 7 - Refactoring Account Storage Path
 sidebar_position: 7
 ---
 
-In this lesson, we're defining storage and public paths for our collection. These paths specify where the collection will be stored in the account's storage and how it will be accessed publicly by other accounts.
+Every great collection needs a map, and your Flow NFT collection is no exception! In this lesson, we'll explore defining storage and public paths, which act like a treasure map for your NFTs.
 
-### **Purpose and Usefulness:**
+### Why Define Paths? It's About Organization and Accessibility!
 
-Defining paths for storage and public access provides clarity and organization for managing resources on the blockchain. This is useful because:
+Paths bring order and clarity to your NFT collection:
 
-1. **Organization:** Paths help organize data within an account's storage, making it easier to locate and manage resources.
+- **Organized Storage:** Imagine your account's storage like a vast library. Storage paths act like labels on shelves, helping you locate your NFT collection with ease.
+- **Public Access:** Public paths are like the library's main entrance. They allow other accounts to interact with your collection through a designated point, fostering collaboration within the Flow ecosystem.
 
-2. **Accessibility:** Public paths allow other accounts to access specific resources, facilitating interactions and collaborations within the blockchain ecosystem.
+Charting Your Course: How Paths Work
+
+Here's a breakdown of how storage and public paths work:
 
 ### **Implementation:**
 
@@ -20,9 +23,19 @@ pub let StoragePath: StoragePath
 pub let PublicPath: PublicPath
 ```
 
+```cadence
+self.StoragePath = /storage/NFTCollection
+self.PublicPath = /public/NFTCollection
+
+self.account.save(<- create Collection(), to: self.StoragePath)
+self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+```
+
 ### **Explanation:**
 
-- `StoragePath`: This variable defines the storage path where the collection will be saved within the account's storage. It specifies the location where the collection resource will reside persistently.
-- `PublicPath`: This variable defines the public path that other accounts can use to access the collection. It specifies the path through which the collection can be accessed and interacted with by external entities.
+- These lines define two variables: StoragePath and PublicPath.
+- StoragePath is like your collection's secret address within your account's storage (think of it as the location of the vault in the library's basement).
+- PublicPath is the publicly accessible entrance point (like the library's main entrance). Other accounts can use this path to find and interact with your collection through specific interfaces.
+- The code then assigns specific locations within your account's storage (/storage/NFTCollection) and a public access point (/public/NFTCollection) to these paths.
 
 ### **Putting it to the Test:**
