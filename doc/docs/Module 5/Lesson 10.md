@@ -1,5 +1,5 @@
 ---
-title: Lesson 10 - Refactoring Resource
+title: Lesson 10 - Refactoring NFT
 sidebar_position: 10
 ---
 
