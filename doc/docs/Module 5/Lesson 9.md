@@ -1,28 +1,32 @@
 ---
-title: Lesson 9 - Level Up Your Knights- Tracking Victories
+title: Lesson 9 - Pre & Post Condition
 sidebar_position: 9
 ---
 
-In this lesson, we're adding functionality to update the non-fungible token (NFT) resource. Specifically, we're introducing a function called `winner` that increments the win count of the NFT. This allows tracking of certain attributes or behaviors associated with individual NFTs.
+### Creating Contract Collection
 
-### **Purpose and Usefulness:**
+### Introducing Capabilities
 
-The `winner` function serves to update the state of an NFT, specifically increasing its win count. This is useful because:
+Conquerors need control over their treasures, and so do you with your Flow NFT collection! Capabilities are your secret weapon for ultimate security. Imagine granting access to your NFT vault with the precision of a laser, allowing only authorized users to peek inside. That's the power of capabilities!
 
-1. **Tracking:** It allows keeping track of certain events or actions related to the NFT, such as wins in a game or achievements in a digital ecosystem.
+### Why Use Capabilities? It's All About Security and Control!
 
-2. **Dynamic Behavior:** The ability to update NFT attributes enables dynamic behavior and interactivity, enhancing the utility and value of NFTs in various applications.
+Capabilities act like personalized security keys, ensuring only the chosen few can access your precious NFTs:
 
-### **Implementation:**
+- **Fort Knox Security:** Capabilities prevent unauthorized access to your collection, keeping your NFTs safe from prying eyes.
+- **Granular Control:** You decide who gets to see your NFTs! Grant access with the precision of a jeweler, ensuring only those you trust can interact with your collection.
+
+**Coding Like a Security Expert!**
 
 ```cadence
-pub fun winner() {
-    self.winCount = self.winCount + 1
-}
+self.account.save(<- create Collection(), to: /storage/NFTCollection)
+self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /storage/NFTCollection)
 ```
 
 ### **Explanation:**
 
-The `winner` function increments the `winCount` attribute of the NFT by 1. This attribute presumably tracks the number of wins associated with the NFT. By calling this function, the win count of the NFT is updated, reflecting its latest status or achievement.
+- This line creates a brand new NFT collection and stores it securely within your account's vault (represented by self.StoragePath).
+- Imagine this vault has multiple locks. This line creates a special key (the capability) that unlocks access to a specific interface (KnightCollectionPublic) within the vault.
+- This key is then placed at a designated public access point (self.PublicPath), allowing authorized users who possess the matching key to access the collection through that specific interface.
 
 ### **Putting it to the Test:**

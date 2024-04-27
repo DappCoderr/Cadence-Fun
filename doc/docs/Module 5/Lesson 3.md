@@ -1,5 +1,5 @@
 ---
-title: Lesson 3 - The Secret Sauce - NFT Standard
+title: Lesson 3 - The Secret Sauce
 sidebar_position: 3
 ---
 

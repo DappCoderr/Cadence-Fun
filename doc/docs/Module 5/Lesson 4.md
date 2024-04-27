@@ -1,5 +1,5 @@
 ---
-title: Lesson 4 - Level Up Your NFT Collection
+title: Lesson 4 - Upgrading Collection
 sidebar_position: 4
 ---
 

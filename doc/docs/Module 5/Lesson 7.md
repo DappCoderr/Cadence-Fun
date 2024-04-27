@@ -1,41 +1,23 @@
 ---
-title: Lesson 7 - Organize Your Path
+title: Lesson 7 - Borrow
 sidebar_position: 7
 ---
 
-Every great collection needs a map, and your Flow NFT collection is no exception! In this lesson, we'll explore defining storage and public paths, which act like a treasure map for your NFTs.
-
-### Why Define Paths? It's About Organization and Accessibility!
-
-Paths bring order and clarity to your NFT collection:
-
-- **Organized Storage:** Imagine your account's storage like a vast library. Storage paths act like labels on shelves, helping you locate your NFT collection with ease.
-- **Public Access:** Public paths are like the library's main entrance. They allow other accounts to interact with your collection through a designated point, fostering collaboration within the Flow ecosystem.
-
-Charting Your Course: How Paths Work
-
-Here's a breakdown of how storage and public paths work:
+Imagine a world where your Flow NFT collection is like a bustling library! Users can now "borrow" your awesome NFTs with the brand new borrowNFT function. This lets them get a closer look or interact with your NFTs temporarily, just like checking out a book. Here's how it works:
 
 ### **Implementation:**
 
-```cadence
-pub let StoragePath: StoragePath
-pub let PublicPath: PublicPath
-```
+```jsx
+access(all) resource Collection: NonFungibleToken.Collection {
 
-```cadence
-self.StoragePath = /storage/NFTCollection
-self.PublicPath = /public/NFTCollection
-
-self.account.save(<- create Collection(), to: self.StoragePath)
-self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+    }
+}
 ```
 
 ### **Explanation:**
 
-- These lines define two variables: StoragePath and PublicPath.
-- StoragePath is like your collection's secret address within your account's storage (think of it as the location of the vault in the library's basement).
-- PublicPath is the publicly accessible entrance point (like the library's main entrance). Other accounts can use this path to find and interact with your collection through specific interfaces.
-- The code then assigns specific locations within your account's storage (/storage/NFTCollection) and a public access point (/public/NFTCollection) to these paths.
+The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
 
-### **Putting it to the Test:**
+### **Put it to the Test:**
