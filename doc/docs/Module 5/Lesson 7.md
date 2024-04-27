@@ -19,8 +19,10 @@ Capabilities act like personalized security keys, ensuring only the chosen few c
 **Coding Like a Security Expert!**
 
 ```cadence
-self.account.save(<- create Collection(), to: /storage/NFTCollection)
-self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /storage/NFTCollection)
+pre{
+            name.length > 0: "Name can not be empty"
+            type.length > 0: "Type can not be empty"
+        }
 ```
 
 ### **Explanation:**

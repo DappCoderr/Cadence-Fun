@@ -19,8 +19,12 @@ Capabilities act like personalized security keys, ensuring only the chosen few c
 **Coding Like a Security Expert!**
 
 ```cadence
-self.account.save(<- create Collection(), to: /storage/NFTCollection)
-self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /storage/NFTCollection)
+pub fun mintKnight(name:String, _value:UInt8): @NFT{
+        let nftId = Knight.totalSupply
+        var newNFT <- create NFT(_name:name, _type:_value)
+        emit KinigtMinted(id:nftId, name:name, type:type)
+        return <- newNFT
+    }
 ```
 
 ### **Explanation:**
