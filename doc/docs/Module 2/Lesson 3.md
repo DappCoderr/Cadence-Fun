@@ -30,3 +30,7 @@ access(all) contract HelloWorld {
 1. Open Flow [Playground](https://play.flow.com/)
 2. To initiate the creation of our Knight Soldier, let's make a contract named `KnightCreator`.
 3. Access modifier is set to public.
+
+### Solution !!
+
+![Alt text](image.png)

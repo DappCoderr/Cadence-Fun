@@ -3,7 +3,9 @@ title: Lesson 5 - Resource
 sidebar_position: 5
 ---
 
-Resources play a crucial role in Cadence, representing valuable or unique assets on the Flow blockchain. They ensure secure ownership and control of assets, allowing them to exist uniquely and be managed safely. Let's understand how to create and work with resources:
+Flow lets you create special items called resources. Imagine Mono lisa painting or unique vikings sword. These are unique and valuable, just like resources in programming. They represent valuable and unique things on the blockchain, ensuring secure ownership and control.
+
+We'll use the resource keyword to create them and explore how to manage them within your contracts.
 
 ```jsx
 access(all) contract HelloWorld {
@@ -31,13 +33,18 @@ access(all) resource Country{
 }
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
 - `access(all)`: This access modifier allows anyone to read the variables.
 - `resource`: This keyword signifies the creation of a resource, in this case, Country.
-- `init`: This function initializes the resource, setting its initial state. Here, it takes parameters.
+- Defining two variables `name` and `capital` of type `String`
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a resource named `KnightNFT`. Inside, create two public variables named `id` and `xp` of type unsigned integer inside the resource and initialize their value in the init function with the value zero.
+2. Create a resource named `KnightNFT`.
+3. Inside resource, create four public variables named `id` (of type UInt64),`power` (of type UInt64),`name` (of type String), `type`(of type String) and the `Date of Birth`(of type UFix64) initialize UInt64 with 0, String with empty string and UFix64 with 0.0
+
+### Solution !!
+
+![Alt text](image-4.png)

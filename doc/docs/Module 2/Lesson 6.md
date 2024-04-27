@@ -33,12 +33,11 @@ access(all) struct Book {
 
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-- In this example, we define a struct named Person.
-- It has two variables: name of type String and age of type UInt8.
-- We use the init function to initialize the Person struct with a name and age.
-- access(all) ensures that both variables are accessible from anywhere in the code.
+- In this example, we define a `struct` named `Person`.
+- It has two variables: `name` of type `String` and `age` of type `UInt8`.
+- `access(all)` ensures that both variables are accessible from anywhere in the code.
 
 ### Put it to the Test
 
