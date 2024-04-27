@@ -3,34 +3,35 @@ title: Lesson 4 - State Variables
 sidebar_position: 4
 ---
 
-Now that we know how to write a contract, let's understand how Cadence handles variables.
+In cadence variables are like bits of information that stored on the blockchain, much like writing data to a database. In Cadence, we use two main keywords:
 
-In Cadence, we use var for variables and const for constants. Here's an example:
+`var` for variables that can change.
+`let` for constants that can not be change.
 
 ```jsx
 access(all) contract HelloWorld {
 
 	// Declare a variable named greetings
-	access(all) var greetings: String
+	access(all) var name: String
 
 	// Declare a constant named num
-	access(all) let num: UInt64
+	access(all) let age: UInt64
 
 	init(){
-		self.greetings = "Hello World"
-		self.num = 64
+		self.name = "Roham"
+		self.age = 21
 	}
 }
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
 - `access(all)` is an access modifier, allowing anyone to read the variable.
 - `let` is for constants that cannot be changed.
-- `String` & `UInt64` are types, holding text and unsigned integers (e.g., "Hello World" and 64).
-- In the `init` function, we set `self.greeting` to "Hello, World!" and `self.num` to 64. This function runs when the contract is deployed, initializing values.
+- `String` & `UInt64` are types, holding text and unsigned integers (e.g., "Roham" and 21).
+- In the `init` function, we set `self.name` to "Roham" and `self.age` to 21. This function runs when the contract is deployed, initializing values. This function is used to set up initial values.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create two public variables, `totalSupply` and `nextKnightId`, both initialized to 0. Both variables should be of type `UInt64`.
+2. Create a public variables, `totalSupply` of type `UInt64`, initialized with 0.

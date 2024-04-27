@@ -23,7 +23,7 @@ access(all) contract HelloWorld {
 - `access(all)`: This keyword is called an access modifier. It sets the visibility of our contract. Here, access(all) makes the contract public, meaning anyone can read it.
 - `contract`: This keyword tells Flow that we're defining a contract.
 - `HelloWorld`: This is the name you choose for your contract, keeping it descriptive.
-- `init()`: This function is a must-have in every contract. It runs only once when the contract is first deployed. You can use it to set up initial values or perform other one-time tasks.
+- `init()`: This function is a must-have in every contract. It runs only once when the contract is first deployed.
 
 ### Put it to the Test
 
