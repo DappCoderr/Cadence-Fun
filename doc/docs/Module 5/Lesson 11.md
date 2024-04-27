@@ -1,41 +1,28 @@
 ---
-title: Lesson 11 - Organize Your Path
+title: Lesson 11 - Tracking Victories
 sidebar_position: 11
 ---
 
-Every great collection needs a map, and your Flow NFT collection is no exception! In this lesson, we'll explore defining storage and public paths, which act like a treasure map for your NFTs.
+In this lesson, we're adding functionality to update the non-fungible token (NFT) resource. Specifically, we're introducing a function called `winner` that increments the win count of the NFT. This allows tracking of certain attributes or behaviors associated with individual NFTs.
 
-### Why Define Paths? It's About Organization and Accessibility!
+### **Purpose and Usefulness:**
 
-Paths bring order and clarity to your NFT collection:
+The `winner` function serves to update the state of an NFT, specifically increasing its win count. This is useful because:
 
-- **Organized Storage:** Imagine your account's storage like a vast library. Storage paths act like labels on shelves, helping you locate your NFT collection with ease.
-- **Public Access:** Public paths are like the library's main entrance. They allow other accounts to interact with your collection through a designated point, fostering collaboration within the Flow ecosystem.
+1. **Tracking:** It allows keeping track of certain events or actions related to the NFT, such as wins in a game or achievements in a digital ecosystem.
 
-Charting Your Course: How Paths Work
-
-Here's a breakdown of how storage and public paths work:
+2. **Dynamic Behavior:** The ability to update NFT attributes enables dynamic behavior and interactivity, enhancing the utility and value of NFTs in various applications.
 
 ### **Implementation:**
 
 ```cadence
-pub let StoragePath: StoragePath
-pub let PublicPath: PublicPath
-```
-
-```cadence
-self.StoragePath = /storage/NFTCollection
-self.PublicPath = /public/NFTCollection
-
-self.account.save(<- create Collection(), to: self.StoragePath)
-self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+pub fun winner() {
+    self.winCount = self.winCount + 1
+}
 ```
 
 ### **Explanation:**
 
-- These lines define two variables: StoragePath and PublicPath.
-- StoragePath is like your collection's secret address within your account's storage (think of it as the location of the vault in the library's basement).
-- PublicPath is the publicly accessible entrance point (like the library's main entrance). Other accounts can use this path to find and interact with your collection through specific interfaces.
-- The code then assigns specific locations within your account's storage (/storage/NFTCollection) and a public access point (/public/NFTCollection) to these paths.
+The `winner` function increments the `winCount` attribute of the NFT by 1. This attribute presumably tracks the number of wins associated with the NFT. By calling this function, the win count of the NFT is updated, reflecting its latest status or achievement.
 
 ### **Putting it to the Test:**

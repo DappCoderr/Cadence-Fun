@@ -1,6 +1,6 @@
 ---
-title: Lesson 7 - Pre & Post Condition
-sidebar_position: 7
+title: Lesson 6 - Refactoring Create Knight
+sidebar_position: 6
 ---
 
 ### Creating Contract Collection

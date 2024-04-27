@@ -1,37 +1,66 @@
 ---
-title: Lesson 12 - Unpredictable Power!
+title: Lesson 12 - Clash of the Knights
 sidebar_position: 12
 ---
 
-The strength of your Flow Knights is ever-evolving, but how do you determine how much their power grows? This lesson introduces Verifiable Random Functions (VRF) to ensure those power increases are awarded fairly and securely.
+This lesson delves into the heart of your game – the battle logic! The function simulates a battle between two knights belonging to different users. The function determines the winner based on the knights' experience points (XP) and triggers a victory action for the winning knight.
 
-### **Why Use VRF for Power Boosts? It's All About Fairness and Security!**
+Here's a breakdown of the code that orchestrates epic clashes between your knights:
 
-VRF takes the guesswork out of randomness, making it perfect for games where a touch of uncertainty adds to the excitement:
+- **The Function: Battle Royale!**
 
-- **Unbeatable Fairness:** VRF ensures no one can predict or tamper with the random number generation. This keeps your game honest and rewards truly deserving Knights on their quests for power!
-- **Ironclad Security:** VRF utilizes cryptography to guarantee the randomness is secure and unbiased. No sneaky manipulation here!
+The code defines a function named battle. This function takes on the responsibility of simulating a thrilling battle between two knights. Here's a step by step explanation of what it does:
 
-### Coding Like a Game Master!
+- **Knight Selection: The function takes four arguments**
 
-Here's a sneak peek at the code that generates random power with VRF:
+userA and userB: These represent the addresses (locations on the Flow blockchain) of the two players participating in the battle.
+userAKnightId and userBKnightId: These are unique identifiers specifying the exact knights from each player's collection that will be dueling.
 
-```jsx
-access(all) contract Dice {
+- **Gathering the Troops:**
 
-    access(all) fun roll(): UInt64 {
-        let rand: UInt64 = revertibleRandom()
-        return (rand%X)+1 // Adjust X based on your desired power range
-    }
+The function retrieves information about the players involved (getAccount(userA) and getAccount(userB)).
+It then retrieves special access keys (capabilities) for each player's knight collection. These capabilities act like permission slips, allowing the function to access the specific knights for battle.
 
-    init() {
+- **Knight Stats and XP Check:**
+
+Once it has the capabilities, the function borrows references to the actual knights involved (borrowKnight) using their IDs.
+It then retrieves the crucial stat – experience points (XP) – for each knight (knightA_XP and knightB_XP).
+
+- **May the Best Knight Win**
+
+The function compares the XP of the two knights. The knight with the higher XP is declared the victor!
+For the winning knight, the function calls a special function named winner. This function likely performs actions associated with victory, such as updating knight stats or awarding rewards.
+
+- **Edge Cases:**
+
+The code includes checks to handle potential errors. The panic statements indicate that something unexpected happened (like not finding a knight with the provided ID). In a real application, you'd likely handle these situations more gracefully.
+
+```cadence
+pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
+    let acctA = getAccount(userA)
+    let acctB = getAccount(userB)
+
+    let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
+    let knightA_XP = userACapRef.borrowKnight(id: userAKnightId)?.xp ?? panic("Knight A XP not found")
+
+    let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
+    let knightB_XP = userBCapRef.borrowKnight(id: userBKnightId)?.xp ?? panic("Knight B XP not found")
+
+    if (knightA_XP > knightB_XP) {
+        let winnerKnight = userACapRef.borrowKnight(id: userAKnightId)
+        winnerKnight?.winner()
+    } else {
+        let winnerKnight = userBCapRef.borrowKnight(id: userBKnightId)
+        winnerKnight?.winner()
     }
 }
 ```
 
 ### **Explanation:**
 
-- The revertibleRandom function utilizes VRF to generate a random, unpredictable number. Think of it as rolling a super secure die!
-- The expression (randomNumber % X) + 1 takes that random number and scales it down to a range suitable for power increases (replace X with the maximum power value you want for your Knights).
+- The function takes the addresses of the two users (`userA` and `userB`) and the IDs of their respective knights (`userAKnightId` and `userBKnightId`).
+- It retrieves the capabilities of the users' knight collections and borrows references to the knights specified by the provided IDs.
+- The function compares the XP of the two knights and determines the winner based on their XP values.
+- If knight A has more XP than knight B, knight A is declared the winner and the `winner` function is called for knight A. Otherwise, knight B is declared the winner and the `winner` function is called for knight B.
 
 ### **Putting it to the Test:**

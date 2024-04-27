@@ -1,5 +1,5 @@
 ---
-title: Lesson 8 - Refactoring Create Knight
+title: Lesson 8 - Creating Contract Storage
 sidebar_position: 8
 ---
 
