@@ -1,13 +1,13 @@
 ---
-title: Lesson 3 - Contract
+title: Lesson 3 - Contract in Flow
 sidebar_position: 3
 ---
 
 Let's start from the very beginning:
 
-In Flow applications, we use contracts to organize our code. A contract is like a container holding variables and functions that are essential for our projects.
+Think of contracts like a blueprints for your code. That hold the building blocks - variables and functions - that make your project work.
 
-Here's a basic example of a contract called HelloWorld:
+Let's create a simple contract called `HelloWorld` to get started:
 
 ```jsx
 access(all) contract HelloWorld {
@@ -18,17 +18,15 @@ access(all) contract HelloWorld {
 }
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-Great, we've created our first contract, even though it doesn't do anything yet. Let's break down the parts:
-
-access(all): This keyword makes the contract public for anyone to read.
-contract: This keyword indicates that we're declaring a Contract.
-[contract name]: This is the name you give to your contract.
-init(): This function is mandatory for every contract. It's executed only once when the contract is first deployed. We can use it to set up initial values.
+- `access(all)`: This keyword is called an access modifier. It sets the visibility of our contract. Here, access(all) makes the contract public, meaning anyone can read it.
+- `contract`: This keyword tells Flow that we're defining a contract.
+- `HelloWorld`: This is the name you choose for your contract, keeping it descriptive.
+- `init()`: This function is a must-have in every contract. It runs only once when the contract is first deployed. You can use it to set up initial values or perform other one-time tasks.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. To initiate the creation of our Knight Soldier, let's make a contract named Knight.
-3. Craft an empty contract labeled KnightContract. Ensure the access modifier is set to public.
+2. To initiate the creation of our Knight Soldier, let's make a contract named `KnightCreator`.
+3. Access modifier is set to public.
