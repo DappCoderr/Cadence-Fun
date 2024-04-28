@@ -43,8 +43,8 @@ access(all) resource Country{
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a resource named `KnightNFT`.
-3. Inside resource, create four public variables named `id` (of type UInt64),`power` (of type UInt64),`name` (of type String), `type`(of type String) and the `Date of Birth`(of type UFix64) initialize UInt64 with 0, String with empty string and UFix64 with 0.0
+3. Inside resource, create three public variables named `id` (of type UInt64), `name` (of type String), `power` (of type UInt64) initialize id with 0 value.
 
 ### Solution !!
 
-![Alt text](image-4.png)
+![Alt text](image-6.png)

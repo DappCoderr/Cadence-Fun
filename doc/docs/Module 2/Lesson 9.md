@@ -3,7 +3,8 @@ title: Lesson 9 - function declaration
 sidebar_position: 9
 ---
 
-In Cadence, declaring a function involves specifying its name, parameters, return type (if any), and visibility.
+In Cadence, declaring a function involves specifying its visibility, `fun` keyword, function name, parameters, return type (if any).
+
 Let's break down the structure of a function declaration:
 
 ```jsx
@@ -25,3 +26,7 @@ access(all) fun setNewValue(newVal: UInt64) {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public function named `createKnight`.
+
+### Solution !!
+
+<!-- ![Alt text](image-5.png) -->

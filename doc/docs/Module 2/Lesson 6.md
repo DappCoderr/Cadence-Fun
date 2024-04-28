@@ -16,7 +16,7 @@ access(all) struct Book {
 
 ```
 
-Inside a struct, you can define variables and functions. Every time you create a struct, you must include an initializer to set initial variable values. Let's take a look:
+Inside a struct, you can define variables and functions. Every time you create a struct followed by the structure name, you must include an initializer to set initial variable values. Let's take a look:
 
 ```jsx
 
@@ -42,6 +42,11 @@ access(all) struct Book {
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a struct named `KnightDetails`. And inside two variables: `name` and `createdDate`, of type `String` and `UFix64` respectively.
-3. Initialize name and createdDate in the init function.
-4. To get the current date, use getCurrentBlock().timestamp.
+2. Create a struct named `KnightDetails`.
+3. Inside add two variable `name` (of type String) and `power` (of type UInt64)
+4. Initialize name and power in the init function.
+5. And delete these variable from the `KnightNFT` resource
+
+### Solution !!
+
+![Alt text](image-3.png)

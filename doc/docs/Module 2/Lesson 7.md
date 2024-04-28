@@ -1,9 +1,9 @@
 ---
-title: Lesson 7 - Using Structs in Resources
+title: Lesson 7 - Organizing Resource Data with Structs
 sidebar_position: 7
 ---
 
-In this lesson, we'll explore how to utilize structs within resources to manage complex data structures more effectively. Imagine you have a struct called `Book`, which stores information about a book, such as its title and author.
+This lesson shows how to use structs within resources! Structs act like containers to group related data. Imagine you have a struct called `Book`, which stores information about a book, such as its title and author.
 
 ```cadence
 access(all) struct Book {
@@ -30,7 +30,7 @@ access(all) resource Library {
 }
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
 - We define a struct `Book` with properties for `title` and `author`.
 - The `Library` resource contains a property `book` of type `Book`.
@@ -39,4 +39,9 @@ access(all) resource Library {
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Add `KnightDetails` to the `KnightNFT` resource.
+2. Use `KnightDetails` inside a `KnightNFT` resource.
+   This way, we keep knight data organized and easy to manage.
+
+### Solution !!
+
+![Alt text](image-2.png)
