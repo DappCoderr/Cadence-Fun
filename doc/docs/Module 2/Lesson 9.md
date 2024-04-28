@@ -29,4 +29,4 @@ access(all) fun setNewValue(newVal: UInt64) {
 
 ### Solution !!
 
-<!-- ![Alt text](image-5.png) -->
+![Alt text](image-4.png)
