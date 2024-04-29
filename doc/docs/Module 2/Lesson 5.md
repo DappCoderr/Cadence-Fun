@@ -10,7 +10,7 @@ We'll use the resource keyword to create them and explore how to manage them wit
 ```jsx
 access(all) contract HelloWorld {
 
-	access(all) resource Country{
+	access(all) resource World{
 
 	  init(){}
 	}
@@ -21,8 +21,8 @@ Inside a resource, you can define variables and functions. Every time you create
 
 ```jsx
 
-// Declare a resource named `Country`
-access(all) resource Country{
+// Declare a resource named `World`
+access(all) resource World{
 	access(all) var name: String
 	access(all) var capital: String
 
@@ -36,7 +36,7 @@ access(all) resource Country{
 ### Breaking it Down:
 
 - `access(all)`: This access modifier allows anyone to read the variables.
-- `resource`: This keyword signifies the creation of a resource, in this case, Country.
+- `resource`: This keyword signifies the creation of a resource, in this case, World.
 - Defining two variables `name` and `capital` of type `String`
 
 ### Put it to the Test

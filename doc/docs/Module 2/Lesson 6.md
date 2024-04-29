@@ -5,12 +5,12 @@ sidebar_position: 6
 
 A `struct`, which stands for structure, is like a container that holds different types of information under one label. Structs help organize related pieces of data together, making it easier to manage and work with complex information.
 
-For instance, if you're managing a library and need to track details about each book like Title, Author, Subject, and Book ID, you can use a struct to group these attributes together.
+For instance, if you're managing a country and need to track details about each country like Name, Population, Ratings, and Country ID, you can use a struct to group these attributes together.
 
 ```jsx
 
-// Define a struct named `Book`
-access(all) struct Book {
+// Define a struct named `Country`
+access(all) struct Country {
 
 }
 
@@ -21,13 +21,17 @@ Inside a struct, you can define variables and functions. Every time you create a
 ```jsx
 
 // Define a struct named `Book`
-access(all) struct Book {
-    access(all) var title: String
-    access(all) var author: String
+access(all) struct Country {
+    access(all) var country_ID: UInt64
+    access(all) var name: String
+    access(all) var population: UFix64
+    access(all) var has_Coastline: Bool
 
-    init(_title: String, _author: String){
-        self.title = _title
-        self.author = _author
+    init(_name: String, _population: UFix64){
+        self.country_ID = 1
+        self.name = _name
+        self.population = _population
+        self.has_Coastline = True
     }
 }
 
@@ -35,8 +39,8 @@ access(all) struct Book {
 
 ### Breaking it Down:
 
-- In this example, we define a `struct` named `Person`.
-- It has two variables: `name` of type `String` and `age` of type `UInt8`.
+- In this example, we define a `struct` named `Country`.
+- It has four variables: `country_ID` of type `UInt64` and `name` of type `String`, `population` of type `UFix64` and `has_Coastline` of type `Bool`.
 - `access(all)` ensures that both variables are accessible from anywhere in the code.
 
 ### Put it to the Test

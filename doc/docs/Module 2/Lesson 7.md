@@ -1,40 +1,32 @@
 ---
-title: Lesson 7 - Organizing Resource Data with Structs
+title: Lesson 7 - Resources with Structs
 sidebar_position: 7
 ---
 
-This lesson shows how to use structs within resources! Structs act like containers to group related data. Imagine you have a struct called `Book`, which stores information about a book, such as its title and author.
+Remember the `Country` struct we created in Lesson 6?
+It held details like a country's name, population, and coastline information. Now, let's see how to use this struct within a Flow resource!
+
+### World Resource with Country Details
+
+We will use our previously created `World` resource for a single country. This resource will leverage the Country struct to store the country's specific information in a structured format.
+
+Here's how the `World` resource might look:
 
 ```cadence
-access(all) struct Book {
-    access(all) var title: String
-    access(all) var author: String
+access(all) resource World {
 
-    init(_title: String, _author: String){
-        self.title = _title
-        self.author = _author
-    }
-}
-```
+    access(all) var country: Country
 
-Now, let's create a resource named `Library` to manage books. Instead of handling book details separately, we'll use the `Book` struct within the `Library` resource.
-
-```cadence
-access(all) resource Library {
-
-    access(all) var book: Book
-
-    init(title: String, author: String){
-        self.book = Book(_title: title, _author: author)
+    init(_name: String, _population: UFix64){
+        self.book = Country(_name: _name, _population: _population)
     }
 }
 ```
 
 ### Breaking it Down:
 
-- We define a struct `Book` with properties for `title` and `author`.
-- The `Library` resource contains a property `book` of type `Book`.
-- In the `init` function of `Library`, we initialize the `book` property with the provided title and author.
+- The `World` resource contains a property `country` of type `Country`.
+- In the `init` function of `World`, we initialize the `country` property with the provided name and population.
 
 ### Put it to the Test
 
