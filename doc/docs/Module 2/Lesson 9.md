@@ -1,57 +1,35 @@
 ---
-title: Lesson 8 - enum
-sidebar_position: 8
+title: Lesson 9 - enum with Structs
+sidebar_position: 9
 ---
 
-We've learned how to organize data with structs, but what if a variable can only have specific values? Enums come to the rescue!
+In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
 
-#### Enums like Checklists for Your Code
-
-Imagine a coffee shop with three cup sizes: small, medium, and large. An enum acts like a checklist, ensuring your code only uses these valid options. This reduces errors and keeps things organized.
-
-- We use the `enum` keyword to create enums.
-- Each option within the enum is called a `case`
-
-```jsx
-access(all) enum CupSize: UInt8 {
-    access(all) case small
-    access(all) case medium
-    access(all) case large
-}
-```
-
-### Breaking it Down:
-
-- `CupSize` is the name of the enum.
-- `UInt8` specifies the underlying data type (unsigned 8-bit integer).
-- `small`, `medium`, and `large` are the individual cases (options) within the enum.
-
-You can integrate enums into structs to represent specific attributes or options. For instance, let's add the Size enum to a Glass struct:
+Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
 
 ```jsx
 // Define a struct named `Glass` to represent a glass of juice
+
 access(all) struct Glass {
-    access(all) let size: Size
+
+    access(all) let size: CupSize
     access(all) var isFilled: Bool
 
-    // Initialize the struct with size and fill status
-    init(size: Size, isFilled: Bool) {
-        self.size = size
+    init(value: UInt8, isFilled: Bool) {
+        self.size = Cafe.CupSize(value: value)
         self.isFilled = isFilled
     }
 }
 
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-Here, the Glass struct includes a size property of type Size (enum), representing the size of the glass.
-
-By utilizing enums within structs, you can maintain clarity and consistency in your code while reducing the likelihood of errors related to incorrect value assignments.
+- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
+- The init function is also modified to accept a CupSize value for the size parameter.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
-3. Create public variable named `types` of type enum
-4. Initialise value of `types`
+2. Update the public variable named `env` with newly created `environment` enum
+3. Initialize value of `evn`.

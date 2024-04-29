@@ -1,6 +1,6 @@
 ---
 title: Module 1
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 ## Welcome to Cadence Fun Developers!

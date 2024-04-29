@@ -1,36 +1,31 @@
 ---
-title: Lesson 10 - enum with Structs
+title: Lesson 10 - function declaration
 sidebar_position: 10
 ---
 
-We can integrate enums into structs to represent specific choices. Let's add CupSize to an Order struct:
+In Cadence, declaring a function involves specifying its visibility, `fun` keyword, function name, parameters, return type (if any).
 
-#### Enums like Checklists for Your Code
-
-Imagine a coffee shop with three cup sizes: small, medium, and large. An enum acts like a checklist, ensuring your code only uses these valid options. This reduces errors and keeps things organized.
-
-- We use the `enum` keyword to create enums.
-- Each option within the enum is called a `case`
+Let's break down the structure of a function declaration:
 
 ```jsx
-access(all) struct Order {
-  let size: CupSize  // Property of type CupSize (enum)
-  var cream: Bool
-
-  init(size: CupSize, cream: Bool) {
-    self.size = size
-    self.cream = cream
-  }
+// Define a function named setNewValue
+access(all) fun setNewValue() {
+    // Function body
 }
 ```
 
-Now, when creating an order, you can only choose valid sizes from the CupSize enum. This helps prevent errors and keeps your code clean.
-
 ### Breaking it Down:
+
+- `access(all)`: This specifies the visibility of the function, allowing it to be accessed from anywhere.
+- `fun`: This keyword indicates that we're declaring a function.
+- `setNewValue`: This is the name of the function.
+- `{}`: This is the function body, where you write the code that the function will execute.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
-3. Create public variable named `types` of type enum
-4. Initialise value of `types`
+2. Create a public function named `createKnight`.
+
+### Solution !!
+
+![Alt text](image-4.png)

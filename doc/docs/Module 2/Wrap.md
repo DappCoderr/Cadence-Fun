@@ -1,6 +1,6 @@
 ---
 title: That’s a wrap
-sidebar_position: 13
+sidebar_position: 12
 ---
 
 Hey, congratulations on completing Module 2! 🥳 🎉
@@ -15,49 +15,44 @@ access(all) contract KnightContract {
 
   // Declare variables to keep track of total supply and next knight ID
   access(all) var totalSupply: UInt64
-  access(all) var nextKnightId: UInt64
 
   // Define an enum to represent different types
-  access(all) enum Types: UInt8 {
+  access(all) enum Environment: UInt8 {
     access(all) case fire
     access(all) case grass
     access(all) case sun
     access(all) case rock
+    access(all) case water
+    access(all) case ice
+    access(all) case electric
+    access(all) case poison
+    access(all) case dark
   }
 
   // Define a struct to store details about each knight
   access(all) struct KnightDetails{
       access(all) var name: String
-      access(all) var createdDate: UFix64
-      access(all) var type: Types?
+      access(all) var env: Environment?
 
       // Initialize knight details
       init(name: String, value: UInt8) {
          self.name = name
-         self.createdDate = getCurrentBlock().timestamp
-         self.type = KnightContract.Types(value: value)
+         self.type = KnightContract.Environment(value: value)
       }
   }
 
   // Define a resource for knight non-fungible tokens (NFTs)
   access(all) resource KnightNFT {
       access(all) var id: UInt64
-      access(all) var xp: UFix64
+      access(all) var power: UFix64
       access(all) var details: KnightContract.KnightDetails
 
       // Initialize knight NFT
-      init(id: UInt64, xp: UFix64, name: String, value: UInt8) {
+      init(id: UInt64, power: UFix64, name: String, value: UInt8) {
          self.id = id
-         self.xp = xp
+         self.power = power
          self.details = KnightContract.KnightDetails(name: name, value: value)
-         KnightContract.nextKnightId = KnightContract.nextKnightId + 1
          KnightContract.totalSupply = KnightContract.totalSupply + 1
-      }
-
-      // Define a function to clean up when a knight NFT is destroyed
-      destroy() {
-        KnightContract.nextKnightId = KnightContract.nextKnightId - 1
-        KnightContract.totalSupply = KnightContract.totalSupply - 1
       }
   }
 
@@ -69,7 +64,6 @@ access(all) contract KnightContract {
   // Initialize total supply and next knight ID
   init() {
     self.totalSupply = 0
-    self.nextKnightId = 0
   }
 }
 ```
