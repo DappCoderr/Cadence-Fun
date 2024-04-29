@@ -1,5 +1,5 @@
 ---
-title: Module 1
+title: Lesson 1 - Welcome
 sidebar_position: 1
 ---
 

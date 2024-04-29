@@ -1,5 +1,5 @@
 ---
-title: Lesson 1 - Overview
+title: Lesson 2 - Cadence Overview
 sidebar_position: 2
 ---
 
