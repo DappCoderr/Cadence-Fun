@@ -1,33 +1,36 @@
 ---
-title: Lesson 10 - destory()
+title: Lesson 10 - enum with Structs
 sidebar_position: 10
 ---
 
-In Cadence, Resource may have a destructor function, which is executed when the resource is destroyed. Destructors have no parameters and no return value and are declared using the `destroy` keyword. A resource can have only one destructor.
+We can integrate enums into structs to represent specific choices. Let's add CupSize to an Order struct:
+
+#### Enums like Checklists for Your Code
+
+Imagine a coffee shop with three cup sizes: small, medium, and large. An enum acts like a checklist, ensuring your code only uses these valid options. This reduces errors and keeps things organized.
+
+- We use the `enum` keyword to create enums.
+- Each option within the enum is called a `case`
 
 ```jsx
-// Define a resource named `Country`
-access(all) resource Country {
-    access(all) var id: UInt64
-    access(all) var name: String
-    access(all) var details: CountryDetails
+access(all) struct Order {
+  let size: CupSize  // Property of type CupSize (enum)
+  var cream: Bool
 
-    init(_id: UInt64, _name: String, _budget: UFix64, _value: UInt8) {
-        self.id = _id
-        self.name = _name
-        self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
-    }
-
-    // Define the destructor
-    destroy() {}
+  init(size: CupSize, cream: Bool) {
+    self.size = size
+    self.cream = cream
+  }
 }
 ```
 
-### **Explanation:**
+Now, when creating an order, you can only choose valid sizes from the CupSize enum. This helps prevent errors and keeps your code clean.
 
-In this example, `destroy()`: This is the destructor function for the `Country` resource.
+### Breaking it Down:
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a `destroy` function in the `KnightNFT` resource. This function will decrement `nextKnightId` and `totalSupply` by 1.
+2. Create an enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock` .
+3. Create public variable named `types` of type enum
+4. Initialise value of `types`
