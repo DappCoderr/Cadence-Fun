@@ -1,34 +1,42 @@
 ---
-title: Lesson 11 - Saving Knight to Storage
+title: Lesson 11 - Creating Knight
 sidebar_position: 11
 ---
 
-Now, let's store Knights in our contract using the storage we created earlier.
+In Module 2 function declaration lesson, we have created a first function called createKnight. In this lesson, we will use that function to create our first knight.
 
-For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
+To create a resource, we will use the create keyword and the move operator `<-`. You use the create keyword to initialize a resource. Resources must be created before you can use them.
+
+The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator = with resources, so when you initialize a resource, you will need to use the move operator `<-`.
 
 ```jsx
-access(all) contract HellWorld {
+access(all) contract HelloWorld {
 
-//.....above code
-  access(all) fun storeCountry(country: @Country) {
-      self.storedCountries[country.id] <-! country
-  }
+    // Declare a resource that only includes one function.
+    access(all) resource HelloAsset {}
 
-//...more code
+    // We're going to use the built-in create function
+    // to create a new instance of the HelloAsset resource
+    access(all) fun createHelloAsset(): @HelloAsset {
+        return <-create HelloAsset()
+    }
+
+    init() {
+        // contract initializer function
+    }
 }
 ```
 
 ### **Explanation:**
 
-- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
+- Inside the `storeCounty` function, we use the force-move operator `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
 - This is protecting us from accidentally overwriting a Knight in the dictionary.
 
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function named `storeKnight` with one parameter as `knight` resource
+2. Use create keyword and move operator to form your first Knight.
 
 ### Solution !!
 
-![Alt text](image-9.png)
+![Alt text](image-11.png)

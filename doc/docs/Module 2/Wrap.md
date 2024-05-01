@@ -1,6 +1,6 @@
 ---
 title: That’s a wrap
-sidebar_position: 15
+sidebar_position: 14
 ---
 
 Hey, congratulations on completing Module 2! 🥳 🎉
@@ -10,60 +10,44 @@ In the next module, we'll dive deeper into Cadence's functionalities. But before
 See you in Module 3!
 
 ```jsx
-// Define a contract called KnightContract
-access(all) contract KnightContract {
+access(all) contract KnightCreator{
 
-  // Declare variables to keep track of total supply and next knight ID
   access(all) var totalSupply: UInt64
+  access(all) let storedKnight: @{UInt64: KnightNFT}
 
-  // Define an enum to represent different types
-  access(all) enum Environment: UInt8 {
-    access(all) case fire
-    access(all) case grass
-    access(all) case sun
-    access(all) case rock
-    access(all) case water
-    access(all) case ice
-    access(all) case electric
-    access(all) case poison
-    access(all) case dark
-  }
-
-  // Define a struct to store details about each knight
   access(all) struct KnightDetails{
       access(all) var name: String
-      access(all) var env: Environment?
-
-      // Initialize knight details
-      init(name: String, value: UInt8) {
-         self.name = name
-         self.type = KnightContract.Environment(value: value)
-      }
-  }
-
-  // Define a resource for knight non-fungible tokens (NFTs)
-  access(all) resource KnightNFT {
-      access(all) var id: UInt64
       access(all) var power: UFix64
-      access(all) var details: KnightContract.KnightDetails
 
-      // Initialize knight NFT
-      init(id: UInt64, power: UFix64, name: String, value: UInt8) {
-         self.id = id
-         self.power = power
-         self.details = KnightContract.KnightDetails(name: name, value: value)
-         KnightContract.totalSupply = KnightContract.totalSupply + 1
+      init() {
+         self.name = "Night King"
+         self.power = 50.0
       }
   }
 
-  // Define a function to create a new knight NFT
-  access(all) fun createKnight(xp: UFix64, name: String, value: UInt8): @KnightNFT {
-    return <- create KnightNFT(xp: xp, name: name, value: value)
+  access(all) resource KnightNFT {
+
+      access(all) var id: UInt64
+      access(all) var details: KnightDetails
+
+      init() {
+         self.id = KnightCreator.totalSupply
+         self.details = KnightDetails()
+         KnightCreator.totalSupply = KnightCreator.totalSupply + 1
+      }
   }
 
-  // Initialize total supply and next knight ID
-  init() {
+  access(all) fun createKnight(): @KnightNFT {
+    return <- create KnightNFT()
+  }
+
+  access(all) fun storeKnight(knight: @KnightNFT) {
+      self.storedKnight[knight.id] <-! knight
+  }
+
+  init(){
     self.totalSupply = 0
+    self.storedKnight <- {}
   }
 }
 ```

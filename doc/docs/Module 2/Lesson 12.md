@@ -1,40 +1,34 @@
 ---
-title: Lesson 12 - View Function
+title: Lesson 12 - Saving Knight
 sidebar_position: 12
 ---
 
-If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+Now, let's store Knights in our contract using the storage we created earlier.
 
-In Flow, we also create similar functions, which have a function declaration and a return type.
+For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
 
 ```jsx
 access(all) contract HellWorld {
 
-	// Declare a variable named greetings
-	access(all) var greetings: String
+//.....above code
+  access(all) fun storeCountry(country: @Country) {
+      self.storedCountries[country.id] <-! country
+  }
 
-	access(all) view fun getGreetings(): String{
-		return self.greetings
-	}
-
-	init(){
-		self.greetings = "Hello World"
-	}
+//...more code
 }
-
 ```
 
 ### **Explanation:**
 
-- `getGreetings()`: This function returns a String.
-- `view`: Indicates that it does not modify any external state or any account state
+- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
+- This is protecting us from accidentally overwriting a Knight in the dictionary.
 
 ### Put It to the Test
 
-Let's read all the ID of the Knight in the contract storage. For that-
-
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public functions named `getIDs` marked as `view`.
-3. `getIDs` should return an array of IDs.
+2. Create a public function named `storeKnight` with one parameter as `knight` resource
 
 ### Solution !!
+
+![Alt text](image-8.png)

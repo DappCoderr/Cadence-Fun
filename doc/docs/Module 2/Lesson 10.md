@@ -1,42 +1,46 @@
 ---
-title: Lesson 10 - Creating Knight
+title: Lesson 10 - Math
 sidebar_position: 10
 ---
 
-In Module 2 function declaration lesson, we have created a first function called createKnight. In this lesson, we will use that function to create our first knight.
+Math in Cadence is pretty straightforward. The following operations are the same as in most programming languages:
 
-To create a resource, we will use the create keyword and the move operator `<-`. You use the create keyword to initialize a resource. Resources must be created before you can use them.
-
-The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator = with resources, so when you initialize a resource, you will need to use the move operator `<-`.
+Addition: x + y
+Subtraction: x - y,
+Multiplication: x \* y
+Division: x / y
+Modulus / remainder: x % y (for example, 13 % 5 is 3, because if you divide 5 into 13, 3 is the remainder)
 
 ```jsx
-access(all) contract HelloWorld {
+access(all) contract Example {
+    access(all) var myInteger: Int
 
-    // Declare a resource that only includes one function.
-    access(all) resource HelloAsset {}
+    access(all) fun increment() {
+        self.myInteger = self.myInteger + 1
+    }
 
-    // We're going to use the built-in create function
-    // to create a new instance of the HelloAsset resource
-    access(all) fun createHelloAsset(): @HelloAsset {
-        return <-create HelloAsset()
+    access(all) fun decrement() {
+        self.myInteger = self.myInteger - 1
     }
 
     init() {
-        // contract initializer function
+        self.myInteger = 100
     }
 }
 ```
 
-### **Explanation:**
+Note that we use the self keyword to indicate a variable that exists 1 layer outside of our function’s scope.
 
-- Inside the `storeCounty` function, we use the force-move operator `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
-- This is protecting us from accidentally overwriting a Knight in the dictionary.
-
-### Put It to the Test
+### PUT IT TO THE TEST
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Use create keyword and move operator to form your first Knight.
 
+Every time we create a Kitty, we’re going to want to keep track of the total # of Kitties created.
+
+In your createKitty function, add 1 to the existing totalKitties variable.
+Note: Right now our totalKitties variable is declared as let, which is a constant. You will have to change it to var which indicates the data is not a constant, and can be changed.
+
 ### Solution !!
 
-![Alt text](image-8.png)
+![Alt text](image-10.png)
