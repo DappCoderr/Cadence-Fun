@@ -36,3 +36,7 @@ access(all) contract HelloWorld {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Use create keyword and move operator to form your first Knight.
+
+### Solution !!
+
+![Alt text](image-8.png)

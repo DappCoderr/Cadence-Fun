@@ -52,3 +52,5 @@ access(all) struct Country {
 5. And delete these variable from the `KnightNFT` resource
 
 ### Solution !!
+
+![Alt text](image-3.png)

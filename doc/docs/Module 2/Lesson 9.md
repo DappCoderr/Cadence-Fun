@@ -27,3 +27,5 @@ access(all) fun setNewValue() {
 2. Create a public function named `createKnight`.
 
 ### Solution !!
+
+![Alt text](image-7.png)

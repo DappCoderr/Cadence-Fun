@@ -28,3 +28,7 @@ access(all) contract HellWorld {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public function named `storeKnight` with one parameter as `knight` resource
+
+### Solution !!
+
+![Alt text](image-9.png)

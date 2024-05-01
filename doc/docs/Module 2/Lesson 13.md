@@ -36,3 +36,5 @@ Let's read all the ID of the Knight in the contract storage. For that-
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public functions named `getIDs` marked as `view`.
 3. `getIDs` should return an array of IDs.
+
+### Solution !!
