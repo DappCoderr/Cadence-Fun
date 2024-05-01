@@ -3,40 +3,55 @@ title: Testing it Out!!
 sidebar_position: 9
 ---
 
-```jsx
-import KnightContract from 0xaddress
+Before moving forward let’s test our contract by running transaction and script. Before that don’t forget to deploy the contract.
 
-transaction(xp: UFix64, name: String, value: UInt8) {
+:::note
+Just Copy & past transaction and script and run. Don’t worry we will discuss this in future how to create and use transaction and script.
+:::
+
+```jsx
+import Knight from 0x01
+
+transaction(xp:UFix64, name:String, val:UInt8) {
     prepare(signer: AuthAccount) {
-        let knight <- KnightContract.createKnight(xp: xp, name: name, value: value)
-        signer.save(<-knight, to: /storage/MyKnightNFT)
-        log("Knight Created and stored")
+
+    }
+
+    execute {
+        let newKnight <- Knight.createKnight(xp:xp, name:name, rawValue:val)
+        log(newKnight.details)
+        Knight.storeKnight(knight: <- newKnight)
     }
 }
 
 ```
 
+Script to read TotalSupply
+
 ```jsx
-import KnightContract from 0xaddress
+import Knight from 0x01
 
-pub fun main(address: Address): KnightResult {
-  let authAccount: AuthAccount = getAuthAccount(address)
-  let myPokemonRef = authAccount.borrow<&KnightContract.KnightNFT>(from: /storage/MyKnightNFT)
-                    ?? panic("A Knight does not live here.")
-
-  return KnightResult(myPokemonRef.details, myPokemonRef.xp, myPokemonRef.id)
+access(all) fun main(): Int {
+    return Knight.totalSupply
 }
+```
 
-pub struct KnightResult {
-  pub let id: UInt64
-  pub let xp: UFix64
-  pub let details: KnightContract.KnightDetails
+Script to read total Knight IDs
 
-  init(_ details: KnightContract.KnightDetails, _ xp: UFix64, _ id: UInt64) {
-    self.id = id
-    self.xp = xp
-    self.details = details
-  }
+```jsx
+import Knight from 0x01
+
+access(all) fun main(): [UInt64] {
+    return Knight.getIDs()
 }
+```
 
+Script to read Knight Details
+
+```jsx
+import Knight from 0x01
+
+access(all) fun main(id: UInt64): Knight.KnightDetails? {
+    return Knight.getKnightDetails(id: id)
+}
 ```

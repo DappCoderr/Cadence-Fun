@@ -1,19 +1,31 @@
 ---
-title: Lesson 7 - Level Up Your Knights
+title: Lesson 7 - Dictionary
 sidebar_position: 7
 ---
 
-Congratulations! You've grasped the fundamentals of resources, structs, and their powerful combination in Flow contracts. Now, let's enhance your KnightNFT resource by adding more details that can influence gameplay!
+Dictionary is a data structure that stores key-value pairs. Each key in the dictionary maps to a specific value, allowing efficient retrieval and manipulation of data. Let's explore how to create and use dictionaries in Cadence:
 
-### Environmental Advantage
+```jsx
+// Declare a dictionary to store countries by their ID
+let countryDictionary: { UInt64: String };
 
-Imagine a game where knights have an advantage when fighting in environments that match their training. We can represent this by adding a new property to the KnightDetails struct that specifies the knight's environment (e.g., grass, fire, water, rock).
+// Initialize the dictionary with some values in init function
+countryDictionary = {
+  1: "USA",
+  2: "Canada",
+  3: "UK",
+};
+```
 
-### Put it to the Test
+### **Explanation:**
+
+- `{UInt64: String}`: Defines a dictionary where keys are of type `UInt64` and values are of type `String`.
+- `countryDictionary`: Represents the name of the dictionary variable.
+- `{}`: Initializes an empty dictionary.
+
+Dictionaries in Cadence are versatile and useful for organizing data in various scenarios.
+
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. In `KnightDetails` create a new public variable named `env` (of type String)
-
-### Solution !!
-
-![Alt text](image-5.png)
+2. Create an empty dictionary named `storeKnight`.

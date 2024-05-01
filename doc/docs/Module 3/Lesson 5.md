@@ -1,38 +1,39 @@
 ---
-title: Lesson 5 - Creating Knight
+title: Lesson 5 - Fill Your Vault
 sidebar_position: 5
 ---
 
-In Module 2 function declaration lesson, we have created a first function called createKnight. In this lesson, we will use that function to create our first knight.
+Remember your awesome collection, like a giant vault filled with unique treasures? In our last lesson we have learned the withdraw function that lets you take things out, but what if you want to add something new? That's where the deposit function comes in!
 
-To create a resource, we will use the create keyword and the move operator `<-`. You use the create keyword to initialize a resource. Resources must be created before you can use them.
+Think of the deposit function like a special entrance to your vault. It allows anyone to put in a new NFT (like a shiny new sword or a rare monster) to your collection. It's similar to depositing money in a bank – you're adding something valuable to your growing stash.
 
-The move operator `<-` is used to move a resource into a variable. You cannot use the assignment operator = with resources, so when you initialize a resource, you will need to use the move operator `<-`.
+Let's revisit the vault door (the code) and see how the deposit function works!
 
 ```jsx
-access(all) contract HelloWorld {
+// Our trusty vault (collection) with a special entrance (deposit function)
+pub resource Collection {
 
-    // Declare a resource that only includes one function.
-    access(all) resource HelloAsset {}
+  // ...[withdraw function code from previous lesson]...
 
-    // We're going to use the built-in create function
-    // to create a new instance of the HelloAsset resource
-    access(all) fun createHelloAsset(): @HelloAsset {
-        return <-create HelloAsset()
-    }
+  // This function is like the entrance for new treasures (NFTs)
+  pub fun deposit(token: @NFT) {
 
-    init() {
-        // contract initializer function
-    }
+    // Let's get the ID of the NFT you want to deposit
+    let tokenID = token.id
+
+    // Add the new NFT to your collection's storage (dictionary)
+    self.ownedNFTs[tokenID] <-! token
+  }
+
+  // ...[following code]...
 }
 ```
 
 ### **Explanation:**
 
-- Inside the `storeCounty` function, we use the force-move operator `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
-- This is protecting us from accidentally overwriting a Knight in the dictionary.
+The deposit function takes an NFT (token) as an argument. This is the treasure you want to add to your collection.
+Inside the function, we grab a special code (tokenID) that identifies the specific NFT.
+Then, we use this ID to place the NFT inside your collection's storage (represented by the ownedNFTs dictionary). It's like adding a new item to a shelf with a specific label (ID).
+Here's a cool detail: If there already happens to be an NFT with the same ID in your collection, the new one replaces the old one. This keeps things organized and avoids duplicates.
 
-### Put It to the Test
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Use create keyword and move operator to form your first Knight.
+### **Put it to the Test:**

@@ -1,31 +1,31 @@
 ---
-title: Lesson 2 - Dictionary
+title: Lesson 2 - Collection
 sidebar_position: 2
 ---
 
-Dictionary is a data structure that stores key-value pairs. Each key in the dictionary maps to a specific value, allowing efficient retrieval and manipulation of data. Let's explore how to create and use dictionaries in Cadence:
+Imagine your digital collectibles scattered across a messy room – that's what having NFTs without collections can feel like. This lesson is your guide to organizing them into a shiny, personalized vault!
+
+### **What's a Collection?**
+
+Think of a collection as a box that holds all your unique digital treasures (NFTs) together. Just like folders on your computer that help you group and manage your movies or music files efficiently.
+
+Now let's understand how we can create a collection.
 
 ```jsx
-// Declare a dictionary to store countries by their ID
-let countryDictionary: { UInt64: String };
+// contract code
+access(all) contract HelloWorld: NonFungibleToken {
 
-// Initialize the dictionary with some values in init function
-countryDictionary = {
-  1: "USA",
-  2: "Canada",
-  3: "UK",
-};
+  // This is like a special room inside your contract,
+  // but only for NFTs!
+  access(all) resource Collection {
+  }
+}
 ```
 
 ### **Explanation:**
 
-- `{UInt64: String}`: Defines a dictionary where keys are of type `UInt64` and values are of type `String`.
-- `countryDictionary`: Represents the name of the dictionary variable.
-- `{}`: Initializes an empty dictionary.
+We're creating a new element called `Collection` of type resource. This will acts as a container that can hold multiple NFTs.
 
-Dictionaries in Cadence are versatile and useful for organizing data in various scenarios.
+### **Put it to the Test:**
 
-### Put It to the Test
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create an empty dictionary named `storeKnight`.
+Head over to Flow Playground and try creating your own collection! It's a great way to get hands-on with organizing your digital treasures.

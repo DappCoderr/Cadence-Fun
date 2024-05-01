@@ -38,7 +38,7 @@ function HomepageHeader() {
               </p>
               <a
                 class="button button--primary"
-                href="/docs/Module%201/"
+                href="http://localhost:3000/docs/Module%201/Lesson%201"
                 style={{ marginBottom: "5px" }}
               >
                 Start learning

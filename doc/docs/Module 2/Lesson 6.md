@@ -35,5 +35,3 @@ access(all) resource World {
    This way, we keep knight data organized and easy to manage.
 
 ### Solution !!
-
-![Alt text](image-2.png)

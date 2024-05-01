@@ -47,4 +47,4 @@ access(all) resource World{
 
 ### Solution !!
 
-![Alt text](image-6.png)
+![Alt text](image-2.png)

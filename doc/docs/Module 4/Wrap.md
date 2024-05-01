@@ -3,12 +3,21 @@ title: That’s a wrap
 sidebar_position: 10
 ---
 
+Hey, congratulations on completing Module 3! 🥳 🎉
+
+In the next module, we'll dive deeper into Advance Cadence's functionalities. But before we move on, let's review all the code we've learned so far. If you're facing any issues during development, take a moment to go through the code and see if you can spot any mistakes.
+
+See you in Module 4!
+
 ```jsx
 // Define a contract called KnightContract
 access(all) contract KnightContract {
 
   access(all) var totalSupply: UInt64
   access(all) var nextKnightId: UInt64
+
+  // new code---------------------------------------------->
+  access(all) let storeKnight: @{UInt64: KnightNFT}
 
   access(all) enum Types: UInt8 {
     access(all) case fire
@@ -35,6 +44,7 @@ access(all) contract KnightContract {
       access(all) var details: KnightContract.KnightDetails
 
       init(xp: UFix64, name: String, value: UInt8) {
+        // new code---------------------------------------------->
          self.id = self.uuid
          self.xp = xp
          self.details = KnightContract.KnightDetails(name: name, value: value)
@@ -49,51 +59,31 @@ access(all) contract KnightContract {
   }
 
   // new code---------------------------------------------->
-
-  pub resource interface CollectionPublic {
-        pub fun deposit(token: @KnightNFT)
-        pub fun getIDs(): [UInt64]
-  }
-
-  access(all) resource Collection: CollectionPublic {
-
-  access(all) var ownedNFTs: @{UInt64: KnightNFT}
-
-    init() {
-        self.ownedNFTs <- {}
-    }
-
-    pub fun withdraw(withdrawID: UInt64): @KnightNFT {
-        let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
-        return <- token
-    }
-
-    pub fun deposit(token: @KnightNFT) {
-        let tokenID = token.id
-        self.ownedNFTs[token.id] <-! token
-    }
-
-    pub fun getIDs(): [UInt64] {
-        return self.ownedNFTs.keys
-    }
-
-    destroy () {
-        destroy self.ownedNFTs
-    }
-}
-
-// new code---------------------------------------------->
-access(all) fun createEmptyCollection(): @Collection {
-        return <- create Collection()
-}
-
   access(all) fun createKnight(xp: UFix64, name: String, value: UInt8): @KnightNFT{
     return <- create KnightNFT(xp: xp, name: name, value: value)
+  }
+
+  // new code---------------------------------------------->
+  access(all) fun storeKnights(knight: @KnightNFT) {
+    self.storeKnight[knight.id] <-! knight
+  }
+
+  // new code---------------------------------------------->
+  access(all) fun getIDs(): [UInt64] {
+    return self.storeKnight.keys
+  }
+
+  // new code---------------------------------------------->
+  access(all) fun getknightDetails(id: UInt64): KnightDetails? {
+    return self.storeKnight[id]?.details
   }
 
   init() {
     self.totalSupply = 0
     self.nextKnightId = 0
+
+    // new code---------------------------------------------->
+    self.storeKnight <- {}
   }
 }
 

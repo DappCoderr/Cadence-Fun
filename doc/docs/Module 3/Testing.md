@@ -3,55 +3,40 @@ title: Testing it Out!!
 sidebar_position: 9
 ---
 
-Before moving forward let’s test our contract by running transaction and script. Before that don’t forget to deploy the contract.
-
-:::note
-Just Copy & past transaction and script and run. Don’t worry we will discuss this in future how to create and use transaction and script.
-:::
-
 ```jsx
-import Knight from 0x01
+import KnightContract from 0xaddress
 
-transaction(xp:UFix64, name:String, val:UInt8) {
+transaction(xp: UFix64, name: String, value: UInt8) {
     prepare(signer: AuthAccount) {
-
-    }
-
-    execute {
-        let newKnight <- Knight.createKnight(xp:xp, name:name, rawValue:val)
-        log(newKnight.details)
-        Knight.storeKnight(knight: <- newKnight)
+        let knight <- KnightContract.createKnight(xp: xp, name: name, value: value)
+        signer.save(<-knight, to: /storage/MyKnightNFT)
+        log("Knight Created and stored")
     }
 }
 
 ```
 
-Script to read TotalSupply
-
 ```jsx
-import Knight from 0x01
+import KnightContract from 0xaddress
 
-access(all) fun main(): Int {
-    return Knight.totalSupply
+pub fun main(address: Address): KnightResult {
+  let authAccount: AuthAccount = getAuthAccount(address)
+  let myPokemonRef = authAccount.borrow<&KnightContract.KnightNFT>(from: /storage/MyKnightNFT)
+                    ?? panic("A Knight does not live here.")
+
+  return KnightResult(myPokemonRef.details, myPokemonRef.xp, myPokemonRef.id)
 }
-```
 
-Script to read total Knight IDs
+pub struct KnightResult {
+  pub let id: UInt64
+  pub let xp: UFix64
+  pub let details: KnightContract.KnightDetails
 
-```jsx
-import Knight from 0x01
-
-access(all) fun main(): [UInt64] {
-    return Knight.getIDs()
+  init(_ details: KnightContract.KnightDetails, _ xp: UFix64, _ id: UInt64) {
+    self.id = id
+    self.xp = xp
+    self.details = details
+  }
 }
-```
 
-Script to read Knight Details
-
-```jsx
-import Knight from 0x01
-
-access(all) fun main(id: UInt64): Knight.KnightDetails? {
-    return Knight.getKnightDetails(id: id)
-}
 ```

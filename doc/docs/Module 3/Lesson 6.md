@@ -1,30 +1,31 @@
 ---
-title: Lesson 6 - Saving Knight to Storage
+title: Lesson 6 - Counting Your Treasures!
 sidebar_position: 6
 ---
 
-Now, let's store Knights in our contract using the storage we created earlier.
+Previously we have learn about collection, withdraw function and deposit function. Right? And you know your NFT collection as a giant treasure chest, imagine it's overflowing with unique digital goodies. Just like a library full of books, it can be difficult to keep track of how many items you have without counting them. Right?
 
-For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
+So we have one more interesting function which is like a magical counter for your collection. It dives inside and counts the number of unique NFTs you've stored
+
+### **Implementation:**
+
+Let's take a look and understand how to create getId function.
 
 ```jsx
-access(all) contract HellWorld {
+// Our trusty treasure chest (collection) with a special counting tool (getId function)
+pub resource Collection {
 
-//.....above code
-  access(all) fun storeCountry(country: @Country) {
-      self.storedCountries[country.id] <-! country
+  // This function acts like a magic counter for your treasures (NFTs)!
+  pub fun getIDs(): [UInt64] {
+    // Look inside your collection's storage (dictionary) and count the keys (NFT IDs)
+    return self.ownedNFTs.keys
   }
-
-//...more code
 }
 ```
 
 ### **Explanation:**
 
-- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
-- This is protecting us from accidentally overwriting a Knight in the dictionary.
+The getId function doesn't actually return the number of NFTs, but something just as useful – a list of all the IDs (unique codes) of the NFTs stored in your collection.
+Remember your collection's storage (represented by ownedNFTs) is like a box with labeled shelves (IDs) for each NFT. The getId function simply counts all the labels (IDs) and gives you a list.
 
-### Put It to the Test
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function named `storeKnight` with one parameter as `knight` resource
+### **Put it to the Test:**

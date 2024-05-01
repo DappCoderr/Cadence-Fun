@@ -1,31 +1,33 @@
 ---
-title: Lesson 2 - Collection
+title: Lesson 2 - Unique Identifiers
 sidebar_position: 2
 ---
 
-Imagine your digital collectibles scattered across a messy room – that's what having NFTs without collections can feel like. This lesson is your guide to organizing them into a shiny, personalized vault!
+Every resource in Cadence also has a built-in unique identifier that is unique to that resource only, and **will never be repeated again.** Even if the resource is destroyed.
 
-### **What's a Collection?**
-
-Think of a collection as a box that holds all your unique digital treasures (NFTs) together. Just like folders on your computer that help you group and manage your movies or music files efficiently.
-
-Now let's understand how we can create a collection.
+This makes for a perfect `id` system. Let’s give our `Knight` an `id` using the built in `uuid` field to every resource:
 
 ```jsx
-// contract code
-access(all) contract HelloWorld: NonFungibleToken {
+access(all) contract HellWorld {
 
-  // This is like a special room inside your contract,
-  // but only for NFTs!
-  access(all) resource Collection {
-  }
+	access(all) resource Country{
+		access(all) var id: UInt64
+		access(all) var name: String
+		access(all) var capital: String
+		access(all) var details: CountryDetails
+
+		init(_name: String, _cap: String, _budget: UFix64, _value: UInt8){
+			self.id = self.uuid
+			self.name = _name
+			self.capital = _cap
+			self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
+		}
+	}
 }
+
 ```
 
-### **Explanation:**
+### Put It to the Test
 
-We're creating a new element called `Collection` of type resource. This will acts as a container that can hold multiple NFTs.
-
-### **Put it to the Test:**
-
-Head over to Flow Playground and try creating your own collection! It's a great way to get hands-on with organizing your digital treasures.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Change `knight` resource id with resource built-in unique identifier

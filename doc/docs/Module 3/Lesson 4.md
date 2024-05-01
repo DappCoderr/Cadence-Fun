@@ -1,37 +1,45 @@
 ---
-title: Lesson 4 - Creating Storage
+title: Lesson 4 - Take Back - Withdraw Function
 sidebar_position: 4
 ---
 
-Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.
+Imagine your amazing NFT collection as a giant vault filled with unique digital items. But what if you want to take a special piece out for a closer look, trade it with a friend, or sell it? That's where the withdraw function comes in!
 
-To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
+It provide you Flexibility and Security like only authorized users (like you, the owner of the vault) can access it. This keeps your precious NFTs safe from unauthorized withdrawals.
+
+### **Implementation:**
+
+Let's take a look and understand how to create withdraw function
 
 ```jsx
-access(all) contract HelloWorld {
+// resource declaration
+pub resource Collection {
 
-    //...other code
+  // function declaration
+  pub fun withdraw(withdrawID: UInt64): @NFT {
+    // Let's find the NFT you want to take (based on its ID)
+    let token <- self.ownedNFTs.remove(key: withdrawID)
 
-    // Declare a dictionary to store countries by their ID
-    access(all) let storedCountries: @{UInt64: Country}
+    // Uh oh, the NFT wasn't found! Let the user know.
+    ?? panic("Token not in collection")
 
-    // Declare a resource Country
-    access(all) resource Country{}
-
-    // Initialize the dictionary in the contract's initializer
-    init() {
-        self.storedCountries <- {}
-    }
+    // If all goes well, return the NFT you grabbed!
+    return <- token
+  }
 }
 ```
 
 ### **Explanation:**
 
-The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
+The withdraw function takes a special code (withdrawID) that identifies the exact NFT you want to take out.
+Inside the function, we use a magical tool called remove to grab the NFT with the matching ID from your collection (stored in ownedNFTs).
+If the NFT is found, it's yours! The function happily returns it to you.
+But what if the NFT isn't there? The function throws a little tantrum (indicated by ?? panic) with an error message, letting you know something went wrong.
 
-Remember, when defining a resource type, the `@` symbol must be added.
+### **Put it to the Test:**
 
-### Put It to the Test
+In this section, learners can practice using the `withdraw` function by:
 
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.
+- Calling the function with different `withdrawID` values to remove NFTs from the collection.
+- Checking that the withdrawn NFTs are transferred to the caller successfully.
+- Testing scenarios where the provided `withdrawID` does not correspond to any NFT in the collection to understand error handling.

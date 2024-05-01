@@ -1,39 +1,35 @@
 ---
-title: Lesson 5 - Fill Your Vault
+title: Lesson 5 - enum with Structs
 sidebar_position: 5
 ---
 
-Remember your awesome collection, like a giant vault filled with unique treasures? In our last lesson we have learned the withdraw function that lets you take things out, but what if you want to add something new? That's where the deposit function comes in!
+In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
 
-Think of the deposit function like a special entrance to your vault. It allows anyone to put in a new NFT (like a shiny new sword or a rare monster) to your collection. It's similar to depositing money in a bank – you're adding something valuable to your growing stash.
-
-Let's revisit the vault door (the code) and see how the deposit function works!
+Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
 
 ```jsx
-// Our trusty vault (collection) with a special entrance (deposit function)
-pub resource Collection {
+// Define a struct named `Glass` to represent a glass of juice
 
-  // ...[withdraw function code from previous lesson]...
+access(all) struct Glass {
 
-  // This function is like the entrance for new treasures (NFTs)
-  pub fun deposit(token: @NFT) {
+    access(all) let size: CupSize
+    access(all) var isFilled: Bool
 
-    // Let's get the ID of the NFT you want to deposit
-    let tokenID = token.id
-
-    // Add the new NFT to your collection's storage (dictionary)
-    self.ownedNFTs[tokenID] <-! token
-  }
-
-  // ...[following code]...
+    init(value: UInt8, isFilled: Bool) {
+        self.size = Cafe.CupSize(value: value)
+        self.isFilled = isFilled
+    }
 }
+
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-The deposit function takes an NFT (token) as an argument. This is the treasure you want to add to your collection.
-Inside the function, we grab a special code (tokenID) that identifies the specific NFT.
-Then, we use this ID to place the NFT inside your collection's storage (represented by the ownedNFTs dictionary). It's like adding a new item to a shelf with a specific label (ID).
-Here's a cool detail: If there already happens to be an NFT with the same ID in your collection, the new one replaces the old one. This keeps things organized and avoids duplicates.
+- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
+- The init function is also modified to accept a CupSize value for the size parameter.
 
-### **Put it to the Test:**
+### Put it to the Test
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Update the public variable named `env` with newly created `environment` enum
+3. Initialize value of `evn`.

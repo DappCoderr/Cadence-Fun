@@ -1,35 +1,37 @@
 ---
-title: Lesson 8 - enum
+title: Lesson 8 - Creating Storage
 sidebar_position: 8
 ---
 
-We've learned how to organize data with structs, but what if a variable can only have specific values? Enums come to the rescue!
+Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.
 
-#### Enums like Checklists for Your Code
-
-Imagine a coffee shop with three cup sizes: small, medium, and large. An enum acts like a checklist, ensuring your code only uses these valid options. This reduces errors and keeps things organized.
-
-- We use the `enum` keyword to create enums.
-- Each option within the enum is called a `case`
+To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
 
 ```jsx
-access(all) contract Cafe {
+access(all) contract HelloWorld {
 
-    access(all) enum CupSize: UInt8 {
-        access(all) case small
-        access(all) case medium
-        access(all) case large
+    //...other code
+
+    // Declare a dictionary to store countries by their ID
+    access(all) let storedCountries: @{UInt64: Country}
+
+    // Declare a resource Country
+    access(all) resource Country{}
+
+    // Initialize the dictionary in the contract's initializer
+    init() {
+        self.storedCountries <- {}
     }
 }
 ```
 
-### Breaking it Down:
+### **Explanation:**
 
-- `CupSize` is the name of the enum.
-- `UInt8` specifies the underlying data type (unsigned 8-bit integer).
-- `small`, `medium`, and `large` are the individual cases (options) within the enum.
+The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
 
-### Put it to the Test
+Remember, when defining a resource type, the `@` symbol must be added.
+
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an enum named `Environment` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock`, `water`, `ice`, `electric`, `poison`, `dark`.
+2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.

@@ -1,38 +1,32 @@
 ---
-title: Lesson 7 - Reading from Storage / View function
+title: Lesson 7 - The Power of Interfaces
 sidebar_position: 7
 ---
 
-If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+So far, you've learned some amazing tools to manage your NFT collection. Now we will take a look of something new element interface. Think interface as a blueprint that defines a set of functions that a specific type of resource (like a collection) must implement. This blueprint acts like a contract, ensuring all resources based on that interface will have the same essential tools available. It's similar to a blueprint for building different types of houses – they might have different layouts, but they all need basic features like doors and windows.
 
-In Flow, we also create similar functions, which have a function declaration and a return type.
+Here's a simplified look at how interfaces are declared and used in Cadence code:
 
 ```jsx
-access(all) contract HellWorld {
+// Interface definition (blueprint)
+access(all) interface CollectionPublic {
+  pub fun deposit(token: @NFT)  // Add an NFT
+  pub fun getIDs(): [UInt64]    // Get all NFT IDs
+}
 
-	// Declare a variable named greetings
-	access(all) var greetings: String
-
-	access(all) view fun getGreetings(): String{
-		return self.greetings
-	}
-
-	init(){
-		self.greetings = "Hello World"
-	}
+// Specific resource (KnightCollection) using the interface
+pub resource KnightCollection: CollectionPublic {
+  // ...[KnightCollection code implementing deposit and getIDs functions]...
 }
 
 ```
 
 ### **Explanation:**
 
-- `getGreetings()`: This function returns a String.
-- `view`: Indicates that it does not modify any external state or any account state
+- We define an interface called CollectionPublic. This is the blueprint that specifies the functionalities a collection must have.
+- The CollectionPublic interface has two functions:
+  1. deposit: This function allows users to add an NFT to the collection.
+  2. getIDs: This function helps users retrieve a list of IDs for all the NFTs stored in the collection.
+- Later in the code, we see a specific resource called KnightCollection. This collection implements the CollectionPublic interface. This means the KnightCollection resource must have its own versions of the deposit and getIDs functions defined in its code.
 
-### Put It to the Test
-
-Let's read all the ID of the Knight in the contract storage. For that-
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public functions named `getIDs` marked as `view`.
-3. `getIDs` should return an array of IDs.
+### **Put it to the Test:**

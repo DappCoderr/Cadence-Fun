@@ -1,35 +1,29 @@
 ---
-title: Lesson 9 - enum with Structs
+title: Lesson 9 - Function Declaration
 sidebar_position: 9
 ---
 
-In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
+In Cadence, declaring a function involves specifying its visibility, `fun` keyword, function name, parameters, return type (if any).
 
-Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
+Let's break down the structure of a function declaration:
 
 ```jsx
-// Define a struct named `Glass` to represent a glass of juice
-
-access(all) struct Glass {
-
-    access(all) let size: CupSize
-    access(all) var isFilled: Bool
-
-    init(value: UInt8, isFilled: Bool) {
-        self.size = Cafe.CupSize(value: value)
-        self.isFilled = isFilled
-    }
+// Define a function named setNewValue
+access(all) fun setNewValue() {
+    // Function body
 }
-
 ```
 
 ### Breaking it Down:
 
-- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
-- The init function is also modified to accept a CupSize value for the size parameter.
+- `access(all)`: This specifies the visibility of the function, allowing it to be accessed from anywhere.
+- `fun`: This keyword indicates that we're declaring a function.
+- `setNewValue`: This is the name of the function.
+- `{}`: This is the function body, where you write the code that the function will execute.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Update the public variable named `env` with newly created `environment` enum
-3. Initialize value of `evn`.
+2. Create a public function named `createKnight`.
+
+### Solution !!
