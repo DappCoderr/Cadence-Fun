@@ -3,11 +3,16 @@ title: Lesson 2 - Collection
 sidebar_position: 2
 ---
 
-Imagine your digital collectibles scattered across a messy room – that's what having NFTs without collections can feel like. This lesson is your guide to organizing them into a shiny, personalized vault!
+Very first we are introducing you with the new concept called **`Collection`**.
+Imagine your digital photos, music flies, movies, cards scattered across a messy desktop – that's what having NFTs without collections can feel like.
+
+This lesson is your guide to organizing them into a shiny, personalized space!
 
 ### **What's a Collection?**
 
-Think of a collection as a box that holds all your unique digital treasures (NFTs) together. Just like folders on your computer that help you group and manage your movies or music files efficiently.
+Think of a collection as a folder that holds all your unique digital treasures (NFTs) together. Just like folders on your computer that help you group and manage your movies or music files efficiently.
+
+![Alt text](image-3.png)
 
 Now let's understand how we can create a collection.
 
