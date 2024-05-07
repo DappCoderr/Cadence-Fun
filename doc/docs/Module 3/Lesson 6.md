@@ -3,9 +3,9 @@ title: Lesson 6 - Counting Your Treasures!
 sidebar_position: 6
 ---
 
-Previously we have learn about collection, withdraw function and deposit function. Right? And you know your NFT collection as a giant treasure chest, imagine it's overflowing with unique digital goodies. Just like a library full of books, it can be difficult to keep track of how many items you have without counting them. Right?
+Just like a library full of books, keeping track of everything can get tricky. That's where our new superpower comes in: **getIDs function!**
 
-So we have one more interesting function which is like a magical counter for your collection. It dives inside and counts the number of unique NFTs you've stored
+It dives inside collection and counts all the unique NFTs you've stored in your collection.
 
 ### **Implementation:**
 
@@ -23,9 +23,10 @@ pub resource Collection {
 }
 ```
 
-### **Explanation:**
-
-The getId function doesn't actually return the number of NFTs, but something just as useful – a list of all the IDs (unique codes) of the NFTs stored in your collection.
-Remember your collection's storage (represented by ownedNFTs) is like a box with labeled shelves (IDs) for each NFT. The getId function simply counts all the labels (IDs) and gives you a list.
-
 ### **Put it to the Test:**
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Remember Module 2 L8 how we have created resource dictionary.
+   Similarly create `ownedKnight` and store it to an previously created resource collection.
+
+### Solution !!

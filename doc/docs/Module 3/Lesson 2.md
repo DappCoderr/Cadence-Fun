@@ -33,4 +33,7 @@ We're creating a new element called `Collection` of type resource. This will act
 
 ### **Put it to the Test:**
 
-Head over to Flow Playground and try creating your own collection! It's a great way to get hands-on with organizing your digital treasures.
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a resource name Collection.
+
+### Solution !!

@@ -1,13 +1,15 @@
 ---
-title: Lesson 4 - Take Back - Withdraw Function
+title: Lesson 4 - Withdraw Function
 sidebar_position: 4
 ---
 
-Imagine your amazing NFT collection as a giant vault filled with unique digital items. But what if you want to take a special piece out for a closer look, trade it with a friend, or sell it? That's where the withdraw function comes in!
+Great work, now you have store you Knight NFT into your collection. But what if you want to take a special NFT out for a spin? Maybe you want to show it off to a friend, trade it for something else, or even sell it on a marketplace!
 
-It provide you Flexibility and Security like only authorized users (like you, the owner of the vault) can access it. This keeps your precious NFTs safe from unauthorized withdrawals.
+That's where the withdraw function comes in like a superhero!
 
-### **Implementation:**
+Your collection is a giant vault, and the withdraw function is the key that unlocks it. But don't worry, this key is super secure! Only you (the owner) can use it to take things out. This keeps your precious NFTs safe from unauthorized withdrawals.
+
+### Let's Peek at the Code!
 
 Let's take a look and understand how to create withdraw function
 
@@ -18,9 +20,10 @@ pub resource Collection {
   // function declaration
   pub fun withdraw(withdrawID: UInt64): @NFT {
     // Let's find the NFT you want to take (based on its ID)
+    // Then it searches the collection dictionary and pass it to token
     let token <- self.ownedNFTs.remove(key: withdrawID)
 
-    // Uh oh, the NFT wasn't found! Let the user know.
+    // Uh oh, the NFT wasn't found! Let the user know "Oops, that NFT isn't in your collection!"
     ?? panic("Token not in collection")
 
     // If all goes well, return the NFT you grabbed!
@@ -29,17 +32,10 @@ pub resource Collection {
 }
 ```
 
-### **Explanation:**
-
-The withdraw function takes a special code (withdrawID) that identifies the exact NFT you want to take out.
-Inside the function, we use a magical tool called remove to grab the NFT with the matching ID from your collection (stored in ownedNFTs).
-If the NFT is found, it's yours! The function happily returns it to you.
-But what if the NFT isn't there? The function throws a little tantrum (indicated by ?? panic) with an error message, letting you know something went wrong.
-
 ### **Put it to the Test:**
 
-In this section, learners can practice using the `withdraw` function by:
+1. Open Flow [Playground](https://play.flow.com/)
+2. Remember Module 2 L8 how we have created resource dictionary.
+   Similarly create `ownedKnight` and store it to an previously created resource collection.
 
-- Calling the function with different `withdrawID` values to remove NFTs from the collection.
-- Checking that the withdrawn NFTs are transferred to the caller successfully.
-- Testing scenarios where the provided `withdrawID` does not correspond to any NFT in the collection to understand error handling.
+### Solution !!
