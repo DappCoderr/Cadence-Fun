@@ -5,9 +5,9 @@ sidebar_position: 4
 
 Great work, now you have store you Knight NFT into your collection. But what if you want to take a special NFT out for a spin? Maybe you want to show it off to a friend, trade it for something else, or even sell it on a marketplace!
 
-That's where the withdraw function comes in like a superhero!
+That's where the withdraw function comes in!
 
-Your collection is a giant vault, and the withdraw function is the key that unlocks it. But don't worry, this key is super secure! Only you (the owner) can use it to take things out. This keeps your precious NFTs safe from unauthorized withdrawals.
+Your collection is a giant vault, and the withdraw function is the key that unlocks it. But don't worry, this key is super secure! Only you (the owner) can use it to take things out. This keeps your NFTs safe from unauthorized withdrawals.
 
 ### Let's Peek at the Code!
 

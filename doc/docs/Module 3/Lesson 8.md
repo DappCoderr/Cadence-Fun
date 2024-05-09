@@ -11,16 +11,16 @@ It's pretty straightforward function – it lets you create a brand new collecti
 
 ```jsx
 // This function acts like a magic button to create a new empty treasure chest (collection)
-access(all) fun createEmptyCollection(): @Collection {
+access(all) fun createEmptyCollection(): @ToyNFTCollection {
   // Use the magic "create" keyword to build a brand new collection on the blockchain
-  return <- create Collection()
+  return <- create ToyNFTCollection()
 }
 ```
 
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Remember Module 2 L8 how we have created resource dictionary.
-   Similarly create `ownedKnight` and store it to an previously created resource collection.
+2. Create a function named `createEmptyCollection`
+3. Create a Collection resource and return it.
 
 ### Solution !!

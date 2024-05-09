@@ -3,13 +3,9 @@ title: Lesson 3 - Nested Resources
 sidebar_position: 3
 ---
 
-Remember those collections from the last lesson? They might be empty now, but that's okay! Just like filling a box with toys, you can add NFTs to your collection for better organization. Today, we'll explore a concept called "nested resources" to help you do just that.
+Although those collections from the previous lesson might be empty now, that's fine.
 
-### Imagine Your Collection as a Box
-
-Think of your collection as a box, and your NFTs as different types of toys (games, balls, colors, etc.). Nested resources allow you to organize these items within the box itself.
-
-### Let's Peek at the Code!
+You understand why we have created them. Right? Now we will understand how we can add same type of NFTs to a collection, for that we will delve into a new concept called "nested resources" means resource owning other resource.
 
 This code snippet shows how nested resources make organization possible:
 
@@ -25,18 +21,8 @@ access(all) resource Collection {
         // Assigning an empty dictionary to ownedNFTs
         self.ownedNFTs <- {}
     }
-
-    // This function cleans up the backpack when the Collection is no longer needed
-    destroy () {
-        destroy self.ownedNFTs
-    }
 }
 ```
-
-### **Explanation:**
-
-- Remember Module 2 L8 how we have created resource dictionary. Similarly create `ownedKnight`.
-- The `destroy()` function helps us clean up the backpack when the collection is no longer needed.
 
 ### **Put it to the Test:**
 
