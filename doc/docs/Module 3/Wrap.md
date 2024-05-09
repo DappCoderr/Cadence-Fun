@@ -4,96 +4,74 @@ sidebar_position: 10
 ---
 
 ```jsx
-// Define a contract called KnightContract
-access(all) contract KnightContract {
+access(all) contract KnightCreator{
 
   access(all) var totalSupply: UInt64
-  access(all) var nextKnightId: UInt64
-
-  access(all) enum Types: UInt8 {
-    access(all) case fire
-    access(all) case grass
-    access(all) case sun
-    access(all) case rock
-  }
 
   access(all) struct KnightDetails{
       access(all) var name: String
-      access(all) var createdDate: UFix64
-      access(all) var type: Types?
+      access(all) var power: UFix64
 
-      init(name: String, value: UInt8) {
-         self.name = name
-         self.createdDate = getCurrentBlock().timestamp
-         self.type = KnightContract.Types(value: value)
+      init() {
+         self.name = "Night King"
+         self.power = 50.0
       }
   }
 
   access(all) resource KnightNFT {
+
       access(all) var id: UInt64
-      access(all) var xp: UFix64
-      access(all) var details: KnightContract.KnightDetails
+      access(all) var details: KnightDetails
 
-      init(xp: UFix64, name: String, value: UInt8) {
-         self.id = self.uuid
-         self.xp = xp
-         self.details = KnightContract.KnightDetails(name: name, value: value)
-         KnightContract.nextKnightId = KnightContract.nextKnightId + 1
-         KnightContract.totalSupply = KnightContract.totalSupply + 1
-      }
-
-      destroy() {
-        KnightContract.nextKnightId = KnightContract.nextKnightId - 1
-        KnightContract.totalSupply = KnightContract.totalSupply - 1
+      init() {
+         self.id = KnightCreator.totalSupply
+         self.details = KnightDetails()
+         KnightCreator.totalSupply = KnightCreator.totalSupply + 1
       }
   }
 
-  // new code---------------------------------------------->
+  access(all) fun createKnight(): @KnightNFT {
+    return <- create KnightNFT()
+  }
 
-  pub resource interface CollectionPublic {
-        pub fun deposit(token: @KnightNFT)
-        pub fun getIDs(): [UInt64]
+  access(all) resource interface CollectionPublic {
+    access(all) fun deposit(token: @KnightNFT)
+    access(all) fun getIDs(): [UInt64]
   }
 
   access(all) resource Collection: CollectionPublic {
 
-  access(all) var ownedNFTs: @{UInt64: KnightNFT}
+    access(all) var ownedNFTs: @{UInt64: KnightNFT}
 
     init() {
         self.ownedNFTs <- {}
     }
 
-    pub fun withdraw(withdrawID: UInt64): @KnightNFT {
-        let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
-        return <- token
+    access(all) fun withdraw(withdrawID: UInt64): @KnightNFT {
+      let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
+      return <- token
     }
 
-    pub fun deposit(token: @KnightNFT) {
-        let tokenID = token.id
-        self.ownedNFTs[token.id] <-! token
+    access(all) fun deposit(token: @KnightNFT) {
+      let tokenID = token.id
+      self.ownedNFTs[tokenID] <-! token
     }
 
-    pub fun getIDs(): [UInt64] {
-        return self.ownedNFTs.keys
+    access(all) fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
     }
 
-    destroy () {
-        destroy self.ownedNFTs
+    destroy (){
+      destroy self.ownedNFTs
     }
-}
-
-// new code---------------------------------------------->
-access(all) fun createEmptyCollection(): @Collection {
-        return <- create Collection()
-}
-
-  access(all) fun createKnight(xp: UFix64, name: String, value: UInt8): @KnightNFT{
-    return <- create KnightNFT(xp: xp, name: name, value: value)
   }
 
-  init() {
+  access(all) fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  init(){
     self.totalSupply = 0
-    self.nextKnightId = 0
   }
 }
 

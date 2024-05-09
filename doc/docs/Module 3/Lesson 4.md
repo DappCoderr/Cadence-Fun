@@ -15,10 +15,10 @@ Let's take a look and understand how to create withdraw function
 
 ```jsx
 // resource declaration
-pub resource Collection {
+access(all) resource Collection {
 
   // function declaration
-  pub fun withdraw(withdrawID: UInt64): @NFT {
+  access(all) fun withdraw(withdrawID: UInt64): @NFT {
     // Let's find the NFT you want to take (based on its ID)
     // Then it searches the collection dictionary and pass it to token
     let token <- self.ownedNFTs.remove(key: withdrawID)
@@ -35,7 +35,8 @@ pub resource Collection {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Remember Module 2 L8 how we have created resource dictionary.
-   Similarly create `ownedKnight` and store it to an previously created resource collection.
+2. Add the withdraw function to the Collection resource.
 
 ### Solution !!
+
+![Alt text](image-12.png)

@@ -24,3 +24,5 @@ access(all) fun createEmptyCollection(): @ToyNFTCollection {
 3. Create a Collection resource and return it.
 
 ### Solution !!
+
+![Alt text](image-11.png)

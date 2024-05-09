@@ -1,6 +1,6 @@
 ---
 title: Lesson 10 - destory()
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 In Cadence, Resource may have a destructor function, which is executed when the resource is destroyed. Destructors have no parameters and no return value and are declared using the `destroy` keyword. A resource can have only one destructor.

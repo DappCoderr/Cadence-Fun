@@ -31,3 +31,5 @@ access(all) resource Collection {
    Similarly create `ownedKnight` and store it to an previously created resource collection.
 
 ### Solution !!
+
+![Alt text](image-6.png)

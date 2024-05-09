@@ -13,10 +13,10 @@ Let's take a look and understand how to create withdraw function
 
 ```jsx
 // Our trusty vault (collection) with a special entrance (deposit function)
-pub resource Collection {
+access(all) resource Collection {
 
   // This function is like the entrance for new treasures (NFTs)
-  pub fun deposit(token: @NFT) {
+  access(all) fun deposit(token: @NFT) {
 
     // Let's get the ID of the NFT you want to deposit
     let tokenID = token.id
@@ -30,7 +30,8 @@ pub resource Collection {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Remember Module 2 L8 how we have created resource dictionary.
-   Similarly create `ownedKnight` and store it to an previously created resource collection.
+2. Add the deposit function to the Collection resource.
 
 ### Solution !!
+
+![Alt text](image-7.png)

@@ -16,13 +16,13 @@ These rules are like interfaces in programming. They define what each toys must 
 
 ```jsx
 // Interface definition (blueprint)
-access(all) interface ToyInterface {
-  pub fun deposit(token: @NFT)  // Add an NFT
-  pub fun getIDs(): [UInt64]    // Get all NFT IDs
+access(all) resource interface ToyInterface {
+  access(all) fun deposit(token: @NFT)  // Add an NFT
+  access(all) fun getIDs(): [UInt64]    // Get all NFT IDs
 }
 
 // Specific resource (box for toys) using the interface
-pub resource ToyNFTCollection: ToyInterface {
+access(all) resource ToyNFTCollection: ToyInterface {
   // ...[ToyInterface code implementing deposit and getIDs functions]...
 }
 
@@ -31,6 +31,8 @@ pub resource ToyNFTCollection: ToyInterface {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create the interface for the Collection named as `CollectionPublic`.
+2. Create the resource interface for the Collection named as `CollectionPublic`.
 
 ### Solution !!
+
+![Alt text](image-10.png)

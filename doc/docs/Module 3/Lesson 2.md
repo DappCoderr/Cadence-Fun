@@ -28,5 +28,9 @@ access(all) contract HelloWorld: NonFungibleToken {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a resource name Collection.
+3. Remove the storedKnight dictionary and storeKnight function for now.
 
 ### Solution !!
+
+![Alt text](image-4.png)
+![Alt text](image-5.png)
