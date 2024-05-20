@@ -63,4 +63,3 @@ pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.
