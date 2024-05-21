@@ -3,8 +3,7 @@ title: Lesson 6 - Resources with Structs
 sidebar_position: 6
 ---
 
-Remember the `Country` struct we created in Lesson 6?
-It held details like a country's name, population, and coastline information. Now, let's see how to use this struct within a Flow resource!
+Recall the `World` resource and `Country` struct from Lesson 4 and 905? let's use in this lesson.
 
 ### World Resource with Country Details
 
@@ -23,16 +22,10 @@ access(all) resource World {
 }
 ```
 
-### Breaking it Down:
-
-- The `World` resource contains a property `country` of type `Country`.
-- In the `init` function of `World`, we initialize the `country` property with the provided name and population.
-
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Use `KnightDetails` inside a `KnightNFT` resource.
-   This way, we keep knight data organized and easy to manage.
+2. Use `KnightDetails` inside a `KnightNFT` resource. This way, we keep knight data organized and easy to manage.
 
 ### Solution !!
 
