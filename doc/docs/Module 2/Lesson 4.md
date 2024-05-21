@@ -3,18 +3,21 @@ title: Lesson 4 - Resource
 sidebar_position: 4
 ---
 
-Flow lets you create special items called resources. Imagine Mono lisa painting or unique vikings sword. These are unique and valuable, just like resources in programming. They represent valuable and unique things on the blockchain, ensuring secure ownership and control.
+Flow allows you to create special items called resources. These are unique and valuable, like the Mona Lisa painting or a unique Viking sword. They ensure secure ownership and control on the blockchain.
 
-We'll use the resource keyword to create them and explore how to manage them within your contracts.
+To create a resource we use the **_resource_** keyword to create them:
 
 ```jsx
 access(all) contract HelloWorld {
 
-	access(all) resource World{
+	access(all) resource World {
 
-	  init(){}
+	  init() {
+		// Initialization code
+	  }
 	}
 }
+
 ```
 
 Inside a resource, you can define variables and functions. Every time you create a resource, you must include an initializer to set initial variable values. Here's an example:
@@ -33,17 +36,11 @@ access(all) resource World{
 }
 ```
 
-### Breaking it Down:
-
-- `access(all)`: This access modifier allows anyone to read the variables.
-- `resource`: This keyword signifies the creation of a resource, in this case, World.
-- Defining two variables `name` and `capital` of type `String`
-
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a resource named `KnightNFT`.
-3. Inside resource, create three public variables named `id` (of type UInt64), `name` (of type String), `power` (of type UInt64) initialize id with 0 value.
+2. Create a resource named KnightNFT.
+3. Inside the resource, create three public variables named **_id_** (of type UInt64), **_name_** (of type String), and **_power_** (of type UInt64). Initialize id with a value of 0.
 
 ### Solution !!
 

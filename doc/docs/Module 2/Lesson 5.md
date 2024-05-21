@@ -3,9 +3,9 @@ title: Lesson 5 - Structs
 sidebar_position: 5
 ---
 
-A `struct`, which stands for structure, is like a container that holds different types of information under one label. Structs help organize related pieces of data together, making it easier to manage and work with complex information.
+A **_struct_** (short for structure) is like a container that holds different types of information under one label. Structs help organize related pieces of data together.
 
-For instance, if you're managing a country and need to track details about each country like Name, Population, Ratings, and Country ID, you can use a struct to group these attributes together.
+For instance, to track details about a country, you can use a struct to group attributes like Name, Population, Ratings, and Country ID:
 
 ```jsx
 
@@ -36,12 +36,6 @@ access(all) struct Country {
 }
 
 ```
-
-### Breaking it Down:
-
-- In this example, we define a `struct` named `Country`.
-- It has four variables: `country_ID` of type `UInt64` and `name` of type `String`, `population` of type `UFix64` and `has_Coastline` of type `Bool`.
-- `access(all)` ensures that both variables are accessible from anywhere in the code.
 
 ### Put it to the Test
 
