@@ -3,9 +3,9 @@ title: Lesson 12 - Saving Knight
 sidebar_position: 12
 ---
 
-Now, let's store Knights in our contract using the storage we created earlier.
+Now, let's store Knights in our contract in the storage we created in lesson 8.
 
-For that we will create a function and call the `storedCountries` and store the `Country` resource to it. Let’s create.
+For that we will create a function and call the dictionary and store the `KnightNFT` resource to it. Let’s see the below code, how we are storing `Country` resource.
 
 ```jsx
 access(all) contract HellWorld {

@@ -3,14 +3,10 @@ title: Lesson 8 - Creating Storage
 sidebar_position: 8
 ---
 
-Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.
-
-To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
+Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
 
 ```jsx
 access(all) contract HelloWorld {
-
-    //...other code
 
     // Declare a dictionary to store countries by their ID
     access(all) let storedCountries: @{UInt64: Country}
@@ -24,8 +20,6 @@ access(all) contract HelloWorld {
     }
 }
 ```
-
-### **Explanation:**
 
 The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
 

@@ -3,7 +3,7 @@ title: Lesson 6 - Resources with Structs
 sidebar_position: 6
 ---
 
-Recall the `World` resource and `Country` struct from Lesson 4 and 905? let's use in this lesson.
+Remember the `World` resource and `Country` struct from Lesson 4 and 5? let's use in this lesson.
 
 ### World Resource with Country Details
 
