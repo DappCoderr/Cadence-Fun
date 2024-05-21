@@ -36,6 +36,8 @@ Note that we use the self keyword to indicate a variable that exists 1 layer out
 1. Open Flow [Playground](https://play.flow.com/)
 2. Use create keyword and move operator to form your first Knight.
 
+Next, we’ll create our first Knight.
+
 ### Solution !!
 
 ![Alt text](image-10.png)

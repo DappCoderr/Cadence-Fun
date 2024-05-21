@@ -18,14 +18,16 @@ access(all) contract HelloWorld {
 }
 ```
 
-- **_access(all)_** makes the contract public, allowing anyone to read it.
-- **_contract_** defines a contract named HelloWorld.
-- **_init()_** is the initializer function that runs once when the contract is first deployed.
+- **_access(all)_**: Makes the contract public, meaning anyone can read it.
+- **_contract_**: Defines a new contract.
+- **_init()_**: A special function that runs once when the contract is first deployed.
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. To start building our Knight Knight, create a contract named KnightCreator with a public access modifier.
+
+In the next lesson, we'll delve deeper into how we manage data within these contracts.
 
 ### Solution !!
 

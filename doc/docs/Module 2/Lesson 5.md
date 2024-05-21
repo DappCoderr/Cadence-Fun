@@ -45,6 +45,8 @@ access(all) struct Country {
 4. Initialize name and power in the init function.
 5. And delete these variable from the `KnightNFT` resource
 
+Next, we’ll combine resources and structs to store structured information.
+
 ### Solution !!
 
 ![Alt text](image-3.png)

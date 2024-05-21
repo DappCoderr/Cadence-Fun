@@ -34,6 +34,8 @@ access(all) contract HelloWorld {
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public variables, `totalSupply` of type `UInt64`, initialized with 0.
 
+Next, we’ll explore how to create unique and valuable entities using resources.
+
 ### Solution !!
 
 ![Alt text](image-1.png)

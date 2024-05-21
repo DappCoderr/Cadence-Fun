@@ -17,6 +17,8 @@ access(all) fun setNewValue() {
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public function named `createKnight`.
 
+Next, we’ll explore basic math operations in Cadence.
+
 ### Solution !!
 
 ![Alt text](image-7.png)

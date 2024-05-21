@@ -42,6 +42,8 @@ access(all) resource World{
 2. Create a resource named KnightNFT.
 3. Inside the resource, create three public variables named **_id_** (of type UInt64), **_name_** (of type String), and **_power_** (of type UInt64). Initialize id with a value of 0.
 
+Next, we’ll learn how to organize related data using structs.
+
 ### Solution !!
 
 ![Alt text](image-2.png)

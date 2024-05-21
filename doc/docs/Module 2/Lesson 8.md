@@ -30,6 +30,8 @@ Remember, when defining a resource type, the `@` symbol must be added.
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.
 
+Next, we’ll learn how to declare and use functions in Cadence.
+
 ### Solution !!
 
 ![Alt text](image-6.png)

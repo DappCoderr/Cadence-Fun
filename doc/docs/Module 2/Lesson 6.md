@@ -27,6 +27,8 @@ access(all) resource World {
 1. Open Flow [Playground](https://play.flow.com/)
 2. Use `KnightDetails` inside a `KnightNFT` resource. This way, we keep knight data organized and easy to manage.
 
+Next, we’ll learn about dictionaries, which are essential for efficient data management.
+
 ### Solution !!
 
 ![Alt text](image-4.png)
