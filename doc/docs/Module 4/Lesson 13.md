@@ -3,38 +3,22 @@ title: Lesson 13 - Events
 sidebar_position: 13
 ---
 
-If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+Our contract is almost finished! Now let’s add an event.
 
-In Flow, we also create similar functions, which have a function declaration and a return type.
+Events are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be ‘listening’ for certain events and take action when they happen.
 
-```jsx
-access(all) contract HellWorld {
+Example:
 
-	// Declare a variable named greetings
-	access(all) var greetings: String
+```cadence
+// declare the event
+access(all) event IntegersAdded(x: UInt64, y: UInt64, result: UInt64);
 
-	access(all) view fun getGreetings(): String{
-		return self.greetings
-	}
-
-	init(){
-		self.greetings = "Hello World"
-	}
+access(all) fun add(x: UInt64, y: UInt64): UInt64 {
+    let result: UInt64 = x + y
+    // fire an event to let the app know the function was called:
+    emit IntegersAdded(x: x, y: y, result: result)
+    return result
 }
-
 ```
 
-### **Explanation:**
-
-- `getGreetings()`: This function returns a String.
-- `view`: Indicates that it does not modify any external state or any account state
-
-### Put It to the Test
-
-Let's read all the ID of the Knight in the contract storage. For that-
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public functions named `getIDs` marked as `view`.
-3. `getIDs` should return an array of IDs.
-
-### Solution !!
+### **Putting it to the Test:**

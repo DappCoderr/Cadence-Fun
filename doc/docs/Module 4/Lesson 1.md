@@ -1,12 +1,12 @@
 ---
-title: Lesson 1 - Overview
+title: Lesson 1 - The Last Adventurer!
 sidebar_position: 1
 ---
 
-Welcome to Module 3! 🎉
+Hey there, champion! We're nearing the end of our grand adventure in Module 5! Remember how we built our awesome Knight and learned to keep it safe? This time, we're about to uncover something even cooler!
 
-In Module 2, we covered essential topics like contract creation, resources, structures, function declaration, variables, destroy function, and enums. By now, you should have a solid understanding of Cadence basics.
+Get ready to hear all about **special tokens**! You might've heard about tokens before in the blockchain world. But here's the catch: we're focusing on a unique kind called **non-fungible tokens (NFTs)**. Think of them as one-of-a-kind treasures, not your average everyday tokens!
 
-But guess what? We're not stopping there! Module 3 will build upon what you've learned and introduce new exciting features to our contract. Get ready to level up your Cadence skills and explore more functionalities.
+And that's not all! We'll also be exploring the exciting world of battle logic and something called the Flow VRF. Sounds mysterious, right? ✨
 
-Are you excited to dive deeper? Let's embark on this journey together and uncover what Module 3 has in store for us! 💪✨
+Ready to jump into Module 5 and discover all the fun stuff waiting for us? Let's go!

@@ -24,13 +24,10 @@ access(all) contract HelloWorld {
 }
 ```
 
-### Breaking it Down:
-
-- `access(all)` is an access modifier, allowing anyone to read the variable.
-- `var` & `let` is for variable and constants respectively.
-- `country` & `population` showcasing variable and constants country respectively.
-- `String` & `UInt64` are types, holding text and unsigned integers (e.g. "India" and 10).
-- In the `init` function, we set `self.country` to "India" and `self.population` to 10. This function runs when the contract is deployed, initializing values. This function is used to set up initial values.
+- **var** is used for variables and **let** for constants.
+- **country** & **population** are variables and constants, respectively.
+- **String** & **UInt64** are types representing text and unsigned integers.
+- The **init** function initializes these values when the contract is deployed.
 
 ### Put it to the Test
 

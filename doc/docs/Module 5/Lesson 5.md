@@ -1,23 +1,35 @@
 ---
-title: Lesson 5 - Introducing Borrow
+title: Lesson 5 - enum with Structs
 sidebar_position: 5
 ---
 
-Imagine a world where your Flow NFT collection is like a bustling library! Users can now "borrow" your awesome NFTs with the brand new borrowNFT function. This lets them get a closer look or interact with your NFTs temporarily, just like checking out a book. Here's how it works:
+In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
 
-### **Implementation:**
+Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+// Define a struct named `Glass` to represent a glass of juice
 
-    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+access(all) struct Glass {
+
+    access(all) let size: CupSize
+    access(all) var isFilled: Bool
+
+    init(value: UInt8, isFilled: Bool) {
+        self.size = Cafe.CupSize(value: value)
+        self.isFilled = isFilled
     }
 }
+
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
+- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
+- The init function is also modified to accept a CupSize value for the size parameter.
 
-### **Put it to the Test:**
+### Put it to the Test
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Update the public variable named `env` with newly created `environment` enum
+3. Initialize value of `evn`.

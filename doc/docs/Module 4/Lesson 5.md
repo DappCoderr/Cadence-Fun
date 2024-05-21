@@ -1,35 +1,23 @@
 ---
-title: Lesson 5 - enum with Structs
+title: Lesson 5 - Introducing Borrow
 sidebar_position: 5
 ---
 
-In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
+Imagine a world where your Flow NFT collection is like a bustling library! Users can now "borrow" your awesome NFTs with the brand new borrowNFT function. This lets them get a closer look or interact with your NFTs temporarily, just like checking out a book. Here's how it works:
 
-Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
+### **Implementation:**
 
 ```jsx
-// Define a struct named `Glass` to represent a glass of juice
+access(all) resource Collection: NonFungibleToken.Collection {
 
-access(all) struct Glass {
-
-    access(all) let size: CupSize
-    access(all) var isFilled: Bool
-
-    init(value: UInt8, isFilled: Bool) {
-        self.size = Cafe.CupSize(value: value)
-        self.isFilled = isFilled
+    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
     }
 }
-
 ```
 
-### Breaking it Down:
+### **Explanation:**
 
-- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
-- The init function is also modified to accept a CupSize value for the size parameter.
+The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
 
-### Put it to the Test
-
-1. Open Flow [Playground](https://play.flow.com/)
-2. Update the public variable named `env` with newly created `environment` enum
-3. Initialize value of `evn`.
+### **Put it to the Test:**

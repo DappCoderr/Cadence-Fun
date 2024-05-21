@@ -1,33 +1,33 @@
 ---
-title: Lesson 2 - Import
+title: Lesson 2 - Unique Identifiers
 sidebar_position: 2
 ---
 
-Building a game? Need a special function? With import, borrow pre-written code (like a magic toolbox) or existing projects' code (like NBA Top Shot) to make your game shine and work faster!
+Every resource in Cadence also has a built-in unique identifier that is unique to that resource only, and **will never be repeated again.** Even if the resource is destroyed.
 
-Ready to borrow? Use import to bring in the code you need. Now let's take a look how we can implement this -
+This makes for a perfect `id` system. Let’s give our `Knight` an `id` using the built in `uuid` field to every resource:
 
 ```jsx
-// Import the type `Counter` from a local file.
-//
-import Counter from "./examples/counter.cdc"
+access(all) contract HellWorld {
 
-// Import the type `Counter` from an external account.
-//
-import Counter from 0x299F20A29311B9248F12
+	access(all) resource Country{
+		access(all) var id: UInt64
+		access(all) var name: String
+		access(all) var capital: String
+		access(all) var details: CountryDetails
+
+		init(_name: String, _cap: String, _budget: UFix64, _value: UInt8){
+			self.id = self.uuid
+			self.name = _name
+			self.capital = _cap
+			self.details = HelloWorld.CountryDetails(budget: _budget, value: _value)
+		}
+	}
+}
 
 ```
 
-### **Explanation:**
-
-In this example, we show two ways to import the Counter smart contract:
-
-- From a local file on your computer.
-- From another account on the blockchain (identified by its address).
-
-By using import, you gain access to all the features of the imported contract without writing all that code yourself. It's like having a whole new set of tools at your disposal!
-
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.
+2. Change `knight` resource id with resource built-in unique identifier

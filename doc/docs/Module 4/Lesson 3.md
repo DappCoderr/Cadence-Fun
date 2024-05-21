@@ -1,17 +1,48 @@
 ---
-title: Lesson 3 - Level Up Your Knights
+title: Lesson 3 - The Secret Sauce
 sidebar_position: 3
 ---
 
-Congratulations! You've grasped the fundamentals of resources, structs, and their powerful combination in Flow contracts. Now, let's enhance your KnightNFT resource by adding more details that can influence gameplay!
+This lesson dives into the Flow NFT Standard, a set of rules that acts like a blueprint for building digital treasures.
 
-### Environmental Advantage
+But why do we need standards? Why not just create NFTs without them?
 
-Imagine a game where knights have an advantage when fighting in environments that match their training. We can represent this by adding a new property to the KnightDetails struct that specifies the knight's environment (e.g., grass, fire, water, rock).
+Think of them like Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. This makes them work smoothly across different games and apps in the Flow world.
 
-### Put it to the Test
+The power of standards brings everyone to understands how NFTs work, allowing them to be used in various places. Also NFTs built with the same standard can be easily bought, sold, and transferred between different games or marketplaces.
+
+### **Implementation:**
+
+To integrate the Flow NFT Standard into your contract, follow these steps:
+
+```jsx
+import NonFungibleToken
+
+access(all) contract HelloWorld: NonFungibleToken {
+
+    // ...[rest of code]...
+
+}
+```
+
+**Updating NFT Resource:**
+The NFT resource must implement the NonFungibleToken.INFT interface:
+
+```jsx
+import NonFungibleToken
+
+access(all) contract HelloWorld: NonFungibleToken {
+
+    access(all) resource NFT: NonFungibleToken.NFT {
+        init() {}
+    }
+}
+```
+
+### **Explanation:**
+
+Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
+
+### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. In `KnightDetails` create a new public variable named `env` (of type String)
-
-### Solution !!
