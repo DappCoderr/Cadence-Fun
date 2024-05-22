@@ -1,24 +1,24 @@
 ---
-title: Lesson 6 - Counting Your Treasures!
+title: Lesson 6 - Deposit Function
 sidebar_position: 6
 ---
 
-Just like a library full of books, keeping track of everything can get tricky. That's where our new superpower comes in: **getIDs function!**
+Just like you can withdraw an NFT, you can also add new ones with the deposit function, which acts as a special entrance to your collection.
 
-It dives inside collection and counts all the unique NFTs you've stored in your collection.
-
-### **Implementation:**
-
-Let's take a look and understand how to create getId function.
+Let's take a look at the code and understand how to create deposit function
 
 ```jsx
-// Our trusty treasure chest (collection) with a special counting tool (getId function)
+// Our trusty vault (collection) with a special entrance (deposit function)
 access(all) resource Collection {
 
-  // This function acts like a magic counter for your treasures (NFTs)!
-  access(all) fun getIDs(): [UInt64] {
-    // Look inside your collection's storage (dictionary) and count the keys (NFT IDs)
-    return self.ownedNFTs.keys
+  // This function is like the entrance for new treasures (NFTs)
+  access(all) fun deposit(token: @NFT) {
+
+    // Let's get the ID of the NFT you want to deposit
+    let tokenID = token.id
+
+    // Add the new NFT to your collection's dictionary.
+    self.ownedNFTs[tokenID] <-! token
   }
 }
 ```
@@ -26,8 +26,8 @@ access(all) resource Collection {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Add the getIDs function to the Collection resource.
+2. Add the deposit function to the Collection resource.
 
 ### Solution !!
 
-![Alt text](image-8.png)
+![Alt text](image-7.png)

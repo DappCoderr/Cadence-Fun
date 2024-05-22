@@ -1,28 +1,31 @@
 ---
-title: Lesson 5 - Deposit Function
+title: Lesson 5 - Withdraw Function
 sidebar_position: 5
 ---
 
-In the last lesson, we learned how to use the withdraw function, like a super-secure key, to take NFTs out of your collection. But what if you find a new NFT you want to add?
+Great job! Now you have your Knight NFT stored in your collection. But what if you want to take a special NFT out for a spin? Maybe you want to trade it for something else, or even sell it on a marketplace! That's where the withdraw function comes in!
 
-That's where the deposit function comes in, like a special entrance to your collection!
+### Creating the Withdraw Function
 
-### Let's Peek at the Code!
+The withdraw function allows you to take an NFT out of your collection. It's secure, ensuring only the owner can perform withdrawals.
 
-Let's take a look and understand how to create withdraw function
+Let's take a look at the code and understand how to create withdraw function
 
 ```jsx
-// Our trusty vault (collection) with a special entrance (deposit function)
+// resource declaration
 access(all) resource Collection {
 
-  // This function is like the entrance for new treasures (NFTs)
-  access(all) fun deposit(token: @NFT) {
+  // function declaration
+  access(all) fun withdraw(withdrawID: UInt64): @NFT {
+    // Let's find the NFT you want to take (based on its ID)
+    // Then it searches the collection dictionary and pass it to token
+    let token <- self.ownedNFTs.remove(key: withdrawID)
 
-    // Let's get the ID of the NFT you want to deposit
-    let tokenID = token.id
+    // Uh oh, the NFT wasn't found! Let the user know "Oops, that NFT isn't in your collection!"
+    ?? panic("Token not in collection")
 
-    // Add the new NFT to your collection's dictionary.
-    self.ownedNFTs[tokenID] <-! token
+    // If all goes well, return the NFT you grabbed!
+    return <- token
   }
 }
 ```
@@ -30,8 +33,8 @@ access(all) resource Collection {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Add the deposit function to the Collection resource.
+2. Add the withdraw function to the Collection resource.
 
 ### Solution !!
 
-![Alt text](image-7.png)
+![Alt text](image-12.png)

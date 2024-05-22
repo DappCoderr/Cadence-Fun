@@ -1,38 +1,29 @@
 ---
-title: Lesson 7 - The Interfaces
+title: Lesson 7 - Counting Your Treasures!
 sidebar_position: 7
 ---
 
-Congrats for making this far. Wooh!!
+Keeping track of your NFTs can get tricky. That’s where the `getIDs` function comes in, allowing you to count all the unique NFTs in your collection.
 
-You remember all those awesome functions you learned to manage your NFT collection? Now we're about to take things a step further with interfaces.
-
-Imagine you're playing a game with your friends, and each of you has a box with some toys inside. Now, to make sure everyone plays the game fairly and knows what they can do with their box toys, you set up some rules.
-
-These rules are like interfaces in programming. They define what each toys must have and what it can do. In our example, we created the "Collection" interface, which says that every toy must:
-
-- Allow players to put toy in box (deposit).
-- and allow players to count how many toys they have. (getIDs)
+Let's take a look at the code and understand how to create getId function.
 
 ```jsx
-// Interface definition (blueprint)
-access(all) resource interface ToyInterface {
-  access(all) fun deposit(token: @NFT)  // Add an NFT
-  access(all) fun getIDs(): [UInt64]    // Get all NFT IDs
-}
+// Our trusty treasure chest (collection) with a special counting tool (getId function)
+access(all) resource Collection {
 
-// Specific resource (box for toys) using the interface
-access(all) resource ToyNFTCollection: ToyInterface {
-  // ...[ToyInterface code implementing deposit and getIDs functions]...
+  // This function acts like a magic counter for your treasures (NFTs)!
+  access(all) fun getIDs(): [UInt64] {
+    // Look inside your collection's storage (dictionary) and count the keys (NFT IDs)
+    return self.ownedNFTs.keys
+  }
 }
-
 ```
 
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create the resource interface for the Collection named as `CollectionPublic`.
+2. Add the getIDs function to the Collection resource.
 
 ### Solution !!
 
-![Alt text](image-10.png)
+![Alt text](image-8.png)

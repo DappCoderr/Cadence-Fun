@@ -26,4 +26,6 @@ Your Storage has 3 different paths:
 - `/public/`: Publicly visible, but not accessible by others.
 - `/private/`: Accessible only by you and those you permit.
 
-Ah! We've learned a lot. Now, let's move forward and see how to organize your Knight NFT ✨.
+Ah! We've learned a lot. As we explore further, you'll learn how to move your Knight from a shared space to your very own vault. Exciting, right?
+
+Now, let's move forward and see how to organize your Knight NFT ✨.

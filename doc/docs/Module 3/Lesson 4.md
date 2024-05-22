@@ -1,42 +1,26 @@
 ---
-title: Lesson 4 - Withdraw Function
+title: Lesson 4 - destory()
 sidebar_position: 4
 ---
 
-Great work, now you have store you Knight NFT into your collection. But what if you want to take a special NFT out for a spin? Maybe you want to show it off to a friend, trade it for something else, or even sell it on a marketplace!
+In last lesson you have seen the nested resource, but have you notice we haven't discuss about destroy function we have define. Right?
 
-That's where the withdraw function comes in!
-
-Your collection is a giant vault, and the withdraw function is the key that unlocks it. But don't worry, this key is super secure! Only you (the owner) can use it to take things out. This keeps your NFTs safe from unauthorized withdrawals.
-
-### Let's Peek at the Code!
-
-Let's take a look and understand how to create withdraw function
+In Cadence, when every we their is nested resource you have a destructor function, which is executed when the resource is destroyed. Destructors have no parameters and no return value and are declared using the `destroy` keyword. A resource can have only one destructor.
 
 ```jsx
-// resource declaration
+// Define a resource named `Collection`
 access(all) resource Collection {
 
-  // function declaration
-  access(all) fun withdraw(withdrawID: UInt64): @NFT {
-    // Let's find the NFT you want to take (based on its ID)
-    // Then it searches the collection dictionary and pass it to token
-    let token <- self.ownedNFTs.remove(key: withdrawID)
-
-    // Uh oh, the NFT wasn't found! Let the user know "Oops, that NFT isn't in your collection!"
-    ?? panic("Token not in collection")
-
-    // If all goes well, return the NFT you grabbed!
-    return <- token
-  }
+    // Define the destructor
+    destroy() {}
 }
 ```
 
-### **Put it to the Test:**
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Add the withdraw function to the Collection resource.
+2. Create a `destroy` function in the `Collection` resource.
 
 ### Solution !!
 
-![Alt text](image-12.png)
+![Alt text](image-6.png)

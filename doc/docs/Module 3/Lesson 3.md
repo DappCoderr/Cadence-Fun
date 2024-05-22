@@ -3,11 +3,10 @@ title: Lesson 3 - Nested Resources
 sidebar_position: 3
 ---
 
-Although those collections from the previous lesson might be empty now, that's fine.
+Although those collections you created might be empty now, that's fine. Let's learn how to add NFTs to it using nested resources.
 
-You understand why we have created them. Right? Now we will understand how we can add same type of NFTs to a collection, for that we will delve into a new concept called "nested resources" means resource owning other resource.
-
-This code snippet shows how nested resources make organization possible:
+Creating Nested Resources
+A nested resource means one resource owns another. Here's how to set up a collection that holds multiple NFTs. Let's take a look at the below code snippet.
 
 ```jsx
 // Our Collection with a built-in backpack!
@@ -20,6 +19,10 @@ access(all) resource Collection {
     init() {
         // Assigning an empty dictionary to ownedNFTs
         self.ownedNFTs <- {}
+    }
+
+    destroy(){
+        destroy self.ownedNFTs
     }
 }
 ```

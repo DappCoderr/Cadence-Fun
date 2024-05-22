@@ -3,11 +3,9 @@ title: Lesson 2 - Collection
 sidebar_position: 2
 ---
 
-In this lesson, we will guide you in organizing your Knight NFT into personalized space! rather than storing in the contract space.
+Previously we have store our NFT in contract, now we will learn how to organizing your Knight NFT into personalized space using new concept called **_Collection_** rather than storing in the contract space.
 
-For that, we are introducing you to the new concept called **`Collections`**. Collection is an object that can hold multiple NFTs of the **same type**.
-
-Imagine a messy desktop holding photos, music files, movies scattered across. You access desktop and create separate folders for photos, music, movies for better organization.
+A collection is an object that can hold multiple NFTs of the same type, much like folders on your desktop organizing photos, music, and movies.
 
 ![Alt text](image-3.png)
 
