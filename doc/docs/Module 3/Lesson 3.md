@@ -27,8 +27,7 @@ access(all) resource Collection {
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Remember Module 2 L8 how we have created resource dictionary.
-   Similarly create `ownedKnight` and store it to an previously created resource collection.
+2. Remember how we created a resource dictionary in Module 2 L8? Similarly, create `ownedKnight` and store it in a previously created resource collection.
 
 ### Solution !!
 
