@@ -1,6 +1,6 @@
 ---
-title: Lesson 8 - Building Your Vault
-sidebar_position: 8
+title: Lesson 9 - Building Your Vault
+sidebar_position: 9
 ---
 
 Remember all those cool NFTs you've been collecting? What if you find a new one you love, but don't have a place to store it yet? No worries, adventurer! Today's lesson is about creating collections instantly, whenever you need them.

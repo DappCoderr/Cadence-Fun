@@ -3,7 +3,7 @@ title: Lesson 2 - Import
 sidebar_position: 2
 ---
 
-When you want to use outside files you import one file into another, Cadence uses the import keyword which borrow pre-written code or existing projects' code (like NBA Top Shot) to make your work faster!
+When you want to use outside files you import one file into another. Cadence uses the import keyword which borrow pre-written code or existing projects' code to make your work faster!
 
 ```jsx
 // Import the type `Counter` from a local file.

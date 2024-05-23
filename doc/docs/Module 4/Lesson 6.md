@@ -1,6 +1,6 @@
 ---
-title: Lesson 6 - Refactoring Create Knight
-sidebar_position: 6
+title: Lesson 7 - Refactoring Create Knight
+sidebar_position: 7
 ---
 
 let's refactor

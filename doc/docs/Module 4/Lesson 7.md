@@ -1,6 +1,6 @@
 ---
-title: Lesson 7 - Pre & Post Condition
-sidebar_position: 7
+title: Lesson 8 - Pre & Post Condition
+sidebar_position: 8
 ---
 
 ```cadence

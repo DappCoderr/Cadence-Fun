@@ -1,6 +1,6 @@
 ---
-title: Lesson 4 - Upgrading Collection
-sidebar_position: 4
+title: Lesson 5 - Upgrading Collection
+sidebar_position: 5
 ---
 
 Building custom NFT collections is exciting, but managing them efficiently can be a challenge. Imagine having built-in superpowers for your collection, allowing users to interact with your NFTs seamlessly. That's the magic of standard interfaces in Flow!

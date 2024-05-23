@@ -1,6 +1,6 @@
 ---
-title: Lesson 7 - The Interfaces
-sidebar_position: 7
+title: Lesson 8 - The Interfaces
+sidebar_position: 8
 ---
 
 Congrats for making this far. Wooh!!

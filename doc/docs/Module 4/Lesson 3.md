@@ -1,9 +1,9 @@
 ---
-title: Lesson 3 - The Secret Sauce
-sidebar_position: 3
+title: Lesson 4 - The Secret Sauce
+sidebar_position: 4
 ---
 
-This lesson dives into the Flow NFT Standard, a set of rules that acts like a blueprint for building digital treasures.
+Let's take a look at the [Flow NFT standard](https://developers.flow.com/build/core-contracts/non-fungible-token)
 
 But why do we need standards? Why not just create NFTs without them?
 
