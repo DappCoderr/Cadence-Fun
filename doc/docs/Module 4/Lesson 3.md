@@ -5,22 +5,15 @@ sidebar_position: 4
 
 Let's take a look at the [Flow NFT standard](https://developers.flow.com/build/core-contracts/non-fungible-token)
 
-But why do we need standards? Why not just create NFTs without them?
+Think a standard like a Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. NFTs built with the same standard can be easily bought, sold, and transferred between different dapps or marketplaces in the Flow world.
 
-Think of them like Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. This makes them work smoothly across different games and apps in the Flow world.
-
-The power of standards brings everyone to understands how NFTs work, allowing them to be used in various places. Also NFTs built with the same standard can be easily bought, sold, and transferred between different games or marketplaces.
-
-### **Implementation:**
-
-To integrate the Flow NFT Standard into your contract, follow these steps:
+Let's take a look how we can use Standard into your contract.
 
 ```jsx
 import NonFungibleToken
 
+// use the NonFungibleToken to make sure this contract follow the Flow NFT standard
 access(all) contract HelloWorld: NonFungibleToken {
-
-    // ...[rest of code]...
 
 }
 ```
@@ -39,10 +32,7 @@ access(all) contract HelloWorld: NonFungibleToken {
 }
 ```
 
-### **Explanation:**
-
-Within the HelloWorld contract, we define a resource named NFT. Resources in Cadence represent digital assets, such as our Knight NFTs. By declaring NFT as a resource, each instance signifies a unique token, adhering to the NFT standard.
-
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
+2. import NonFungibleToken standard into our contract
