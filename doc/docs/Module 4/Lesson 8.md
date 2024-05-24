@@ -1,24 +1,23 @@
 ---
-title: Lesson 8 - Creating Contract Storage
+title: Lesson 8 - Refactoring Create Knight
 sidebar_position: 8
 ---
 
-### Introducing Capabilities
+let's refactor
 
-Capabilities act like personalized security keys, ensuring only the chosen few can access your precious NFTs:
+```jsx
+    event KinigtMinted(id:nftId, name:name, type:type)
+```
 
-- **Fort Knox Security:** Capabilities prevent unauthorized access to your collection, keeping your NFTs safe from prying eyes.
-- **Granular Control:** You decide who gets to see your NFTs! Grant access with the precision of a jeweler, ensuring only those you trust can interact with your collection.
-
-```cadence
-self.account.save(<- create Collection(), to: /storage/NFTCollection)
-self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /storage/NFTCollection)
+```jsx
+pub fun mintKnight(name:String, _value:UInt8): @NFT{
+    let nftId = Knight.totalSupply
+    var newNFT <- create NFT(_name:name, _type:_value)
+    emit KinigtMinted(id:nftId, name:name, type:type)
+    return <- newNFT
+}
 ```
 
 ### **Explanation:**
-
-- This line creates a brand new NFT collection and stores it securely within your account's vault (represented by self.StoragePath).
-- Imagine this vault has multiple locks. This line creates a special key (the capability) that unlocks access to a specific interface (KnightCollectionPublic) within the vault.
-- This key is then placed at a designated public access point (self.PublicPath), allowing authorized users who possess the matching key to access the collection through that specific interface.
 
 ### **Putting it to the Test:**

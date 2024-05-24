@@ -1,6 +1,6 @@
 ---
-title: Lesson 6 - Introducing Borrow
-sidebar_position: 6
+title: Lesson 5 - Adding Standard Events
+sidebar_position: 5
 ---
 
 Imagine a world where your Flow NFT collection is like a bustling library! Users can now "borrow" your awesome NFTs with the brand new borrowNFT function. This lets them get a closer look or interact with your NFTs temporarily, just like checking out a book. Here's how it works:
@@ -8,10 +8,17 @@ Imagine a world where your Flow NFT collection is like a bustling library! Users
 ### **Implementation:**
 
 ```jsx
-access(all) resource Collection: NonFungibleToken.Collection {
+import NonFungibleToken from 0x1d7e57aa55817448
 
-    access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-        return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
+access(all) contract FooBar: NonFungibleToken {
+    access(all) var totalSupply: UInt64
+    access(all) event ContractInitialized()
+    access(all) event Withdraw(id: UInt64, from: Address?)
+    access(all) event Deposit(id: UInt64, to: Address?)
+
+    init() {
+        self.totalSupply = 0
+        emit ContractInitialized()
     }
 }
 ```

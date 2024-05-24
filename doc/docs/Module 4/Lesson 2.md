@@ -11,11 +11,6 @@ import Counter from "./examples/counter.cdc"
 
 // Import the type `Counter` from an external account.
 import NBATopShot from 0x299F20A29311B9248F12
-
-// Importing `Counter` and NBATopShot into HelloWorld contract.
-access(all) contract HelloWorld: Counter, NBATopShot{
-
-}
 ```
 
 ### **Put it to the Test:**

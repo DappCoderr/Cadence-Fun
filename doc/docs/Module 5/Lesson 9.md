@@ -1,6 +1,6 @@
 ---
-title: Lesson 12 - Clash of the Knights
-sidebar_position: 12
+title: Lesson 9 - Clash of the Knights
+sidebar_position: 9
 ---
 
 This lesson delves into the heart of your game – the battle logic! The function simulates a battle between two knights belonging to different users. The function determines the winner based on the knights' experience points (XP) and triggers a victory action for the winning knight.

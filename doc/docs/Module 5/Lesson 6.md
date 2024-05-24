@@ -1,6 +1,6 @@
 ---
-title: Lesson 13 - Events
-sidebar_position: 13
+title: Lesson 6 - View Function
+sidebar_position: 6
 ---
 
 If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
