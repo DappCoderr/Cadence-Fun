@@ -5,8 +5,7 @@ sidebar_position: 5
 
 Building custom NFT collections is exciting, but managing them efficiently can be a challenge. Imagine having built-in superpowers for your collection, allowing users to interact with your NFTs seamlessly. That's the magic of standard interfaces in Flow!
 
-This lesson we unlocks the potential of `NonFungibleToken.Provider`, `NonFungibleToken.Receiver`, and `NonFungibleToken.CollectionPublic`
-interfaces. These are like pre-programmed superpowers for your collection, giving it the ability to:
+Let's us the potential of `NonFungibleToken.Provider`, `NonFungibleToken.Receiver`, and `NonFungibleToken.CollectionPublic` interfaces. These are like pre-programmed superpowers for your collection, giving it the ability to:
 
 - **Lend out NFTs:** Want users to view an NFT's coolness without permanently removing it? The borrowNFT function grants a read-only peek, like lending out a prized trading card to a friend.
 - **Accept new NFTs:** Imagine your collection being a welcoming museum! With NonFungibleToken.Receiver, your collection can gracefully accept new NFTs from other accounts.
@@ -24,12 +23,11 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 }
 ```
 
-To ensure users can access a read-only reference to an NFT in the collection without actually removing it, introduce the borrowNFT function.
-
 ```jsx
 pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
 
-    // ...[rest of your awesome code]...
+    // Add new borrowNFT function
+    // Access a read-only reference to an NFT in the collection without actually removing it
 
     pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
         // Code to lend out an NFT for viewing
@@ -40,9 +38,8 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 
 ```
 
-Lastly, update the ownedNFTs, deposit, and withdraw variables/methods to use the NonFungibleToken.NFT type:
-
 ```jsx
+// update the ownedNFTs, deposit, and withdraw functions to use the NonFungibleToken.NFT type
 pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
 pub fun deposit(token: @NonFungibleToken.NFT) {
@@ -55,11 +52,8 @@ pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
 
 ```
 
-### **Explanation:**
-
-- In this example, we demonstrate two methods of importing the `Counter` smart contract: from a local file and from an external account.
-- By importing, we gain access to all the features of the imported contract without needing to start from scratch.
-
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
+2. Update the collection resource with interface.
+3. Add borrowNFT function in the collection resource.
