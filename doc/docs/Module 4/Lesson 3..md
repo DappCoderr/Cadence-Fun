@@ -18,6 +18,7 @@ Think a standard like a Legos! Just like Legos snap together seamlessly, the Flo
 Let's take a look how we can use Standard into your contract.
 
 ```jsx
+// 
 import NonFungibleToken
 
 // use the NonFungibleToken to make sure this contract follow the Flow NFT standard
