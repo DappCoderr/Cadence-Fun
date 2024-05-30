@@ -24,3 +24,5 @@ self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.Stora
 - The code then assigns specific locations within your account's storage (/storage/NFTCollection) and a public access point (/public/NFTCollection) to these paths.
 
 ### **Putting it to the Test:**
+
+### Solution !!

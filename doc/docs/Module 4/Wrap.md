@@ -4,183 +4,112 @@ sidebar_position: 12
 ---
 
 ```jsx
-import NonFungibleToken from "./standards/NonFungibleToken.cdc"
+import NonFungibleToken from 0x05
 
-pub contract Knight: NonFungibleToken{
-    // events
-    pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address?)
-    pub event Deposit(id: UInt64, to: Address?)
-    pub event KinigtMinted(id:UInt64, name:String, type:String)
+access(all) contract KnightCreator: NonFungibleToken {
 
-    // Contract Path
-    pub let StoragePath: StoragePath
-    pub let PublicPath: PublicPath
+  access(all) event ContractInitialized()
+  access(all) event Withdraw(id: UInt64, from: Address?)
+  access(all) event Deposit(id: UInt64, to: Address?)
 
-    pub var totalSupply: UInt64
+  access(all) event KinigtMinted(id:UInt64)
 
-    pub enum Types: UInt8 {
-        pub case fire
-        pub case grass
-        pub case sun
-        pub case rock
+  pub let StoragePath: StoragePath
+  pub let PublicPath: PublicPath
+
+  access(all) var totalSupply: UInt64
+
+  access(all) struct KnightDetails{
+      access(all) var name: String
+      access(all) var power: UFix64
+
+      init() {
+         self.name = "Night King"
+         self.power = 50.0
+      }
+  }
+
+  access(all) resource NFT: NonFungibleToken.INFT {
+
+      access(all) let id: UInt64
+      access(all) var details: KnightDetails
+
+      init() {
+         self.id = KnightCreator.totalSupply
+         self.details = KnightDetails()
+         KnightCreator.totalSupply = KnightCreator.totalSupply + 1
+      }
+  }
+
+  access(all) resource interface KnightCollectionPublic {
+    access(all) fun deposit(token: @NonFungibleToken.NFT)  // Add an NFT
+    access(all) fun getIDs(): [UInt64]    // Get all NFT IDs
+    access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
+  }
+
+  access(all) resource Collection: KnightCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+
+    access(all) var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+
+    init() {self.ownedNFTs <- {}}
+
+    access(all) fun withdraw(withdrawID: UInt64):  @NonFungibleToken.NFT {
+      let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
+      emit Withdraw(id: token.id, from: self.owner?.address)
+      return <- token
     }
 
-    pub struct KnightDetails{
-        pub var name: String
-        pub var dateCreated: UFix64
-        pub var type: String
-
-        init(name: String, dateCreated:UFix64, value:UInt8){
-            self.name = name
-            self.dateCreated = dateCreated
-            self.type = KnightContract.Types(value: value)
-        }
+    access(all) fun deposit(token:  @NonFungibleToken.NFT) {
+      let tokenID = token.id
+      self.ownedNFTs[tokenID] <-! token
+      emit Deposit(id: tokenID, to: self.owner?.address)
     }
 
-    // NFT Resource
-    pub resource NFT: NonFungibleToken.INFT{
-        pub let id: UInt64
-        pub let details: Knight.KnightDetails
-        pub var xp: UInt64
-        pub var winCount: UInt64
-
-        init(_name:String, _value:UInt8){
-            let currntTime:UFix64 = getCurrentBlock().timestamp
-            self.id = self.uuid
-            self.details = Knight.KnightDetails(
-                name: _name,
-                dateCreated: currntTime,
-                type: _value
-            )
-            self.xp = Knight.getRandomKNightXP()
-            self.winCount = 0
-
-            Knight.totalSupply = Knight.totalSupply + 1
-        }
-
-        pub fun winner(){
-            self.winCount = self.winCount + 1
-        }
-
-        destroy(){
-            Knight.totalSupply = Knight.totalSupply - 1
-        }
+    access(all) fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
     }
 
-    pub resource interface KnightCollectionPublic{
-        pub fun deposit(token: @NonFungibleToken.NFT)
-        pub fun getIDs(): [UInt64]
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
-        pub fun borrowKinght(id: UInt64): &Knight.NFT?{
-            post {
-                (result == nil) || (result?.id == id):
-                    "Cannot borrow Knight Asset reference: The Id of the returned reference is incorrect"
-            }
-        }
-    }
-
-    pub resource Collection: KnightCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic{
-        pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
-
-        init(){
-            self.ownedNFTs <- {}
-        }
-
-        destroy (){
-            destroy self.ownedNFTs
-        }
-
-        pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-            let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("missing NFT")
-            emit Withdraw(id: token.id, from: self.owner?.address)
-            return <- token
-        }
-
-        pub fun deposit(token: @NonFungibleToken.NFT) {
-            let id = token.id
-            let oldToken <- self.ownedNFTs[id] <-token
-            destroy oldToken
-            emit Deposit(id: id, to: self.owner?.address)
-        }
-
-        pub fun borrowKinght(id:UInt64): &Knight.NFT? {
-            if self.ownedNFTs[id] != nil{
-                let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
-                return ref as! &Knight.NFT
-            } else{
-                return nil
-            }
-        }
-
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-            if self.ownedNFTs[id] != nil {
+    // add borrowNFT function
+    access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+        if self.ownedNFTs[id] != nil {
                 return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
-            }
-            panic("NFT not found in collection.")
         }
-
-        pub fun getIDs(): [UInt64]{
-            return self.ownedNFTs.keys
-        }
+        panic("NFT not found in collection.")
     }
 
-    pub fun createEmptyCollection(): @Collection{
-        return <- create Collection()
-    }
+    destroy (){ destroy self.ownedNFTs}
+  }
 
-    pub fun checkCollection(_addr: Address): Bool{
-        return getAccount(_addr)
-        .capabilities.get<&{Knight.KnightCollectionPublic}>(Knight.PublicPath)!
-        .check()
-    }
+  access(all) fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
 
-    pub fun mintKnight(name:String, _value:UInt8): @NFT{
-        pre{
-            name.length > 0: "Name can not be empty"
-            type.length > 0: "Type can not be empty"
-        }
-        let nftId = Knight.totalSupply
-        var newNFT <- create NFT(_name:name, _type:_value)
-        emit KinigtMinted(id:nftId, name:name, type:type)
-        return <- newNFT
-    }
+  access(all) fun createKnight(): @NFT {
+    var newNFT <- create NFT()
+    emit KinigtMinted(id:self.totalSupply)
+    return <- newNFT
+  }
 
-    pub fun getRandomKNightXP(): UInt64 {
-        let randomNumber: UInt64 = revertibleRandom()
-        return (randomNumber % 100) + 1
-    }
+  init(){
+    self.totalSupply = 0
+    emit ContractInitialized()
 
-    pub fun battle(userA:Address, userAKnightId: UInt64, userB:Address, userBKnightId: UInt64){
-        let acctA = getAccount(userA)
-        let acctB = getAccount(userB)
-        let userACapRef = acctA.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
-        var knightA_XP = userACapRef.borrowKinght(id: userAKnightId)?.xp ?? panic("Knight B XP not found")
+    self.StoragePath = /storage/KnightCreatorCollection
+    self.PublicPath = /public/KnightCreatorCollection
 
-        let userBCapRef = acctB.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow")
-        var knightB_XP = userBCapRef.borrowKinght(id: userBKnightId)?.xp ?? panic("Knight B XP not found")
-
-        if(knightA_XP > knightB_XP){
-            let winnerKnight = userACapRef.borrowKinght(id: userAKnightId)
-            winnerKnight?.winner()
-        } else {
-            let winnerKnight = userBCapRef.borrowKinght(id: userBKnightId)
-            winnerKnight?.winner()
-        }
-    }
-
-    init(){
-        let identifier = "KnightCollection".concat(self.account.address.toString())
-        self.PublicPath = PublicPath(identifier: identifier)!
-        self.StoragePath = StoragePath(identifier: identifier)!
-
-        self.totalSupply = 0
-
-        self.account.save(<- create Collection(), to: self.StoragePath)
-        self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
-
-        emit ContractInitialized()
-    }
+    self.account.save(<- create Collection(), to: self.StoragePath)
+    self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
+  }
 }
+
+
+
+
+
+
+
+
+
+
 
 ```

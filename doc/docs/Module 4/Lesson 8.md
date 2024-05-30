@@ -6,14 +6,13 @@ sidebar_position: 8
 let's refactor
 
 ```jsx
-    event KinigtMinted(id:nftId, name:name, type:type)
+access(all) event KinigtMinted(id:UInt64)
 ```
 
 ```jsx
-pub fun mintKnight(name:String, _value:UInt8): @NFT{
-    let nftId = Knight.totalSupply
-    var newNFT <- create NFT(_name:name, _type:_value)
-    emit KinigtMinted(id:nftId, name:name, type:type)
+access(all) fun createKnight(): @NFT {
+    var newNFT <- create NFT()
+    emit KinigtMinted(id:self.totalSupply)
     return <- newNFT
 }
 ```
@@ -21,3 +20,5 @@ pub fun mintKnight(name:String, _value:UInt8): @NFT{
 ### **Explanation:**
 
 ### **Putting it to the Test:**
+
+### Solution !!

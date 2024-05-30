@@ -22,3 +22,5 @@ self.account.link<&{KnightCollectionPublic}>(/public/NFTCollection, target: /sto
 - This key is then placed at a designated public access point (self.PublicPath), allowing authorized users who possess the matching key to access the collection through that specific interface.
 
 ### **Putting it to the Test:**
+
+### Solution !!
