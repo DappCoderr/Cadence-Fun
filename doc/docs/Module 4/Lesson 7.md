@@ -18,3 +18,7 @@ access(all) view fun borrowNFT(_ id: UInt64): &NonFungibleToken.NFT {
 The `borrowNFT` function takes an `id` parameter representing the unique identifier of the NFT to be borrowed. Inside the function, we use the `ownedNFTs` dictionary to look up the NFT associated with the provided ID. We return a reference to the NFT, allowing users to borrow it temporarily. If the NFT with the provided ID doesn't exist in the collection, the function returns `nil`.
 
 ### **Put it to the Test:**
+
+### Solution !!
+
+![Alt text](image-6.png)

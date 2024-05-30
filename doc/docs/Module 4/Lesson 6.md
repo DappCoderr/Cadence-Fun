@@ -45,3 +45,7 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 1. Open Flow [Playground](https://play.flow.com/)
 2. Update the collection resource with interface.
 3. Add borrowNFT function in the collection resource.
+
+### Solution !!
+
+![Alt text](image-5.png)

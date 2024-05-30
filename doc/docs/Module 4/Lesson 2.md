@@ -1,21 +1,26 @@
 ---
-title: Lesson 2 - Import
+title: Lesson 2 - Token on Flow
 sidebar_position: 2
 ---
 
-When you want to use outside files you import one file into another. Cadence uses the import keyword which borrow pre-written code or existing projects' code to make your work faster!
+Let's talk about tokens.
 
-```jsx
-// Import the type `Counter` from a local file.
-import Counter from "./examples/counter.cdc"
+If you've been in the Blockchain space for any amount of time, you've probably heard people talking about tokens — specifically ERC20 tokens.
 
-// Import the type `Counter` from an external account.
-import NBATopShot from 0x299F20A29311B9248F12
-```
+A token is basically just a smart contract that follows some common rules — namely it implements a standard set of functions that all other token contracts share. It keeps track of who owns how much of that token, and some functions so those users can transfer their tokens to other addresses.
+
+Click here [link](https://developers.flow.com/build/core-contracts) to take a look at the all the flow core smart contracts standards.
+
+In our game we will be using [Flow NFT standard](https://developers.flow.com/build/core-contracts/non-fungible-token)
+
+Think a standard like a Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. NFTs built with the same standard can be easily bought, sold, and transferred between different dapps or marketplaces in the Flow world.
 
 ### **Put it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Let's go back to our Knight contract and try to import a `NonFungibleToken`.
+2. Create a new contract named - NonFungibleToken
+3. Paste the NFT from [here](https://testnet.flowdiver.io/contract/A.631e88ae7f1d7c20.NonFungibleToken?tab=deployments) into the newly created contract.
 
 ### Solution !!
+
+![Alt text](image-1.png)
