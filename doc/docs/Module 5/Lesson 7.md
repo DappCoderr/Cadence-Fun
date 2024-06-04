@@ -35,3 +35,5 @@ access(all) contract Dice {
 - The expression (randomNumber % X) + 1 takes that random number and scales it down to a range suitable for power increases (replace X with the maximum power value you want for your Knights).
 
 ### **Putting it to the Test:**
+
+### Solution !!

@@ -33,3 +33,5 @@ access(all) struct Glass {
 1. Open Flow [Playground](https://play.flow.com/)
 2. Update the public variable named `env` with newly created `environment` enum
 3. Initialize value of `evn`.
+
+### Solution !!

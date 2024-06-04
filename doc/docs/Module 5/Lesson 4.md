@@ -33,3 +33,5 @@ access(all) contract Cafe {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create an enum named `Environment` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock`, `water`, `ice`, `electric`, `poison`, `dark`.
+
+### Solution !!

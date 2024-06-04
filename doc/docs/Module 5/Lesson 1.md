@@ -3,10 +3,10 @@ title: Lesson 1 - Overview
 sidebar_position: 1
 ---
 
-Welcome to Module 4! 🎉
+Welcome to Module 5! 🎉
 
-In Module 3, we learned about accounts, collection, nested resource and more about collection function. By now, you should have a solid understanding of NFTs and how cadence create different from between from other blockchain.
+In Module4, we have learned about, Token, Importing contract, adding standard, saving collection in storage and creating link, refactoring storage path.
 
-But guess what? We're not stopping there! Module 4 will build upon what you've learned and introduce new exciting features to our contract. Get ready to level up your Cadence skills and explore more functionalities.
+Now we are our last stage of the game, here we will introduce you with the advance concept of cadence.
 
-Are you excited to dive deeper? Let's embark on this journey together and uncover what Module 4 has in store for us! 💪✨
+Let's jump into it.

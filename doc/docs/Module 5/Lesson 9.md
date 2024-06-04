@@ -64,3 +64,5 @@ pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnigh
 - If knight A has more XP than knight B, knight A is declared the winner and the `winner` function is called for knight A. Otherwise, knight B is declared the winner and the `winner` function is called for knight B.
 
 ### **Putting it to the Test:**
+
+### Solution !!
