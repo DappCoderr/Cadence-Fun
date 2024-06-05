@@ -12,16 +12,20 @@ VRF takes the guesswork out of randomness, making it perfect for games where a t
 - **Unbeatable Fairness:** VRF ensures no one can predict or tamper with the random number generation. This keeps your game honest and rewards truly deserving Knights on their quests for power!
 - **Ironclad Security:** VRF utilizes cryptography to guarantee the randomness is secure and unbiased. No sneaky manipulation here!
 
-### Coding Like a Game Master!
-
-Here's a sneak peek at the code that generates random power with VRF:
+Let's take a look at the code and understand who we generates random power using VRF:
 
 ```jsx
 access(all) contract Dice {
 
     access(all) fun roll(): UInt64 {
+        // to generate a random value, call inbuilt revertibleRandom function
+        // which utilizes VRF to generate a random, unpredictable number.
+        // Think of it as rolling a super secure die!
         let rand: UInt64 = revertibleRandom()
-        return (rand%X)+1 // Adjust X based on your desired power range
+        // And adjust the value based on your desired range by using modulus % and the
+        // number in between you want to range, here we are ranging from 0 to 99
+        // we add + 1 to it to make the range from 1 to 100.
+        return (rand%100)+1
     }
 
     init() {
@@ -29,11 +33,16 @@ access(all) contract Dice {
 }
 ```
 
-### **Explanation:**
-
-- The revertibleRandom function utilizes VRF to generate a random, unpredictable number. Think of it as rolling a super secure die!
-- The expression (randomNumber % X) + 1 takes that random number and scales it down to a range suitable for power increases (replace X with the maximum power value you want for your Knights).
-
 ### **Putting it to the Test:**
 
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a `getRandomKNightXP` function and use `revertibleRandom` inbuilt function to calculate the power of the knight, and return the random value, Make sure you map it in between 1 to 100.
+3. Update the `power` variable of NFT resource by calling the `getRandomKNightXP` function.
+
 ### Solution !!
+
+![Alt text](image-2.png)
+
+---
+
+![Alt text](image-3.png)

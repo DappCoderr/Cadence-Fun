@@ -59,4 +59,4 @@ To get the date, you can use block.timestamp which is a global variable represen
 
 ### Solution !!
 
-![Alt text](image-1.png)
+![Alt text](image.png)
