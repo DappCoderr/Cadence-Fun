@@ -21,6 +21,8 @@ access(all) contract HellWorld {
 }
 ```
 
+And let's make our resource dynamic by initializing it's value `init` function.
+
 ```jsx
 access(all) contract HellWorld {
 
@@ -48,7 +50,12 @@ Imagine a game where knights have an advantage when fighting in environments tha
 
 - `dateCreated` of type `UFix64` which tells when the NFT is created.
 - `type` of type `String` which define the environment of the knight.
-- `winCount` of type `UInt64` which keeps the track of win count of the knight.
+- `winCount` of type `UInt64` which keeps the track of win count of the knight. Initialize with zero value.
+
+:::note
+To get the date, you can use block.timestamp which is a global variable representing the current timestamp of the block being mined. Timestamp is measured in seconds.
+`getCurrentBlock().timestamp`
+:::
 
 ### Solution !!
 
