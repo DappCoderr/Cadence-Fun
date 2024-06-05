@@ -1,30 +1,40 @@
 ---
-title: Lesson 8 - Tracking Victories
+title: Lesson 8 - View Function
 sidebar_position: 8
 ---
 
-In this lesson, we're adding functionality to update the non-fungible token (NFT) resource. Specifically, we're introducing a function called `winner` that increments the win count of the NFT. This allows tracking of certain attributes or behaviors associated with individual NFTs.
+If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
 
-### **Purpose and Usefulness:**
+In Flow, we also create similar functions, which have a function declaration and a return type.
 
-The `winner` function serves to update the state of an NFT, specifically increasing its win count. This is useful because:
+```jsx
+access(all) contract HellWorld {
 
-1. **Tracking:** It allows keeping track of certain events or actions related to the NFT, such as wins in a game or achievements in a digital ecosystem.
+	// Declare a variable named greetings
+	access(all) var greetings: String
 
-2. **Dynamic Behavior:** The ability to update NFT attributes enables dynamic behavior and interactivity, enhancing the utility and value of NFTs in various applications.
+	access(all) view fun getGreetings(): String{
+		return self.greetings
+	}
 
-### **Implementation:**
-
-```cadence
-pub fun winner() {
-    self.winCount = self.winCount + 1
+	init(){
+		self.greetings = "Hello World"
+	}
 }
+
 ```
 
 ### **Explanation:**
 
-The `winner` function increments the `winCount` attribute of the NFT by 1. This attribute presumably tracks the number of wins associated with the NFT. By calling this function, the win count of the NFT is updated, reflecting its latest status or achievement.
+- `getGreetings()`: This function returns a String.
+- `view`: Indicates that it does not modify any external state or any account state
 
-### **Putting it to the Test:**
+### Put It to the Test
+
+Let's read all the ID of the Knight in the contract storage. For that-
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Create a public functions named `getIDs` marked as `view`.
+3. `getIDs` should return an array of IDs.
 
 ### Solution !!

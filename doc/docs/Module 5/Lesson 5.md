@@ -1,37 +1,29 @@
 ---
-title: Lesson 5 - enum with Structs
+title: Lesson 5 - Tracking Victories
 sidebar_position: 5
 ---
 
-In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
+While we create the battle function but still we can't able to track with user knight is winning. Right? so let's we're add a function called `winner` which increments the win count of the Knight NFT. This will help the own to know how many match he had won.
 
-Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
+```cadence
+access(all) contract HelloWorld{
 
-```jsx
-// Define a struct named `Glass` to represent a glass of juice
+    access(all) var counter: UInt64
 
-access(all) struct Glass {
+    pub fun winner() {
+        self.counter = self.counter + 1
+    }
 
-    access(all) let size: CupSize
-    access(all) var isFilled: Bool
-
-    init(value: UInt8, isFilled: Bool) {
-        self.size = Cafe.CupSize(value: value)
-        self.isFilled = isFilled
+    init(){
+        self.counter = 0
     }
 }
-
 ```
 
-### Breaking it Down:
-
-- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
-- The init function is also modified to accept a CupSize value for the size parameter.
-
-### Put it to the Test
+### **Putting it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Update the public variable named `env` with newly created `environment` enum
-3. Initialize value of `evn`.
+2. Create a variable `winCount` in NFT resource and initialize with 0 value.
+3. Create a function `winner` in NFT resource and increment the winCount variable.
 
 ### Solution !!

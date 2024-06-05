@@ -1,40 +1,37 @@
 ---
-title: Lesson 6 - View Function
+title: Lesson 6 - enum
 sidebar_position: 6
 ---
 
-If you have Ethereum background, then you will be familiar with the term view. That ensures they won't modify the contract's state. These functions are used solely for reading data from the contract's state.
+We've learned how to organize data with structs, but what if a variable can only have specific values? Enums come to the rescue!
 
-In Flow, we also create similar functions, which have a function declaration and a return type.
+#### Enums like Checklists for Your Code
+
+Imagine a coffee shop with three cup sizes: small, medium, and large. An enum acts like a checklist, ensuring your code only uses these valid options. This reduces errors and keeps things organized.
+
+- We use the `enum` keyword to create enums.
+- Each option within the enum is called a `case`
 
 ```jsx
-access(all) contract HellWorld {
+access(all) contract Cafe {
 
-	// Declare a variable named greetings
-	access(all) var greetings: String
-
-	access(all) view fun getGreetings(): String{
-		return self.greetings
-	}
-
-	init(){
-		self.greetings = "Hello World"
-	}
+    access(all) enum CupSize: UInt8 {
+        access(all) case small
+        access(all) case medium
+        access(all) case large
+    }
 }
-
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-- `getGreetings()`: This function returns a String.
-- `view`: Indicates that it does not modify any external state or any account state
+- `CupSize` is the name of the enum.
+- `UInt8` specifies the underlying data type (unsigned 8-bit integer).
+- `small`, `medium`, and `large` are the individual cases (options) within the enum.
 
-### Put It to the Test
-
-Let's read all the ID of the Knight in the contract storage. For that-
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public functions named `getIDs` marked as `view`.
-3. `getIDs` should return an array of IDs.
+2. Create an enum named `Environment` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock`, `water`, `ice`, `electric`, `poison`, `dark`.
 
 ### Solution !!

@@ -1,39 +1,37 @@
 ---
-title: Lesson 7 - Unpredictable Power!
+title: Lesson 7 - enum with Structs
 sidebar_position: 7
 ---
 
-The strength of your Flow Knights is ever-evolving, but how do you determine how much their power grows? This lesson introduces Verifiable Random Functions (VRF) to ensure those power increases are awarded fairly and securely.
+In the previous lessons, we learned about structure for organizing data and enums for restricting variable values. Now, let's see how to combine these to create a super-efficient knight ️⚔️!
 
-### **Why Use VRF for Power Boosts? It's All About Fairness and Security!**
-
-VRF takes the guesswork out of randomness, making it perfect for games where a touch of uncertainty adds to the excitement:
-
-- **Unbeatable Fairness:** VRF ensures no one can predict or tamper with the random number generation. This keeps your game honest and rewards truly deserving Knights on their quests for power!
-- **Ironclad Security:** VRF utilizes cryptography to guarantee the randomness is secure and unbiased. No sneaky manipulation here!
-
-### Coding Like a Game Master!
-
-Here's a sneak peek at the code that generates random power with VRF:
+Our current Glass struct represents a glass of juice, but what if we want to ensure the size (size variable) can only be "small", "medium", or "large"? We can achieve this by incorporating the CupSize enum we defined within the Cafe contract in Lesson 9:
 
 ```jsx
-access(all) contract Dice {
+// Define a struct named `Glass` to represent a glass of juice
 
-    access(all) fun roll(): UInt64 {
-        let rand: UInt64 = revertibleRandom()
-        return (rand%X)+1 // Adjust X based on your desired power range
-    }
+access(all) struct Glass {
 
-    init() {
+    access(all) let size: CupSize
+    access(all) var isFilled: Bool
+
+    init(value: UInt8, isFilled: Bool) {
+        self.size = Cafe.CupSize(value: value)
+        self.isFilled = isFilled
     }
 }
+
 ```
 
-### **Explanation:**
+### Breaking it Down:
 
-- The revertibleRandom function utilizes VRF to generate a random, unpredictable number. Think of it as rolling a super secure die!
-- The expression (randomNumber % X) + 1 takes that random number and scales it down to a range suitable for power increases (replace X with the maximum power value you want for your Knights).
+- We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
+- The init function is also modified to accept a CupSize value for the size parameter.
 
-### **Putting it to the Test:**
+### Put it to the Test
+
+1. Open Flow [Playground](https://play.flow.com/)
+2. Update the public variable named `env` with newly created `environment` enum
+3. Initialize value of `evn`.
 
 ### Solution !!
