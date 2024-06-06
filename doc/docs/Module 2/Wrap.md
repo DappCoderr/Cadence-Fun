@@ -1,6 +1,6 @@
 ---
 title: That’s a wrap
-sidebar_position: 14
+sidebar_position: 16
 ---
 
 Hey, congratulations on completing Module 2! 🥳 🎉

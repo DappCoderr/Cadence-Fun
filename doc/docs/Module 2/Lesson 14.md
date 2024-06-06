@@ -1,13 +1,11 @@
 ---
-title: Lesson 10 - Events
-sidebar_position: 10
+title: Lesson 14 - Events
+sidebar_position: 14
 ---
 
 Our contract is almost finished! Now let’s add an event.
 
 Events are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be ‘listening’ for certain events and take action when they happen.
-
-Example:
 
 ```cadence
 // declare the event

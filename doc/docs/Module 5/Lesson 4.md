@@ -70,6 +70,8 @@ Let's breakdown how we can make this epic clashes between your knights possible
 ### **Putting it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Just take a look again, what we have learned and try to incorporate this battle function into our knight project
+2. Incorporating the battle function in your contract. If you can't able to do this. Read this lesson again.
 
 ### Solution !!
+
+![Alt text](image-8.png)

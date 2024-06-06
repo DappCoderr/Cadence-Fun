@@ -3,7 +3,7 @@ title: Lesson 3 - Refactoring Power!!
 sidebar_position: 3
 ---
 
-The strength of your Flow Knights is ever-evolving, but how do you determine how much their power grows? This lesson introduces Verifiable Random Functions (VRF) to ensure those power increases are awarded fairly and securely.
+The strength of your Flow Knights is ever-evolving, but how do you determine how much their power grows? This lesson introduces Verifiable Random Functions (VRF) to ensure power increases are awarded fairly and securely.
 
 ### **Why Use VRF for Power Boosts? It's All About Fairness and Security!**
 
@@ -12,7 +12,7 @@ VRF takes the guesswork out of randomness, making it perfect for games where a t
 - **Unbeatable Fairness:** VRF ensures no one can predict or tamper with the random number generation. This keeps your game honest and rewards truly deserving Knights on their quests for power!
 - **Ironclad Security:** VRF utilizes cryptography to guarantee the randomness is secure and unbiased. No sneaky manipulation here!
 
-Let's take a look at the code and understand who we generates random power using VRF:
+Let's look at the code and understand how we generate random numbers using VRF:
 
 ```jsx
 access(all) contract Dice {
@@ -36,8 +36,8 @@ access(all) contract Dice {
 ### **Putting it to the Test:**
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a `getRandomKNightXP` function and use `revertibleRandom` inbuilt function to calculate the power of the knight, and return the random value, Make sure you map it in between 1 to 100.
-3. Let' move the power variable to NFT resource and update it with calling the `getRandomKNightXP` function.
+2. Create a `getRandomKnightPower` function and use the `revertibleRandom` built-in function to calculate the knight's power, returning the random value. Ensure you map it between 1 and 100.
+3. Move the power variable to the NFT resource and update it by calling the `getRandomKnightPower` function.
 
 ### Solution !!
 

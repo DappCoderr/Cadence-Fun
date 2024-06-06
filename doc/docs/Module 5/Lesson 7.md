@@ -35,3 +35,13 @@ access(all) struct Glass {
 3. Initialize value of `evn`.
 
 ### Solution !!
+
+![Alt text](image-12.png)
+
+---
+
+![Alt text](image-13.png)
+
+---
+
+![Alt text](image-11.png)

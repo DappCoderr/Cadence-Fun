@@ -3,7 +3,9 @@ title: Lesson 6 - enum
 sidebar_position: 6
 ---
 
-We've learned how to organize data with structs, but what if a variable can only have specific values? Enums come to the rescue!
+Remember our - `type` variable which needs to pass static value like - fire, water, rock, grass, electric, ice, flying, ghost, dark, steel, dragon, poison, fighting etc.
+
+We've learned how to organize data with structs, but what if a variable can only have specific values? Enums come to the rescue to make it more organize.
 
 #### Enums like Checklists for Your Code
 
@@ -23,15 +25,21 @@ access(all) contract Cafe {
 }
 ```
 
-### Breaking it Down:
-
-- `CupSize` is the name of the enum.
-- `UInt8` specifies the underlying data type (unsigned 8-bit integer).
-- `small`, `medium`, and `large` are the individual cases (options) within the enum.
-
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an enum named `Environment` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock`, `water`, `ice`, `electric`, `poison`, `dark`.
+2. Create an enum named `Types` of type `UInt8` and add different type case `fire`, `grass`, `sun`, `rock`, `water`, `ice`, `electric`, `poison`, `dark`.
 
 ### Solution !!
+
+![Alt text](image-14.png)
+
+![Alt text](image-12.png)
+
+---
+
+![Alt text](image-13.png)
+
+---
+
+![Alt text](image-11.png)
