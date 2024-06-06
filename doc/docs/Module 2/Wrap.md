@@ -15,6 +15,8 @@ access(all) contract KnightCreator{
   access(all) var totalSupply: UInt64
   access(all) let storedKnight: @{UInt64: KnightNFT}
 
+  access(all) event KinigtMinted(id:UInt64)
+
   access(all) struct KnightDetails{
       access(all) var name: String
       access(all) var power: UFix64
@@ -38,7 +40,9 @@ access(all) contract KnightCreator{
   }
 
   access(all) fun createKnight(): @KnightNFT {
-    return <- create KnightNFT()
+    var newNFT <- create KnightNFT()
+    emit KinigtMinted(id:self.totalSupply)
+    return <- newNFT
   }
 
   access(all) fun storeKnight(knight: @KnightNFT) {
