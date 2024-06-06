@@ -37,12 +37,12 @@ access(all) contract Dice {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a `getRandomKNightXP` function and use `revertibleRandom` inbuilt function to calculate the power of the knight, and return the random value, Make sure you map it in between 1 to 100.
-3. Update the `power` variable of NFT resource by calling the `getRandomKNightXP` function.
+3. Let' move the power variable to NFT resource and update it with calling the `getRandomKNightXP` function.
 
 ### Solution !!
 
-![Alt text](image-2.png)
+![Alt text](image-6.png)
 
 ---
 
-![Alt text](image-3.png)
+![Alt text](image-7.png)

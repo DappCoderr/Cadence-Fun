@@ -45,12 +45,13 @@ Imagine a game where knights have an advantage when fighting in environments tha
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Change `knight` resource id with resource built-in unique identifier
-   Let's add some more variable such as-
+2. Change `knight` resource id with resource built-in unique identifier.
+3. Let's add some more variable to our `KnightDetails` struct such as-
 
 - `dateCreated` of type `UFix64` which tells when the NFT is created.
-- `type` of type `String` which define the environment of the knight.
-- `winCount` of type `UInt64` which keeps the track of win count of the knight. Initialize with zero value.
+- `type` variable of type `String` defines the how effective moves can be in the battle. (example of types will be: fire, water, rock, grass, electric, ice, flying, ghost, dark, steel, dragon, poison, fighting) (we will talk about this variable in upcoming lessons.)
+
+4. Add `winCount` of type `UInt64` to NFT resource which keeps the track of win count of the knight. Initialize with zero value. (we will talk about this variable in upcoming lessons.)
 
 :::note
 To get the date, you can use block.timestamp which is a global variable representing the current timestamp of the block being mined. Timestamp is measured in seconds.
@@ -59,4 +60,8 @@ To get the date, you can use block.timestamp which is a global variable represen
 
 ### Solution !!
 
-![Alt text](image.png)
+![Alt text](image-4.png)
+
+---
+
+![Alt text](image-5.png)

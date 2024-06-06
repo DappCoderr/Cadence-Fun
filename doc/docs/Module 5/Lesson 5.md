@@ -3,6 +3,8 @@ title: Lesson 5 - Tracking Victories
 sidebar_position: 5
 ---
 
+Remember we created lesson 2.
+
 While we create the battle function but still we can't able to track with user knight is winning. Right? so let's we're add a function called `winner` which increments the win count of the Knight NFT. This will help the own to know how many match he had won.
 
 ```cadence
