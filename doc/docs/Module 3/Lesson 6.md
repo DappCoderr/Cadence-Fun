@@ -23,7 +23,7 @@ access(all) resource Collection {
 }
 ```
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Add the deposit function to the Collection resource.

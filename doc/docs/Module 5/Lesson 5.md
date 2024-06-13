@@ -21,7 +21,7 @@ access(all) contract HelloWorld{
 }
 ```
 
-### **Putting it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a function `winner` in NFT resource and increment the winCount variable.

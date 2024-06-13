@@ -19,8 +19,6 @@ access(all) contract HellWorld {
 }
 ```
 
-### **Explanation:**
-
 - Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
 - This is protecting us from accidentally overwriting a Knight in the dictionary.
 

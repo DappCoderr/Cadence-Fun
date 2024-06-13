@@ -84,7 +84,3 @@ let a <- create R() // Moving a valuable resource into `a`
 
 NOTE:- It is used when the value is a resource.
 ```
-
-### Putting it to the Test
-
-If you understand, then let's go and start building out remaining game logic.

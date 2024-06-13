@@ -17,8 +17,6 @@ access(all) fun createKnight(): @NFT {
 }
 ```
 
-### **Explanation:**
-
-### **Putting it to the Test:**
+### Put It to the Test
 
 ### Solution !!

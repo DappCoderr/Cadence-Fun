@@ -23,8 +23,6 @@ access(all) struct Glass {
 
 ```
 
-### Breaking it Down:
-
 - We update the size variable type in the Glass struct to use the CupSize enum instead of a raw UInt8. This enforces that the size can only be one of the pre-defined options (small, medium, or large).
 - The init function is also modified to accept a CupSize value for the size parameter.
 

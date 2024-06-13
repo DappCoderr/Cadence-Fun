@@ -31,7 +31,7 @@ access(all) contract Example {
 
 Note that we use the self keyword to indicate a variable that exists 1 layer outside of our function’s scope.
 
-### PUT IT TO THE TEST
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Use create keyword and move operator to form your first Knight.

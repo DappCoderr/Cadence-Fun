@@ -15,7 +15,7 @@ import Counter from "./examples/counter.cdc"
 import NBATopShot from 0x299F20A29311B9248F12
 ```
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Let's go back to our Knight contract and try to import a `NonFungibleToken` which we have added in previous lesson.

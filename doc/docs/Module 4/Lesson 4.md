@@ -20,7 +20,7 @@ access(all) contract HelloWorld: NonFungibleToken {
 }
 ```
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. import NonFungibleToken standard into our contract

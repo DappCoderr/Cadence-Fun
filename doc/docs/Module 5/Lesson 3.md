@@ -33,7 +33,7 @@ access(all) contract Dice {
 }
 ```
 
-### **Putting it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a `getRandomKnightPower` function and use the `revertibleRandom` built-in function to calculate the knight's power, returning the random value. Ensure you map it between 1 and 100.

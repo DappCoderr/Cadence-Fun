@@ -67,7 +67,7 @@ Let's breakdown how we can make this epic clashes between your knights possible
 - **Edge Cases:**
   The code includes checks to handle potential errors. The panic statements indicate that something unexpected happened (like not finding a knight with the provided ID). In a real application, you'd likely handle these situations more gracefully.
 
-### **Putting it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Incorporating the battle function in your contract. If you can't able to do this. Read this lesson again.

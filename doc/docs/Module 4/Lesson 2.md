@@ -15,7 +15,7 @@ In our game we will be using [Flow NFT standard](https://developers.flow.com/bui
 
 Think a standard like a Legos! Just like Legos snap together seamlessly, the Flow NFT Standard ensures all NFTs are built the same way. NFTs built with the same standard can be easily bought, sold, and transferred between different dapps or marketplaces in the Flow world.
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a new contract named - NonFungibleToken

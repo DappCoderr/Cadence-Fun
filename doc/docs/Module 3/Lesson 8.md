@@ -28,7 +28,7 @@ access(all) resource ToyNFTCollection: ToyInterface {
 
 ```
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create the resource interface for the Collection named as `CollectionPublic`.

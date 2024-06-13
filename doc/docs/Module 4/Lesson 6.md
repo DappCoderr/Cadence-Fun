@@ -40,7 +40,7 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 }
 ```
 
-### **Put it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Update the collection resource with interface.

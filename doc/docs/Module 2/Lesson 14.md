@@ -19,7 +19,7 @@ access(all) fun add(x: UInt64, y: UInt64): UInt64 {
 }
 ```
 
-### **Putting it to the Test:**
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Declare an event called New. It should pass kittyId (a UInt64), name (a String), and dna (a UInt64).
