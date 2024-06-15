@@ -16,6 +16,9 @@ access(all) view fun borrowNFT(_ id: UInt64): &NonFungibleToken.NFT {
 
 ### Put It to the Test
 
+1. Open Flow [Playground](https://play.flow.com/)
+2. Implement the borrow function with what you have learned above.
+
 ### Solution !!
 
-![Alt text](image-6.png)
+![Alt text](image-5.png)
