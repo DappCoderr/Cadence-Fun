@@ -7,15 +7,12 @@ Before learning about Capabilities I think you got an idea of how accounts, tran
 
 A capability is a value that represents the right to access an object and perform certain operations on it. A capability specifies what can be accessed, and how it can be accessed.
 
-Capabilities can be storage capabilities or account capabilities:
+Their are two types of Capabilities:
 
 - `Storage capabilities` grant access to objects in account storage, via paths
 - `Account capabilities` grant access to accounts
 
-act like personalized security keys, ensuring only the chosen few can access your precious NFTs:
-
-- **Fort Knox Security:** Capabilities prevent unauthorized access to your collection, keeping your NFTs safe from prying eyes.
-- **Granular Control:** You decide who gets to see your NFTs! Grant access with the precision of a jeweler, ensuring only those you trust can interact with your collection.
+Capabilities prevent unauthorized access to your collection, keeping your NFTs safe from prying eyes. It decide who gets to see your NFTs! Grant access with the precision of a jeweler, ensuring only those you trust can interact with your collection.
 
 ```cadence
 // To store an empty HelloWorld resource in account storage you will need to access
