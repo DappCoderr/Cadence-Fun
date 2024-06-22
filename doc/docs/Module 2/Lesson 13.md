@@ -1,6 +1,6 @@
 ---
-title: Lesson 14 - Events
-sidebar_position: 14
+title: Lesson 13 - Events
+sidebar_position: 13
 ---
 
 Our contract is almost finished! Now let’s add an event.

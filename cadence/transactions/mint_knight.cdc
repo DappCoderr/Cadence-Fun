@@ -1,5 +1,5 @@
-import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
-import Knight from "../contracts/Knight.cdc"
+import NonFungibleToken from 0x631e88ae7f1d7c20
+import Knight from 0x42491d7c0e53eba9
 
 transaction(name:String, type:String){
 let collectionRef: &{NonFungibleToken.CollectionPublic}
