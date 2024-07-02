@@ -1,16 +1,16 @@
 ---
-title: Lesson 4 - Clash of the Knights
+title: Lesson 4 - Battle!!!
 sidebar_position: 4
 ---
 
-This lesson delves into the heart of your game – the battle logic! The function simulates a battle between two knights belonging to different users. The function determines the winner based on the knights' power and triggers a victory action for the winning knight.
+Are you ready for epic clashes!!
+In this lesson we will head over to the battle function. The function that determines the winner based on the knights' power and triggers a victory action for the winning knight.
 
 Let's breakdown how we can make this epic clashes between your knights possible
 
-- **The Function: Battle Royale!** :
-  Create a function `battle`, which make this clashes happens between you knights.
-  After that we need two parameters; userA and userB: These represent the addresses (locations on the Flow blockchain) of the two players participating in the battle.
-  `userAKnightId` and `userBKnightId`: These are unique identifiers specifying the exact knights from each player's collection that will be dueling.
+- **The Function:**
+
+  Create a function named `battle` as the fight coordinator. Which takes the address of the players participating in the battle(`userA` & `userB`) and their respective knights id (`userAKnightId` & `userBKnightId`).
 
   ```jsx
   pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
@@ -18,11 +18,11 @@ Let's breakdown how we can make this epic clashes between your knights possible
   }
   ```
 
-- **Gathering the Troops:** :
-  The function retrieves information about the players involved (getAccount(userA) and getAccount(userB)).
-  It then retrieves special access keys (capabilities) for each player's knight collection. These capabilities act like permission slips, allowing the function to access the specific knights for battle.
+- **Accessing storage:**
 
-  ```cadence
+  We gets the players account by using the `getAccount(address)` function by passing player account address to it and over calling `getCapability` to get the public storage access to borrow the specific knight.
+
+  ```jsx
   pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
     let acctA = getAccount(userA)
     let acctB = getAccount(userB)
@@ -32,11 +32,12 @@ Let's breakdown how we can make this epic clashes between your knights possible
   }
   ```
 
-- **Knight Stats and XP Check:**
-  Once it has the capabilities, the function borrows references to the actual knights involved (borrowKnight) using their IDs.
+- **XP Check:**
+
+  Once it has the capabilities reference, the function borrows references to the actual knights involved (borrowKnight) using their IDs.
   It then retrieves the crucial stat – experience points (XP) – for each knight (knightA_XP and knightB_XP).
 
-  ```cadence
+  ```jsx
   pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
     // before code ....
 
@@ -47,24 +48,26 @@ Let's breakdown how we can make this epic clashes between your knights possible
   }
   ```
 
-- **May the Best Knight Win**
-  The function compares the XP of the two knights. The knight with the higher XP is declared the victor!
-  For the winning knight, the function calls a special function named winner. This function likely performs actions associated with victory, such as updating knight stats or awarding rewards
+- **Who Wins?**
 
-  ```cadence
+  Now we have `xp` for both the knight, just use simple compare check look to see who wins?
+
+  ```jsx
   pub fun battle(userA: Address, userAKnightId: UInt64, userB: Address, userBKnightId: UInt64) {
 
     // before code ....
 
     if (knightA_XP > knightB_XP) {
-      let winnerKnight = userACapRef.borrowKnight(id: userAKnightId)
+      log("Congrats, User A Knight Wins!!!")
     } else {
       let winnerKnight = userBCapRef.borrowKnight(id: userBKnightId)
+      log("Congrats, User B Knight Wins!!!")
     }
   }
   ```
 
 - **Edge Cases:**
+
   The code includes checks to handle potential errors. The panic statements indicate that something unexpected happened (like not finding a knight with the provided ID). In a real application, you'd likely handle these situations more gracefully.
 
 ### Put It to the Test

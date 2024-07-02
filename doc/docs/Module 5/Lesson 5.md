@@ -3,8 +3,11 @@ title: Lesson 5 - Tracking Victories
 sidebar_position: 5
 ---
 
-Remember our winCount variable we created lesson 2. We will use that variable in this lesson.
-While we create the battle function but still we can't able to track with user knight is winning. Right? so let's we're add a function called `winner` which increments the win count of the Knight NFT. This will help the own to know how many match he had won.
+We had run our battle function, but it doesn't have anything yet which can track the wins. Hmmmm!!.
+You remember we created `winCount` variable in lesson 2. Now we will use that variable in this lesson.
+
+But how do we call and increment that variable?
+Let's create a function called `winner` which increments the `winCount` variable every time it's been called in the NFT resource. Every time your knight wins the battle winner function is called.
 
 ```cadence
 access(all) contract HelloWorld{
@@ -24,7 +27,8 @@ access(all) contract HelloWorld{
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a function `winner` in NFT resource and increment the winCount variable.
+2. Create a function named `winner()` in NFT resource and increment the winCount variable.
+3. Remove the log in battle function we created in last lesson and update it with by calling the `winner()`.
 
 ### Solution !!
 
