@@ -1,5 +1,5 @@
 ---
-title: Lesson 3 - Refactoring Power!!
+title: Lesson 3 - VRF (Randomness)
 sidebar_position: 3
 ---
 
