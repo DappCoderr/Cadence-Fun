@@ -15,8 +15,8 @@ access(all) contract CryptoKnight: NonFungibleToken{
     event KinigtMinted(id:UInt64, name:String, type:String)
 
     // Contract Path
-    access(all) let StoragePath: StoragePath
-    access(all) let PublicPath: PublicPath
+    access(all) let CollectionStoragePath: StoragePath
+    access(all) let CollectionPublicPath: PublicPath
 
     access(all) var totalSupply: UInt64
 
@@ -53,6 +53,29 @@ access(all) contract CryptoKnight: NonFungibleToken{
             CryptoKnight.totalSupply = CryptoKnight.totalSupply + 1
         }
 
+        access(all)
+		view fun getViews(): [Type]{ 
+			return [Type<MetadataViews.Display>(), Type<MetadataViews.NFTCollectionData>(), Type<MetadataViews.NFTCollectionDisplay>(), Type<MetadataViews.ExternalURL>(), Type<MetadataViews.Traits>(), Type<MetadataViews.Edition>(), Type<MetadataViews.Royalties>(), Type<MetadataViews.Serial>()]
+		}
+
+
+		access(all)
+		fun resolveView(_ view: Type): AnyStruct?{ 
+			switch view{ 
+				case Type<MetadataViews.ExternalURL>():
+					return MetadataViews.ExternalURL("https://flow.com/")
+				case Type<MetadataViews.NFTCollectionData>():
+					return MetadataViews.NFTCollectionData(storagePath: CryptoKnight.CollectionStoragePath, publicPath: CryptoKnight.CollectionPublicPath, publicCollection: Type<&CryptoKnight.Collection>(), publicLinkedType: Type<&CryptoKnight.Collection>(), createEmptyCollectionFunction: fun (): @{NonFungibleToken.Collection}{ 
+							return <-CryptoKnight.createEmptyCollection(nftType: Type<@CryptoKnight.Collection>())
+						})
+				case Type<MetadataViews.NFTCollectionDisplay>():
+					let bannerMedia = MetadataViews.Media(file: MetadataViews.HTTPFile(url: "https://banner_2023.png"), mediaType: "image/png")
+					let logoFull = MetadataViews.Media(file: MetadataViews.HTTPFile(url: "https://logo_full.png"), mediaType: "image/png")
+					return MetadataViews.NFTCollectionDisplay(name: "CryptoKnight", description: "CryptoKnight is a fun game build on top of flow chain", externalURL: MetadataViews.ExternalURL("https://flow.io/"), squareImage: logoFull, bannerImage: bannerMedia, socials:{ "twitter": MetadataViews.ExternalURL("https://twitter.com/flunks_nft")})
+			}
+			return nil
+		}
+
         access(all) fun winner(){
             self.winCount = self.winCount + 1
         }
@@ -69,7 +92,7 @@ access(all) contract CryptoKnight: NonFungibleToken{
     access(all) resource interface CryptoKnightCollectinPublic{
         access(all) fun deposit(token: @{NonFungibleToken.NFT})
         access(all) fun getIDs(): [UInt64]
-        access(all) fun borrowNFT(id: UInt64): &{NonFungibleToken.NFT}
+        access(all) fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}?
         // access(all) fun borrowKinght(id: UInt64): &CryptoKnight.NFT?{
         //     post {
         //         (result == nil) || (result?.id == id):
@@ -78,7 +101,7 @@ access(all) contract CryptoKnight: NonFungibleToken{
         // }
     }
 
-    access(all) resource Collection: NonFungibleToken.Collection, CryptoKnightCollectinPublic{
+    access(all) resource Collection:CryptoKnightCollectinPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.Collection, NonFungibleToken.CollectionPublic{
         // access(all) var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
         access(all) var ownedNFTs: @{UInt64: {NonFungibleToken.NFT}}
 
@@ -89,6 +112,16 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) fun createEmptyCollection(): @{NonFungibleToken.Collection} {
             return <-CryptoKnight.createEmptyCollection(nftType: Type<@CryptoKnight.NFT>())
         }
+
+        access(all)
+		view fun getSupportedNFTTypes():{ Type: Bool}{ 
+			panic("implement me")
+		}
+		
+		access(all)
+		view fun isSupportedNFTType(type: Type): Bool{ 
+			panic("implement me")
+		}
 
         // destroy (){
         //     destroy self.ownedNFTs
@@ -131,47 +164,47 @@ access(all) contract CryptoKnight: NonFungibleToken{
             return self.ownedNFTs.length
         }
 
-        access(all) view fun getContractViews(resourceType: Type?): [Type] {
-        return [
-            Type<MetadataViews.NFTCollectionData>(),
-            Type<MetadataViews.NFTCollectionDisplay>()
-        ]
-    }
+    //     access(all) view fun getContractViews(resourceType: Type?): [Type] {
+    //     return [
+    //         Type<MetadataViews.NFTCollectionData>(),
+    //         Type<MetadataViews.NFTCollectionDisplay>()
+    //     ]
+    // }
 
-    access(all) fun resolveContractView(resourceType: Type?, viewType: Type): AnyStruct? {
-        switch viewType {
-            case Type<MetadataViews.NFTCollectionData>():
-                let collectionData = MetadataViews.NFTCollectionData(
-                    storagePath: self.CollectionStoragePath,
-                    publicPath: self.CollectionPublicPath,
-                    publicCollection: Type<&FooBar.Collection>(),
-                    publicLinkedType: Type<&FooBar.Collection>(),
-                    createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
-                        return <-FooBar.createEmptyCollection(nftType: Type<@FooBar.NFT>())
-                    })
-                )
-                return collectionData
-            case Type<MetadataViews.NFTCollectionDisplay>():
-                let media = MetadataViews.Media(
-                    file: MetadataViews.HTTPFile(
-                        url: "Add your own SVG+XML link here"
-                    ),
-                    mediaType: "image/svg+xml"
-                )
-                return MetadataViews.NFTCollectionDisplay(
-                    name: "The FooBar Example Collection",
-                    description: "This collection is used as an example to help you develop your next Flow NFT.",
-                    externalURL: MetadataViews.ExternalURL("Add your own link here"),
-                    squareImage: media,
-                    bannerImage: media,
-                    socials: {
-                        "twitter": MetadataViews.ExternalURL("Add a link to your project's twitter")
-                    }
-                )
-        }
-        return nil
-    }
-    }
+    // access(all) fun resolveContractView(resourceType: Type?, viewType: Type): AnyStruct? {
+    //     switch viewType {
+    //         case Type<MetadataViews.NFTCollectionData>():
+    //             let collectionData = MetadataViews.NFTCollectionData(
+    //                 storagePath: self.CollectionStoragePath,
+    //                 publicPath: self.CollectionPublicPath,
+    //                 publicCollection: Type<&CryptoKnight.Collection>(),
+    //                 publicLinkedType: Type<&CryptoKnight.Collection>(),
+    //                 createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
+    //                     return <-CryptoKnight.createEmptyCollection(nftType: Type<@CryptoKnight.NFT>())
+    //                 })
+    //             )
+    //             return collectionData
+    //         case Type<MetadataViews.NFTCollectionDisplay>():
+    //             let media = MetadataViews.Media(
+    //                 file: MetadataViews.HTTPFile(
+    //                     url: "Add your own SVG+XML link here"
+    //                 ),
+    //                 mediaType: "image/svg+xml"
+    //             )
+    //             return MetadataViews.NFTCollectionDisplay(
+    //                 name: "The FooBar Example Collection",
+    //                 description: "This collection is used as an example to help you develop your next Flow NFT.",
+    //                 externalURL: MetadataViews.ExternalURL("Add your own link here"),
+    //                 squareImage: media,
+    //                 bannerImage: media,
+    //                 socials: {
+    //                     "twitter": MetadataViews.ExternalURL("Add a link to your project's twitter")
+    //                 }
+    //             )
+    //     }
+    //     return nil
+    // }
+}
 
     access(all) fun createEmptyCollection(nftType: Type): @{NonFungibleToken.Collection} {
         return <- create Collection()
@@ -221,12 +254,12 @@ access(all) contract CryptoKnight: NonFungibleToken{
         let acctA = getAccount(userA)
         let accB = getAccount(userB)
 
-        let capA = acctA.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.PublicPath)
+        let capA = acctA.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.CollectionPublicPath)
         let capA_Ref = capA.borrow() ?? panic("Object not found")
 
         let knightA_XP = capA_Ref.xp
 
-        let capB = accB.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.PublicPath)
+        let capB = accB.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.CollectionPublicPath)
         let cabB_Ref = capB.borrow() ?? panic("Object not found")
 
         let knightB_XP = cabB_Ref.xp
@@ -239,10 +272,18 @@ access(all) contract CryptoKnight: NonFungibleToken{
 
     }
 
+    access(all) view fun getContractViews(resourceType: Type?): [Type] {
+		panic("implement me")
+	}
+
+	access(all) fun resolveContractView(resourceType: Type?, viewType: Type): AnyStruct? {
+		return nil
+	}
+
     init(){
         let identifier = "KnightCollection".concat(self.account.address.toString())
-        self.PublicPath = PublicPath(identifier: identifier)!
-        self.StoragePath = StoragePath(identifier: identifier)!
+        self.CollectionPublicPath = PublicPath(identifier: identifier)!
+        self.CollectionStoragePath = StoragePath(identifier: identifier)!
 
         self.totalSupply = 0
 
