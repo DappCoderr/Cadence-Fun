@@ -1,6 +1,6 @@
-import "FungibleToken" from "FungibleToken.cdc"
-import "NonFungibleToken" from "NonFungibleToken.cdc"
-import "ViewResolver" from "ViewResolver.cdc"
+import FungibleToken from "./FungibleToken.cdc"
+import NonFungibleToken from "./NonFungibleToken.cdc"
+import ViewResolver from "./ViewResolver.cdc"
 
 /// This contract implements the metadata standard proposed
 /// in FLIP-0636.
