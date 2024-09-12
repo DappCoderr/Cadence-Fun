@@ -93,6 +93,14 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) fun deposit(token: @{NonFungibleToken.NFT})
         access(all) fun getIDs(): [UInt64]
         access(all) fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}?
+
+        access(all)
+		fun borrowCryptoknight(id: UInt64): &CryptoKnight.NFT?{ 
+			post{ 
+				result == nil || result?.id == id:
+					"Cannot borrow CryptoKnight reference: The ID of the returned reference is incorrect"
+			}
+		}
         // access(all) fun borrowKinght(id: UInt64): &CryptoKnight.NFT?{
         //     post {
         //         (result == nil) || (result?.id == id):
@@ -154,6 +162,16 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
             return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
         }
+
+        access(all)
+		fun borrowCryptoknight(id: UInt64): &CryptoKnight.NFT?{ 
+			if self.ownedNFTs[id] != nil{ 
+				let ref = (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
+				return ref as! &CryptoKnight.NFT
+			} else{ 
+				return nil
+			}
+		}
 
         access(all) view fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
