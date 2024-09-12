@@ -1,5 +1,5 @@
-import Knight from "../contracts/Knight.cdc"
+import CryptoKnight from "../cadence/contracts/CryptoKnight.cdc"
 
-pub fun main(): UInt64{
-    return Knight.totalSupply
+access(all) fun main(): UInt64{
+    return CryptoKnight.totalSupply
 }
