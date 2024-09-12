@@ -1,8 +1,8 @@
-import NonFungibleToken from "../contracts/standards/NonFungibleToken.cdc"
-import CryptoKnight from "../contracts/CryptoKnight.cdc"
+import CryptoKnight from "../cadence/contracts/CryptoKnight.cdc"
 
-pub fun main(addr:Address): UInt64{
-    let account = getAuthAccount(addr)
-    let collectionRef = account.getCapability<&{Knight.KnightCollectionPublic}>(Knight.PublicPath).borrow() ?? panic("Could not borrow Collection")
-    return collectionRef.getIDs().length
+access(all) fun main(addr:Address): Int {
+    let account = getAccount(addr)
+    let collectionRef = account.capabilities.get<&CryptoKnight.Collection>(CryptoKnight.CollectionPublicPath)
+    let borrowCapRef = collectionRef.borrow()!
+    return borrowCapRef.getLength()
 }
