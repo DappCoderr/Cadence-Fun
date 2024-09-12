@@ -1,5 +1,5 @@
-import NonFungibleToken from "./standards/NonFungibleToken.cdc"
-import MetadataViews from "./standards/MetadataViews.cdc"
+import NonFungibleToken from "./NonFungibleToken.cdc"
+import MetadataViews from "./MetadataViews.cdc"
 
 access(all) contract CryptoKnight: NonFungibleToken{
     // events
