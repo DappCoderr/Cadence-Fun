@@ -8,7 +8,7 @@ transaction(name:String, power:UInt8){
   prepare(signer: auth(Storage, Capabilities) &Account){
 
     pre {
-      power >= 3: "Wrong inputValue"
+      power <= 3: "Wrong inputValue"
     }
 
     self.collectionRef = signer.storage.borrow<&CryptoKnight.Collection>(from: CryptoKnight.CollectionStoragePath) 
