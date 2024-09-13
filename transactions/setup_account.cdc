@@ -11,11 +11,4 @@ transaction(){
     let collectionCap = signer.capabilities.storage.issue<&CryptoKnight.Collection>(CryptoKnight.CollectionStoragePath)
     signer.capabilities.publish(collectionCap, at: CryptoKnight.CollectionPublicPath)
   }
-
-  //   if signer.storage.borrow<&Knight.Collection>(from: Knight.StoragePath) == nil{
-  //     signer.storage.save(<- Knight.createEmptyCollection(), to:Knight.StoragePath)
-  //     signer.link<&{NonFungibleToken.CollectionPublic, Knight.KnightCollectionPublic}>(Knight.PublicPath, target: Knight.StoragePath)  
-  //   }
-  //   log("successfully created collection")
-  // }
 }
