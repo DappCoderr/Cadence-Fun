@@ -73,14 +73,10 @@ access(all) contract CryptoKnight: NonFungibleToken{
 		}
 
         access(contract)
-        fun updateXP(result:Bool){
-            if(result){
-                let randomNumber: UInt64 = revertibleRandom<UInt64>(modulo: UInt64.max)
-                let randXP = (randomNumber % self.xp) + 1
-                self.xp = self.xp + randXP
-            }else{
-                self.xp = self.xp + 1
-            } 
+        fun updateXP(){
+            let randomNumber: UInt64 = revertibleRandom<UInt64>(modulo: UInt64.max)
+            let randXP = (randomNumber % self.xp) + 1
+            self.xp = self.xp + randXP
         }
 
         access(contract) 
@@ -224,15 +220,13 @@ access(all) contract CryptoKnight: NonFungibleToken{
         let knightB_XP = borrowKnight_B.xp
 
         if(knightA_XP > knightB_XP){
-            let winner = true
             borrowKnight_A.winner()
-            borrowKnight_A.updateXP(result: winner)
+            borrowKnight_A.updateXP()
             let deprecateXP = (borrowKnight_B.xp * 5) / 100
             borrowKnight_B.deprecateXP(value: deprecateXP)
         }else{
-            let winner = true
             borrowKnight_B.winner()
-            borrowKnight_B.updateXP(result: winner)
+            borrowKnight_B.updateXP()
             let deprecateXP = (borrowKnight_A.xp * 5) / 100
             borrowKnight_A.deprecateXP(value: deprecateXP)
         }
