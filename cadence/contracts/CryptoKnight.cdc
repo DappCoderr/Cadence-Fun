@@ -12,7 +12,7 @@ access(all) contract CryptoKnight: NonFungibleToken{
 	event Deposit(id: UInt64, to: Address?)
 
     access(all) 
-    event KinigtMinted(id:UInt64, name:String, type:String)
+    event KinigtMinted(id:UInt64, name:String, type:UInt8)
 
     // Contract Path
     access(all) let CollectionStoragePath: StoragePath
@@ -20,15 +20,29 @@ access(all) contract CryptoKnight: NonFungibleToken{
 
     access(all) var totalSupply: UInt64
 
+    access(all) enum OffencivePower: UInt8 {
+        access(all) case Lightning
+        access(all) case Fire
+        access(all) case Earth
+        access(all) case Ice
+    }
+
+    // access(all) enum DefensivePower: UInt8 {
+    //     access(all) case Poison 
+    //     access(all) case StoneWall
+    //     access(all) case Whirlwind
+    //     access(all) case Heal
+    // }
+
     access(all) struct KnightDetails{
         access(all) var name: String
         access(all) var dateCreated: UFix64
-        access(all) var type: String
+        access(all) var type: OffencivePower?
 
-        init(name: String, dateCreated:UFix64, type:String){
+        init(name: String, dateCreated:UFix64, value:UInt8){
             self.name = name
             self.dateCreated = dateCreated
-            self.type = type
+            self.type = CryptoKnight.OffencivePower(rawValue: value)
         }
     }
 
@@ -39,13 +53,13 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) var xp: UInt64
         access(all) var winCount: UInt64
 
-        init(_name:String, _type:String){
+        init(_name:String, _value:UInt8){
             let currntTime:UFix64 = getCurrentBlock().timestamp
             self.id = self.uuid
             self.details = CryptoKnight.KnightDetails(
                 name: _name,
                 dateCreated: currntTime,
-                type: _type
+                value: _value
             )
             self.xp = CryptoKnight.getRandomKNightXP()
             self.winCount = 0
@@ -57,6 +71,22 @@ access(all) contract CryptoKnight: NonFungibleToken{
 		view fun getViews(): [Type]{ 
 			return [Type<MetadataViews.Display>(), Type<MetadataViews.NFTCollectionData>(), Type<MetadataViews.NFTCollectionDisplay>(), Type<MetadataViews.ExternalURL>(), Type<MetadataViews.Traits>(), Type<MetadataViews.Edition>(), Type<MetadataViews.Royalties>(), Type<MetadataViews.Serial>()]
 		}
+
+        access(contract)
+        fun updateXP(result:Bool){
+            if(result){
+                let randomNumber: UInt64 = revertibleRandom<UInt64>(modulo: UInt64.max)
+                let randXP = (randomNumber % self.xp) + 1
+                self.xp = self.xp + randXP
+            }else{
+                self.xp = self.xp + 1
+            } 
+        }
+
+        access(contract) 
+        fun deprecateXP(value:UInt64){
+            self.xp = self.xp - value
+        }
 
 
 		access(all)
@@ -83,10 +113,6 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) fun createEmptyCollection(): @{NonFungibleToken.Collection} {
             return <-CryptoKnight.createEmptyCollection(nftType: Type<@CryptoKnight.NFT>())
         }
-
-        // destroy(){
-        //     CryptoKnight.totalSupply = CryptoKnight.totalSupply - 1
-        // }
     }
 
     access(all) resource interface CryptoKnightCollectinPublic{
@@ -101,12 +127,6 @@ access(all) contract CryptoKnight: NonFungibleToken{
 					"Cannot borrow CryptoKnight reference: The ID of the returned reference is incorrect"
 			}
 		}
-        // access(all) fun borrowKinght(id: UInt64): &CryptoKnight.NFT?{
-        //     post {
-        //         (result == nil) || (result?.id == id):
-        //             "Cannot borrow CryptoKnight Asset reference: The Id of the returned reference is incorrect"
-        //     }
-        // }
     }
 
     access(all) resource Collection:CryptoKnightCollectinPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.Collection, NonFungibleToken.CollectionPublic{
@@ -131,10 +151,6 @@ access(all) contract CryptoKnight: NonFungibleToken{
 			panic("implement me")
 		}
 
-        // destroy (){
-        //     destroy self.ownedNFTs
-        // }
-
         access(NonFungibleToken.Withdraw) fun withdraw(withdrawID: UInt64): @{NonFungibleToken.NFT} {
             let token <- self.ownedNFTs.remove(key: withdrawID)
                 ?? panic("Could not withdraw an NFT with the provided ID from the collection")
@@ -149,15 +165,6 @@ access(all) contract CryptoKnight: NonFungibleToken{
             destroy oldToken
             emit Deposit(id: id, to: self.owner?.address)
         }
-
-        // access(all) fun borrowKinght(id:UInt64): &CryptoKnight.NFT? {
-        //     if self.ownedNFTs[id] != nil{
-        //         let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
-        //         return ref as! &CryptoKnight.NFT
-        //     } else{
-        //         return nil
-        //     }
-        // }
 
         access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
             return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
@@ -181,66 +188,18 @@ access(all) contract CryptoKnight: NonFungibleToken{
         access(all) view fun getLength(): Int {
             return self.ownedNFTs.length
         }
-
-    //     access(all) view fun getContractViews(resourceType: Type?): [Type] {
-    //     return [
-    //         Type<MetadataViews.NFTCollectionData>(),
-    //         Type<MetadataViews.NFTCollectionDisplay>()
-    //     ]
-    // }
-
-    // access(all) fun resolveContractView(resourceType: Type?, viewType: Type): AnyStruct? {
-    //     switch viewType {
-    //         case Type<MetadataViews.NFTCollectionData>():
-    //             let collectionData = MetadataViews.NFTCollectionData(
-    //                 storagePath: self.CollectionStoragePath,
-    //                 publicPath: self.CollectionPublicPath,
-    //                 publicCollection: Type<&CryptoKnight.Collection>(),
-    //                 publicLinkedType: Type<&CryptoKnight.Collection>(),
-    //                 createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
-    //                     return <-CryptoKnight.createEmptyCollection(nftType: Type<@CryptoKnight.NFT>())
-    //                 })
-    //             )
-    //             return collectionData
-    //         case Type<MetadataViews.NFTCollectionDisplay>():
-    //             let media = MetadataViews.Media(
-    //                 file: MetadataViews.HTTPFile(
-    //                     url: "Add your own SVG+XML link here"
-    //                 ),
-    //                 mediaType: "image/svg+xml"
-    //             )
-    //             return MetadataViews.NFTCollectionDisplay(
-    //                 name: "The FooBar Example Collection",
-    //                 description: "This collection is used as an example to help you develop your next Flow NFT.",
-    //                 externalURL: MetadataViews.ExternalURL("Add your own link here"),
-    //                 squareImage: media,
-    //                 bannerImage: media,
-    //                 socials: {
-    //                     "twitter": MetadataViews.ExternalURL("Add a link to your project's twitter")
-    //                 }
-    //             )
-    //     }
-    //     return nil
-    // }
 }
 
     access(all) fun createEmptyCollection(nftType: Type): @{NonFungibleToken.Collection} {
         return <- create Collection()
     }
 
-    // access(all) fun checkCollection(_addr: Address): Bool{
-    //     return getAccount(_addr)
-    //     .capabilities.get<&{CryptoKnight.KnightCollectionPublic}>(CryptoKnight.PublicPath)!
-    //     .check()
-    // }
-
-    access(all) fun mintKnight(name:String, type:String): @NFT{
+    access(all) fun mintKnight(name:String, type:UInt8): @NFT{
         pre{
             name.length > 0: "Name can not be empty"
-            type.length > 0: "Type can not be empty" 
         }
         let nftId = CryptoKnight.totalSupply
-        var newNFT <- create NFT(_name:name, _type:type)
+        var newNFT <- create NFT(_name:name, _value:type)
         emit KinigtMinted(id:nftId, name:name, type:type)
             return <- newNFT
     }
@@ -250,42 +209,32 @@ access(all) contract CryptoKnight: NonFungibleToken{
             return (randomNumber % 100) + 1
     }
 
-    // access(all) fun battle(userA:Address, userAKnightId: UInt64, userB:Address, userBKnightId: UInt64){
-    //     let acctA = getAccount(userA)
-    //     let acctB = getAccount(userB)
-    //     let userACapRef = acctA.getCapability<&{CryptoKnight.KnightCollectionPublic}>(CryptoKnight.PublicPath).borrow() ?? panic("Could not borrow")
-    //     var knightA_XP = userACapRef.borrowKinght(id: userAKnightId)?.xp ?? panic("CryptoKnight B XP not found")
-
-    //     let userBCapRef = acctB.getCapability<&{CryptoKnight.KnightCollectionPublic}>(CryptoKnight.PublicPath).borrow() ?? panic("Could not borrow")
-    //     var knightB_XP = userBCapRef.borrowKinght(id: userBKnightId)?.xp ?? panic("CryptoKnight B XP not found")
-
-    //     if(knightA_XP > knightB_XP){
-    //         let winnerKnight = userACapRef.borrowKinght(id: userAKnightId)
-    //         winnerKnight?.winner()
-    //     } else {
-    //         let winnerKnight = userBCapRef.borrowKinght(id: userBKnightId)
-    //         winnerKnight?.winner()
-    //     }  
-    // }
-
     access(all) fun battle(userA:Address, userAKnight:UInt64, userB:Address, userBKnight:UInt64){
-        let acctA = getAccount(userA)
-        let accB = getAccount(userB)
+        let accountA = getAccount(userA)
+        let accountB = getAccount(userB)
 
-        let capA = acctA.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.CollectionPublicPath)
-        let capA_Ref = capA.borrow() ?? panic("Object not found")
+        let borrowCap_A = accountA.capabilities.borrow<&CryptoKnight.Collection>(CryptoKnight.CollectionPublicPath)!
+        let borrowKnight_A = borrowCap_A.borrowCryptoknight(id: userAKnight)!
 
-        let knightA_XP = capA_Ref.xp
+        let knightA_XP = borrowKnight_A.xp
 
-        let capB = accB.capabilities.get<&CryptoKnight.NFT>(CryptoKnight.CollectionPublicPath)
-        let cabB_Ref = capB.borrow() ?? panic("Object not found")
+        let borrowCap_B = accountB.capabilities.borrow<&CryptoKnight.Collection>(CryptoKnight.CollectionPublicPath)!
+        let borrowKnight_B = borrowCap_B.borrowCryptoknight(id: userBKnight)!
 
-        let knightB_XP = cabB_Ref.xp
+        let knightB_XP = borrowKnight_B.xp
 
         if(knightA_XP > knightB_XP){
-            capA_Ref.winner()
+            let winner = true
+            borrowKnight_A.winner()
+            borrowKnight_A.updateXP(result: winner)
+            let deprecateXP = (borrowKnight_B.xp * 5) / 100
+            borrowKnight_B.deprecateXP(value: deprecateXP)
         }else{
-            cabB_Ref.winner()
+            let winner = true
+            borrowKnight_B.winner()
+            borrowKnight_B.updateXP(result: winner)
+            let deprecateXP = (borrowKnight_A.xp * 5) / 100
+            borrowKnight_A.deprecateXP(value: deprecateXP)
         }
 
     }
@@ -304,9 +253,6 @@ access(all) contract CryptoKnight: NonFungibleToken{
         self.CollectionStoragePath = StoragePath(identifier: identifier)!
 
         self.totalSupply = 0
-
-        // self.account.storage.save(<- create Collection(), to: self.StoragePath)
-        // self.account.link<&{KnightCollectionPublic}>(self.PublicPath, target: self.StoragePath)
 
         emit ContractInitialized()
     }
