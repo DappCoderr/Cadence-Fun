@@ -5,7 +5,7 @@ sidebar_position: 2
 
 Hey there! Before we dive into the Flow Playground and start building, let's make sure you're on the same page when it comes to blockchain basics. If you're new to blockchain, take a quick look at [here](https://developers.flow.com/build/basics/blocks).
 
-In this lesson, we'll embark on a fun adventure to build the Knight game using the Flow Playground. If you're new to Flow, don't worry! There's a quick tutorial to get you up to speed [playground](<(https://youtu.be/pRz7EzrWchs?si=bodusfeIHzgHPrV6&t=158)>).
+In this lesson, we'll embark on a fun adventure to build the Knight game using the Flow Playground. If you're new to Flow, don't worry! There's a quick tutorial to get you up to speed [playground](<(https://youtube.com/pRz7EzrWchs?si=bodusfeIHzgHPrV6&t=158)>).
 
 :::tip
 For the best experience, we recommend using Google Chrome. It's optimized for the Flow Playground.
