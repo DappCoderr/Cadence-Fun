@@ -98,4 +98,4 @@ let a <- create R() // Moving a valuable resource into `a`
 NOTE:- It is used when the value is a resource.
 ```
 
-That's a quick overview of common Cadence operators.
+That's a quick overview of common Cadence operators. Don't worry if you don't understand everything right now. We'll see these operators in action as we build our game.
