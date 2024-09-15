@@ -3,11 +3,13 @@ title: Lesson 3 - Understanding Cadence Operators
 sidebar_position: 3
 ---
 
-Before diving into building our contract further, let's explore Cadence operators, which are like specialized tools designed to solve various coding challenges.
+Alright, let's take a look at some of cadence operators. Don't worry if you don't understand everything right away. As we build our game, you'll see how these operators are used in real-world scenarios.
+
+Think of operators as tools in your toolbox. They help you build your smart contracts.
 
 #### [Optionals (?)](https://cadence-lang.org/docs/1.0/language/glossary#optional)
 
-Let's start with optionals. These are super important in Cadence. Imagine you have a box, but sometimes it might be empty. That's exactly what an optional is—a box that might have something inside or might be empty.
+Optionals are like little boxes. They might have something inside, or they might be empty. This is handy when you're not sure if a value exists.
 
 ```jsx
 var name: String? = "country"
@@ -16,19 +18,30 @@ var name: String? = nil
 
 #### [References (&)](https://cadence-lang.org/docs/1.0/language/references)
 
-Next up, we have references. Think of them as a way to point to something. You can use a reference to access information or do things with whatever it's pointing to.
+References are like arrows pointing to something. You can use them to access or change the thing they're pointing to.
 
 ```jsx
+// Method 1
 let hello = "Hello"
+// Create a reference to the `String` `hello`.
+// Provide the reference type `&String` using a type assertion
 let helloRef = &hello as &String
-helloRef.length // tells us how many letters are in the word "hello"
+
+// Method 2
+let alsoHelloRef: &String = &hello
+// Invalid: Cannot create a reference without an explicit type
+let unknownRef = &hello
 ```
 
 #### [At Operator (@)](https://cadence-lang.org/docs/1.0/language/glossary#-at)
 
-The `@` symbol is special because it tells us if something is really important, like a special resource. It's like putting a big red label on something to say, "Hey, this is special!"
+The `@`symbol before a type indicates that it's a [resource](https://cadence-lang.org/docs/language/resources). Resources are special types in Cadence that represent valuable assets or objects. It's like putting a big red label on something to say, "Hey, this is special!"
 
 ```jsx
+// Declare a resource named `SomeResource`
+access(all) resource SomeResource {}
+
+// we use the '@' symbol to reference a resource type
 let a: @SomeResource <- create SomeResource(value: 0)
 ```
 
@@ -84,3 +97,5 @@ let a <- create R() // Moving a valuable resource into `a`
 
 NOTE:- It is used when the value is a resource.
 ```
+
+That's a quick overview of common Cadence operators.
