@@ -9,12 +9,12 @@ Let's see how to create and use dictionaries in Cadence:
 
 ```jsx
 // Declare a dictionary to store countries by their ID
-let countryDictionary: { UInt64: String };
+let countryDictionary: { UInt64: String }
 
 // Initialize the dictionary with some values in init function
 init(){
   self.countryDictionary = {1: "USA",2: "Canada", 3: "UK"}
-};
+}
 ```
 
 - `{UInt64: String}`: Defines a dictionary where keys are of type `UInt64` and values are of type `String`.
