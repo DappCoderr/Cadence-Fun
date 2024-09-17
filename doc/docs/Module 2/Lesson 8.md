@@ -1,5 +1,5 @@
 ---
-title: Lesson 8 - Creating Storage
+title: Lesson 8 - Contract Storage
 sidebar_position: 8
 ---
 
