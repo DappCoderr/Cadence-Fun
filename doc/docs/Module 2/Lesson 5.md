@@ -5,7 +5,7 @@ sidebar_position: 5
 
 A **_struct_** (short for structure) is like a container that holds different types of information under one label. Structs help organize related pieces of data together.
 
-For instance, to track details about a country, you can use a struct to group attributes like Name, Population, Ratings, and Country ID:
+Let's say you want to track details about different countries. Here's how you could use a struct to organize relevant information:
 
 ```jsx
 
@@ -43,9 +43,7 @@ access(all) struct Country {
 2. Create a struct named `KnightDetails`.
 3. Inside add two variable `name` (of type String) and `power` (of type UInt64)
 4. Initialize name and power in the init function.
-5. And delete these variable from the `KnightNFT` resource
-
-Next, we’ll combine resources and structs to store structured information.
+5. And delete these variable from the `Knight` resource
 
 ### Solution !!
 
