@@ -3,11 +3,19 @@ title: Lesson 9 - Function Declaration
 sidebar_position: 9
 ---
 
-Declaring a function involves specifying its visibility, function name, parameters, and return type (if any).
+A function is a block of code that performs a specific task. To declare a function, you need to specify:
+
+- `Access Control`: Whether the function is private and public.
+- `Function Keyword`: The `fun` keyword indicates that you're declaring a function.
+- `Function Name`: A unique identifier for the function.
+- `Parameters`: Inputs that the function takes.
+- `Return Type`: The type of data the function will return (optional).
+
+Here's a basic example of a function declaration:
 
 ```jsx
-// Define a function named setNewValue
-access(all) fun setNewValue() {
+// Define a function named createCity with a return type String
+access(all) fun createCity(): String {
     // Function body
 }
 ```
@@ -16,8 +24,6 @@ access(all) fun setNewValue() {
 
 1. Open Flow [Playground](https://play.flow.com/)
 2. Create a public function named `createKnight`.
-
-Next, we’ll explore basic math operations in Cadence.
 
 ### Solution !!
 
