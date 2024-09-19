@@ -1,35 +1,37 @@
 ---
-title: Lesson 7 - Dictionary
+title: Lesson 7 - Contract Storage
 sidebar_position: 7
 ---
 
-Dictionary is a data structure that stores key-value pairs. Each key in the dictionary maps to a specific value, allowing efficient retrieval and manipulation of data.
-
-Let's see how to create and use dictionaries in Cadence:
+Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
 
 ```jsx
-// Declare a dictionary to store countries by their ID
-let countryDictionary: { UInt64: String }
+access(all) contract HelloWorld {
 
-// Initialize the dictionary with some values in init function
-init(){
-  self.countryDictionary = {1: "USA",2: "Canada", 3: "UK"}
+    // Declare a dictionary to store countries by their ID
+    access(all) let storedCountries: @{UInt64: Country}
+
+    // Declare a resource Country
+    access(all) resource Country{}
+
+    // Initialize the dictionary in the contract's initializer
+    init() {
+        self.storedCountries <- {}
+    }
 }
 ```
 
-- `{UInt64: String}`: Defines a dictionary where keys are of type `UInt64` and values are of type `String`.
-- `countryDictionary`: Represents the name of the dictionary variable.
-- `{}`: Initializes an empty dictionary.
+The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
 
-Dictionaries in Cadence are versatile and useful for organizing data in various scenarios.
+Remember, when defining a resource type, the `@` symbol must be added.
 
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an empty dictionary named `storeKnight`.
+2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.
 
-Next, we’ll see how to store data using these dictionaries.
+Next, we’ll learn how to declare and use functions in Cadence.
 
 ### Solution !!
 
-![Alt text](image-5.png)
+![Alt text](image-6.png)
