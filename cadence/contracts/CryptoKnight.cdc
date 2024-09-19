@@ -163,13 +163,13 @@ access(all) contract CryptoKnight: NonFungibleToken{
         }
 
         access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-            return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
+            return &self.ownedNFTs[id]
         }
 
         access(all)
 		fun borrowCryptoknight(id: UInt64): &CryptoKnight.NFT?{ 
 			if self.ownedNFTs[id] != nil{ 
-				let ref = (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
+				let ref = (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
 				return ref as! &CryptoKnight.NFT
 			} else{ 
 				return nil
