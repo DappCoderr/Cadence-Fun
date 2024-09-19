@@ -1,30 +1,32 @@
 ---
-title: Lesson 9 - Function Declaration
+title: Lesson 9 - Saving Knight
 sidebar_position: 9
 ---
 
-A function is a block of code that performs a specific task. To declare a function, you need to specify:
+Now, let's store Knights in our contract in the storage we created in lesson 8.
 
-- `Access Control`: Whether the function is private and public.
-- `Function Keyword`: The `fun` keyword indicates that you're declaring a function.
-- `Function Name`: A unique identifier for the function.
-- `Parameters`: Inputs that the function takes.
-- `Return Type`: The type of data the function will return (optional).
-
-Here's a basic example of a function declaration:
+For that we will create a function and call the dictionary and store the `KnightNFT` resource to it. Let’s see the below code, how we are storing `Country` resource.
 
 ```jsx
-// Define a function named createCity with a return type String
-access(all) fun createCity(): String {
-    // Function body
+access(all) contract HellWorld {
+
+//.....above code
+  access(all) fun storeCountry(country: @Country) {
+      self.storedCountries[country.id] <-! country
+  }
+
+//...more code
 }
 ```
 
-### Put it to the Test
+- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
+- This is protecting us from accidentally overwriting a Knight in the dictionary.
+
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function named `createKnight`.
+2. Create a public function named `storeKnight` with one parameter as `knight` resource
 
 ### Solution !!
 
-![Alt text](image-7.png)
+![Alt text](image-8.png)
