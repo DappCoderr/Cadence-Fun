@@ -3,32 +3,38 @@ title: Lesson 7 - Contract Storage
 sidebar_position: 7
 ---
 
-Now, let's put our knowledge of resources and dictionaries into action by storing Knights in our smart contract.To do this, we'll create a dictionary in the contract that stores Knights resource as value and ID as key.
+Now, let's put together our Knight struct and knights array into action by adding the Knight to the smart contract storage. To do this, we'll use our array of the contract which will keep track of the store knights struct.
 
 ```jsx
 access(all) contract HelloWorld {
+    access(all) let countries: [Country]
 
-    // Declare a dictionary to store countries by their ID
-    access(all) let storedCountries: @{UInt64: Country}
+    access(all) struct Country {
+        access(all) let country_ID: UInt64
+        access(all) var name: String
 
-    // Declare a resource Country
-    access(all) resource Country{}
+        init(name:String){
+            self.country_ID = 1
+            self.name = name
+        }
+    }
+
+    // create new country
+    let newCountry = Country(name:"Canada")
+    // Add the new country to the countries array
+    countries.append(newCountry)
 
     // Initialize the dictionary in the contract's initializer
     init() {
-        self.storedCountries <- {}
+        self.countries = []
     }
 }
 ```
 
-The storedCountries dictionary isn't a resource itself, but it stores resources (countries). Therefore, we treat it like a resource by using `<-` to initialize it in the contract's initializer.
-
-Remember, when defining a resource type, the `@` symbol must be added.
-
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public dictionary named `storedKnight` of type resource and initialize its value in the `init` function.
+2. Create a new knight and store that `knight` to the `knights` array.
 
 Next, we’ll learn how to declare and use functions in Cadence.
 
