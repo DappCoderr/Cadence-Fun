@@ -1,32 +1,64 @@
 ---
-title: Lesson 6 - Combining Resources & Structs
+title: Lesson 6 - Dictionary & Array
 sidebar_position: 6
 ---
 
-Recall the `World` resource from Lesson 4 and the `Country` struct from Lesson 5.
-In this lesson, we'll look how to effectively combine them to structure data within resources.
+Dictionary: A dictionary is a data structure that stores key-value pairs. Each key in the dictionary maps to a specific value, allowing efficient retrieval and manipulation of data.
 
-Imagine using the `World` resource to represent a single country, but with detailed information stored in a structured manner. Here's how we can achieve this by leveraging the `Country` struct:
+Creating and Using Dictionaries in Cadence
 
 ```jsx
-access(all) resource World {
+// Declare a dictionary to store countries by their ID
+let countryDictionary: { UInt64: String }
 
-  access(all) var id: UInt64
-  // Access modifier can be adjusted based on needs (e.g., public, private)
-  access(all) var country: Country
-
-  init(_name: String, _population: UFix64) {
-    self.id = 0
-    self.country = Country(_name: _name, _population: _population)
-  }
+// Initialize the dictionary with some values
+init() {
+    self.countryDictionary = [
+        1: "USA",
+        2: "Canada",
+        3: "UK",
+        // Add more key-value pairs as needed
+    ]
 }
+
+// Accessing a value by its key
+let name1 = countryDictionary[1]; // "USA"
+
+// Modifying a value
+countryDictionary[1] = "United States";
+
+let name2 = countryDictionary[1]; // "United States"
 ```
 
-### Put it to the Test
+Array: An array is a collection of elements of the same type, stored in a contiguous memory location.
+
+Creating and Using Arrays in Cadence
+
+```jsx
+let numbers: [Int8] = [1, 2, 3, 4, 5]
+
+// Accessing an element by its index
+let firstNumber = numbers[0] // 1
+
+// Modifying an element
+numbers[2] = 10
+
+// Adding elements to an array
+numbers.append(11)
+//number is now `[1,2,3,4,5,11]`
+numbers.insert(at:1, 6)
+//number is now `[1,6,2,3,4,5,11]`
+
+// Removing elements from an array
+numbers.remove(at: 1)
+//number is now `[1,2,3,4,5,11]`
+```
+
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Add the `KnightDetails` struct within the `Knight` resource.
+2. Create an array named `storeKnight`.
 
 ### Solution !!
 
-![Alt text](image-4.png)
+![Alt text](image-5.png)
