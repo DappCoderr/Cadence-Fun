@@ -58,7 +58,7 @@ numbers.remove(at: 1)
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create an array named `storeKnight`.
+2. Create an array named `knights`.
 
 ### Solution !!
 
