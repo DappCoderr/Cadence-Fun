@@ -27,6 +27,7 @@ let name1 = countryDictionary[1]; // "USA"
 // Modifying a value
 countryDictionary[1] = "United States";
 
+// Accessing a value by its key
 let name2 = countryDictionary[1]; // "United States"
 ```
 
