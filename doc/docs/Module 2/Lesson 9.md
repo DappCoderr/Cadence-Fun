@@ -1,32 +1,47 @@
 ---
-title: Lesson 9 - Saving Knight
+title: Lesson 9 - Function Declaration
 sidebar_position: 9
 ---
 
-Now, let's store Knights in our contract in the storage we created in lesson 8.
+A function is a block of code that performs a specific task. To declare a function, you need to specify:
 
-For that we will create a function and call the dictionary and store the `KnightNFT` resource to it. Let’s see the below code, how we are storing `Country` resource.
+- Specify access control: Decide if the function can be used by everyone or only within the contract.
+- Use the fun keyword: This tells Cadence that you're creating a function.
+- Give it a name: Choose a clear and descriptive name.
+- Define parameters (optional): If the function needs any information to work, list the parameters and their types.
+- Specify the return type (optional): If the function will give back a value, tell Cadence what type it will be.
+
+Here's a basic example of a function declaration:
 
 ```jsx
-access(all) contract HellWorld {
-
-//.....above code
-  access(all) fun storeCountry(country: @Country) {
-      self.storedCountries[country.id] <-! country
-  }
-
-//...more code
+// Define a function named createCity with a return type String
+access(all) fun createCity(): String {
+    // Function body
 }
 ```
 
-- Inside the `storeCounty` function, we use this operator: `<-!`. This is called the “force-move operator”. Cadence requires us to use this with dictionaries because it will abort the program if a Knight at the specific `id` already exists.
-- This is protecting us from accidentally overwriting a Knight in the dictionary.
+Return Value: This function takes a new name as input, updates the city name, and returns the new name.
 
-### Put It to the Test
+```jsx
+access(all) fun updateCityName(newName:String): String {
+  let city = newName
+  return city
+}
+```
+
+View Functions: This function is a "view" function. It reads data from the contract but doesn't change anything.
+
+```jsx
+access(all) view fun sayHello(): String {
+  return "What's up Canada";
+}
+```
+
+### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function named `storeKnight` with one parameter as `knight` resource
+2. Create a public function named `createKnight`.
 
 ### Solution !!
 
-![Alt text](image-8.png)
+![Alt text](image-7.png)

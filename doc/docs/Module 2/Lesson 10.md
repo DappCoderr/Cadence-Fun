@@ -1,38 +1,47 @@
 ---
-title: Lesson 10 - Math
+title: Lesson 10 - Creating Knight
 sidebar_position: 10
 ---
 
-Math in Cadence is pretty straightforward. The following operations are the same as in most programming languages:
+Bringing Your Knight to Life
 
-- Addition: `x + y`
-- Subtraction: `x - y`,
-- Multiplication: `x * y`
-- Division: `x / y`
-- Modulus / remainder: `x % y` (for example, 13 % 5 is 3, because if you divide 5 into 13, 3 is the remainder)
+Now, let's use the createKnight function we defined earlier to create your first knight.
+
+Using `create` and `<-`
+To create a new resource, we'll use the create keyword and the `<-` operator.
+
+- create: This keyword initializes a new resource.
+- `<-`: This operator moves the newly created resource into a variable.
+
+Here's an example:
 
 ```jsx
-access(all) contract Example {
-    access(all) var myInteger: Int
+access(all) contract HelloWorld {
 
-    access(all) fun increment() {
-        self.myInteger = self.myInteger + 1
-    }
+    // Declare a resource that only includes one function.
+    access(all) resource HelloAsset {}
 
-    access(all) fun decrement() {
-        self.myInteger = self.myInteger - 1
+    // We're going to use the built-in create function
+    // to create a new instance of the HelloAsset resource
+    access(all) fun createHelloAsset(): @HelloAsset {
+        return <- create HelloAsset()
     }
 
     init() {
-        self.myInteger = 100
+        // contract initializer function
     }
 }
 ```
 
-### Put it to the Test
+:::note
+The @ symbol before HelloAsset in the function's return type indicates that the function is returning a resource.
+:::
+
+### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
+2. Use create keyword and move operator to form your first Knight.
 
 ### Solution !!
 
-![Alt text](image-10.png)
+![Alt text](image-11.png)

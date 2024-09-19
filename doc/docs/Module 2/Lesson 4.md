@@ -1,30 +1,59 @@
 ---
-title: Lesson 9 - Function Declaration
-sidebar_position: 9
+title: Lesson 4 - Resource
+sidebar_position: 4
 ---
 
-A function is a block of code that performs a specific task. To declare a function, you need to specify:
+Resources: Your Game's Precious Items
 
-- `Access Control`: Whether the function is private and public.
-- `Function Keyword`: The `fun` keyword indicates that you're declaring a function.
-- `Function Name`: A unique identifier for the function.
-- `Parameters`: Inputs that the function takes.
-- `Return Type`: The type of data the function will return (optional).
+Imagine a resource like a one-of-a-kind treasure in your Knight Game. It could be a legendary sword, a mystical shield, or even a powerful spell. Resources are special because they have unique properties:
 
-Here's a basic example of a function declaration:
+1. `Single Location`: A resource can only exist in one place at a time.
+2. `One-Time Use`: Once a resource is used, it's considered consumed and cannot be used again.
+3. `Creation`: Resources are created using the `create` keyword.
+4. `Movement or Destruction`: A function using resources must be either moved or destroyed at the end of the function.
+
+Let's create a `Country` resource: To create a resource we use the `resource` keyword to create them:
 
 ```jsx
-// Define a function named createCity with a return type String
-access(all) fun createCity(): String {
-    // Function body
+access(all) contract HelloWorld {
+
+    // Define a resource named 'World'
+	access(all) resource Country {
+      // Initializer function to set up the resource
+	    init() {}
+	}
+}
+
+```
+
+Inside a resource, you can define variables and functions. Every time you create a resource, you must include an initializer to set initial variable values. Here's an example:
+
+```jsx
+  access(all) resource Country {
+
+    // Variables and functions can be defined within a resource
+    access(all) var name: String
+    access(all) var capital: String
+
+    // Every resource needs an initializer to set initial values
+    init(_name: String, _cap: String) {
+      self.name = _name
+      self.capital = _cap
+    }
 }
 ```
 
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a public function named `createKnight`.
+2. Create a resource named `Knight`.
+3. Define variables inside the resource: Create three variables
+
+- `id` (of type UInt64)
+- `name`(of type String)
+- `power`(of type UInt64).
+- Initialize `id` with a value of 0.
 
 ### Solution !!
 
-![Alt text](image-7.png)
+![Alt text](image-2.png)

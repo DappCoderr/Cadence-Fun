@@ -3,19 +3,21 @@ title: That’s a wrap
 sidebar_position: 15
 ---
 
-Hey, congratulations on completing Module 2! 🥳 🎉
+That's a Wrap!
 
-In the next module, we'll dive deeper into Cadence's functionalities. But before we move on, let's review all the code we've learned so far. If you're facing any issues during development, take a moment to go through the code and see if you can spot any mistakes.
+Congratulations on finishing Module 2! 🎉
+
+Before moving on to Module 3, let's recap what we've learned. Review the code from this module to solidify your understanding. If you encounter any problems while coding, take some time to go through your code carefully and see if you can find any errors.
 
 See you in Module 3!
 
 ```jsx
-access(all) contract KnightCreator{
+access(all) contract CryptoKnight{
 
   access(all) var totalSupply: UInt64
   access(all) let storedKnight: @{UInt64: KnightNFT}
 
-  access(all) event KinigtMinted(id:UInt64)
+  access(all) event KnightMinted(id:UInt64)
 
   access(all) struct KnightDetails{
       access(all) var name: String
@@ -33,15 +35,15 @@ access(all) contract KnightCreator{
       access(all) var details: KnightDetails
 
       init() {
-         self.id = KnightCreator.totalSupply
+         self.id = CryptoKnight.totalSupply
          self.details = KnightDetails()
-         KnightCreator.totalSupply = KnightCreator.totalSupply + 1
+         CryptoKnight.totalSupply = CryptoKnight.totalSupply + 1
       }
   }
 
   access(all) fun createKnight(): @KnightNFT {
     var newNFT <- create KnightNFT()
-    emit KinigtMinted(id:self.totalSupply)
+    emit KnightMinted(id:self.totalSupply)
     return <- newNFT
   }
 

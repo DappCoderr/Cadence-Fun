@@ -27,9 +27,7 @@ access(all) contract HelloWorld {
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Create a new contract named KnightCreator with access control public.
-
-In the next lesson, we'll explore how to manage data within contracts.
+2. Create a new contract named `CryptoKnight` with access control public.
 
 ### Solution !!
 
