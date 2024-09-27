@@ -32,6 +32,7 @@ access(all) contract Example {
 ### Put it to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
+2. In the `Knight` resource use Math operation to initialize value of `totalKnight` with 1.
 
 ### Solution !!
 

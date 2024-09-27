@@ -32,3 +32,17 @@ Feel free to explore the codebase, make modifications, and enjoy the learning pr
 Cadence Fun is a Developer Grant project initiated by DC, a Flow Dev Ambassador, and a Cadence Smart Contract Developer hailing from India. Our team is dedicated to assisting developers, like yourself, in navigating the realm of blockchain development on the Flow network.
 
 Let's embark on this coding adventure and infuse some excitement into Cadence! 🚀
+
+flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 252887674462360
+
+flow scripts execute ./scripts/getId.cdc --network=testnet e209afd8e8d05fe8
+
+[78065325651708, 202310139586625, 95657511692915, 252887674462360]
+
+USERA - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 252887674462360 - XP: 50 > 61 > 58 > 78
+
+USERB - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 78065325651708 - XP: 43 > 41 > 64 > 69
+
+USERC - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 85761907048080 - XP: 30 > 29 > 28
+
+flow transactions send ./transactions/battle_knight.cdc --network=testnet --signer testnet e209afd8e8d05fe8 252887674462360 e209afd8e8d05fe8 78065325651708

@@ -5,7 +5,12 @@ sidebar_position: 13
 
 Our contract is almost finished! Now let’s add an event.
 
-Events are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be ‘listening’ for certain events and take action when they happen.
+Events are a way for your contract to communicate that something happened on the blockchain from your application frontend. It's a logging functionality which allows developers to store data on-chain that is more searchable and gas efficient than saving data to the account storage.
+
+Events can only be declared within a contract body.
+
+- To create an event you use - `event` keyword
+- To emit an event you use `emit` keyword
 
 ```jsx
 // declare the event
@@ -20,7 +25,8 @@ access(all) fun createHelloAsset(): @HelloAsset {
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Declare an event called KnightMinted. It should pass id (a UInt64), name (a String).
+2. Declare an event called `KnightMinted` in `createKnight` function.
+3. Pass `id` of type UInt64 and a `name` of type String.
 
 ### Solution !!
 

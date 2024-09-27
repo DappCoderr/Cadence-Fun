@@ -3,8 +3,6 @@ title: Lesson 3 - Constants & Variables
 sidebar_position: 3
 ---
 
-Storing Information in Your Contracts:
-
 Variables in Cadence act like storage boxes on the blockchain, holding information similar to how a database stores data. In Cadence, we use two main keywords:
 
 1. `var` for variables that are initialized with a value and can be reassigned later.

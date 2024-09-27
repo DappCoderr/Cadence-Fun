@@ -1,13 +1,11 @@
 ---
-title: Lesson 8 - Contract Storage
+title: Lesson 8 - Storing Your Knight
 sidebar_position: 8
 ---
 
-Storing Your Knights in the Contract
+Now that you know about `resources` and `dictionaries`, let's use them together to store your knights in the game contract. This way, all the knights in the game can be tracked in one place.
 
-Now that you know about resources and dictionaries, let's use them together to store your knights in the game contract. This way, all the knights in the game can be tracked in one place.
-
-Storing Knights with a Dictionary: Imagine a special book in your game where you keep track of all the knights. This book is like a dictionary, where each knight has a unique ID (like a page number) and their details are stored on that page.
+**Storing Knights with a Dictionary**: Imagine a special book in your game where you keep track of all the knights. This book is like a dictionary, where each knight has a unique ID (like a page number) and their details are stored on that page.
 
 Here's how we can create this dictionary in Cadence:
 

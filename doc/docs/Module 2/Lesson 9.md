@@ -5,11 +5,11 @@ sidebar_position: 9
 
 A function is a block of code that performs a specific task. To declare a function, you need to specify:
 
-- Specify access control: Decide if the function can be used by everyone or only within the contract.
-- Use the fun keyword: This tells Cadence that you're creating a function.
-- Give it a name: Choose a clear and descriptive name.
-- Define parameters (optional): If the function needs any information to work, list the parameters and their types.
-- Specify the return type (optional): If the function will give back a value, tell Cadence what type it will be.
+- **Specify access control**: Decide if the function can be used by everyone or only within the contract.
+- **Use the fun keyword**: This tells Cadence that you're creating a function.
+- **Give it a name**: Choose a clear and descriptive name.
+- **Define parameters (optional)**: If the function needs any information to work, list the parameters and their types.
+- **Specify the return type (optional)**: If the function will give back a value, tell Cadence what type it will be.
 
 Here's a basic example of a function declaration:
 
@@ -20,7 +20,7 @@ access(all) fun createCity(): String {
 }
 ```
 
-Return Value: This function takes a new name as input, updates the city name, and returns the new name.
+**Return Value**: This function takes a new name as input, updates the city name, and returns the new name.
 
 ```jsx
 access(all) fun updateCityName(newName:String): String {
@@ -29,7 +29,7 @@ access(all) fun updateCityName(newName:String): String {
 }
 ```
 
-View Functions: This function is a "view" function. It reads data from the contract but doesn't change anything.
+**View Functions**: A "view" function is a function which reads data from the contract but doesn't change anything.
 
 ```jsx
 access(all) view fun sayHello(): String {

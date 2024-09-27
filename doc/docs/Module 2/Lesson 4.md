@@ -3,8 +3,6 @@ title: Lesson 4 - Resource
 sidebar_position: 4
 ---
 
-Resources: Your Game's Precious Items
-
 Imagine a resource like a one-of-a-kind treasure in your Knight Game. It could be a legendary sword, a mystical shield, or even a powerful spell. Resources are special because they have unique properties:
 
 1. `Single Location`: A resource can only exist in one place at a time.

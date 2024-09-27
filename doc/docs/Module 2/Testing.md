@@ -1,70 +1,57 @@
 ---
-title: Testing it out!!
+title: Testing
 sidebar_position: 14
 ---
 
-In Cadence, you can't directly poke and prod your contracts. Instead, you use two tools: transactions and scripts.
+### Transaction:
 
-### Transactions
-
-- What they do: Permanently change data within a contract by calling its functions. Imagine them as giving instructions to your contract.
-- Where they live: Separate files from the contract itself.
-- Two stages:
-  prepare: Access and potentially modify data in your account (covered later).
-  execute: Call the contract's functions to make changes.
-
-An empty transaction looks like this
+Now let's create a transaction to create a knight.
 
 ```jsx
+import "CryptoKnight"
+
 transaction() {
     prepare(signer: &Account) {
 
     }
 
     execute {
-
+        lets nft <- CryptoKnight.createKnight()
+        CryptoKnight.storeKnight(knight: <- nft)
     }
 }
-```
-
-You can write a transaction to create a new Knight by calling the contract's createKnight function.
-
-```jsx
-import KnightCreator from 0x05
-
-transaction() {
-
-    prepare(signer: AuthAccount) {}
-
-    execute {
-        let newKnight <- KnightCreator.createKnight()
-        log(newKnight.id)
-        destroy newKnight
-    }
-}
-
 ```
 
 ### Scripts:
 
-- What they do: Peek at the data stored inside a contract, but don't change anything. Think of them as spying on your contract.
-- Where they live: Separate files from the contract itself.
-- Key point: Any changes made within a script are temporary and disappear when the script finishes.
-
-An empty script looks like this
+Let's create the script to get the totalKnight.
 
 ```jsx
-access(all) fun main() {
+import "CryptoKnight"
 
+access(all) fun main(): UInt64 {
+    CryptoKnight.totalKnight
 }
 ```
 
-A script could be used to read information about existing Knights without actually changing anything.
+Let's create the script to get the storedKnight.
 
 ```jsx
-import KnightCreator from 0x05
+import "CryptoKnight"
 
-access(all) fun main(peopleIndex: Int): UInt64 {
-    return KnightCreator.totalSupply
+access(all) fun main(id:UInt64): KnightData {
+    let nft <- CryptoKnight.storedKnight[id]
+    KnightData(name: nft.name, power: nft.power)
+    destroy nft
+}
+
+access(all) struct KnightData{
+    access(all) name: String
+    access(all) power: UFix64
+
+    init(name:String, power:UFix64){
+        self.name = name
+        self.power = power
+    }
 }
 ```

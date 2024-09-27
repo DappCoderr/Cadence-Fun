@@ -43,7 +43,7 @@ access(all) struct Details {
 2. Create a struct named `KnightDetails`.
 3. Inside add two variable `name` (of type String) and `power` (of type UInt64)
 4. Initialize name and power in the init function.
-5. And delete these variable from the `KnightNFT` resource
+5. And delete these variable from the `Knight` resource
 
 ### Solution !!
 

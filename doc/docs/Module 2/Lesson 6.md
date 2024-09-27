@@ -1,9 +1,7 @@
 ---
-title: Lesson 6 - Combining Resources & Structs
+title: Lesson 6 - Organizing Your Knight's Data
 sidebar_position: 6
 ---
-
-Organizing Your Knight's Data
 
 Remember the `Country` resource from before? Imagine using it to represent a single country, but with all its details neatly organized. That's where structs come in!
 

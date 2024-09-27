@@ -3,14 +3,11 @@ title: Lesson 10 - Creating Knight
 sidebar_position: 10
 ---
 
-Bringing Your Knight to Life
+Now, let's use the `createKnight` function we defined earlier to create your first knight.
 
-Now, let's use the createKnight function we defined earlier to create your first knight.
+To create a new `Knight`, we'll use the create keyword and the move (`<-`) operator.
 
-Using `create` and `<-`
-To create a new resource, we'll use the create keyword and the `<-` operator.
-
-- create: This keyword initializes a new resource.
+- `create`: This keyword initializes a new resource.
 - `<-`: This operator moves the newly created resource into a variable.
 
 Here's an example:
@@ -40,7 +37,7 @@ The @ symbol before HelloAsset in the function's return type indicates that the 
 ### Put It to the Test
 
 1. Open Flow [Playground](https://play.flow.com/)
-2. Use create keyword and move operator to form your first Knight.
+2. Use create keyword and move operator to form your first Knight and return it.
 
 ### Solution !!
 

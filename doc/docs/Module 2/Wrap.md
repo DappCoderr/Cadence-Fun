@@ -14,8 +14,8 @@ See you in Module 3!
 ```jsx
 access(all) contract CryptoKnight{
 
-  access(all) var totalSupply: UInt64
-  access(all) let storedKnight: @{UInt64: KnightNFT}
+  access(all) var totalKnight: UInt64
+  access(all) let storedKnight: @{UInt64: Knight}
 
   access(all) event KnightMinted(id:UInt64)
 
@@ -29,33 +29,33 @@ access(all) contract CryptoKnight{
       }
   }
 
-  access(all) resource KnightNFT {
+  access(all) resource Knight {
 
       access(all) var id: UInt64
       access(all) var details: KnightDetails
 
       init() {
-         self.id = CryptoKnight.totalSupply
+         self.id = CryptoKnight.totalKnight
          self.details = KnightDetails()
-         CryptoKnight.totalSupply = CryptoKnight.totalSupply + 1
+         CryptoKnight.totalKnight = CryptoKnight.totalKnight + 1
       }
   }
 
-  access(all) fun createKnight(): @KnightNFT {
-    var newNFT <- create KnightNFT()
-    emit KnightMinted(id:self.totalSupply)
+  access(all) fun createKnight(): @Knight {
+    var newNFT <- create Knight()
+    emit KnightMinted(id:self.totalKnight)
     return <- newNFT
   }
 
-  access(all) fun storeKnight(knight: @KnightNFT) {
+  access(all) fun storeKnight(knight: @Knight) {
       self.storedKnight[knight.id] <-! knight
   }
 
   init(){
-    self.totalSupply = 0
+    self.totalKnight = 0
     self.storedKnight <- {}
   }
 }
 ```
 
-This code wraps up everything we've learned in Module 2. It's organized to help you understand how to create and manage knights and their NFTs in Cadence. If you're ready, let's move on to Module 3!
+This code wraps up everything we've learned in Module 2. It's organized to help you understand how to create and manage knights as NFTs in Cadence. If you're ready, let's move on to Module 3!
