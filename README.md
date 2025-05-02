@@ -1,48 +1,116 @@
-## Cadence Fun
+# 🛡️ CryptoKnight
 
-Welcome to Cadence Fun Developers! This platform is tailored to facilitate your journey in learning Cadence smart contracts by creating simple games on the Flow blockchain. Whether you are a novice or an experienced developer, Cadence Fun offers a comprehensive learning experience for all technical aspects related to Flow blockchains to deepen your understanding and proficiency. Enabling you to develop your own crypto games on the Flow network.
+**CryptoKnight** is an educational project designed to help developers learn [Cadence](https://developers.flow.com/cadence) — the resource-oriented smart contract language on the [Flow blockchain](https://www.flow.com/). By building and experimenting with a simple NFT-based battle game, you'll gain hands-on experience with core blockchain concepts like account storage, resource management, capabilities, and the Flow NFT standard.
 
-### Project Structure 📦
+Whether you're a complete beginner or a seasoned developer, **CryptoKnight** offers an engaging way to sharpen your Cadence skills and develop your own crypto games on Flow.
 
-Before delving into the code, let's take a moment to understand the structure of the Cadence Fun repository:
+---
 
-- `/cadence`: This folder contains the primary contract for Cadence Fun.
-- `/web`: Here, you will find the frontend components of the project.
-- `flow.json`: This configuration file is essential for the project, akin to package.json in other frameworks.
+## 🗂️ Project Structure
 
-Within the cadence folder, you will discover:
+Here's a quick overview of the project structure:
 
-- `/contracts`: All contracts pertinent to the project are housed here.
-- `/scripts`: This folder includes all the project scripts.
-- `/transactions`: Here, you can locate all the project transactions.
-- `/tests`: All Cadence tests are stored in this dedicated folder.
+```
+.
+├── cadence/              # Cadence smart contract code
+│   ├── contracts/        # All main and standard contracts (e.g., CryptoKnight, NFT standards, MetadataViews, ViewResolver)
+│   ├── scripts/          # Read-only Cadence scripts
+│   ├── transactions/     # State-changing Cadence transactions
+│
+└── flow.json             # Flow project config (like package.json)
+```
 
-Additionally, inside the contracts folder, you will find:
+## 🚀 Getting Started
 
-- `/standards`: This directory encompasses all the core Flow contracts.
+You can try out and test Cadence code using the [Flow Playground](https://play.flow.com/). It allows you to run contracts, transactions, and scripts in a sandbox environment.
 
-### Get Started:
+### 🛠️ To Run Locally:
 
-To dive into the examples and experiment with Cadence code, leverage the Flow Playground available at https://play.flow.com/.
+1. **Install the Flow CLI**
+   Follow instructions at [Flow CLI Install Guide](https://developers.flow.com/tools/flow-cli/install)
 
-Feel free to explore the codebase, make modifications, and enjoy the learning process as you delve into the intricacies of Cadence and its practical applications on the Flow blockchain!
+2. **Clone this repository**:
 
-### Created By:
+   ```bash
+   git clone https://github.com/your-username/CryptoKnight.git
+   cd CryptoKnight
+   ```
 
-Cadence Fun is a Developer Grant project initiated by DC, a Flow Dev Ambassador, and a Cadence Smart Contract Developer hailing from India. Our team is dedicated to assisting developers, like yourself, in navigating the realm of blockchain development on the Flow network.
+3. **Start the Flow emulator**:
 
-Let's embark on this coding adventure and infuse some excitement into Cadence! 🚀
+   ```bash
+   flow emulator
+   ```
 
-flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 252887674462360
+4. **Deploy the contracts**:
 
-flow scripts execute ./scripts/getId.cdc --network=testnet e209afd8e8d05fe8
+   ```bash
+   flow project deploy
+   ```
 
-[78065325651708, 202310139586625, 95657511692915, 252887674462360]
+5. **Interact with the contracts**:
 
-USERA - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 252887674462360 - XP: 50 > 61 > 58 > 78
+   ```bash
+   flow transactions send ./cadence/transactions/setup_account.cdc
 
-USERB - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 78065325651708 - XP: 43 > 41 > 64 > 69
+   flow transactions send ./cadence/transactions/mintKnight.cdc "Knight 1" 0
 
-USERC - flow scripts execute ./scripts/borrow_knight.cdc --network=testnet e209afd8e8d05fe8 85761907048080 - XP: 30 > 29 > 28
+   flow scripts execute ./cadence/scripts/checkCollection.cdc
 
-flow transactions send ./transactions/battle_knight.cdc --network=testnet --signer testnet e209afd8e8d05fe8 252887674462360 e209afd8e8d05fe8 78065325651708
+   flow scripts execute ./cadence/scripts/getKnightIDs.cdc
+   ```
+
+---
+
+### 🌐 To Use on Testnet:
+
+1. Generate Flow account keys:
+
+   ```bash
+   flow keys generate
+   ```
+
+2. Go to the [Flow Testnet Faucet](https://faucet.flow.com/create-account) and create a new testnet account using your **public key**.
+
+3. Update the `flow.json` file:
+
+   - Add the new **testnet address** and **private key** under the `accounts` section.
+   - Ensure the `deployments` section includes `testnet`.
+
+4. Deploy and interact with contracts:
+
+   ```bash
+   flow transactions send ./cadence/transactions/setup_account.cdc --network=testnet --signer testnet
+
+   flow transactions send ./cadence/transactions/mintKnight.cdc --network=testnet --signer testnet "Sean" 1
+
+   flow scripts execute ./cadence/scripts/get_totalSupply.cdc --network=testnet
+   ```
+
+For more details, refer to the [Flow CLI deployment guide](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
+
+## ⚙️ How to Use This Repository
+
+There are **two main ways** you can use this repository:
+
+### 1. **Learn Cadence**
+
+Use this repo as a guided example while learning Cadence:
+
+- Explore `/contracts` to study resource-oriented programming
+- Modify and experiment with `/transactions` and `/scripts` to deepen your understanding.
+- Use the Flow Playground or CLI to test changes.
+
+### 2. **Build Your Own Game**
+
+Use this as a starter template:
+
+- Fork the repo
+- Customize the `CryptoKnight.cdc` contract to suit your game mechanics.
+- Use or extend the React frontend in the `/web` directory to create your own dApp.
+
+## 👤 Created By
+
+**CryptoKnight** is a Flow Developer Grant project built by [**DC**](https://x.com/dappcoder_), a Flow Dev Ambassador and smart contract engineer from India. Our mission is to make Cadence education accessible, engaging, and beginner-friendly — while empowering you to build your own blockchain applications across domains like Games, DeFi, RWAs, NFTs, DAOs, and more.
+
+Let’s bring some fun to smart contract development on Flow! 🧙‍♂️⚔️
