@@ -1,46 +1,44 @@
 {
-	"contracts": {
-		"CryptoKnight": "cadence/contracts/CryptoKnight.cdc",
-		"MetadataViews": {
-			"source": "cadence/contracts/MetadataViews.cdc",
-			"aliases": {
-				"testnet": "631e88ae7f1d7c20"
-			}
-		},
-		"NonFungibleToken": {
-			"source": "cadence/contracts/NonFungibleToken.cdc",
-			"aliases": {
-				"testnet": "631e88ae7f1d7c20"
-			}
-		},
-		"ViewResolver": {
-			"source": "cadence/contracts/ViewResolver",
-			"aliases": {
-				"testnet": "631e88ae7f1d7c20"
-			}
-		}
-	},
-	"networks": {
-		"emulator": "127.0.0.1:3569",
-		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"testing": "127.0.0.1:3569",
-		"testnet": "access.devnet.nodes.onflow.org:9000"
-	},
-	"accounts": {
-		"emulator-account": {
-			"address": "f8d6e0586b0a20c7",
-			"key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
-		},
-		"testnet": {
-			"address": "e209afd8e8d05fe8",
-			"key": "52d49e3e7873d218b08d8d3ac320970d5c37fd6363f801883988638a614a43b7"
-		}
-	},
-	"deployments": {
-		"testnet": {
-			"testnet": [
-				"CryptoKnight"
-			]
-		}
-	}
+  "contracts": {
+    "CryptoKnight": "cadence/contracts/CryptoKnight.cdc",
+    "MetadataViews": {
+      "source": "cadence/contracts/MetadataViews.cdc",
+      "aliases": {
+        "testnet": "631e88ae7f1d7c20"
+      }
+    },
+    "NonFungibleToken": {
+      "source": "cadence/contracts/NonFungibleToken.cdc",
+      "aliases": {
+        "testnet": "631e88ae7f1d7c20"
+      }
+    },
+    "ViewResolver": {
+      "source": "cadence/contracts/ViewResolver",
+      "aliases": {
+        "testnet": "631e88ae7f1d7c20"
+      }
+    }
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testing": "127.0.0.1:3569",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
+    },
+    "testnet": {
+      "address": "ADDRESS FROM FAUCET",
+      "key": "YOUR PRIVATE KEY"
+    }
+  },
+  "deployments": {
+    "testnet": {
+      "testnet": ["CryptoKnight"]
+    }
+  }
 }
